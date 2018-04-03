@@ -52,9 +52,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,6 +82,8 @@
             this.cEAL1TableAdapter1 = new SistemaGSG.SistemaGSG_2DataSet2TableAdapters.CEAL1TableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cEAL1TableAdapter2 = new SistemaGSG.SistemaGSG_2DataSet3TableAdapters.CEAL1TableAdapter();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -282,10 +282,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButton6);
+            this.groupBox1.Controls.Add(this.radioButton5);
             this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textBox9);
             this.groupBox1.Controls.Add(this.textBox8);
             this.groupBox1.Controls.Add(this.label2);
@@ -303,7 +303,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(601, 38);
+            this.button7.Location = new System.Drawing.Point(612, 38);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 7;
@@ -311,46 +311,29 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(461, 48);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(14, 13);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "~";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(516, 24);
+            this.label9.Location = new System.Drawing.Point(432, 43);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(23, 13);
             this.label9.TabIndex = 31;
             this.label9.Text = "Até";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(390, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 13);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "De";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(352, 40);
+            this.textBox9.Location = new System.Drawing.Point(341, 40);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.Size = new System.Drawing.Size(85, 20);
             this.textBox9.TabIndex = 5;
             this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(485, 40);
+            this.textBox8.Location = new System.Drawing.Point(460, 40);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
+            this.textBox8.Size = new System.Drawing.Size(85, 20);
             this.textBox8.TabIndex = 6;
             this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
             // 
@@ -583,6 +566,30 @@
             // 
             this.cEAL1TableAdapter2.ClearBeforeFill = true;
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(554, 29);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(46, 17);
+            this.radioButton5.TabIndex = 34;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Ceal";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(554, 52);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(52, 17);
+            this.radioButton6.TabIndex = 35;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Celpe";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
             // FormRel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,9 +666,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button7;
@@ -682,5 +687,7 @@
         private SistemaGSG_2DataSet3 sistemaGSG_2DataSet3;
         private System.Windows.Forms.BindingSource cEAL1BindingSource2;
         private SistemaGSG_2DataSet3TableAdapters.CEAL1TableAdapter cEAL1TableAdapter2;
+        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

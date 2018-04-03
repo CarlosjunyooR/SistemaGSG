@@ -32,6 +32,10 @@ namespace SistemaGSG
 
         string PRIMEIRADATA;
         string SEGUNDADATA;
+        string CEAL;
+        string CELPE;
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -181,9 +185,30 @@ namespace SistemaGSG
             SEGUNDADATA = textBox8.Text;
         }
 
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CEAL'", conexao.conex);
+            DataTable SS = new DataTable();
+            ADAP.Fill(SS);
+            dataGridView1.DataSource = SS;
+
+            CEAL = radioButton5.Text;
+
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CELPE'", conexao.conex);
+            DataTable SS = new DataTable();
+            ADAP.Fill(SS);
+            dataGridView1.DataSource = SS;
+
+            CELPE = radioButton6.Text;
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter seach = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE data between '" + PRIMEIRADATA + "' AND '" + SEGUNDADATA + "'", conexao.conex);
+            SqlDataAdapter seach = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE data between '" + PRIMEIRADATA + "' AND '" + SEGUNDADATA + "' AND empresa='" + CEAL + "' OR empresa='" + CELPE + "'", conexao.conex);
             DataTable seachSS = new DataTable();
             seach.Fill(seachSS);
             dataGridView1.DataSource = seachSS;
@@ -220,6 +245,10 @@ namespace SistemaGSG
             //dataGridView1.Rows[rowIndex].DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
         }
 
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
         DateTime dataHora;
 
 
