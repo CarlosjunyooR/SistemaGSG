@@ -11,7 +11,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\junio\OneDrive\AppSistemaGSG\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -21,21 +22,25 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>GlobalizationRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,6 +53,22 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>logo_ti.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>968E5DA7655FE2DAF5FDE4B348CA51603559F806</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SistemaGSG_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
@@ -63,6 +84,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -84,8 +106,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bd_loginDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="bd_loginDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bd_loginDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bd_loginDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bd_loginDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bd_loginDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bd_loginDataSet3.xsd</DependentUpon>
+    </Compile>
     <Compile Include="conexao.cs" />
     <Compile Include="dados.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DGVPrinter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +143,12 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNotificacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNotificacao.Designer.cs">
+      <DependentUpon>FormNotificacao.cs</DependentUpon>
     </Compile>
     <Compile Include="FormRel.cs">
       <SubType>Form</SubType>
@@ -118,11 +170,72 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SistemaGSGDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSGDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSGDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSGDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSGDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSGDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSGDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSGDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSGDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSGDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_1DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_1DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_2DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_2DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_2DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_2DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_2DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SistemaGSG_2DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SistemaGSG_2DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="textValor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNotificacao.resx">
+      <DependentUpon>FormNotificacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRel.resx">
       <DependentUpon>FormRel.cs</DependentUpon>
@@ -154,6 +267,50 @@
     <None Include="bd_loginDataSet.xss">
       <DependentUpon>bd_loginDataSet.xsd</DependentUpon>
     </None>
+    <None Include="bd_loginDataSet1.xsc">
+      <DependentUpon>bd_loginDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bd_loginDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bd_loginDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bd_loginDataSet1.xss">
+      <DependentUpon>bd_loginDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="bd_loginDataSet2.xsc">
+      <DependentUpon>bd_loginDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="bd_loginDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bd_loginDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bd_loginDataSet2.xss">
+      <DependentUpon>bd_loginDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="bd_loginDataSet3.xsc">
+      <DependentUpon>bd_loginDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="bd_loginDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bd_loginDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bd_loginDataSet3.xss">
+      <DependentUpon>bd_loginDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Ceal.datasource" />
     <None Include="Properties\Settings.settings">
@@ -165,6 +322,128 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SistemaGSGDataSet.xsc">
+      <DependentUpon>SistemaGSGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSGDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSGDataSet.xss">
+      <DependentUpon>SistemaGSGDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet1.xsc">
+      <DependentUpon>SistemaGSGDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSGDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSGDataSet1.xss">
+      <DependentUpon>SistemaGSGDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet21.xsc">
+      <DependentUpon>SistemaGSGDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSGDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSGDataSet21.xss">
+      <DependentUpon>SistemaGSGDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet3.xsc">
+      <DependentUpon>SistemaGSGDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSGDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSGDataSet3.xss">
+      <DependentUpon>SistemaGSGDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet4.xsc">
+      <DependentUpon>SistemaGSGDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSGDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSGDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSGDataSet4.xss">
+      <DependentUpon>SistemaGSGDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_1DataSet.xsc">
+      <DependentUpon>SistemaGSG_1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_1DataSet.xss">
+      <DependentUpon>SistemaGSG_1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_1DataSet1.xsc">
+      <DependentUpon>SistemaGSG_1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_1DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_1DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_1DataSet1.xss">
+      <DependentUpon>SistemaGSG_1DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet.xsc">
+      <DependentUpon>SistemaGSG_2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_2DataSet.xss">
+      <DependentUpon>SistemaGSG_2DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet1.xsc">
+      <DependentUpon>SistemaGSG_2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_2DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_2DataSet1.xss">
+      <DependentUpon>SistemaGSG_2DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet2.xsc">
+      <DependentUpon>SistemaGSG_2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_2DataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_2DataSet2.xss">
+      <DependentUpon>SistemaGSG_2DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet3.xsc">
+      <DependentUpon>SistemaGSG_2DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_2DataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SistemaGSG_2DataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SistemaGSG_2DataSet3.xss">
+      <DependentUpon>SistemaGSG_2DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SistemaGSG_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -194,14 +473,24 @@
     <None Include="Resources\Logomarca_Bonsucro_2016.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bd_login.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bd_login_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>bd_login.mdf</DependentUpon>
-    </Content>
     <Content Include="logo_ti.ico" />
+    <Content Include="SistemaGSG.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SistemaGSG.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SistemaGSG_2.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SistemaGSG_2_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>SistemaGSG_2.mdf</DependentUpon>
+    </Content>
+    <Content Include="SistemaGSG_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>SistemaGSG.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

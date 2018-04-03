@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data.OleDb;
+using System.Data.Odbc;
 
 
 namespace SistemaGSG
@@ -21,14 +22,16 @@ namespace SistemaGSG
         }
 
         public bool FMP = false;
+
         public void logar()
         {
             try
             {
                 string tb_user = "SELECT * FROM tb_gsg WHERE nome = @usuario";
-                SqlConnection conn;
-                SqlCommand cmd;
-                SqlDataReader dr;
+
+                 SqlConnection conn;
+                 SqlCommand cmd;
+                 SqlDataReader dr;
 
                 //Conexão com o Banco de Dados//
                 conn = new SqlConnection(conexao.conex);
@@ -53,13 +56,18 @@ namespace SistemaGSG
                 {
                     FMP = true;
                     this.Dispose();
+
                 }
                 else
                 {
                     MessageBox.Show("Usuário ou Senha, Incorretos!");
                     FMP = false;
+
+                    txtUser.Text = "";
+                    txtSenha.Text = "";
                 }
-            }
+            } 
+            
             catch(Exception err)
             {
                 MessageBox.Show("Erro!" + err);

@@ -34,10 +34,10 @@
             this.controleDeChequesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasCEALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porCódÚnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -80,7 +80,6 @@
             // 
             this.contasCEALToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaContaToolStripMenuItem,
-            this.excluirToolStripMenuItem,
             this.relatórioToolStripMenuItem});
             this.contasCEALToolStripMenuItem.Name = "contasCEALToolStripMenuItem";
             this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
@@ -92,12 +91,6 @@
             this.novaContaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.novaContaToolStripMenuItem.Text = "Nova Conta";
             this.novaContaToolStripMenuItem.Click += new System.EventHandler(this.novaContaToolStripMenuItem_Click);
-            // 
-            // excluirToolStripMenuItem
-            // 
-            this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.excluirToolStripMenuItem.Text = "Excluir";
             // 
             // relatórioToolStripMenuItem
             // 
@@ -117,12 +110,20 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.financeiroToolStripMenuItem});
+            this.financeiroToolStripMenuItem,
+            this.testeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(650, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // testeToolStripMenuItem
+            // 
+            this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
+            this.testeToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.testeToolStripMenuItem.Text = "Notificações";
+            this.testeToolStripMenuItem.Click += new System.EventHandler(this.testeToolStripMenuItem_Click);
             // 
             // pictureBox5
             // 
@@ -214,9 +215,9 @@
         private System.Windows.Forms.ToolStripMenuItem controleDeChequesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contasCEALToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novaContaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excluirToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porCódÚnicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
     }
 }

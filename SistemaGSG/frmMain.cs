@@ -33,7 +33,17 @@ namespace SistemaGSG
 
         private void btnSair2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void testeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormNotificacao relNotify = new FormNotificacao();
+            relNotify.Show();
+            this.Visible = false;
         }
     }
 }
