@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SistemaGSG.bd_loginDataSetTableAdapters;
 using System.Data.SqlClient;
 using System.Data.OleDb;
+using MySql.Data.MySqlClient;
 
 namespace SistemaGSG
 {
@@ -22,19 +22,15 @@ namespace SistemaGSG
 
         private void FormRel_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'sistemaGSG_2DataSet3.CEAL1'. Você pode movê-la ou removê-la conforme necessário.
-            this.cEAL1TableAdapter2.Fill(this.sistemaGSG_2DataSet3.CEAL1);
-            // TODO: esta linha de código carrega dados na tabela 'sistemaGSG_2DataSet2.CEAL1'. Você pode movê-la ou removê-la conforme necessário.
-            this.cEAL1TableAdapter1.Fill(this.sistemaGSG_2DataSet2.CEAL1);
-            // TODO: esta linha de código carrega dados na tabela 'sistemaGSG_2DataSet1.CEAL1'. Você pode movê-la ou removê-la conforme necessário.
-            this.cEAL1TableAdapter.Fill(this.sistemaGSG_2DataSet1.CEAL1);
+            
+
         }
 
         string PRIMEIRADATA;
         string SEGUNDADATA;
         string CEAL;
         string CELPE;
-
+        
 
 
         private void button2_Click(object sender, EventArgs e)
@@ -65,10 +61,13 @@ namespace SistemaGSG
             }
         }
 
+        MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE status='PAGO'",conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE status='PAGO'", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -76,7 +75,7 @@ namespace SistemaGSG
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE status='VENCIDA'", conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE status='VENCIDA'", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -84,7 +83,7 @@ namespace SistemaGSG
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE status='A VENCER'", conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE status='A VENCER'", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -92,7 +91,7 @@ namespace SistemaGSG
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1", conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -100,7 +99,7 @@ namespace SistemaGSG
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter seach = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE cod='" + textBox1.Text + "'", conexao.conex);
+            MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE cod='" + textBox1.Text + "'", con);
             DataTable seachSS = new DataTable();
             seach.Fill(seachSS);
             dataGridView1.DataSource = seachSS;
@@ -117,7 +116,7 @@ namespace SistemaGSG
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter updateCEAL = new SqlDataAdapter("UPDATE CEAL1 SET cod='" + textBox3.Text + "', nome='" + textBox2.Text + "', mes='" + textBox4.Text + "', data='" + textBox5.Text + "', valor='" + textBox6.Text + "', status='" + textBox7.Text + "' WHERE cod='" + textBox3.Text + "' AND mes='" + textBox4.Text + "'", conexao.conex);
+            MySqlDataAdapter updateCEAL = new MySqlDataAdapter("UPDATE CEAL1 SET cod='" + textBox3.Text + "', nome='" + textBox2.Text + "', mes='" + textBox4.Text + "', data='" + textBox5.Text + "', valor='" + textBox6.Text + "', status='" + textBox7.Text + "' WHERE cod='" + textBox3.Text + "' AND mes='" + textBox4.Text + "'", con);
             DataTable seachUpdate = new DataTable();
             updateCEAL.Fill(seachUpdate);
             dataGridView1.DataSource = seachUpdate;
@@ -145,7 +144,7 @@ namespace SistemaGSG
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter updateCEAL = new SqlDataAdapter("DELETE FROM CEAL1 WHERE cod='" + textBox3.Text + "' AND mes='" + textBox4.Text + "'", conexao.conex);
+            MySqlDataAdapter updateCEAL = new MySqlDataAdapter("DELETE FROM CEAL1 WHERE cod='" + textBox3.Text + "' AND mes='" + textBox4.Text + "'", con);
             DataTable seachUpdate = new DataTable();
             updateCEAL.Fill(seachUpdate);
             dataGridView1.DataSource = seachUpdate;
@@ -187,7 +186,7 @@ namespace SistemaGSG
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CEAL'", conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CEAL'", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -198,7 +197,7 @@ namespace SistemaGSG
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
-            SqlDataAdapter ADAP = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CELPE'", conexao.conex);
+            MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE empresa='CELPE'", con);
             DataTable SS = new DataTable();
             ADAP.Fill(SS);
             dataGridView1.DataSource = SS;
@@ -208,7 +207,7 @@ namespace SistemaGSG
 
         private void button7_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter seach = new SqlDataAdapter("SELECT * FROM CEAL1 WHERE data between '" + PRIMEIRADATA + "' AND '" + SEGUNDADATA + "' AND empresa='" + CEAL + "' OR empresa='" + CELPE + "'", conexao.conex);
+            MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM CEAL1 WHERE data between '" + PRIMEIRADATA + "' AND '" + SEGUNDADATA + "' AND empresa='" + CEAL + "' OR empresa='" + CELPE + "'", con);
             DataTable seachSS = new DataTable();
             seach.Fill(seachSS);
             dataGridView1.DataSource = seachSS;
@@ -256,9 +255,9 @@ namespace SistemaGSG
         {
             try
             {
-                SqlConnection con = new SqlConnection(conexao.conex);
+                MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT GETDATE()", con);
+                MySqlCommand cmd = new MySqlCommand("SELECT NOW()", con);
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
                 string novadata = DataServidor.AddDays(+1).ToShortDateString();
 
@@ -267,7 +266,7 @@ namespace SistemaGSG
                 segundos = dataHora.Second;
                 milisegundos = dataHora.Millisecond;
 
-                SqlCommand command = new SqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
+                MySqlCommand command = new MySqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
 
                 command.Parameters.AddWithValue("@dataFuturo", novadata);
                 command.Parameters.AddWithValue("@DataServidor", dataHora);

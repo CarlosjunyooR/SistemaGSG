@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
-
+using MySql.Data.MySqlClient;
 
 namespace SistemaGSG
 {
@@ -28,19 +28,17 @@ namespace SistemaGSG
             try
             {
                 string tb_user = "SELECT * FROM tb_gsg WHERE nome = @usuario";
-
-                 SqlConnection conn;
-                 SqlCommand cmd;
-                 SqlDataReader dr;
+                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+                MySqlCommand cmd;
+                MySqlDataReader dr;
 
                 //Conexão com o Banco de Dados//
-                conn = new SqlConnection(conexao.conex);
 
-                //Conectando a Tabela dentro do Banco//
-                cmd = new SqlCommand(tb_user, conn);
+
+                cmd = new MySqlCommand(tb_user, conn);
 
                 //Verificar Usuário//
-                cmd.Parameters.Add(new SqlParameter("@usuario", txtUser.Text));
+                cmd.Parameters.Add(new MySqlParameter("@usuario", txtUser.Text));
                 conn.Open();
                 dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
@@ -48,7 +46,7 @@ namespace SistemaGSG
                 {
                     dados.usuario = Convert.ToString(dr["nome"]);
                     dados.senha = Convert.ToString(dr["senha"]);
-                    dados.nivel = Convert.ToInt32(dr["nivel"]);
+                    dados.nivel = Convert.ToInt32(dr["status"]);
                 }
                 conn.Close();
 

@@ -28,29 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRel));
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cEAL1BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaGSG_2DataSet3 = new SistemaGSG.SistemaGSG_2DataSet3();
-            this.cEAL1BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sistemaGSG_2DataSet2 = new SistemaGSG.SistemaGSG_2DataSet2();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.button7 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -76,26 +67,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.sistemaGSG_2DataSet1 = new SistemaGSG.SistemaGSG_2DataSet1();
-            this.cEAL1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cEAL1TableAdapter = new SistemaGSG.SistemaGSG_2DataSet1TableAdapters.CEAL1TableAdapter();
-            this.cEAL1TableAdapter1 = new SistemaGSG.SistemaGSG_2DataSet2TableAdapters.CEAL1TableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cEAL1TableAdapter2 = new SistemaGSG.SistemaGSG_2DataSet3TableAdapters.CEAL1TableAdapter();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet2)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,18 +121,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.mesDataGridViewTextBoxColumn,
-            this.dataDataGridViewTextBoxColumn,
-            this.valorDataGridViewTextBoxColumn,
-            this.statusDataGridViewTextBoxColumn});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.DataSource = this.cEAL1BindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(84, 144);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -163,68 +132,6 @@
             this.dataGridView1.TabIndex = 40;
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
-            // 
-            // codDataGridViewTextBoxColumn
-            // 
-            this.codDataGridViewTextBoxColumn.DataPropertyName = "cod";
-            this.codDataGridViewTextBoxColumn.HeaderText = "Cód. Único";
-            this.codDataGridViewTextBoxColumn.Name = "codDataGridViewTextBoxColumn";
-            this.codDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mesDataGridViewTextBoxColumn
-            // 
-            this.mesDataGridViewTextBoxColumn.DataPropertyName = "mes";
-            this.mesDataGridViewTextBoxColumn.HeaderText = "Mês";
-            this.mesDataGridViewTextBoxColumn.Name = "mesDataGridViewTextBoxColumn";
-            this.mesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            this.dataDataGridViewTextBoxColumn.DataPropertyName = "data";
-            this.dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            this.dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            this.dataDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // valorDataGridViewTextBoxColumn
-            // 
-            this.valorDataGridViewTextBoxColumn.DataPropertyName = "valor";
-            this.valorDataGridViewTextBoxColumn.HeaderText = "Valor";
-            this.valorDataGridViewTextBoxColumn.Name = "valorDataGridViewTextBoxColumn";
-            this.valorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cEAL1BindingSource2
-            // 
-            this.cEAL1BindingSource2.DataMember = "CEAL1";
-            this.cEAL1BindingSource2.DataSource = this.sistemaGSG_2DataSet3;
-            // 
-            // sistemaGSG_2DataSet3
-            // 
-            this.sistemaGSG_2DataSet3.DataSetName = "SistemaGSG_2DataSet3";
-            this.sistemaGSG_2DataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cEAL1BindingSource1
-            // 
-            this.cEAL1BindingSource1.DataMember = "CEAL1";
-            this.cEAL1BindingSource1.DataSource = this.sistemaGSG_2DataSet2;
-            // 
-            // sistemaGSG_2DataSet2
-            // 
-            this.sistemaGSG_2DataSet2.DataSetName = "SistemaGSG_2DataSet2";
-            this.sistemaGSG_2DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // button1
             // 
@@ -300,6 +207,30 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(554, 52);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(52, 17);
+            this.radioButton6.TabIndex = 35;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Celpe";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(554, 29);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(46, 17);
+            this.radioButton5.TabIndex = 34;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Ceal";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // button7
             // 
@@ -523,24 +454,6 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
             // 
-            // sistemaGSG_2DataSet1
-            // 
-            this.sistemaGSG_2DataSet1.DataSetName = "SistemaGSG_2DataSet1";
-            this.sistemaGSG_2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cEAL1BindingSource
-            // 
-            this.cEAL1BindingSource.DataMember = "CEAL1";
-            this.cEAL1BindingSource.DataSource = this.sistemaGSG_2DataSet1;
-            // 
-            // cEAL1TableAdapter
-            // 
-            this.cEAL1TableAdapter.ClearBeforeFill = true;
-            // 
-            // cEAL1TableAdapter1
-            // 
-            this.cEAL1TableAdapter1.ClearBeforeFill = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox4);
@@ -561,34 +474,6 @@
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Opções";
-            // 
-            // cEAL1TableAdapter2
-            // 
-            this.cEAL1TableAdapter2.ClearBeforeFill = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(554, 29);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(46, 17);
-            this.radioButton5.TabIndex = 34;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Ceal";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(554, 52);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(52, 17);
-            this.radioButton6.TabIndex = 35;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Celpe";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // FormRel
             // 
@@ -619,14 +504,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sistemaGSG_2DataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cEAL1BindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -671,22 +550,7 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
-        private SistemaGSG_2DataSet1 sistemaGSG_2DataSet1;
-        private System.Windows.Forms.BindingSource cEAL1BindingSource;
-        private SistemaGSG_2DataSet1TableAdapters.CEAL1TableAdapter cEAL1TableAdapter;
-        private SistemaGSG_2DataSet2 sistemaGSG_2DataSet2;
-        private System.Windows.Forms.BindingSource cEAL1BindingSource1;
-        private SistemaGSG_2DataSet2TableAdapters.CEAL1TableAdapter cEAL1TableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private SistemaGSG_2DataSet3 sistemaGSG_2DataSet3;
-        private System.Windows.Forms.BindingSource cEAL1BindingSource2;
-        private SistemaGSG_2DataSet3TableAdapters.CEAL1TableAdapter cEAL1TableAdapter2;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
     }

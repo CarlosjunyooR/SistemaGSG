@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
+using MySql.Data.MySqlClient;
+
 
 namespace SistemaGSG
 {
@@ -55,9 +57,9 @@ namespace SistemaGSG
         {
             try
             {
-                SqlConnection con = new SqlConnection(conexao.conex);
+                MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SELECT GETDATE()", con);
+                MySqlCommand cmd = new MySqlCommand("SELECT NOW()", con);
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
                 string novadata = DataServidor.AddDays(+1).ToShortDateString();
 
@@ -70,7 +72,7 @@ namespace SistemaGSG
                 //label4.Text = novadata;
                 //label5.Text = Convert.ToString(dataHora);
 
-                SqlCommand command = new SqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
+                MySqlCommand command = new MySqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
 
 
                 command.Parameters.AddWithValue("@dataFuturo", novadata);
@@ -103,9 +105,9 @@ namespace SistemaGSG
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(conexao.conex);
+            MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
             con.Open();
-            SqlCommand cmd = new SqlCommand("SELECT GETDATE()", con);
+            MySqlCommand cmd = new MySqlCommand("SELECT NOW()", con);
             DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
             string novadata = DataServidor.AddDays(+1).ToShortDateString();
 
@@ -118,7 +120,7 @@ namespace SistemaGSG
             //label4.Text = novadata;
             //label5.Text = Convert.ToString(dataHora);
 
-            SqlCommand command = new SqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
+            MySqlCommand command = new MySqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
 
             command.Parameters.AddWithValue("@dataFuturo", novadata);
             command.Parameters.AddWithValue("@DataServidor", dataHora);

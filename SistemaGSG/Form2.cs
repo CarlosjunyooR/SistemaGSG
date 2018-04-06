@@ -10,14 +10,19 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.OleDb;
+using MySql.Data.MySqlClient;
+
 
 namespace SistemaGSG
 {
     public partial class Ceal : MetroFramework.Forms.MetroForm
     {
-        SqlCommand cmd ;
-        SqlConnection con;
-        SqlDataAdapter da;
+        //SqlCommand cmd ;
+        // SqlConnection con;
+        //SqlDataAdapter da;
+        MySqlCommand cmd;
+        MySqlConnection con;
+        MySqlDataAdapter da;
 
         public Ceal()
         {
@@ -38,9 +43,10 @@ namespace SistemaGSG
         private void button1_Click(object sender, EventArgs e)
             {
 
-                con = new SqlConnection(conexao.conex);
+
+                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 con.Open();
-                cmd = new SqlCommand("INSERT INTO CEAL1 (cod,mes,data,valor,nome,status) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "')", con);
+                cmd = new MySqlCommand("INSERT INTO CEAL1 (cod,mes,data,valor,nome,status) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "')", con);
                 cmd.ExecuteNonQuery();
 
                 textBox1.Text = "";
