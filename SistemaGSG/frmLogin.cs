@@ -28,18 +28,14 @@ namespace SistemaGSG
             try
             {
                 string tb_user = "SELECT * FROM tb_gsg WHERE nome = @usuario";
-                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 MySqlCommand cmd;
                 MySqlDataReader dr;
 
-                //Conexão com o Banco de Dados//
-
-
-                cmd = new MySqlCommand(tb_user, conn);
+                cmd = new MySqlCommand(tb_user, CONEX);
 
                 //Verificar Usuário//
                 cmd.Parameters.Add(new MySqlParameter("@usuario", txtUser.Text));
-                conn.Open();
+                CONEX.Open();
                 dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 while (dr.Read())
@@ -48,7 +44,7 @@ namespace SistemaGSG
                     dados.senha = Convert.ToString(dr["senha"]);
                     dados.nivel = Convert.ToInt32(dr["status"]);
                 }
-                conn.Close();
+                CONEX.Close();
 
                 if (dados.senha == txtSenha.Text)
                 {
@@ -64,9 +60,9 @@ namespace SistemaGSG
                     txtUser.Text = "";
                     txtSenha.Text = "";
                 }
-            } 
-            
-            catch(Exception err)
+            }
+
+            catch (Exception err)
             {
                 MessageBox.Show("Erro!" + err);
             }
@@ -83,6 +79,23 @@ namespace SistemaGSG
             {
                 Application.Exit();
             }
+        }
+
+        MySqlConnection CONEX;
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

@@ -17,11 +17,8 @@ namespace SistemaGSG
 {
     public partial class Ceal : MetroFramework.Forms.MetroForm
     {
-        //SqlCommand cmd ;
-        // SqlConnection con;
-        //SqlDataAdapter da;
         MySqlCommand cmd;
-        MySqlConnection con;
+        MySqlConnection CONEXAO;
         MySqlDataAdapter da;
 
         public Ceal()
@@ -39,16 +36,26 @@ namespace SistemaGSG
 
         }
         string STATUS;
+        string EMPRESA;
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            try
             {
-
-
                 MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
-                con.Open();
-                cmd = new MySqlCommand("INSERT INTO CEAL1 (cod,mes,data,valor,nome,status) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "')", con);
+                conn.Open();
+                cmd = new MySqlCommand("SELECT COUNT(*) FROM ceal1 WHERE cod ='"+ textBox1.Text + "' AND mes ='"+ textBox2.Text + "' >0", conn);
                 cmd.ExecuteNonQuery();
 
+                MessageBox.Show("Já Existe!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
+            }
+            catch
+            {
+                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+                conn.Open();
+                cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
@@ -57,6 +64,7 @@ namespace SistemaGSG
 
                 MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
             }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -103,6 +111,16 @@ namespace SistemaGSG
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            EMPRESA = "CEAL";
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            EMPRESA = "CELPE";
         }
     }
 }
