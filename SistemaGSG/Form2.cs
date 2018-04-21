@@ -17,6 +17,8 @@ namespace SistemaGSG
 {
     public partial class Ceal : MetroFramework.Forms.MetroForm
     {
+        private const string Texto = " Duplicidade!, Este Código Único já existe no Banco de Dados.\n Por Favor\n Informe outro.";
+
         MySqlCommand cmd;
         MySqlConnection CONEXAO;
         MySqlDataAdapter da;
@@ -28,7 +30,7 @@ namespace SistemaGSG
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -38,31 +40,58 @@ namespace SistemaGSG
         string STATUS;
         string EMPRESA;
 
+        MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+
+        public void verfcod()
+        {
+
+            MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+            conn.Open();
+            MySqlCommand novCod = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE cod='"+ textBox1.Text +"' AND mes='"+ textBox2.Text +"'", conn);
+            novCod.ExecuteNonQuery();
+        }
+
+        private void dbinsert()
+        {
+
+            conn.Open();
+            cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox5.Text = "";
+            textValor1.Text = "";
+
+            MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
-                conn.Open();
-                cmd = new MySqlCommand("SELECT COUNT(*) FROM ceal1 WHERE cod ='"+ textBox1.Text + "' AND mes ='"+ textBox2.Text + "' >0", conn);
-                cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Já Existe!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
-            }
-            catch
-            {
                 MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 conn.Open();
-                cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", conn);
-                cmd.ExecuteNonQuery();
+                MySqlCommand prompt = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE cod='" + textBox1.Text + "' AND mes='" + textBox2.Text + "'", conn);
+                prompt.ExecuteNonQuery();
+                int consultDB = Convert.ToInt32(prompt.ExecuteScalar());
                 conn.Close();
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox5.Text = "";
-                textValor1.Text = "";
 
-                MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
+                if (consultDB > 0)
+                {
+                    MessageBox.Show(Texto);
+                }
+                else
+                {
+                    dbinsert();
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
         private void button2_Click(object sender, EventArgs e)
