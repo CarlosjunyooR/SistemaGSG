@@ -62,9 +62,9 @@ namespace SistemaGSG
                 }
             }
 
-            catch (Exception err)
+            catch (Exception)
             {
-                MessageBox.Show("Erro!" + err);
+                MessageBox.Show("Está Maquina Não Tem Acesso a Esta Conexão\nTente Outra!");
             }
 
         }
@@ -85,17 +85,17 @@ namespace SistemaGSG
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+                CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
+                CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
+                CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

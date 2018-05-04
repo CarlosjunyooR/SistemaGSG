@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.textValor1 = new SistemaGSG.textValor();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,13 +56,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.boxTeste = new System.Windows.Forms.CheckBox();
+            this.boxCont = new System.Windows.Forms.CheckBox();
+            this.boxLocal = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -127,6 +132,30 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Entrada de Contas";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(382, 62);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(52, 17);
+            this.radioButton2.TabIndex = 25;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Celpe";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(382, 39);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(46, 17);
+            this.radioButton1.TabIndex = 24;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Ceal";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // textValor1
             // 
@@ -290,35 +319,57 @@
             this.contextMenuStrip2.Name = "contextMenuStrip2";
             this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // radioButton1
+            // groupBox3
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(382, 39);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(46, 17);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Ceal";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.groupBox3.Controls.Add(this.boxTeste);
+            this.groupBox3.Controls.Add(this.boxCont);
+            this.groupBox3.Controls.Add(this.boxLocal);
+            this.groupBox3.Location = new System.Drawing.Point(210, 357);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(272, 50);
+            this.groupBox3.TabIndex = 43;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "&Conexão";
             // 
-            // radioButton2
+            // boxTeste
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(382, 62);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(52, 17);
-            this.radioButton2.TabIndex = 25;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Celpe";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.boxTeste.AutoSize = true;
+            this.boxTeste.Location = new System.Drawing.Point(73, 21);
+            this.boxTeste.Name = "boxTeste";
+            this.boxTeste.Size = new System.Drawing.Size(53, 17);
+            this.boxTeste.TabIndex = 2;
+            this.boxTeste.Text = "Teste";
+            this.boxTeste.UseVisualStyleBackColor = true;
+            this.boxTeste.CheckedChanged += new System.EventHandler(this.boxTeste_CheckedChanged);
+            // 
+            // boxCont
+            // 
+            this.boxCont.AutoSize = true;
+            this.boxCont.Location = new System.Drawing.Point(132, 21);
+            this.boxCont.Name = "boxCont";
+            this.boxCont.Size = new System.Drawing.Size(88, 17);
+            this.boxCont.TabIndex = 1;
+            this.boxCont.Text = "Contingência";
+            this.boxCont.UseVisualStyleBackColor = true;
+            this.boxCont.CheckedChanged += new System.EventHandler(this.boxCont_CheckedChanged);
+            // 
+            // boxLocal
+            // 
+            this.boxLocal.AutoSize = true;
+            this.boxLocal.Location = new System.Drawing.Point(18, 21);
+            this.boxLocal.Name = "boxLocal";
+            this.boxLocal.Size = new System.Drawing.Size(52, 17);
+            this.boxLocal.TabIndex = 0;
+            this.boxLocal.Text = "Local";
+            this.boxLocal.UseVisualStyleBackColor = true;
+            this.boxLocal.CheckedChanged += new System.EventHandler(this.boxLocal_CheckedChanged);
             // 
             // Ceal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 487);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -336,6 +387,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -368,5 +421,9 @@
         private textValor textValor1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox boxTeste;
+        private System.Windows.Forms.CheckBox boxCont;
+        private System.Windows.Forms.CheckBox boxLocal;
     }
 }

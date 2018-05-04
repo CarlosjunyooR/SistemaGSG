@@ -17,9 +17,6 @@ namespace SistemaGSG
 {
     public partial class FormNotificacao : MetroFramework.Forms.MetroForm
     {
-        Int32 segundos, minutos, milisegundos;
-        DateTime dataHora;
-
         public FormNotificacao()
         {
             InitializeComponent();
@@ -53,29 +50,30 @@ namespace SistemaGSG
             notifyIcon1.Visible = false;
         }
 
+        //Classes de Datas
+        Int32 segundos, minutos, milisegundos;
+        DateTime dataHora = DateTime.Now;
+        DateTime dataHora2 = DateTime.Now.AddDays(10);
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
                 con.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT NOW()", con);
+                MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", con);
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
-                string novadata = DataServidor.AddDays(+1).ToShortDateString();
+                string novadata = DataServidor.AddDays(+10).ToShortDateString();
 
                 dataHora = DataServidor;
                 minutos = dataHora.Minute;
                 segundos = dataHora.Second;
                 milisegundos = dataHora.Millisecond;
 
-                //TESTE PRA VER QUAIS DATAS TÁ PEGANDO.
-                //label4.Text = novadata;
-                //label5.Text = Convert.ToString(dataHora);
-
-                MySqlCommand command = new MySqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE data BETWEEN @DataServidor AND @dataFuturo", con);
 
 
-                command.Parameters.AddWithValue("@dataFuturo", novadata);
+                command.Parameters.AddWithValue("@dataFuturo", dataHora2);
                 command.Parameters.AddWithValue("@DataServidor", dataHora);
                 command.ExecuteNonQuery();
 
@@ -107,22 +105,18 @@ namespace SistemaGSG
         {
             MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT NOW()", con);
+            MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", con);
             DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
-            string novadata = DataServidor.AddDays(+1).ToShortDateString();
+            string novadata = DataServidor.AddDays(+10).ToShortDateString();
 
             dataHora = DataServidor;
             minutos = dataHora.Minute;
             segundos = dataHora.Second;
             milisegundos = dataHora.Millisecond;
 
-            //TESTE PRA VER QUAIS DATAS TÁ PEGANDO.
-            //label4.Text = novadata;
-            //label5.Text = Convert.ToString(dataHora);
+            MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE data BETWEEN @DataServidor AND @dataFuturo", con);
 
-            MySqlCommand command = new MySqlCommand("Select COUNT(*) fROM CEAL1 Where data BETWEEN @DataServidor AND @dataFuturo", con);
-
-            command.Parameters.AddWithValue("@dataFuturo", novadata);
+            command.Parameters.AddWithValue("@dataFuturo", dataHora2);
             command.Parameters.AddWithValue("@DataServidor", dataHora);
             command.ExecuteNonQuery();
 
@@ -141,7 +135,7 @@ namespace SistemaGSG
                     //titulo da mensagem
                     notifyIcon1.BalloonTipTitle = "Boletos a Vencer!";
                     //texto da mensagem
-                    if (qtdVencer > 1)
+                    if (qtdVencer > 0)
                     {
                         notifyIcon1.BalloonTipText = "Você Possui " + qtdVencer.ToString() + "  boletos à vencer dentro de alguns Dias";
                     }

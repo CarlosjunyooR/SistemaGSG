@@ -20,44 +20,23 @@ namespace SistemaGSG
         private const string Texto = " Duplicidade!, Este Código Único já existe no Banco de Dados.\n Por Favor\n Informe outro.";
 
         MySqlCommand cmd;
-        MySqlConnection CONEXAO;
+        MySqlConnection CONEXAO,CONEX;
         MySqlDataAdapter da;
+
 
         public Ceal()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         string STATUS;
         string EMPRESA;
 
-        MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
-
-        public void verfcod()
-        {
-
-            MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
-            conn.Open();
-            MySqlCommand novCod = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE cod='"+ textBox1.Text +"' AND mes='"+ textBox2.Text +"'", conn);
-            novCod.ExecuteNonQuery();
-        }
-
         private void dbinsert()
         {
-
-            conn.Open();
-            cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", conn);
+            CONEX.Open();
+            cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text.Replace("R$ ", "") + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", CONEX);
             cmd.ExecuteNonQuery();
-            conn.Close();
+            CONEX.Close();
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
@@ -67,18 +46,15 @@ namespace SistemaGSG
             MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-
-                MySqlConnection conn = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
-                conn.Open();
-                MySqlCommand prompt = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE cod='" + textBox1.Text + "' AND mes='" + textBox2.Text + "'", conn);
+                CONEX.Open();
+                MySqlCommand prompt = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE cod='" + textBox1.Text + "' AND mes='" + textBox2.Text + "'", CONEX);
                 prompt.ExecuteNonQuery();
                 int consultDB = Convert.ToInt32(prompt.ExecuteScalar());
-                conn.Close();
+                CONEX.Close();
 
                 if (consultDB > 0)
                 {
@@ -127,21 +103,6 @@ namespace SistemaGSG
             STATUS = "A VENCER";
         }
 
-        private void textBox6_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             EMPRESA = "CEAL";
@@ -150,6 +111,21 @@ namespace SistemaGSG
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             EMPRESA = "CELPE";
+        }
+
+        private void boxLocal_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+        }
+
+        private void boxTeste_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
+        }
+
+        private void boxCont_CheckedChanged(object sender, EventArgs e)
+        {
+            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
         }
     }
 }
