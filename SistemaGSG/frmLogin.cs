@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
 using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace SistemaGSG
 {
@@ -80,24 +81,20 @@ namespace SistemaGSG
                 Application.Exit();
             }
         }
-
         MySqlConnection CONEX;
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
                 CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
-
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-                CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal1;Uid=root;Pwd=vertrigo;");
+                CONEX = new MySqlConnection(@"server=10.0.0.100;database=ceal1;port=3535;Uid=root;Pwd=vertrigo;");
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
                 CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
-
         private void frmLogin_Load(object sender, EventArgs e)
         {
 

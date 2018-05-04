@@ -388,12 +388,12 @@ namespace SistemaGSG
 
         private void boxTeste_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
+            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
         }
 
         private void boxCont_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
+            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=root;Pwd=vertrigo;");
         }
 
         private void definirFiltro_Click(object sender, EventArgs e)
@@ -448,7 +448,7 @@ namespace SistemaGSG
                 segundos = dataHora.Second;
                 milisegundos = dataHora.Millisecond;
 
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE data BETWEEN @DataServidor AND @dataFuturo", CONEX);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM contas WHERE data BETWEEN @DataServidor AND @dataFuturo AND status='VENCIDA' OR status='A VENCER'", CONEX);
 
                 command.Parameters.AddWithValue("@dataFuturo", dataHora2);
                 command.Parameters.AddWithValue("@DataServidor", dataHora);
@@ -472,5 +472,27 @@ namespace SistemaGSG
                 throw new Exception(TEXTO);
             }
         }
+        Int32 PAGO;
+        Int32 VENCIDA;
+
+        public void RowsColor()
+        {
+            for(int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                int val = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                if(val > PAGO)
+                {
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
+                }
+                else if(val >= PAGO&& val == VENCIDA)
+                {
+                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
+                }
+            }
+        }
+
+
+
+
     }
 }

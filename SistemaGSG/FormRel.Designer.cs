@@ -691,7 +691,7 @@
             this.groupBox3.Controls.Add(this.boxTeste);
             this.groupBox3.Controls.Add(this.boxCont);
             this.groupBox3.Controls.Add(this.boxLocal);
-            this.groupBox3.Location = new System.Drawing.Point(241, 615);
+            this.groupBox3.Location = new System.Drawing.Point(241, 632);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(272, 50);
             this.groupBox3.TabIndex = 42;
