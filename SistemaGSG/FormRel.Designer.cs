@@ -90,9 +90,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.boxTeste = new System.Windows.Forms.CheckBox();
-            this.boxCont = new System.Windows.Forms.CheckBox();
             this.boxLocal = new System.Windows.Forms.CheckBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -452,6 +452,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.textBox1.Location = new System.Drawing.Point(800, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(84, 20);
@@ -689,11 +691,10 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.boxTeste);
-            this.groupBox3.Controls.Add(this.boxCont);
             this.groupBox3.Controls.Add(this.boxLocal);
             this.groupBox3.Location = new System.Drawing.Point(241, 632);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(272, 50);
+            this.groupBox3.Size = new System.Drawing.Size(169, 50);
             this.groupBox3.TabIndex = 42;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "&Conexão";
@@ -703,22 +704,11 @@
             this.boxTeste.AutoSize = true;
             this.boxTeste.Location = new System.Drawing.Point(73, 21);
             this.boxTeste.Name = "boxTeste";
-            this.boxTeste.Size = new System.Drawing.Size(53, 17);
+            this.boxTeste.Size = new System.Drawing.Size(92, 17);
             this.boxTeste.TabIndex = 2;
-            this.boxTeste.Text = "Teste";
+            this.boxTeste.Text = "&Development ";
             this.boxTeste.UseVisualStyleBackColor = true;
             this.boxTeste.CheckedChanged += new System.EventHandler(this.boxTeste_CheckedChanged);
-            // 
-            // boxCont
-            // 
-            this.boxCont.AutoSize = true;
-            this.boxCont.Location = new System.Drawing.Point(132, 21);
-            this.boxCont.Name = "boxCont";
-            this.boxCont.Size = new System.Drawing.Size(88, 17);
-            this.boxCont.TabIndex = 1;
-            this.boxCont.Text = "Contingência";
-            this.boxCont.UseVisualStyleBackColor = true;
-            this.boxCont.CheckedChanged += new System.EventHandler(this.boxCont_CheckedChanged);
             // 
             // boxLocal
             // 
@@ -727,7 +717,7 @@
             this.boxLocal.Name = "boxLocal";
             this.boxLocal.Size = new System.Drawing.Size(52, 17);
             this.boxLocal.TabIndex = 0;
-            this.boxLocal.Text = "Local";
+            this.boxLocal.Text = "&Local";
             this.boxLocal.UseVisualStyleBackColor = true;
             this.boxLocal.CheckedChanged += new System.EventHandler(this.boxLocal_CheckedChanged);
             // 
@@ -740,11 +730,21 @@
             this.txtTotal.Size = new System.Drawing.Size(146, 20);
             this.txtTotal.TabIndex = 44;
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker2.Location = new System.Drawing.Point(691, 28);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(75, 20);
+            this.dateTimePicker2.TabIndex = 45;
+            // 
             // FormRel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 705);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label13);
@@ -846,9 +846,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox boxTeste;
-        private System.Windows.Forms.CheckBox boxCont;
         private System.Windows.Forms.CheckBox boxLocal;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Button definirFiltro;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

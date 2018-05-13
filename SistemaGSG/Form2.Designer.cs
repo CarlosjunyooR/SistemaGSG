@@ -58,7 +58,6 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.boxTeste = new System.Windows.Forms.CheckBox();
-            this.boxCont = new System.Windows.Forms.CheckBox();
             this.boxLocal = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -322,11 +321,10 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.boxTeste);
-            this.groupBox3.Controls.Add(this.boxCont);
             this.groupBox3.Controls.Add(this.boxLocal);
-            this.groupBox3.Location = new System.Drawing.Point(210, 357);
+            this.groupBox3.Location = new System.Drawing.Point(83, 357);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(272, 50);
+            this.groupBox3.Size = new System.Drawing.Size(531, 61);
             this.groupBox3.TabIndex = 43;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "&Conexão";
@@ -334,29 +332,18 @@
             // boxTeste
             // 
             this.boxTeste.AutoSize = true;
-            this.boxTeste.Location = new System.Drawing.Point(73, 21);
+            this.boxTeste.Location = new System.Drawing.Point(71, 38);
             this.boxTeste.Name = "boxTeste";
-            this.boxTeste.Size = new System.Drawing.Size(53, 17);
+            this.boxTeste.Size = new System.Drawing.Size(89, 17);
             this.boxTeste.TabIndex = 2;
-            this.boxTeste.Text = "Teste";
+            this.boxTeste.Text = "&Development";
             this.boxTeste.UseVisualStyleBackColor = true;
             this.boxTeste.CheckedChanged += new System.EventHandler(this.boxTeste_CheckedChanged);
-            // 
-            // boxCont
-            // 
-            this.boxCont.AutoSize = true;
-            this.boxCont.Location = new System.Drawing.Point(132, 21);
-            this.boxCont.Name = "boxCont";
-            this.boxCont.Size = new System.Drawing.Size(88, 17);
-            this.boxCont.TabIndex = 1;
-            this.boxCont.Text = "Contingência";
-            this.boxCont.UseVisualStyleBackColor = true;
-            this.boxCont.CheckedChanged += new System.EventHandler(this.boxCont_CheckedChanged);
             // 
             // boxLocal
             // 
             this.boxLocal.AutoSize = true;
-            this.boxLocal.Location = new System.Drawing.Point(18, 21);
+            this.boxLocal.Location = new System.Drawing.Point(71, 15);
             this.boxLocal.Name = "boxLocal";
             this.boxLocal.Size = new System.Drawing.Size(52, 17);
             this.boxLocal.TabIndex = 0;
@@ -423,7 +410,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox boxTeste;
-        private System.Windows.Forms.CheckBox boxCont;
         private System.Windows.Forms.CheckBox boxLocal;
     }
 }

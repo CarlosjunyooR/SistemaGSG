@@ -19,23 +19,29 @@ namespace SistemaGSG
     {
         private const string Texto = " Duplicidade!, Este Código Único já existe no Banco de Dados.\n Por Favor\n Informe outro.";
 
-        MySqlCommand cmd;
+        MySqlCommand cmd, prompt_cmd;
         MySqlConnection CONEXAO,CONEX;
         MySqlDataAdapter da;
 
+        DateTime DateNova = DateTime.Today.AddDays(10);
 
         public Ceal()
         {
             InitializeComponent();
         }
+
+
+
         string STATUS;
         string EMPRESA;
-
         private void dbinsert()
         {
+
             CONEX.Open();
             cmd = new MySqlCommand("INSERT INTO contas (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textValor1.Text.Replace("R$ ", "") + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", CONEX);
+            prompt_cmd = new MySqlCommand("INSERT INTO contas_1 (cod,mes,data,valor,nome,status,hoje,empresa) VALUES ('" + textBox1.Text + "','" + textBox2.Text + "', '"+ DateNova + "' ,'" + textValor1.Text.Replace("R$ ", "") + "','" + textBox5.Text + "','" + STATUS + "', CURDATE(),'" + EMPRESA + "')", CONEX);
             cmd.ExecuteNonQuery();
+            prompt_cmd.ExecuteNonQuery();
             CONEX.Close();
             textBox1.Text = "";
             textBox2.Text = "";
@@ -115,17 +121,12 @@ namespace SistemaGSG
 
         private void boxLocal_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal1;Uid=remoto;Pwd=MbunHhYiRffEMAtl;");
         }
 
         private void boxTeste_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=root;Pwd=vertrigo;");
-        }
-
-        private void boxCont_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
+            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=remoto;Pwd=MbunHhYiRffEMAtl;");
         }
     }
 }

@@ -177,13 +177,13 @@ namespace SistemaGSG
 
         private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            /*ID*/   textBox10.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            /*COD*/   textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            /*MES*/   textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            /*VALOR*/ textBox6.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            /*FAZ*/   textBox2.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            /*DATA*/  textBox5.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            /*STATUS*/textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            /*ID*/      textBox10.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            /*COD*/     textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            /*MES*/     textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            /*VALOR*/   textBox6.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            /*FAZ*/     textBox2.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+            /*DATA*/    textBox5.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+           /*STATUS*/   textBox7.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -315,7 +315,7 @@ namespace SistemaGSG
             //}
             //dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
             //dataGridView1.Rows[rowIndex].DefaultCellStyle.SelectionBackColor = Color.Red;
-            //dataGridView1.Rows[rowIndex].DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
+           // dataGridView1.Rows[rowIndex].DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12f, FontStyle.Bold);
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -356,11 +356,10 @@ namespace SistemaGSG
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Erro ao Calcular, Verifique os Valores");
             }
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -376,24 +375,18 @@ namespace SistemaGSG
             {
                 MessageBox.Show(TEXTO);
             }
-
         }
 
         MySqlConnection CONEX;
 
         private void boxLocal_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal1;Uid=remoto;Pwd=MbunHhYiRffEMAtl;");
         }
 
         private void boxTeste_CheckedChanged(object sender, EventArgs e)
         {
-            CONEX = new MySqlConnection(@"server=10.2.1.83;database=ceal1;Uid=id889153_id885499_junior19908;Pwd=2613679cfc418651;");
-        }
-
-        private void boxCont_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal;Uid=root;Pwd=vertrigo;");
+            CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
         }
 
         private void definirFiltro_Click(object sender, EventArgs e)
@@ -467,32 +460,10 @@ namespace SistemaGSG
                     MessageBox.Show("Não tem boletos para vencer!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception(TEXTO);
             }
         }
-        Int32 PAGO;
-        Int32 VENCIDA;
-
-        public void RowsColor()
-        {
-            for(int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                int val = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-                if(val > PAGO)
-                {
-                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Red;
-                }
-                else if(val >= PAGO&& val == VENCIDA)
-                {
-                    dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Blue;
-                }
-            }
-        }
-
-
-
-
     }
 }
