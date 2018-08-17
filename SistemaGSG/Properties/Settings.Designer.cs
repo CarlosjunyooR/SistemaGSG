@@ -121,5 +121,27 @@ namespace SistemaGSG.Properties {
                 return ((string)(this["ceal1ConnectionMySql"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=vertrigo;persistsecurityinfo=False;databas" +
+            "e=sistemagsg_ceal")]
+        public string sistemagsg_cealConnectionString {
+            get {
+                return ((string)(this["sistemagsg_cealConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=remoto;database=sistemagsg_ceal;password=MbunHhYiRffEMAt" +
+            "l;persistsecurityinfo=True")]
+        public string sistemagsg_cealConnectionString1 {
+            get {
+                return ((string)(this["sistemagsg_cealConnectionString1"]));
+            }
+        }
     }
 }

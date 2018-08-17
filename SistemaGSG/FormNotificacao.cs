@@ -59,7 +59,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+                MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;SslMode=none;");
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", con);
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
@@ -103,7 +103,7 @@ namespace SistemaGSG
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+            MySqlConnection con = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;SslMode=none;");
             con.Open();
             MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", con);
             DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());

@@ -31,7 +31,6 @@ namespace SistemaGSG
                 string tb_user = "SELECT * FROM tb_gsg WHERE nome = @usuario";
                 MySqlCommand cmd;
                 MySqlDataReader dr;
-
                 cmd = new MySqlCommand(tb_user, CONEX);
 
                 //Verificar Usuário//
@@ -63,9 +62,9 @@ namespace SistemaGSG
                 }
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Está Maquina Não Tem Acesso a Esta Conexão\nTente Outra!");
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -84,11 +83,11 @@ namespace SistemaGSG
         MySqlConnection CONEX;
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-                CONEX = new MySqlConnection(@"server=10.2.1.95;database=ceal1;Uid=remoto;Pwd=MbunHhYiRffEMAtl;");
+                CONEX = new MySqlConnection(@"server=10.2.1.95;database=sistemagsg_ceal;Uid=remoto;Pwd=MbunHhYiRffEMAtl;SslMode=none;");
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-                CONEX = new MySqlConnection(@"server=localhost;database=ceal1;Uid=root;Pwd=vertrigo;");
+                CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=remoto;Pwd=MbunHhYiRffEMAtl;SslMode=none;");
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {

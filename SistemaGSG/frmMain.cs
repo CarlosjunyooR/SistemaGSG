@@ -45,5 +45,23 @@ namespace SistemaGSG
             relNotify.Show();
             this.Visible = false;
         }
+
+        private void frm_Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void controleDeChequesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pDFToTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPDF pdfTotxt = new frmPDF();
+            pdfTotxt.Show();
+            this.Visible = false;
+
+        }
     }
 }

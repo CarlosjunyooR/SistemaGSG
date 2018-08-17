@@ -63,6 +63,16 @@ namespace SistemaGSG.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _917797 {
+            get {
+                object obj = ResourceManager.GetObject("917797", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bulb_s___Copia {
             get {
                 object obj = ResourceManager.GetObject("bulb-s - Copia", resourceCulture);

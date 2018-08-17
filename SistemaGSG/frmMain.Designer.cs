@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Main));
             this.btnSair2 = new System.Windows.Forms.Button();
             this.financeiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.controleDeChequesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasCEALToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.novaContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +42,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pDFToTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -64,17 +64,10 @@
             // financeiroToolStripMenuItem
             // 
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.controleDeChequesToolStripMenuItem,
             this.contasCEALToolStripMenuItem});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
-            // 
-            // controleDeChequesToolStripMenuItem
-            // 
-            this.controleDeChequesToolStripMenuItem.Name = "controleDeChequesToolStripMenuItem";
-            this.controleDeChequesToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.controleDeChequesToolStripMenuItem.Text = "Controle de Cheques";
             // 
             // contasCEALToolStripMenuItem
             // 
@@ -82,13 +75,13 @@
             this.novaContaToolStripMenuItem,
             this.relatórioToolStripMenuItem});
             this.contasCEALToolStripMenuItem.Name = "contasCEALToolStripMenuItem";
-            this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contasCEALToolStripMenuItem.Text = "Contas CEAL";
             // 
             // novaContaToolStripMenuItem
             // 
             this.novaContaToolStripMenuItem.Name = "novaContaToolStripMenuItem";
-            this.novaContaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.novaContaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novaContaToolStripMenuItem.Text = "Nova Conta";
             this.novaContaToolStripMenuItem.Click += new System.EventHandler(this.novaContaToolStripMenuItem_Click);
             // 
@@ -97,7 +90,7 @@
             this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.porCódÚnicoToolStripMenuItem});
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
-            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.relatórioToolStripMenuItem.Text = "Relatório";
             // 
             // porCódÚnicoToolStripMenuItem
@@ -111,7 +104,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.financeiroToolStripMenuItem,
-            this.testeToolStripMenuItem});
+            this.testeToolStripMenuItem,
+            this.pDFToTXTToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(650, 24);
@@ -175,6 +169,13 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pDFToTXTToolStripMenuItem
+            // 
+            this.pDFToTXTToolStripMenuItem.Name = "pDFToTXTToolStripMenuItem";
+            this.pDFToTXTToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.pDFToTXTToolStripMenuItem.Text = "PDF to TXT";
+            this.pDFToTXTToolStripMenuItem.Click += new System.EventHandler(this.pDFToTXTToolStripMenuItem_Click);
+            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +192,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Main";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.frm_Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -212,12 +214,12 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnSair2;
         private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem controleDeChequesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contasCEALToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem novaContaToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porCódÚnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pDFToTXTToolStripMenuItem;
     }
 }

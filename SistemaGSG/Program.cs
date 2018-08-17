@@ -16,10 +16,10 @@ namespace SistemaGSG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          
+                Form1 fmr = new Form1();
+                fmr.ShowDialog();
 
-            Form1 fmr = new Form1();
-            fmr.ShowDialog();
-            {
                 frmLogin fml = new frmLogin();
                 fml.ShowDialog();
 
@@ -27,7 +27,6 @@ namespace SistemaGSG
                 {
                     Application.Run(new frm_Main());
                 }
-            }
         }
     }
 }
