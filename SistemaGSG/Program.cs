@@ -16,17 +16,20 @@ namespace SistemaGSG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-          
-                Form1 fmr = new Form1();
-                fmr.ShowDialog();
 
-                frmLogin fml = new frmLogin();
-                fml.ShowDialog();
+            FormNotaFiscal fmr = new FormNotaFiscal();
+            fmr.ShowDialog();
 
-                if (fml.FMP == true)
-                {
-                    Application.Run(new frm_Main());
-                }
+            //Splash fmr = new Splash();
+            //fmr.ShowDialog();
+            
+            //frmLogin fml = new frmLogin();
+            //fml.ShowDialog();
+
+            //if (fml.FMP == true)
+            //{
+            //  Application.Run(new frm_Main());
+            //}
         }
     }
 }

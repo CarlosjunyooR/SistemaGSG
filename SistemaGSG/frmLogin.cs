@@ -17,10 +17,18 @@ namespace SistemaGSG
 {
     public partial class frmLogin : MetroFramework.Forms.MetroForm
     {
+        int attempt = 1;
         public frmLogin()
         {
             InitializeComponent();
+            label3.Text = version;
         }
+
+        [assembly: AssemblyVersion("1.*")]
+        string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+
+
 
         public bool FMP = false;
 
@@ -46,31 +54,58 @@ namespace SistemaGSG
                 }
                 CONEX.Close();
 
+
                 if (dados.senha == txtSenha.Text)
                 {
                     FMP = true;
                     this.Dispose();
-
                 }
                 else
                 {
-                    MessageBox.Show("Usuário ou Senha, Incorretos!");
+                    label5.Visible = true;
+                    label5.Text = "Erro você ainda tem " + attempt++ + " de 3";
+                    label5.ForeColor = Color.Red;
+
+                    //MessageBox.Show("Usuário ou Senha, Incorretos!");
                     FMP = false;
 
                     txtUser.Text = "";
                     txtSenha.Text = "";
                 }
-            }
+                if(attempt == 4)
+                {
+                    label6.Visible = true;
+                    label6.Text = "Você teve " + attempt++ + " de 3 tentativas, Feche o programa e tente novamente.";
+                    label6.ForeColor = Color.Blue;
 
-            catch (Exception ex)
+                    txtUser.Visible = false;
+                    label5.Visible = false;
+                    txtSenha.Visible = false;
+                    button1.Visible = false;
+                    label1.Visible = false;
+                    label2.Visible = false;
+                }
+            }
+            catch (NullReferenceException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Olá Srº(a), " + txtUser.Text + " selecione uma conexão abaixo, para iniciar a\naplicação!.");
+                groupBox1.Focus();
             }
-
+            catch (MySqlException)
+            {
+                MessageBox.Show("Olá Srº(a), " + txtUser.Text + " esta conexão encontra-se fechada para esta\naplicação! tente outra.");
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            logar();
+            if (attempt<4)
+            {
+                logar();
+            }
+            else
+            {
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -81,17 +116,18 @@ namespace SistemaGSG
             }
         }
         MySqlConnection CONEX;
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-                CONEX = new MySqlConnection(@"server=10.2.1.95;database=sistemagsg_ceal;Uid=remoto;Pwd=MbunHhYiRffEMAtl;SslMode=none;");
+                CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-                CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=remoto;Pwd=MbunHhYiRffEMAtl;SslMode=none;");
+                CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            //dateTimePicker1.Value = dateTimePicker1.Value.AddDays(30);
         }
     }
 }

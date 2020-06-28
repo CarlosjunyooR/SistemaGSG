@@ -12,9 +12,9 @@ using MySql.Data.MySqlClient;
 
 namespace SistemaGSG
 {
-    public partial class FormNotificacao : MetroFramework.Forms.MetroForm
+    public partial class FormNotific : MetroFramework.Forms.MetroForm
     {
-        public FormNotificacao()
+        public FormNotific()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace SistemaGSG
                 //esconde o formulário
                 this.Hide();
                 //deixa o aviso visivel
-                notifyIcon1.Visible = true;
+                notifyIcon2.Visible = true;
             }
         }
 
@@ -73,12 +73,12 @@ namespace SistemaGSG
                 CONEX.Open();
                 MySqlCommand cmdaa = new MySqlCommand("SELECT CURDATE()", CONEX);
                 DateTime DataServ = Convert.ToDateTime(cmdaa.ExecuteScalar());
-                string novadata22 = DataServ.AddDays(+15).ToShortDateString();
+                string novadata22 = DataServ.AddDays(+5).ToShortDateString();
                 DateTime dataHora42 = DateTime.Now;
 
                 MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", CONEX);
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
-                string novadata = DataServidor.AddDays(+15).ToString("yyyy-MM-dd");
+                string novadata = DataServidor.AddDays(+5).ToString("yyyy-MM-dd");
 
                 dataHora42 = DataServidor;
                 minutos = dataHora42.Minute;
@@ -102,24 +102,24 @@ namespace SistemaGSG
                     i++;
                     if (i > 0 && i <= 9)
                     {
-                        notifyIcon1.Visible = true;
-                        notifyIcon1.Text = "INFORMAÇÃO!";
-                        notifyIcon1.BalloonTipTitle = "BOLETOS CEAL & CELPE";
+                        notifyIcon2.Visible = true;
+                        notifyIcon2.Text = "ATENCAO!";
+                        notifyIcon2.BalloonTipTitle = "BOLETOS CEAL & CELPE";
 
                         if (qtdVencer > 1)
                         {
-                            notifyIcon1.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de quinze dias!";
+                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
                         }
                         else
                         {
-                            notifyIcon1.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de quinze dias!";
+                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
                         }
-                        notifyIcon1.ShowBalloonTip(1000);
+                        notifyIcon2.ShowBalloonTip(1000);
                     }
                 }
                 else
                 {
-                    notifyIcon1.BalloonTipText = "Não há boletos pra vencer!";
+                    notifyIcon2.BalloonTipText = "Não há boletos pra vencer!";
                 }
             }
             catch
@@ -157,24 +157,24 @@ namespace SistemaGSG
                     i++;
                     if (i > 0 && i <= 9)
                     {
-                        notifyIcon1.Visible = true;
-                        notifyIcon1.Text = "INFORMAÇÃO!";
-                        notifyIcon1.BalloonTipTitle = "BOLETOS CEAL & CELPE";
+                        notifyIcon2.Visible = true;
+                        notifyIcon2.Text = "ATENCAO!";
+                        notifyIcon2.BalloonTipTitle = "BOLETOS CEAL & CELPE";
 
                         if (qtdVencer > 1)
                         {
-                            notifyIcon1.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de quinze dias!";
+                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
                         }
                         else
                         {
-                            notifyIcon1.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de quinze dias!";
+                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
                         }
-                        notifyIcon1.ShowBalloonTip(1000);
+                        notifyIcon2.ShowBalloonTip(1000);
                     }
                 }
                 else
                 {
-                    notifyIcon1.BalloonTipText = "Não há boletos pra vencer!";
+                    notifyIcon2.BalloonTipText = "Não há boletos pra vencer!";
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace SistemaGSG
             //o formulario irá iniciar maximizado
             this.WindowState = FormWindowState.Maximized;
             //oculta o aviso
-            notifyIcon1.Visible = false;
+            notifyIcon2.Visible = false;
         }
     }
 }

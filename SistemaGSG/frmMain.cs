@@ -12,10 +12,18 @@ namespace SistemaGSG
 {
     public partial class frm_Main : MetroFramework.Forms.MetroForm
     {
+        string usuarioLogado = System.Environment.UserName;
+        string nomeMaquina = System.Environment.MachineName;
+        string dominio = System.Environment.UserDomainName;
+
         public frm_Main()
         {
             InitializeComponent();
+            label9.Text = version;
         }
+
+        [assembly: AssemblyVersion("1.*")]
+        string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         private void novaContaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,14 +49,15 @@ namespace SistemaGSG
 
         private void testeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormNotificacao relNotify = new FormNotificacao();
-            relNotify.Show();
-            this.Visible = false;
+            new FormNotificacao().Show();
+            new FormNotific().Show();
         }
 
         private void frm_Main_Load(object sender, EventArgs e)
         {
-
+            label6.Text = nomeMaquina;
+            label7.Text = dominio;
+            label8.Text = usuarioLogado;
         }
 
         private void controleDeChequesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,7 +70,27 @@ namespace SistemaGSG
             frmPDF pdfTotxt = new frmPDF();
             pdfTotxt.Show();
             this.Visible = false;
+        }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            label1.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
+        }
+
+        private void criarPedidoSAPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPedido pedidoSAP = new FormPedido();
+            pedidoSAP.Show();
+            this.Visible = false;
         }
     }
 }
