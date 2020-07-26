@@ -42,8 +42,10 @@
             this.txtMigo = new System.Windows.Forms.TextBox();
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.btnView = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
+            this.CountTXT = new System.Windows.Forms.TextBox();
             this.txtUltNFE = new System.Windows.Forms.TextBox();
             this.dataemissao = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,7 +92,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.CountTXT = new System.Windows.Forms.TextBox();
             this.textBase1 = new SistemaGSG.textBase();
             this.txtValordupl = new SistemaGSG.textBase();
             this.vl_base = new SistemaGSG.textBase();
@@ -98,7 +99,6 @@
             this.vl_boleto = new SistemaGSG.textValor();
             this.vl_fecoep = new SistemaGSG.textValor();
             this.textValor1 = new SistemaGSG.textValor();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1.SuspendLayout();
             this.Info_pedido.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -269,6 +269,15 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Informações da NotaFiscal";
             // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(284, 297);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(35, 19);
+            this.metroLabel4.TabIndex = 21;
+            this.metroLabel4.Text = "Item";
+            // 
             // btnView
             // 
             this.btnView.Location = new System.Drawing.Point(301, 42);
@@ -287,6 +296,15 @@
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 12;
             this.label15.Text = "Últ. Nota Fiscal";
+            // 
+            // CountTXT
+            // 
+            this.CountTXT.Enabled = false;
+            this.CountTXT.Location = new System.Drawing.Point(325, 296);
+            this.CountTXT.Name = "CountTXT";
+            this.CountTXT.Size = new System.Drawing.Size(26, 20);
+            this.CountTXT.TabIndex = 20;
+            this.CountTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtUltNFE
             // 
@@ -1158,15 +1176,6 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // CountTXT
-            // 
-            this.CountTXT.Enabled = false;
-            this.CountTXT.Location = new System.Drawing.Point(325, 296);
-            this.CountTXT.Name = "CountTXT";
-            this.CountTXT.Size = new System.Drawing.Size(26, 20);
-            this.CountTXT.TabIndex = 20;
-            this.CountTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // textBase1
             // 
             this.textBase1.Location = new System.Drawing.Point(45, 68);
@@ -1226,15 +1235,6 @@
             this.textValor1.TabIndex = 7;
             this.textValor1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textValor1.TextChanged += new System.EventHandler(this.textValor1_TextChanged);
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(284, 297);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(35, 19);
-            this.metroLabel4.TabIndex = 21;
-            this.metroLabel4.Text = "Item";
             // 
             // Ceal
             // 
