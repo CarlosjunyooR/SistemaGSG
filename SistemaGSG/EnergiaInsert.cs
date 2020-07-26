@@ -128,7 +128,13 @@ namespace SistemaGSG
         }
         private void dbinsert()
         {
+            /*****Modifica a data para a inserção no Banco de Dados********************************/
+            dataemissao.Format = DateTimePickerFormat.Custom;
+            dataemissao.CustomFormat = "yyyy-MM-dd";
+            datavencimento.Format = DateTimePickerFormat.Custom;
+            datavencimento.CustomFormat = "yyyy-MM-dd";
             /*************************************************************************************/
+
             /************************Converter para valor INT*************************************/
             int ValorIcms = Convert.ToInt32(preencherCBIcms.Text.Replace(" %", ""));
             /*************************************************************************************/
@@ -337,6 +343,13 @@ namespace SistemaGSG
 
             //Adiciona o Número do item
             ItensPedido();
+            /*****Retorna o resultado dos campos após a inserção no Banco de Dados****************/
+            dataemissao.Format = DateTimePickerFormat.Custom;
+            dataemissao.CustomFormat = "dd/MM/yyyy";
+            datavencimento.Format = DateTimePickerFormat.Custom;
+            datavencimento.CustomFormat = "dd/MM/yyyy";
+            /*************************************************************************************/
+
             MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
         //Mascara

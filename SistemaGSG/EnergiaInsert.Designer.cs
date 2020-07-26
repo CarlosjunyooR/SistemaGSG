@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ceal));
             this.label1 = new System.Windows.Forms.Label();
-            this.mes_nf = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -50,7 +49,6 @@
             this.dataemissao = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.nfe = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.datavencimento = new System.Windows.Forms.DateTimePicker();
@@ -92,6 +90,8 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.mes_nf = new System.Windows.Forms.MaskedTextBox();
+            this.nfe = new System.Windows.Forms.MaskedTextBox();
             this.textBase1 = new SistemaGSG.textBase();
             this.txtValordupl = new SistemaGSG.textBase();
             this.vl_base = new SistemaGSG.textBase();
@@ -125,14 +125,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Código Único";
             // 
-            // mes_nf
-            // 
-            this.mes_nf.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.mes_nf.Location = new System.Drawing.Point(161, 140);
-            this.mes_nf.Name = "mes_nf";
-            this.mes_nf.Size = new System.Drawing.Size(50, 20);
-            this.mes_nf.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -164,7 +156,7 @@
             this.groupBox1.Location = new System.Drawing.Point(84, 63);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(687, 420);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "&Entrada de Contas";
             // 
@@ -180,7 +172,7 @@
             this.Info_pedido.Location = new System.Drawing.Point(383, 150);
             this.Info_pedido.Name = "Info_pedido";
             this.Info_pedido.Size = new System.Drawing.Size(298, 112);
-            this.Info_pedido.TabIndex = 16;
+            this.Info_pedido.TabIndex = 34;
             this.Info_pedido.TabStop = false;
             this.Info_pedido.Text = "Informações do Último Pedido";
             // 
@@ -241,6 +233,8 @@
             // groupBox9
             // 
             this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox9.Controls.Add(this.mes_nf);
+            this.groupBox9.Controls.Add(this.nfe);
             this.groupBox9.Controls.Add(this.metroLabel4);
             this.groupBox9.Controls.Add(this.btnView);
             this.groupBox9.Controls.Add(this.label15);
@@ -251,10 +245,8 @@
             this.groupBox9.Controls.Add(this.dataemissao);
             this.groupBox9.Controls.Add(this.label4);
             this.groupBox9.Controls.Add(this.label8);
-            this.groupBox9.Controls.Add(this.nfe);
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Controls.Add(this.vl_fecoep);
-            this.groupBox9.Controls.Add(this.mes_nf);
             this.groupBox9.Controls.Add(this.label14);
             this.groupBox9.Controls.Add(this.label2);
             this.groupBox9.Controls.Add(this.datavencimento);
@@ -265,7 +257,7 @@
             this.groupBox9.Location = new System.Drawing.Point(20, 52);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(357, 322);
-            this.groupBox9.TabIndex = 15;
+            this.groupBox9.TabIndex = 36;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Informações da NotaFiscal";
             // 
@@ -319,12 +311,12 @@
             // dataemissao
             // 
             this.dataemissao.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataemissao.CustomFormat = "yyyy-MM-dd";
+            this.dataemissao.CustomFormat = "";
             this.dataemissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataemissao.Location = new System.Drawing.Point(160, 166);
             this.dataemissao.Name = "dataemissao";
             this.dataemissao.Size = new System.Drawing.Size(101, 20);
-            this.dataemissao.TabIndex = 6;
+            this.dataemissao.TabIndex = 5;
             // 
             // label4
             // 
@@ -345,14 +337,6 @@
             this.label8.Size = new System.Drawing.Size(87, 13);
             this.label8.TabIndex = 0;
             this.label8.Text = "Data de Emissão";
-            // 
-            // nfe
-            // 
-            this.nfe.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nfe.Location = new System.Drawing.Point(161, 114);
-            this.nfe.Name = "nfe";
-            this.nfe.Size = new System.Drawing.Size(100, 20);
-            this.nfe.TabIndex = 3;
             // 
             // label9
             // 
@@ -377,12 +361,12 @@
             // datavencimento
             // 
             this.datavencimento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.datavencimento.CustomFormat = "yyyy-MM-dd";
+            this.datavencimento.CustomFormat = "";
             this.datavencimento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datavencimento.Location = new System.Drawing.Point(161, 191);
             this.datavencimento.Name = "datavencimento";
             this.datavencimento.Size = new System.Drawing.Size(100, 20);
-            this.datavencimento.TabIndex = 5;
+            this.datavencimento.TabIndex = 6;
             // 
             // cod_unico
             // 
@@ -801,7 +785,7 @@
             this.groupBox8.Location = new System.Drawing.Point(383, 52);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(298, 92);
-            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabIndex = 35;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Cód. Imposto";
             // 
@@ -811,7 +795,7 @@
             this.safra_formacao.Location = new System.Drawing.Point(98, 50);
             this.safra_formacao.Name = "safra_formacao";
             this.safra_formacao.Size = new System.Drawing.Size(125, 15);
-            this.safra_formacao.TabIndex = 20;
+            this.safra_formacao.TabIndex = 10;
             this.safra_formacao.Text = "Safra em Formação";
             this.safra_formacao.UseSelectable = true;
             this.safra_formacao.CheckedChanged += new System.EventHandler(this.metroRadioButton2_CheckedChanged);
@@ -822,7 +806,7 @@
             this.safra_curso.Location = new System.Drawing.Point(98, 29);
             this.safra_curso.Name = "safra_curso";
             this.safra_curso.Size = new System.Drawing.Size(103, 15);
-            this.safra_curso.TabIndex = 19;
+            this.safra_curso.TabIndex = 9;
             this.safra_curso.Text = "Safra em Curso";
             this.safra_curso.UseSelectable = true;
             this.safra_curso.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged_1);
@@ -833,7 +817,7 @@
             this.radioButton2.Location = new System.Drawing.Point(70, 56);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(52, 17);
-            this.radioButton2.TabIndex = 0;
+            this.radioButton2.TabIndex = 12;
             this.radioButton2.Text = "Celpe";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
@@ -844,7 +828,7 @@
             this.radioButton1.Location = new System.Drawing.Point(70, 33);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(72, 17);
-            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabIndex = 11;
             this.radioButton1.Text = "Equatorial";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
@@ -855,7 +839,7 @@
             this.button1.Location = new System.Drawing.Point(615, 662);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
+            this.button1.TabIndex = 24;
             this.button1.Text = "&Gravar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -866,7 +850,7 @@
             this.button2.Location = new System.Drawing.Point(696, 662);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
+            this.button2.TabIndex = 26;
             this.button2.Text = "&Sair";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -877,7 +861,7 @@
             this.button3.Location = new System.Drawing.Point(23, 662);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
+            this.button3.TabIndex = 27;
             this.button3.Text = "&Voltar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -891,7 +875,7 @@
             this.groupBox3.Location = new System.Drawing.Point(84, 574);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(874, 61);
-            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabIndex = 28;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "&Conexão";
             // 
@@ -902,7 +886,7 @@
             this.conec_development.Location = new System.Drawing.Point(44, 38);
             this.conec_development.Name = "conec_development";
             this.conec_development.Size = new System.Drawing.Size(49, 17);
-            this.conec_development.TabIndex = 2;
+            this.conec_development.TabIndex = 39;
             this.conec_development.TabStop = true;
             this.conec_development.Text = "&Casa";
             this.conec_development.UseVisualStyleBackColor = true;
@@ -914,7 +898,7 @@
             this.conec_local.Location = new System.Drawing.Point(44, 15);
             this.conec_local.Name = "conec_local";
             this.conec_local.Size = new System.Drawing.Size(50, 17);
-            this.conec_local.TabIndex = 1;
+            this.conec_local.TabIndex = 38;
             this.conec_local.Text = "&Usga";
             this.conec_local.UseVisualStyleBackColor = true;
             this.conec_local.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
@@ -933,7 +917,7 @@
             this.mesMulta.Location = new System.Drawing.Point(138, 45);
             this.mesMulta.Name = "mesMulta";
             this.mesMulta.Size = new System.Drawing.Size(50, 20);
-            this.mesMulta.TabIndex = 9;
+            this.mesMulta.TabIndex = 18;
             // 
             // label7
             // 
@@ -954,7 +938,7 @@
             this.groupBox2.Location = new System.Drawing.Point(84, 489);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(249, 87);
-            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "&Atraso no Pagamento";
             // 
@@ -966,7 +950,7 @@
             this.groupBox4.Location = new System.Drawing.Point(777, 63);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(181, 100);
-            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabIndex = 37;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "&Empresa";
             // 
@@ -980,7 +964,7 @@
             this.groupBox5.Location = new System.Drawing.Point(777, 270);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(181, 112);
-            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabIndex = 32;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "&Situação";
             // 
@@ -990,7 +974,7 @@
             this.rdDupl.Location = new System.Drawing.Point(56, 83);
             this.rdDupl.Name = "rdDupl";
             this.rdDupl.Size = new System.Drawing.Size(86, 15);
-            this.rdDupl.TabIndex = 21;
+            this.rdDupl.TabIndex = 16;
             this.rdDupl.Text = "Duplicidade";
             this.rdDupl.UseSelectable = true;
             this.rdDupl.CheckedChanged += new System.EventHandler(this.rdDupl_CheckedChanged);
@@ -1001,7 +985,7 @@
             this.rdAven.Location = new System.Drawing.Point(56, 62);
             this.rdAven.Name = "rdAven";
             this.rdAven.Size = new System.Drawing.Size(69, 15);
-            this.rdAven.TabIndex = 20;
+            this.rdAven.TabIndex = 15;
             this.rdAven.Text = "Á Vencer";
             this.rdAven.UseSelectable = true;
             this.rdAven.CheckedChanged += new System.EventHandler(this.rdAven_CheckedChanged);
@@ -1012,7 +996,7 @@
             this.rdVenc.Location = new System.Drawing.Point(56, 41);
             this.rdVenc.Name = "rdVenc";
             this.rdVenc.Size = new System.Drawing.Size(65, 15);
-            this.rdVenc.TabIndex = 19;
+            this.rdVenc.TabIndex = 14;
             this.rdVenc.Text = "Vencido";
             this.rdVenc.UseSelectable = true;
             this.rdVenc.CheckedChanged += new System.EventHandler(this.rdVenc_CheckedChanged);
@@ -1023,7 +1007,7 @@
             this.rdPag.Location = new System.Drawing.Point(56, 22);
             this.rdPag.Name = "rdPag";
             this.rdPag.Size = new System.Drawing.Size(50, 15);
-            this.rdPag.TabIndex = 18;
+            this.rdPag.TabIndex = 13;
             this.rdPag.Text = "Pago";
             this.rdPag.UseSelectable = true;
             this.rdPag.CheckedChanged += new System.EventHandler(this.metroRadioButton1_CheckedChanged);
@@ -1038,7 +1022,7 @@
             this.groupBox6.Location = new System.Drawing.Point(779, 489);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(179, 87);
-            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabIndex = 31;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "&Base de Calculo";
             // 
@@ -1059,7 +1043,7 @@
             this.preencherCBIcms.Location = new System.Drawing.Point(90, 23);
             this.preencherCBIcms.Name = "preencherCBIcms";
             this.preencherCBIcms.Size = new System.Drawing.Size(74, 21);
-            this.preencherCBIcms.TabIndex = 0;
+            this.preencherCBIcms.TabIndex = 22;
             this.preencherCBIcms.SelectedIndexChanged += new System.EventHandler(this.preencherCBIcms_SelectedIndexChanged);
             // 
             // label10
@@ -1083,7 +1067,7 @@
             this.groupBox7.Location = new System.Drawing.Point(495, 482);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(120, 94);
-            this.groupBox7.TabIndex = 17;
+            this.groupBox7.TabIndex = 30;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Duplicidade";
             // 
@@ -1119,7 +1103,7 @@
             this.txtMesdupl.Location = new System.Drawing.Point(45, 19);
             this.txtMesdupl.Name = "txtMesdupl";
             this.txtMesdupl.Size = new System.Drawing.Size(69, 20);
-            this.txtMesdupl.TabIndex = 10;
+            this.txtMesdupl.TabIndex = 19;
             // 
             // btnClear
             // 
@@ -1127,7 +1111,7 @@
             this.btnClear.Location = new System.Drawing.Point(534, 662);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 19;
+            this.btnClear.TabIndex = 25;
             this.btnClear.Text = "&Limpar";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -1176,12 +1160,28 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
+            // mes_nf
+            // 
+            this.mes_nf.Location = new System.Drawing.Point(161, 140);
+            this.mes_nf.Mask = "00/9999";
+            this.mes_nf.Name = "mes_nf";
+            this.mes_nf.Size = new System.Drawing.Size(100, 20);
+            this.mes_nf.TabIndex = 4;
+            // 
+            // nfe
+            // 
+            this.nfe.Location = new System.Drawing.Point(161, 114);
+            this.nfe.Mask = "00000-000";
+            this.nfe.Name = "nfe";
+            this.nfe.Size = new System.Drawing.Size(100, 20);
+            this.nfe.TabIndex = 3;
+            // 
             // textBase1
             // 
             this.textBase1.Location = new System.Drawing.Point(45, 68);
             this.textBase1.Name = "textBase1";
             this.textBase1.Size = new System.Drawing.Size(69, 20);
-            this.textBase1.TabIndex = 13;
+            this.textBase1.TabIndex = 21;
             this.textBase1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtValordupl
@@ -1189,7 +1189,7 @@
             this.txtValordupl.Location = new System.Drawing.Point(45, 43);
             this.txtValordupl.Name = "txtValordupl";
             this.txtValordupl.Size = new System.Drawing.Size(69, 20);
-            this.txtValordupl.TabIndex = 11;
+            this.txtValordupl.TabIndex = 20;
             this.txtValordupl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // vl_base
@@ -1197,7 +1197,7 @@
             this.vl_base.Location = new System.Drawing.Point(90, 59);
             this.vl_base.Name = "vl_base";
             this.vl_base.Size = new System.Drawing.Size(74, 20);
-            this.vl_base.TabIndex = 12;
+            this.vl_base.TabIndex = 23;
             this.vl_base.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // vl_multa
@@ -1205,7 +1205,7 @@
             this.vl_multa.Location = new System.Drawing.Point(138, 19);
             this.vl_multa.Name = "vl_multa";
             this.vl_multa.Size = new System.Drawing.Size(100, 20);
-            this.vl_multa.TabIndex = 8;
+            this.vl_multa.TabIndex = 17;
             this.vl_multa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // vl_boleto
@@ -1214,7 +1214,7 @@
             this.vl_boleto.Location = new System.Drawing.Point(161, 243);
             this.vl_boleto.Name = "vl_boleto";
             this.vl_boleto.Size = new System.Drawing.Size(100, 20);
-            this.vl_boleto.TabIndex = 10;
+            this.vl_boleto.TabIndex = 8;
             this.vl_boleto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // vl_fecoep
@@ -1223,7 +1223,7 @@
             this.vl_fecoep.Location = new System.Drawing.Point(161, 217);
             this.vl_fecoep.Name = "vl_fecoep";
             this.vl_fecoep.Size = new System.Drawing.Size(100, 20);
-            this.vl_fecoep.TabIndex = 9;
+            this.vl_fecoep.TabIndex = 7;
             this.vl_fecoep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textValor1
@@ -1295,7 +1295,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox mes_nf;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -1322,7 +1321,6 @@
         private System.Windows.Forms.DateTimePicker dataemissao;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox nfe;
         private System.Windows.Forms.DateTimePicker datavencimento;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
@@ -1364,5 +1362,7 @@
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.TextBox CountTXT;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private System.Windows.Forms.MaskedTextBox mes_nf;
+        private System.Windows.Forms.MaskedTextBox nfe;
     }
 }
