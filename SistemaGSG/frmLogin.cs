@@ -12,6 +12,7 @@ using System.Data.OleDb;
 using System.Data.Odbc;
 using MySql.Data.MySqlClient;
 using MySql.Data;
+using MetroFramework;
 
 namespace SistemaGSG
 {
@@ -78,12 +79,12 @@ namespace SistemaGSG
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("Olá Srº(a), " + txtUser.Text + " selecione uma conexão abaixo, para iniciar a\naplicação!.");
+                MetroMessageBox.Show(this,"Olá Srº(a), " + txtUser.Text + " selecione uma conexão abaixo, para iniciar a\naplicação!.");
                 gpBoxConexao.Focus();
             }
             catch (MySqlException)
             {
-                MessageBox.Show("Olá Srº(a), " + txtUser.Text + " esta conexão encontra-se fechada para esta\naplicação! tente outra.");
+                MetroMessageBox.Show(this,"Olá Srº(a), " + txtUser.Text + " esta conexão encontra-se fechada para esta\naplicação! tente outra.");
             }
         }
         private void button1_Click(object sender, EventArgs e)

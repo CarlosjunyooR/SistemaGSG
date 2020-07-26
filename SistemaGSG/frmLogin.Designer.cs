@@ -58,6 +58,7 @@
             // 
             // txtUser
             // 
+            this.txtUser.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtUser.Location = new System.Drawing.Point(326, 82);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(248, 20);
@@ -66,6 +67,7 @@
             // 
             // txtSenha
             // 
+            this.txtSenha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSenha.Location = new System.Drawing.Point(326, 119);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
@@ -75,6 +77,7 @@
             // 
             // lblUsuario
             // 
+            this.lblUsuario.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(245, 83);
@@ -85,6 +88,7 @@
             // 
             // lblSenha
             // 
+            this.lblSenha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSenha.AutoSize = true;
             this.lblSenha.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSenha.Location = new System.Drawing.Point(245, 118);
@@ -95,6 +99,7 @@
             // 
             // btnEntrar
             // 
+            this.btnEntrar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEntrar.Location = new System.Drawing.Point(326, 151);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(113, 23);
@@ -105,6 +110,7 @@
             // 
             // btnSair
             // 
+            this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSair.Location = new System.Drawing.Point(461, 152);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(113, 23);
@@ -115,6 +121,7 @@
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.Image = global::SistemaGSG.Properties.Resources.DNV_GL_Certification_logo;
             this.pictureBox5.Location = new System.Drawing.Point(424, 198);
             this.pictureBox5.Name = "pictureBox5";
@@ -125,6 +132,7 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.Image = global::SistemaGSG.Properties.Resources.Logomarca_Bonsucro_2016;
             this.pictureBox4.Location = new System.Drawing.Point(476, 198);
             this.pictureBox4.Name = "pictureBox4";
@@ -135,6 +143,7 @@
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = global::SistemaGSG.Properties.Resources.usga;
             this.pictureBox3.Location = new System.Drawing.Point(528, 198);
             this.pictureBox3.Name = "pictureBox3";
@@ -145,6 +154,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::SistemaGSG.Properties.Resources.logo_ti;
             this.pictureBox2.Location = new System.Drawing.Point(580, 198);
             this.pictureBox2.Name = "pictureBox2";
@@ -155,6 +165,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::SistemaGSG.Properties.Resources.Logo;
             this.pictureBox1.Location = new System.Drawing.Point(23, 82);
             this.pictureBox1.Name = "pictureBox1";
@@ -189,6 +200,7 @@
             // 
             // gpBoxConexao
             // 
+            this.gpBoxConexao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.gpBoxConexao.Controls.Add(this.rdButtonCasa);
             this.gpBoxConexao.Controls.Add(this.rdButtonUsga);
             this.gpBoxConexao.Location = new System.Drawing.Point(23, 181);
@@ -200,6 +212,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(71, 244);
             this.label3.Name = "label3";
@@ -208,6 +221,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(20, 244);
             this.label4.Name = "label4";
@@ -217,6 +231,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(344, 60);
             this.label5.Name = "label5";
@@ -227,6 +242,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(229, 103);
             this.label6.Name = "label6";
@@ -238,6 +254,7 @@
             // 
             // txtConexao
             // 
+            this.txtConexao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtConexao.Location = new System.Drawing.Point(23, 56);
             this.txtConexao.Name = "txtConexao";
             this.txtConexao.Size = new System.Drawing.Size(154, 20);
