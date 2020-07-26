@@ -339,6 +339,7 @@ namespace SistemaGSG
             ItensPedido();
             MessageBox.Show("Inserido com Sucesso!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
+        //Mascara
         private void Ceal_Load(object sender, EventArgs e)
         {
             txtUltNFE.Enabled = false;
