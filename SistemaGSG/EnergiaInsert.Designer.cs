@@ -45,13 +45,11 @@
             this.btnView = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.txtUltNFE = new System.Windows.Forms.TextBox();
-            this.vl_boleto = new SistemaGSG.textValor();
             this.dataemissao = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.nfe = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.vl_fecoep = new SistemaGSG.textValor();
             this.label14 = new System.Windows.Forms.Label();
             this.datavencimento = new System.Windows.Forms.DateTimePicker();
             this.cod_unico = new System.Windows.Forms.ComboBox();
@@ -72,7 +70,6 @@
             this.mesMulta = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.vl_multa = new SistemaGSG.textMulta();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rdDupl = new MetroFramework.Controls.MetroRadioButton();
@@ -83,20 +80,25 @@
             this.label11 = new System.Windows.Forms.Label();
             this.preencherCBIcms = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.vl_base = new SistemaGSG.textBase();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.Diferença = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBase1 = new SistemaGSG.textBase();
-            this.txtValordupl = new SistemaGSG.textBase();
             this.txtMesdupl = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.CountTXT = new System.Windows.Forms.TextBox();
+            this.textBase1 = new SistemaGSG.textBase();
+            this.txtValordupl = new SistemaGSG.textBase();
+            this.vl_base = new SistemaGSG.textBase();
+            this.vl_multa = new SistemaGSG.textMulta();
+            this.vl_boleto = new SistemaGSG.textValor();
+            this.vl_fecoep = new SistemaGSG.textValor();
             this.textValor1 = new SistemaGSG.textValor();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1.SuspendLayout();
             this.Info_pedido.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -177,10 +179,10 @@
             this.Info_pedido.Controls.Add(this.txtPedido);
             this.Info_pedido.Location = new System.Drawing.Point(383, 150);
             this.Info_pedido.Name = "Info_pedido";
-            this.Info_pedido.Size = new System.Drawing.Size(298, 100);
+            this.Info_pedido.Size = new System.Drawing.Size(298, 112);
             this.Info_pedido.TabIndex = 16;
             this.Info_pedido.TabStop = false;
-            this.Info_pedido.Text = "Informações do Pedido";
+            this.Info_pedido.Text = "Informações do Último Pedido";
             // 
             // metroLabel3
             // 
@@ -215,6 +217,8 @@
             this.txtMiro.Name = "txtMiro";
             this.txtMiro.Size = new System.Drawing.Size(100, 20);
             this.txtMiro.TabIndex = 2;
+            this.txtMiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMiro.DoubleClick += new System.EventHandler(this.txtMiro_DoubleClick);
             // 
             // txtMigo
             // 
@@ -222,6 +226,8 @@
             this.txtMigo.Name = "txtMigo";
             this.txtMigo.Size = new System.Drawing.Size(100, 20);
             this.txtMigo.TabIndex = 1;
+            this.txtMigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMigo.DoubleClick += new System.EventHandler(this.txtMigo_DoubleClick);
             // 
             // txtPedido
             // 
@@ -229,12 +235,16 @@
             this.txtPedido.Name = "txtPedido";
             this.txtPedido.Size = new System.Drawing.Size(100, 20);
             this.txtPedido.TabIndex = 0;
+            this.txtPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPedido.DoubleClick += new System.EventHandler(this.txtPedido_DoubleClick);
             // 
             // groupBox9
             // 
             this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox9.Controls.Add(this.metroLabel4);
             this.groupBox9.Controls.Add(this.btnView);
             this.groupBox9.Controls.Add(this.label15);
+            this.groupBox9.Controls.Add(this.CountTXT);
             this.groupBox9.Controls.Add(this.txtUltNFE);
             this.groupBox9.Controls.Add(this.vl_boleto);
             this.groupBox9.Controls.Add(this.label1);
@@ -265,7 +275,7 @@
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(50, 23);
             this.btnView.TabIndex = 13;
-            this.btnView.Text = "View";
+            this.btnView.Text = "PDF";
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
@@ -276,7 +286,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 13);
             this.label15.TabIndex = 12;
-            this.label15.Text = "Ult. Nota Fiscal";
+            this.label15.Text = "Últ. Nota Fiscal";
             // 
             // txtUltNFE
             // 
@@ -287,15 +297,6 @@
             this.txtUltNFE.TabIndex = 11;
             this.txtUltNFE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUltNFE.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtUltNFE_MouseDoubleClick);
-            // 
-            // vl_boleto
-            // 
-            this.vl_boleto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vl_boleto.Location = new System.Drawing.Point(161, 243);
-            this.vl_boleto.Name = "vl_boleto";
-            this.vl_boleto.Size = new System.Drawing.Size(100, 20);
-            this.vl_boleto.TabIndex = 10;
-            this.vl_boleto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dataemissao
             // 
@@ -344,15 +345,6 @@
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 0;
             this.label9.Text = "Nº Nf-e";
-            // 
-            // vl_fecoep
-            // 
-            this.vl_fecoep.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vl_fecoep.Location = new System.Drawing.Point(161, 217);
-            this.vl_fecoep.Name = "vl_fecoep";
-            this.vl_fecoep.Size = new System.Drawing.Size(100, 20);
-            this.vl_fecoep.TabIndex = 9;
-            this.vl_fecoep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label14
             // 
@@ -891,10 +883,10 @@
             this.conec_development.Checked = true;
             this.conec_development.Location = new System.Drawing.Point(44, 38);
             this.conec_development.Name = "conec_development";
-            this.conec_development.Size = new System.Drawing.Size(88, 17);
+            this.conec_development.Size = new System.Drawing.Size(49, 17);
             this.conec_development.TabIndex = 2;
             this.conec_development.TabStop = true;
-            this.conec_development.Text = "&Development";
+            this.conec_development.Text = "&Casa";
             this.conec_development.UseVisualStyleBackColor = true;
             this.conec_development.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
@@ -903,9 +895,9 @@
             this.conec_local.AutoSize = true;
             this.conec_local.Location = new System.Drawing.Point(44, 15);
             this.conec_local.Name = "conec_local";
-            this.conec_local.Size = new System.Drawing.Size(51, 17);
+            this.conec_local.Size = new System.Drawing.Size(50, 17);
             this.conec_local.TabIndex = 1;
-            this.conec_local.Text = "&Local";
+            this.conec_local.Text = "&Usga";
             this.conec_local.UseVisualStyleBackColor = true;
             this.conec_local.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
@@ -947,14 +939,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "&Atraso no Pagamento";
-            // 
-            // vl_multa
-            // 
-            this.vl_multa.Location = new System.Drawing.Point(138, 19);
-            this.vl_multa.Name = "vl_multa";
-            this.vl_multa.Size = new System.Drawing.Size(100, 20);
-            this.vl_multa.TabIndex = 8;
-            this.vl_multa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox4
             // 
@@ -1069,14 +1053,6 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Valor da Base";
             // 
-            // vl_base
-            // 
-            this.vl_base.Location = new System.Drawing.Point(90, 59);
-            this.vl_base.Name = "vl_base";
-            this.vl_base.Size = new System.Drawing.Size(74, 20);
-            this.vl_base.TabIndex = 12;
-            this.vl_base.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // groupBox7
             // 
             this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1119,22 +1095,6 @@
             this.label12.Size = new System.Drawing.Size(27, 13);
             this.label12.TabIndex = 2;
             this.label12.Text = "Mês";
-            // 
-            // textBase1
-            // 
-            this.textBase1.Location = new System.Drawing.Point(45, 68);
-            this.textBase1.Name = "textBase1";
-            this.textBase1.Size = new System.Drawing.Size(69, 20);
-            this.textBase1.TabIndex = 13;
-            this.textBase1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtValordupl
-            // 
-            this.txtValordupl.Location = new System.Drawing.Point(45, 43);
-            this.txtValordupl.Name = "txtValordupl";
-            this.txtValordupl.Size = new System.Drawing.Size(69, 20);
-            this.txtValordupl.TabIndex = 11;
-            this.txtValordupl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMesdupl
             // 
@@ -1198,6 +1158,65 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
+            // CountTXT
+            // 
+            this.CountTXT.Enabled = false;
+            this.CountTXT.Location = new System.Drawing.Point(325, 296);
+            this.CountTXT.Name = "CountTXT";
+            this.CountTXT.Size = new System.Drawing.Size(26, 20);
+            this.CountTXT.TabIndex = 20;
+            this.CountTXT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBase1
+            // 
+            this.textBase1.Location = new System.Drawing.Point(45, 68);
+            this.textBase1.Name = "textBase1";
+            this.textBase1.Size = new System.Drawing.Size(69, 20);
+            this.textBase1.TabIndex = 13;
+            this.textBase1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtValordupl
+            // 
+            this.txtValordupl.Location = new System.Drawing.Point(45, 43);
+            this.txtValordupl.Name = "txtValordupl";
+            this.txtValordupl.Size = new System.Drawing.Size(69, 20);
+            this.txtValordupl.TabIndex = 11;
+            this.txtValordupl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // vl_base
+            // 
+            this.vl_base.Location = new System.Drawing.Point(90, 59);
+            this.vl_base.Name = "vl_base";
+            this.vl_base.Size = new System.Drawing.Size(74, 20);
+            this.vl_base.TabIndex = 12;
+            this.vl_base.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // vl_multa
+            // 
+            this.vl_multa.Location = new System.Drawing.Point(138, 19);
+            this.vl_multa.Name = "vl_multa";
+            this.vl_multa.Size = new System.Drawing.Size(100, 20);
+            this.vl_multa.TabIndex = 8;
+            this.vl_multa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // vl_boleto
+            // 
+            this.vl_boleto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.vl_boleto.Location = new System.Drawing.Point(161, 243);
+            this.vl_boleto.Name = "vl_boleto";
+            this.vl_boleto.Size = new System.Drawing.Size(100, 20);
+            this.vl_boleto.TabIndex = 10;
+            this.vl_boleto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // vl_fecoep
+            // 
+            this.vl_fecoep.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.vl_fecoep.Location = new System.Drawing.Point(161, 217);
+            this.vl_fecoep.Name = "vl_fecoep";
+            this.vl_fecoep.Size = new System.Drawing.Size(100, 20);
+            this.vl_fecoep.TabIndex = 9;
+            this.vl_fecoep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textValor1
             // 
             this.textValor1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1207,6 +1226,15 @@
             this.textValor1.TabIndex = 7;
             this.textValor1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textValor1.TextChanged += new System.EventHandler(this.textValor1_TextChanged);
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(284, 297);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(35, 19);
+            this.metroLabel4.TabIndex = 21;
+            this.metroLabel4.Text = "Item";
             // 
             // Ceal
             // 
@@ -1230,7 +1258,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Ceal";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Load += new System.EventHandler(this.Ceal_Load);
             this.groupBox1.ResumeLayout(false);
             this.Info_pedido.ResumeLayout(false);
@@ -1334,5 +1362,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtUltNFE;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.TextBox CountTXT;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }

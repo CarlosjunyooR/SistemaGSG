@@ -36,8 +36,11 @@
             this.novaContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porCódÚnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notasFiscaisFabianaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pDFToTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.arquivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pDFParaTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pDFSepararToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -45,17 +48,16 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.NomeUser = new System.Windows.Forms.Label();
+            this.NomeDominio = new System.Windows.Forms.Label();
+            this.NomePC = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dataHora = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.criarPedidoSAPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -79,7 +81,8 @@
             // financeiroToolStripMenuItem
             // 
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contasCEALToolStripMenuItem});
+            this.contasCEALToolStripMenuItem,
+            this.notasFiscaisFabianaToolStripMenuItem});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
@@ -90,7 +93,7 @@
             this.novaContaToolStripMenuItem,
             this.relatórioToolStripMenuItem});
             this.contasCEALToolStripMenuItem.Name = "contasCEALToolStripMenuItem";
-            this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.contasCEALToolStripMenuItem.Text = "Contas CEAL";
             // 
             // novaContaToolStripMenuItem
@@ -115,26 +118,48 @@
             this.porCódÚnicoToolStripMenuItem.Text = "Cód. Único";
             this.porCódÚnicoToolStripMenuItem.Click += new System.EventHandler(this.porCódÚnicoToolStripMenuItem_Click);
             // 
+            // notasFiscaisFabianaToolStripMenuItem
+            // 
+            this.notasFiscaisFabianaToolStripMenuItem.Name = "notasFiscaisFabianaToolStripMenuItem";
+            this.notasFiscaisFabianaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.notasFiscaisFabianaToolStripMenuItem.Text = "Notas Fiscais Fabiana";
+            this.notasFiscaisFabianaToolStripMenuItem.Click += new System.EventHandler(this.notasFiscaisFabianaToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arquivosToolStripMenuItem,
             this.financeiroToolStripMenuItem,
-            this.pDFToTXTToolStripMenuItem,
-            this.testeToolStripMenuItem,
-            this.criarPedidoSAPToolStripMenuItem});
+            this.testeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(353, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(233, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // pDFToTXTToolStripMenuItem
+            // arquivosToolStripMenuItem
             // 
-            this.pDFToTXTToolStripMenuItem.Name = "pDFToTXTToolStripMenuItem";
-            this.pDFToTXTToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.pDFToTXTToolStripMenuItem.Text = "PDF to TXT";
-            this.pDFToTXTToolStripMenuItem.Click += new System.EventHandler(this.pDFToTXTToolStripMenuItem_Click);
+            this.arquivosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pDFParaTXTToolStripMenuItem,
+            this.pDFSepararToolStripMenuItem});
+            this.arquivosToolStripMenuItem.Name = "arquivosToolStripMenuItem";
+            this.arquivosToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.arquivosToolStripMenuItem.Text = "Arquivos";
+            // 
+            // pDFParaTXTToolStripMenuItem
+            // 
+            this.pDFParaTXTToolStripMenuItem.Name = "pDFParaTXTToolStripMenuItem";
+            this.pDFParaTXTToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.pDFParaTXTToolStripMenuItem.Text = "PDF para TXT";
+            this.pDFParaTXTToolStripMenuItem.Click += new System.EventHandler(this.pDFParaTXTToolStripMenuItem_Click);
+            // 
+            // pDFSepararToolStripMenuItem
+            // 
+            this.pDFSepararToolStripMenuItem.Name = "pDFSepararToolStripMenuItem";
+            this.pDFSepararToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.pDFSepararToolStripMenuItem.Text = "PDF Separar";
+            this.pDFSepararToolStripMenuItem.Click += new System.EventHandler(this.pDFSepararToolStripMenuItem_Click);
             // 
             // testeToolStripMenuItem
             // 
@@ -201,9 +226,9 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.NomeUser);
+            this.groupBox1.Controls.Add(this.NomeDominio);
+            this.groupBox1.Controls.Add(this.NomePC);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -214,29 +239,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
             // 
-            // label8
+            // NomeUser
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(99, 74);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 13);
-            this.label8.TabIndex = 5;
+            this.NomeUser.AutoSize = true;
+            this.NomeUser.Location = new System.Drawing.Point(99, 74);
+            this.NomeUser.Name = "NomeUser";
+            this.NomeUser.Size = new System.Drawing.Size(0, 13);
+            this.NomeUser.TabIndex = 5;
             // 
-            // label7
+            // NomeDominio
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(99, 50);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 13);
-            this.label7.TabIndex = 4;
+            this.NomeDominio.AutoSize = true;
+            this.NomeDominio.Location = new System.Drawing.Point(99, 50);
+            this.NomeDominio.Name = "NomeDominio";
+            this.NomeDominio.Size = new System.Drawing.Size(0, 13);
+            this.NomeDominio.TabIndex = 4;
             // 
-            // label6
+            // NomePC
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(99, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(0, 13);
-            this.label6.TabIndex = 3;
+            this.NomePC.AutoSize = true;
+            this.NomePC.Location = new System.Drawing.Point(99, 26);
+            this.NomePC.Name = "NomePC";
+            this.NomePC.Size = new System.Drawing.Size(0, 13);
+            this.NomePC.TabIndex = 3;
             // 
             // label5
             // 
@@ -265,14 +290,14 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Nome PC.:";
             // 
-            // label1
+            // dataHora
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(589, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 16;
+            this.dataHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataHora.AutoSize = true;
+            this.dataHora.Location = new System.Drawing.Point(589, 22);
+            this.dataHora.Name = "dataHora";
+            this.dataHora.Size = new System.Drawing.Size(0, 13);
+            this.dataHora.TabIndex = 16;
             // 
             // label2
             // 
@@ -298,13 +323,6 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // criarPedidoSAPToolStripMenuItem
-            // 
-            this.criarPedidoSAPToolStripMenuItem.Name = "criarPedidoSAPToolStripMenuItem";
-            this.criarPedidoSAPToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
-            this.criarPedidoSAPToolStripMenuItem.Text = "Criar Pedido SAP";
-            this.criarPedidoSAPToolStripMenuItem.Click += new System.EventHandler(this.criarPedidoSAPToolStripMenuItem_Click);
-            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,7 +330,7 @@
             this.ClientSize = new System.Drawing.Size(690, 487);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataHora);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSair2);
             this.Controls.Add(this.pictureBox5);
@@ -324,9 +342,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Main";
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frm_Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -356,18 +374,20 @@
         private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem porCódÚnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pDFToTXTToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label NomeUser;
+        private System.Windows.Forms.Label NomeDominio;
+        private System.Windows.Forms.Label NomePC;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label dataHora;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem criarPedidoSAPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notasFiscaisFabianaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem arquivosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pDFParaTXTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pDFSepararToolStripMenuItem;
     }
 }

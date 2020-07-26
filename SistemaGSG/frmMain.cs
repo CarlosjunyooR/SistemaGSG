@@ -15,11 +15,13 @@ namespace SistemaGSG
         string usuarioLogado = System.Environment.UserName;
         string nomeMaquina = System.Environment.MachineName;
         string dominio = System.Environment.UserDomainName;
-
         public frm_Main()
         {
             InitializeComponent();
             label9.Text = version;
+            NomePC.Text = nomeMaquina;
+            NomeDominio.Text = dominio;
+            NomeUser.Text = usuarioLogado;
         }
 
         [assembly: AssemblyVersion("1.*")]
@@ -55,41 +57,42 @@ namespace SistemaGSG
 
         private void frm_Main_Load(object sender, EventArgs e)
         {
-            label6.Text = nomeMaquina;
-            label7.Text = dominio;
-            label8.Text = usuarioLogado;
         }
-
-        private void controleDeChequesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pDFToTXTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPDF pdfTotxt = new frmPDF();
-            pdfTotxt.Show();
-            this.Visible = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            label1.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
+            dataHora.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            label1.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
+            dataHora.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
         }
 
         private void criarPedidoSAPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPedido pedidoSAP = new FormPedido();
             pedidoSAP.Show();
+            this.Visible = false;
+        }
+
+        private void notasFiscaisFabianaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormNotaFiscal NotaFiscal = new FormNotaFiscal();
+            NotaFiscal.Show();
+            this.Visible = false;
+        }
+
+        private void pDFParaTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPDF pdfTotxt = new frmPDF();
+            pdfTotxt.Show();
+            this.Visible = false;
+        }
+
+        private void pDFSepararToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSplit ExtrairPDF = new frmSplit();
+            ExtrairPDF.Show();
             this.Visible = false;
         }
     }

@@ -39,6 +39,13 @@
             this.txtHost = new System.Windows.Forms.TextBox();
             this.lblHost = new System.Windows.Forms.Label();
             this.Pedido = new System.Windows.Forms.TabPage();
+            this.btnAuto = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtTotalPedido = new System.Windows.Forms.TextBox();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCentrodeCusto = new System.Windows.Forms.TextBox();
+            this.ProgBar = new System.Windows.Forms.ProgressBar();
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
@@ -145,7 +152,6 @@
             this.qdt2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.qdt1 = new System.Windows.Forms.TextBox();
-            this.btnConsult = new System.Windows.Forms.Button();
             this.DescItem40 = new System.Windows.Forms.TextBox();
             this.Item40 = new System.Windows.Forms.TextBox();
             this.lblItem40 = new System.Windows.Forms.Label();
@@ -307,8 +313,9 @@
             this.lblItem1 = new System.Windows.Forms.Label();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnConsult = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.ProgBar = new System.Windows.Forms.ProgressBar();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.Cenexao.SuspendLayout();
             this.Pedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).BeginInit();
@@ -412,6 +419,12 @@
             // 
             // Pedido
             // 
+            this.Pedido.Controls.Add(this.btnAuto);
+            this.Pedido.Controls.Add(this.label11);
+            this.Pedido.Controls.Add(this.txtTotalPedido);
+            this.Pedido.Controls.Add(this.btnAlterar);
+            this.Pedido.Controls.Add(this.label10);
+            this.Pedido.Controls.Add(this.txtCentrodeCusto);
             this.Pedido.Controls.Add(this.ProgBar);
             this.Pedido.Controls.Add(this.label9);
             this.Pedido.Controls.Add(this.dateTimePicker1);
@@ -429,11 +442,77 @@
             this.Pedido.TabIndex = 1;
             this.Pedido.Text = "Pedido";
             this.Pedido.UseVisualStyleBackColor = true;
+            this.Pedido.Click += new System.EventHandler(this.Pedido_Click);
+            // 
+            // btnAuto
+            // 
+            this.btnAuto.Location = new System.Drawing.Point(192, 31);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(75, 23);
+            this.btnAuto.TabIndex = 60;
+            this.btnAuto.Text = "&Auto";
+            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(302, 17);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 13);
+            this.label11.TabIndex = 59;
+            this.label11.Text = "Valor Total da NF-e";
+            // 
+            // txtTotalPedido
+            // 
+            this.txtTotalPedido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalPedido.Enabled = false;
+            this.txtTotalPedido.Location = new System.Drawing.Point(295, 34);
+            this.txtTotalPedido.Name = "txtTotalPedido";
+            this.txtTotalPedido.ReadOnly = true;
+            this.txtTotalPedido.Size = new System.Drawing.Size(114, 20);
+            this.txtTotalPedido.TabIndex = 58;
+            this.txtTotalPedido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(192, 60);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 20);
+            this.btnAlterar.TabIndex = 12;
+            this.btnAlterar.Text = "&Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "Centro Custo";
+            // 
+            // txtCentrodeCusto
+            // 
+            this.txtCentrodeCusto.Location = new System.Drawing.Point(86, 60);
+            this.txtCentrodeCusto.Name = "txtCentrodeCusto";
+            this.txtCentrodeCusto.Size = new System.Drawing.Size(100, 20);
+            this.txtCentrodeCusto.TabIndex = 10;
+            // 
+            // ProgBar
+            // 
+            this.ProgBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgBar.Location = new System.Drawing.Point(15, 86);
+            this.ProgBar.Name = "ProgBar";
+            this.ProgBar.Size = new System.Drawing.Size(944, 29);
+            this.ProgBar.TabIndex = 9;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 40);
+            this.label9.Location = new System.Drawing.Point(8, 37);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(72, 13);
             this.label9.TabIndex = 8;
@@ -465,6 +544,7 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "&Criar Migo";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnPedido
             // 
@@ -479,7 +559,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 9);
+            this.label8.Location = new System.Drawing.Point(8, 12);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 3;
@@ -488,11 +568,12 @@
             // 
             // txtChamarNotaFiscal
             // 
-            this.txtChamarNotaFiscal.Location = new System.Drawing.Point(86, 6);
+            this.txtChamarNotaFiscal.Location = new System.Drawing.Point(86, 9);
             this.txtChamarNotaFiscal.Name = "txtChamarNotaFiscal";
             this.txtChamarNotaFiscal.Size = new System.Drawing.Size(100, 20);
             this.txtChamarNotaFiscal.TabIndex = 2;
             this.txtChamarNotaFiscal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtChamarNotaFiscal.TextChanged += new System.EventHandler(this.txtChamarNotaFiscal_TextChanged);
             // 
             // button1
             // 
@@ -511,10 +592,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridView.Location = new System.Drawing.Point(15, 93);
+            this.dtGridView.Location = new System.Drawing.Point(15, 121);
             this.dtGridView.Name = "dtGridView";
-            this.dtGridView.Size = new System.Drawing.Size(944, 460);
+            this.dtGridView.Size = new System.Drawing.Size(944, 432);
             this.dtGridView.TabIndex = 0;
+            this.dtGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGridView_CellClick);
             // 
             // EntradaNF
             // 
@@ -525,6 +607,7 @@
             this.EntradaNF.Controls.Add(this.panel1);
             this.EntradaNF.Controls.Add(this.btnAddItem);
             this.EntradaNF.Controls.Add(this.label5);
+            this.EntradaNF.Controls.Add(this.btnConsult);
             this.EntradaNF.Location = new System.Drawing.Point(4, 22);
             this.EntradaNF.Name = "EntradaNF";
             this.EntradaNF.Padding = new System.Windows.Forms.Padding(3);
@@ -535,7 +618,7 @@
             // 
             // btnCad
             // 
-            this.btnCad.Location = new System.Drawing.Point(661, 64);
+            this.btnCad.Location = new System.Drawing.Point(661, 40);
             this.btnCad.Name = "btnCad";
             this.btnCad.Size = new System.Drawing.Size(103, 23);
             this.btnCad.TabIndex = 254;
@@ -601,6 +684,7 @@
             // txtProtocolo
             // 
             this.txtProtocolo.Location = new System.Drawing.Point(121, 81);
+            this.txtProtocolo.MaxLength = 15;
             this.txtProtocolo.Name = "txtProtocolo";
             this.txtProtocolo.Size = new System.Drawing.Size(100, 20);
             this.txtProtocolo.TabIndex = 254;
@@ -644,7 +728,7 @@
             // btnGravar
             // 
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnGravar.Location = new System.Drawing.Point(661, 93);
+            this.btnGravar.Location = new System.Drawing.Point(661, 65);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(103, 75);
             this.btnGravar.TabIndex = 254;
@@ -749,7 +833,6 @@
             this.panel1.Controls.Add(this.qdt2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.qdt1);
-            this.panel1.Controls.Add(this.btnConsult);
             this.panel1.Controls.Add(this.DescItem40);
             this.panel1.Controls.Add(this.Item40);
             this.panel1.Controls.Add(this.lblItem40);
@@ -1650,16 +1733,6 @@
             this.qdt1.Size = new System.Drawing.Size(50, 20);
             this.qdt1.TabIndex = 14;
             this.qdt1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnConsult
-            // 
-            this.btnConsult.Location = new System.Drawing.Point(655, 3);
-            this.btnConsult.Name = "btnConsult";
-            this.btnConsult.Size = new System.Drawing.Size(103, 23);
-            this.btnConsult.TabIndex = 160;
-            this.btnConsult.Text = "&Consultar Itens";
-            this.btnConsult.UseVisualStyleBackColor = true;
-            this.btnConsult.Click += new System.EventHandler(this.btnConsult_Click);
             // 
             // DescItem40
             // 
@@ -3201,6 +3274,16 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Qtd de Itens na Nota Fiscal";
             // 
+            // btnConsult
+            // 
+            this.btnConsult.Location = new System.Drawing.Point(661, 142);
+            this.btnConsult.Name = "btnConsult";
+            this.btnConsult.Size = new System.Drawing.Size(103, 23);
+            this.btnConsult.TabIndex = 160;
+            this.btnConsult.Text = "&Consultar Itens";
+            this.btnConsult.UseVisualStyleBackColor = true;
+            this.btnConsult.Click += new System.EventHandler(this.btnConsult_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.EntradaNF);
@@ -3212,18 +3295,22 @@
             this.tabControl1.Size = new System.Drawing.Size(973, 585);
             this.tabControl1.TabIndex = 255;
             // 
-            // ProgBar
+            // btnVoltar
             // 
-            this.ProgBar.Location = new System.Drawing.Point(15, 73);
-            this.ProgBar.Name = "ProgBar";
-            this.ProgBar.Size = new System.Drawing.Size(944, 14);
-            this.ProgBar.TabIndex = 9;
+            this.btnVoltar.Location = new System.Drawing.Point(902, 668);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(75, 23);
+            this.btnVoltar.TabIndex = 256;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // FormNotaFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 700);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -3531,5 +3618,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ProgressBar ProgBar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtCentrodeCusto;
+        private System.Windows.Forms.TextBox txtTotalPedido;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.Button btnAuto;
     }
 }

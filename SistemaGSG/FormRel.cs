@@ -114,7 +114,10 @@ namespace SistemaGSG
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            new FormPedido().Show();
+            //new FormPedido().Show();
+            var PedidoSAP = new FormPedido(txtHost.Text);
+            PedidoSAP.Show();
+
         }
         string CEAL;
         string CELPE;
@@ -493,10 +496,12 @@ namespace SistemaGSG
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+            txtHost.Text = "localhost";
         }
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+            txtHost.Text = "usga-servidor-m";
         }
         private void preencherCBmes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -602,6 +607,11 @@ namespace SistemaGSG
         }
 
         private void txt_dif_boleto_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTotal2_TextChanged(object sender, EventArgs e)
         {
 
         }

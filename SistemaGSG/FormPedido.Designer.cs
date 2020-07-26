@@ -108,6 +108,8 @@
             this.texto_pedido = new System.Windows.Forms.TextBox();
             this.base_calculo_pedido_seg_item = new System.Windows.Forms.TextBox();
             this.icms_pedido_seg_item = new System.Windows.Forms.TextBox();
+            this.txtHost = new System.Windows.Forms.TextBox();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.txtVlMiro = new SistemaGSG.textMulta();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -899,6 +901,26 @@
             this.icms_pedido_seg_item.TabIndex = 22;
             this.icms_pedido_seg_item.Visible = false;
             // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(625, 451);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(100, 20);
+            this.txtHost.TabIndex = 23;
+            this.txtHost.Text = "localhost";
+            this.txtHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtHost.Visible = false;
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(1267, 10);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(75, 23);
+            this.btnVoltar.TabIndex = 24;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // txtVlMiro
             // 
             this.txtVlMiro.Location = new System.Drawing.Point(138, 104);
@@ -912,6 +934,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1365, 788);
+            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.txtHost);
             this.Controls.Add(this.icms_pedido_seg_item);
             this.Controls.Add(this.base_calculo_pedido_seg_item);
             this.Controls.Add(this.texto_pedido);
@@ -930,7 +954,7 @@
             this.Controls.Add(this.groupBox3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPedido";
-            this.Style = MetroFramework.MetroColorStyle.Brown;
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormPedido_Load);
             this.groupBox1.ResumeLayout(false);
@@ -1036,5 +1060,7 @@
         private System.Windows.Forms.Button btnCriarMiro;
         private System.Windows.Forms.DateTimePicker dtVencimentoMiro;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtHost;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }

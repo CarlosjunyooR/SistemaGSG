@@ -25,6 +25,11 @@ namespace SistemaGSG
         {
             InitializeComponent();
         }
+        public FormPedido(string conexao)
+        {
+            InitializeComponent();
+            txtHost.Text = conexao;
+        }
         private void groupBox7_Enter(object sender, EventArgs e)
         {
         }
@@ -76,7 +81,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE pedido IS NULL AND material_dif IS NULL", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -184,13 +189,6 @@ namespace SistemaGSG
                 txtRefPagmto.Enabled = false;
                 txtCodUnic.Enabled = false;
             }
-        }
-        private void btnPedido_Click(object sender, EventArgs e)
-        {
-        }
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-
         }
         private void criar_pedidoPh()
         {
@@ -314,7 +312,7 @@ namespace SistemaGSG
 
                     string resultado = statusbar.Text.Substring(6, statusbar.Text.IndexOf('2'));
                     //MessageBox.Show(resultado);
-                    MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                    MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                     CONEX.Open();
                     MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET `pedido`='" + resultado.Split('º')[1].Replace(" ","") + "' WHERE nfe='" + txtNf.Text + "'", CONEX);
                     cmd.ExecuteNonQuery();
@@ -362,12 +360,12 @@ namespace SistemaGSG
                     Session.SendCommand(txtTrans.Text);
 
                     //Tecla Enter
-                    guiWindow.SendVKey(0);
+                    //guiWindow.SendVKey(0);
 
                     //Cód. Fornecedor//
-                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).Text = codigo_fornecedor.Text;
-                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).SetFocus();
-                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).CaretPosition = 10;
+                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0016/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).Text = codigo_fornecedor.Text;
+                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0016/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).SetFocus();
+                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0016/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).CaretPosition = 10;
                     guiWindow.SendVKey(0);
 
                     ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:0013/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKORG")).Text = organizacao_compras.Text;
@@ -495,7 +493,7 @@ namespace SistemaGSG
 
                     string resultado = statusbar.Text.Substring(6, statusbar.Text.IndexOf('2'));
                     //MessageBox.Show(resultado.Split('º')[1]);
-                    MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                    MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                     CONEX.Open();
                     MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET `pedido`='" + resultado.Split('º')[1].Replace(" ","") + "' WHERE nfe='" + txtNf.Text + "'", CONEX);
                     cmd.ExecuteNonQuery();
@@ -554,15 +552,15 @@ namespace SistemaGSG
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).SetFocus();
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).CaretPosition = 8;
                     guiWindow.SendVKey(0);
-                    //((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,0]")).Selected = true;
-                    //((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,1]")).Selected = true;
+                    ((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,0]")).Selected = 1;
+                    ((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,1]")).Selected = 1;
                     ((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,1]")).SetFocus();
                     ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[11]")).Press();
 
                     GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
 
                     string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
-                    MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                    MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                     CONEX.Open();
                     MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET `migo`='" + resultado.Split('r')[0] + "' WHERE nfe='" + txtNf.Text + "'", CONEX);
                     cmd.ExecuteNonQuery();
@@ -578,9 +576,6 @@ namespace SistemaGSG
                     break;
                 }
             }
-        }
-        private void bntMigo_P1_PH_Click(object sender, EventArgs e)
-        {
         }
         private void btnMigo_PH_Click(object sender, EventArgs e)
         {
@@ -627,7 +622,7 @@ namespace SistemaGSG
 
                         string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
 
-                        MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                        MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                         CONEX.Open();
                         MySqlCommand cmd = new MySqlCommand("UPDATE contas_1 SET migo='" + resultado.Split('r')[0] + "' WHERE nf='" + txtNf.Text + "'", CONEX);
                         cmd.ExecuteNonQuery();
@@ -649,22 +644,11 @@ namespace SistemaGSG
 
             }
         }
-        private void metroTile6_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btnMiro_Click(object sender, EventArgs e)
-        {
-        }
-        private void btnPH_Click(object sender, EventArgs e)
-        {
-            
-        }
         private void btnFilter_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE material_dif is null AND pedido = ''", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -704,7 +688,6 @@ namespace SistemaGSG
             {
 
             }
-
         }
         private void btnMigo_Click(object sender, EventArgs e)
         {
@@ -725,7 +708,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE pedido IS NOT NULL AND miro='' AND material_dif IS NOT NULL", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -744,7 +727,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE pedido IS NOT NULL AND migo=''", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -770,7 +753,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto` WHERE material_dif IS NOT NULL AND pedido='' ORDER BY `id` ASC", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -785,7 +768,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                 MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE pedido IS NOT NULL AND miro=''", CONEX);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
@@ -881,7 +864,7 @@ namespace SistemaGSG
 
                         string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
                         //MessageBox.Show(resultado.Replace(" ", "").Replace("f", "").Replace("o", ""));
-                        MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                        MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                         CONEX.Open();
                         MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET `miro`='"+ resultado.Replace(" fo","") +"' WHERE nfe='" + txtNfeMiro.Text + "'", CONEX);
                         cmd.ExecuteNonQuery();
@@ -926,7 +909,7 @@ namespace SistemaGSG
 
                         string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
                         //MessageBox.Show(resultado.Replace(" ", "").Replace("f", "").Replace("o", ""));
-                        MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                        MySqlConnection CONEX = new MySqlConnection(@"server='"+ txtHost.Text +"';database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
                         CONEX.Open();
                         MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET `miro`='"+ resultado.Replace(" ","").Replace("f","").Replace("o","") +"' WHERE nfe='" + txtNfeMiro.Text + "'", CONEX);
                         cmd.ExecuteNonQuery();
@@ -943,6 +926,16 @@ namespace SistemaGSG
                     MessageBox.Show(Err.Message);
                     break;
                 }
+            }
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                frm_Main frm_Main = new frm_Main();
+                frm_Main.Show();
+                this.Visible = false;
             }
         }
     }

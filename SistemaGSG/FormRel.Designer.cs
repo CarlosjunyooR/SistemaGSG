@@ -150,12 +150,12 @@
             this.lbHora = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.txtTotal2 = new System.Windows.Forms.TextBox();
-            this.dataSet2 = new SistemaGSG.DataSet2();
             this.dataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnExport = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.lbStatus = new System.Windows.Forms.Label();
+            this.txtHost = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -169,7 +169,6 @@
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -574,7 +573,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.CustomFormat = "";
+            this.dateTimePicker3.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePicker3.Location = new System.Drawing.Point(136, 31);
@@ -584,7 +583,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CustomFormat = "";
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dateTimePicker2.Location = new System.Drawing.Point(17, 31);
@@ -1460,9 +1459,9 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(61, 17);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(88, 17);
+            this.radioButton2.Size = new System.Drawing.Size(49, 17);
             this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "&Development";
+            this.radioButton2.Text = "&Casa";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
@@ -1471,9 +1470,9 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(6, 17);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(51, 17);
+            this.radioButton1.Size = new System.Drawing.Size(50, 17);
             this.radioButton1.TabIndex = 3;
-            this.radioButton1.Text = "Local";
+            this.radioButton1.Text = "&Usga";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
@@ -1702,16 +1701,7 @@
             this.txtTotal2.Size = new System.Drawing.Size(114, 20);
             this.txtTotal2.TabIndex = 57;
             this.txtTotal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dataSet2
-            // 
-            this.dataSet2.DataSetName = "DataSet2";
-            this.dataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataSet2BindingSource
-            // 
-            this.dataSet2BindingSource.DataSource = this.dataSet2;
-            this.dataSet2BindingSource.Position = 0;
+            this.txtTotal2.TextChanged += new System.EventHandler(this.txtTotal2_TextChanged);
             // 
             // progressBar
             // 
@@ -1751,12 +1741,21 @@
             this.lbStatus.TabIndex = 61;
             this.lbStatus.Text = "Processando...0%";
             // 
+            // txtHost
+            // 
+            this.txtHost.Location = new System.Drawing.Point(677, 731);
+            this.txtHost.Name = "txtHost";
+            this.txtHost.Size = new System.Drawing.Size(100, 20);
+            this.txtHost.TabIndex = 62;
+            this.txtHost.Visible = false;
+            // 
             // FormRel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(1243, 788);
+            this.Controls.Add(this.txtHost);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.progressBar);
@@ -1811,7 +1810,6 @@
             this.groupBox6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1902,7 +1900,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtVlBase;
         private System.Windows.Forms.TextBox txtURLBOLETO;
-        private DataSet2 dataSet2;
         private System.Windows.Forms.BindingSource dataSet2BindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idd;
         private System.Windows.Forms.DataGridViewTextBoxColumn cod_unico;
@@ -1946,5 +1943,6 @@
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txt_dif_boleto;
+        private System.Windows.Forms.TextBox txtHost;
     }
 }

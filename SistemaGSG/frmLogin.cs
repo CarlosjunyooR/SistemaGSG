@@ -23,15 +23,9 @@ namespace SistemaGSG
             InitializeComponent();
             label3.Text = version;
         }
-
         [assembly: AssemblyVersion("1.*")]
         string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-
-
-
         public bool FMP = false;
-
         public void logar()
         {
             try
@@ -53,8 +47,6 @@ namespace SistemaGSG
                     dados.nivel = Convert.ToInt32(dr["status"]);
                 }
                 CONEX.Close();
-
-
                 if (dados.senha == txtSenha.Text)
                 {
                     FMP = true;
@@ -65,10 +57,8 @@ namespace SistemaGSG
                     label5.Visible = true;
                     label5.Text = "Erro você ainda tem " + attempt++ + " de 3";
                     label5.ForeColor = Color.Red;
-
                     //MessageBox.Show("Usuário ou Senha, Incorretos!");
                     FMP = false;
-
                     txtUser.Text = "";
                     txtSenha.Text = "";
                 }
@@ -81,15 +71,15 @@ namespace SistemaGSG
                     txtUser.Visible = false;
                     label5.Visible = false;
                     txtSenha.Visible = false;
-                    button1.Visible = false;
-                    label1.Visible = false;
-                    label2.Visible = false;
+                    btnEntrar.Visible = false;
+                    lblUsuario.Visible = false;
+                    lblSenha.Visible = false;
                 }
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("Olá Srº(a), " + txtUser.Text + " selecione uma conexão abaixo, para iniciar a\naplicação!.");
-                groupBox1.Focus();
+                gpBoxConexao.Focus();
             }
             catch (MySqlException)
             {
@@ -107,7 +97,6 @@ namespace SistemaGSG
 
             }
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -116,14 +105,15 @@ namespace SistemaGSG
             }
         }
         MySqlConnection CONEX;
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
                 CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                txtConexao.Text = "usga-servidor-m";
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
                 CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+                txtConexao.Text = "localhost";
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {

@@ -17,19 +17,19 @@ namespace SistemaGSG
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormNotaFiscal fmr = new FormNotaFiscal();
+            Ceal fmr = new Ceal();
             fmr.ShowDialog();
 
-            //Splash fmr = new Splash();
-            //fmr.ShowDialog();
-            
-            //frmLogin fml = new frmLogin();
-            //fml.ShowDialog();
-
-            //if (fml.FMP == true)
-            //{
-            //  Application.Run(new frm_Main());
-            //}
+           //Splash fmr = new Splash();
+           //fmr.ShowDialog();
+           
+           //frmLogin fml = new frmLogin();
+           //fml.ShowDialog();
+           
+           //if (fml.FMP == true)
+           //{
+            // Application.Run(new frm_Main());
+          // }
         }
     }
 }
