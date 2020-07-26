@@ -41,6 +41,8 @@
             this.txtMigo = new System.Windows.Forms.TextBox();
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.mes_nf = new System.Windows.Forms.MaskedTextBox();
+            this.nfe = new System.Windows.Forms.MaskedTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.btnView = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -90,8 +92,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.mes_nf = new System.Windows.Forms.MaskedTextBox();
-            this.nfe = new System.Windows.Forms.MaskedTextBox();
+            this.txthost = new System.Windows.Forms.TextBox();
             this.textBase1 = new SistemaGSG.textBase();
             this.txtValordupl = new SistemaGSG.textBase();
             this.vl_base = new SistemaGSG.textBase();
@@ -99,6 +100,7 @@
             this.vl_boleto = new SistemaGSG.textValor();
             this.vl_fecoep = new SistemaGSG.textValor();
             this.textValor1 = new SistemaGSG.textValor();
+            this.txTexte = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.Info_pedido.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -147,9 +149,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txthost);
             this.groupBox1.Controls.Add(this.Info_pedido);
             this.groupBox1.Controls.Add(this.groupBox9);
             this.groupBox1.Controls.Add(this.groupBox8);
@@ -260,6 +263,22 @@
             this.groupBox9.TabIndex = 36;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Informações da NotaFiscal";
+            // 
+            // mes_nf
+            // 
+            this.mes_nf.Location = new System.Drawing.Point(161, 140);
+            this.mes_nf.Mask = "00/9999";
+            this.mes_nf.Name = "mes_nf";
+            this.mes_nf.Size = new System.Drawing.Size(100, 20);
+            this.mes_nf.TabIndex = 4;
+            // 
+            // nfe
+            // 
+            this.nfe.Location = new System.Drawing.Point(161, 114);
+            this.nfe.Mask = "00000-000";
+            this.nfe.Name = "nfe";
+            this.nfe.Size = new System.Drawing.Size(100, 20);
+            this.nfe.TabIndex = 3;
             // 
             // metroLabel4
             // 
@@ -868,7 +887,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.conec_development);
             this.groupBox3.Controls.Add(this.conec_local);
@@ -1160,21 +1179,13 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // mes_nf
+            // txthost
             // 
-            this.mes_nf.Location = new System.Drawing.Point(161, 140);
-            this.mes_nf.Mask = "00/9999";
-            this.mes_nf.Name = "mes_nf";
-            this.mes_nf.Size = new System.Drawing.Size(100, 20);
-            this.mes_nf.TabIndex = 4;
-            // 
-            // nfe
-            // 
-            this.nfe.Location = new System.Drawing.Point(161, 114);
-            this.nfe.Mask = "00000-000";
-            this.nfe.Name = "nfe";
-            this.nfe.Size = new System.Drawing.Size(100, 20);
-            this.nfe.TabIndex = 3;
+            this.txthost.Location = new System.Drawing.Point(466, 315);
+            this.txthost.Name = "txthost";
+            this.txthost.Size = new System.Drawing.Size(100, 20);
+            this.txthost.TabIndex = 37;
+            this.txthost.Visible = false;
             // 
             // textBase1
             // 
@@ -1236,11 +1247,22 @@
             this.textValor1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textValor1.TextChanged += new System.EventHandler(this.textValor1_TextChanged);
             // 
+            // txTexte
+            // 
+            this.txTexte.Location = new System.Drawing.Point(454, 662);
+            this.txTexte.Name = "txTexte";
+            this.txTexte.Size = new System.Drawing.Size(75, 23);
+            this.txTexte.TabIndex = 38;
+            this.txTexte.Text = "&Teste";
+            this.txTexte.UseVisualStyleBackColor = true;
+            this.txTexte.Click += new System.EventHandler(this.txTexte_Click);
+            // 
             // Ceal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 708);
+            this.Controls.Add(this.txTexte);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -1261,6 +1283,7 @@
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Load += new System.EventHandler(this.Ceal_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.Info_pedido.ResumeLayout(false);
             this.Info_pedido.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -1364,5 +1387,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private System.Windows.Forms.MaskedTextBox mes_nf;
         private System.Windows.Forms.MaskedTextBox nfe;
+        private System.Windows.Forms.TextBox txthost;
+        private System.Windows.Forms.Button txTexte;
     }
 }

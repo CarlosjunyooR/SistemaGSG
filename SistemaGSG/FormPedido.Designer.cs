@@ -40,6 +40,11 @@
             this.lbOrg = new System.Windows.Forms.Label();
             this.lbForn = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Nfe = new System.Windows.Forms.MaskedTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.datePickerVencimento = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.datePickerEmissao = new System.Windows.Forms.DateTimePicker();
             this.label21 = new System.Windows.Forms.Label();
             this.item_pedido = new System.Windows.Forms.TextBox();
             this.quantidade_item_pedido = new System.Windows.Forms.TextBox();
@@ -52,8 +57,6 @@
             this.categoria_pedido = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnPedidoNormal = new System.Windows.Forms.Button();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.btnPedidoPh = new System.Windows.Forms.Button();
             this.btnPedido = new System.Windows.Forms.Button();
             this.chboxMigo = new MetroFramework.Controls.MetroCheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -80,6 +83,7 @@
             this.txtMiro = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNfeMiro = new System.Windows.Forms.TextBox();
+            this.txtVlMiro = new SistemaGSG.textMulta();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.dtMiroFatura = new System.Windows.Forms.DateTimePicker();
@@ -95,22 +99,12 @@
             this.dtVencimentoMiro = new System.Windows.Forms.DateTimePicker();
             this.formPag = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dtGridView = new System.Windows.Forms.DataGridView();
-            this.descricao_item_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.meterial_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.quantidade_item_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.iva_pedido = new System.Windows.Forms.TextBox();
-            this.iva_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.custo_pedido = new System.Windows.Forms.TextBox();
-            this.custo_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.base_calculo_pedido = new System.Windows.Forms.TextBox();
-            this.valor_icms_pedido = new System.Windows.Forms.TextBox();
-            this.texto_pedido = new System.Windows.Forms.TextBox();
-            this.base_calculo_pedido_seg_item = new System.Windows.Forms.TextBox();
-            this.icms_pedido_seg_item = new System.Windows.Forms.TextBox();
+            this.dtGridView1 = new System.Windows.Forms.DataGridView();
             this.txtHost = new System.Windows.Forms.TextBox();
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.txtVlMiro = new SistemaGSG.textMulta();
+            this.dtGridView2 = new System.Windows.Forms.DataGridView();
+            this.ProgBar = new System.Windows.Forms.ProgressBar();
+            this.MesRef = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -119,7 +113,8 @@
             this.groupBox9.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -224,6 +219,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.MesRef);
+            this.groupBox2.Controls.Add(this.Nfe);
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.datePickerVencimento);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.datePickerEmissao);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.item_pedido);
             this.groupBox2.Controls.Add(this.quantidade_item_pedido);
@@ -236,10 +237,54 @@
             this.groupBox2.Controls.Add(this.categoria_pedido);
             this.groupBox2.Location = new System.Drawing.Point(15, 197);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(314, 169);
+            this.groupBox2.Size = new System.Drawing.Size(314, 245);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Materiais";
+            // 
+            // Nfe
+            // 
+            this.Nfe.Location = new System.Drawing.Point(138, 195);
+            this.Nfe.Mask = "00-9999";
+            this.Nfe.Name = "Nfe";
+            this.Nfe.Size = new System.Drawing.Size(85, 20);
+            this.Nfe.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(40, 175);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 13);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Vencimento";
+            // 
+            // datePickerVencimento
+            // 
+            this.datePickerVencimento.CustomFormat = "dd.MM.yyyy";
+            this.datePickerVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerVencimento.Location = new System.Drawing.Point(138, 169);
+            this.datePickerVencimento.Name = "datePickerVencimento";
+            this.datePickerVencimento.Size = new System.Drawing.Size(85, 20);
+            this.datePickerVencimento.TabIndex = 28;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(40, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Emissão";
+            // 
+            // datePickerEmissao
+            // 
+            this.datePickerEmissao.CustomFormat = "dd.MM.yyyy";
+            this.datePickerEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datePickerEmissao.Location = new System.Drawing.Point(138, 143);
+            this.datePickerEmissao.Name = "datePickerEmissao";
+            this.datePickerEmissao.Size = new System.Drawing.Size(85, 20);
+            this.datePickerEmissao.TabIndex = 26;
             // 
             // label21
             // 
@@ -329,22 +374,20 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnPedidoNormal);
-            this.groupBox3.Controls.Add(this.btnFilter);
-            this.groupBox3.Controls.Add(this.btnPedidoPh);
             this.groupBox3.Controls.Add(this.btnPedido);
             this.groupBox3.Controls.Add(this.chboxMigo);
             this.groupBox3.Controls.Add(this.groupBox1);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Location = new System.Drawing.Point(23, 29);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(436, 389);
+            this.groupBox3.Size = new System.Drawing.Size(436, 448);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Criar Pedido";
             // 
             // btnPedidoNormal
             // 
-            this.btnPedidoNormal.Location = new System.Drawing.Point(355, 313);
+            this.btnPedidoNormal.Location = new System.Drawing.Point(355, 390);
             this.btnPedidoNormal.Name = "btnPedidoNormal";
             this.btnPedidoNormal.Size = new System.Drawing.Size(75, 23);
             this.btnPedidoNormal.TabIndex = 26;
@@ -352,30 +395,9 @@
             this.btnPedidoNormal.UseVisualStyleBackColor = true;
             this.btnPedidoNormal.Click += new System.EventHandler(this.btnPedidoNormal_Click);
             // 
-            // btnFilter
-            // 
-            this.btnFilter.Location = new System.Drawing.Point(355, 255);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 23);
-            this.btnFilter.TabIndex = 23;
-            this.btnFilter.Text = "&Filtrar PH";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // btnPedidoPh
-            // 
-            this.btnPedidoPh.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTabList;
-            this.btnPedidoPh.Location = new System.Drawing.Point(340, 284);
-            this.btnPedidoPh.Name = "btnPedidoPh";
-            this.btnPedidoPh.Size = new System.Drawing.Size(90, 23);
-            this.btnPedidoPh.TabIndex = 25;
-            this.btnPedidoPh.Text = "&Criar Pedido PH";
-            this.btnPedidoPh.UseVisualStyleBackColor = true;
-            this.btnPedidoPh.Click += new System.EventHandler(this.btnPedidoPh_Click);
-            // 
             // btnPedido
             // 
-            this.btnPedido.Location = new System.Drawing.Point(355, 342);
+            this.btnPedido.Location = new System.Drawing.Point(355, 419);
             this.btnPedido.Name = "btnPedido";
             this.btnPedido.Size = new System.Drawing.Size(75, 23);
             this.btnPedido.TabIndex = 24;
@@ -638,6 +660,14 @@
             this.txtNfeMiro.TabIndex = 8;
             this.txtNfeMiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // txtVlMiro
+            // 
+            this.txtVlMiro.Location = new System.Drawing.Point(138, 104);
+            this.txtVlMiro.Name = "txtVlMiro";
+            this.txtVlMiro.Size = new System.Drawing.Size(97, 20);
+            this.txtVlMiro.TabIndex = 10;
+            this.txtVlMiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
@@ -781,125 +811,18 @@
             this.label13.TabIndex = 8;
             this.label13.Text = "Data Vencimento";
             // 
-            // dtGridView
+            // dtGridView1
             // 
-            this.dtGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtGridView1.AllowUserToAddRows = false;
+            this.dtGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtGridView.BackgroundColor = System.Drawing.SystemColors.Info;
-            this.dtGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGridView.Location = new System.Drawing.Point(23, 512);
-            this.dtGridView.Name = "dtGridView";
-            this.dtGridView.Size = new System.Drawing.Size(1320, 260);
-            this.dtGridView.TabIndex = 7;
-            // 
-            // descricao_item_pedido_seg_item
-            // 
-            this.descricao_item_pedido_seg_item.Enabled = false;
-            this.descricao_item_pedido_seg_item.Location = new System.Drawing.Point(59, 501);
-            this.descricao_item_pedido_seg_item.Name = "descricao_item_pedido_seg_item";
-            this.descricao_item_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.descricao_item_pedido_seg_item.TabIndex = 10;
-            this.descricao_item_pedido_seg_item.Visible = false;
-            // 
-            // meterial_pedido_seg_item
-            // 
-            this.meterial_pedido_seg_item.Enabled = false;
-            this.meterial_pedido_seg_item.Location = new System.Drawing.Point(59, 475);
-            this.meterial_pedido_seg_item.Name = "meterial_pedido_seg_item";
-            this.meterial_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.meterial_pedido_seg_item.TabIndex = 11;
-            this.meterial_pedido_seg_item.Visible = false;
-            // 
-            // quantidade_item_pedido_seg_item
-            // 
-            this.quantidade_item_pedido_seg_item.Enabled = false;
-            this.quantidade_item_pedido_seg_item.Location = new System.Drawing.Point(59, 527);
-            this.quantidade_item_pedido_seg_item.Name = "quantidade_item_pedido_seg_item";
-            this.quantidade_item_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.quantidade_item_pedido_seg_item.TabIndex = 12;
-            this.quantidade_item_pedido_seg_item.Visible = false;
-            // 
-            // iva_pedido
-            // 
-            this.iva_pedido.Enabled = false;
-            this.iva_pedido.Location = new System.Drawing.Point(165, 475);
-            this.iva_pedido.Name = "iva_pedido";
-            this.iva_pedido.Size = new System.Drawing.Size(100, 20);
-            this.iva_pedido.TabIndex = 14;
-            this.iva_pedido.Visible = false;
-            // 
-            // iva_pedido_seg_item
-            // 
-            this.iva_pedido_seg_item.Enabled = false;
-            this.iva_pedido_seg_item.Location = new System.Drawing.Point(165, 501);
-            this.iva_pedido_seg_item.Name = "iva_pedido_seg_item";
-            this.iva_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.iva_pedido_seg_item.TabIndex = 15;
-            this.iva_pedido_seg_item.Visible = false;
-            // 
-            // custo_pedido
-            // 
-            this.custo_pedido.Enabled = false;
-            this.custo_pedido.Location = new System.Drawing.Point(165, 527);
-            this.custo_pedido.Name = "custo_pedido";
-            this.custo_pedido.Size = new System.Drawing.Size(100, 20);
-            this.custo_pedido.TabIndex = 16;
-            this.custo_pedido.Visible = false;
-            // 
-            // custo_pedido_seg_item
-            // 
-            this.custo_pedido_seg_item.Enabled = false;
-            this.custo_pedido_seg_item.Location = new System.Drawing.Point(165, 553);
-            this.custo_pedido_seg_item.Name = "custo_pedido_seg_item";
-            this.custo_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.custo_pedido_seg_item.TabIndex = 17;
-            this.custo_pedido_seg_item.Visible = false;
-            // 
-            // base_calculo_pedido
-            // 
-            this.base_calculo_pedido.Enabled = false;
-            this.base_calculo_pedido.Location = new System.Drawing.Point(271, 475);
-            this.base_calculo_pedido.Name = "base_calculo_pedido";
-            this.base_calculo_pedido.Size = new System.Drawing.Size(100, 20);
-            this.base_calculo_pedido.TabIndex = 18;
-            this.base_calculo_pedido.Visible = false;
-            // 
-            // valor_icms_pedido
-            // 
-            this.valor_icms_pedido.Enabled = false;
-            this.valor_icms_pedido.Location = new System.Drawing.Point(271, 501);
-            this.valor_icms_pedido.Name = "valor_icms_pedido";
-            this.valor_icms_pedido.Size = new System.Drawing.Size(100, 20);
-            this.valor_icms_pedido.TabIndex = 19;
-            this.valor_icms_pedido.Visible = false;
-            // 
-            // texto_pedido
-            // 
-            this.texto_pedido.Enabled = false;
-            this.texto_pedido.Location = new System.Drawing.Point(271, 527);
-            this.texto_pedido.Name = "texto_pedido";
-            this.texto_pedido.Size = new System.Drawing.Size(100, 20);
-            this.texto_pedido.TabIndex = 20;
-            this.texto_pedido.Visible = false;
-            // 
-            // base_calculo_pedido_seg_item
-            // 
-            this.base_calculo_pedido_seg_item.Enabled = false;
-            this.base_calculo_pedido_seg_item.Location = new System.Drawing.Point(271, 553);
-            this.base_calculo_pedido_seg_item.Name = "base_calculo_pedido_seg_item";
-            this.base_calculo_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.base_calculo_pedido_seg_item.TabIndex = 21;
-            this.base_calculo_pedido_seg_item.Visible = false;
-            // 
-            // icms_pedido_seg_item
-            // 
-            this.icms_pedido_seg_item.Enabled = false;
-            this.icms_pedido_seg_item.Location = new System.Drawing.Point(59, 553);
-            this.icms_pedido_seg_item.Name = "icms_pedido_seg_item";
-            this.icms_pedido_seg_item.Size = new System.Drawing.Size(100, 20);
-            this.icms_pedido_seg_item.TabIndex = 22;
-            this.icms_pedido_seg_item.Visible = false;
+            this.dtGridView1.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dtGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridView1.Location = new System.Drawing.Point(17, 512);
+            this.dtGridView1.Name = "dtGridView1";
+            this.dtGridView1.Size = new System.Drawing.Size(1320, 124);
+            this.dtGridView1.TabIndex = 7;
             // 
             // txtHost
             // 
@@ -907,9 +830,7 @@
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(100, 20);
             this.txtHost.TabIndex = 23;
-            this.txtHost.Text = "localhost";
             this.txtHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtHost.Visible = false;
             // 
             // btnVoltar
             // 
@@ -921,41 +842,49 @@
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // txtVlMiro
+            // dtGridView2
             // 
-            this.txtVlMiro.Location = new System.Drawing.Point(138, 104);
-            this.txtVlMiro.Name = "txtVlMiro";
-            this.txtVlMiro.Size = new System.Drawing.Size(97, 20);
-            this.txtVlMiro.TabIndex = 10;
-            this.txtVlMiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dtGridView2.AllowUserToAddRows = false;
+            this.dtGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGridView2.BackgroundColor = System.Drawing.SystemColors.Info;
+            this.dtGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGridView2.Location = new System.Drawing.Point(17, 642);
+            this.dtGridView2.Name = "dtGridView2";
+            this.dtGridView2.Size = new System.Drawing.Size(1320, 123);
+            this.dtGridView2.TabIndex = 25;
+            // 
+            // ProgBar
+            // 
+            this.ProgBar.Location = new System.Drawing.Point(23, 483);
+            this.ProgBar.Name = "ProgBar";
+            this.ProgBar.Size = new System.Drawing.Size(436, 23);
+            this.ProgBar.TabIndex = 26;
+            // 
+            // MesRef
+            // 
+            this.MesRef.Location = new System.Drawing.Point(138, 221);
+            this.MesRef.Name = "MesRef";
+            this.MesRef.Size = new System.Drawing.Size(85, 20);
+            this.MesRef.TabIndex = 27;
             // 
             // FormPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1365, 788);
+            this.Controls.Add(this.ProgBar);
+            this.Controls.Add(this.dtGridView2);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.txtHost);
-            this.Controls.Add(this.icms_pedido_seg_item);
-            this.Controls.Add(this.base_calculo_pedido_seg_item);
-            this.Controls.Add(this.texto_pedido);
-            this.Controls.Add(this.valor_icms_pedido);
-            this.Controls.Add(this.base_calculo_pedido);
-            this.Controls.Add(this.custo_pedido_seg_item);
-            this.Controls.Add(this.custo_pedido);
-            this.Controls.Add(this.iva_pedido_seg_item);
-            this.Controls.Add(this.iva_pedido);
-            this.Controls.Add(this.quantidade_item_pedido_seg_item);
-            this.Controls.Add(this.meterial_pedido_seg_item);
-            this.Controls.Add(this.descricao_item_pedido_seg_item);
-            this.Controls.Add(this.dtGridView);
+            this.Controls.Add(this.dtGridView1);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPedido";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormPedido_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -972,7 +901,8 @@
             this.groupBox11.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1034,25 +964,11 @@
         private MetroFramework.Controls.MetroCheckBox chboxMigo;
         private MetroFramework.Controls.MetroCheckBox chboxMiro;
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.DataGridView dtGridView;
+        private System.Windows.Forms.DataGridView dtGridView1;
         private System.Windows.Forms.TextBox txtTrans;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox item_pedido;
-        private System.Windows.Forms.TextBox descricao_item_pedido_seg_item;
-        private System.Windows.Forms.TextBox meterial_pedido_seg_item;
-        private System.Windows.Forms.TextBox quantidade_item_pedido_seg_item;
-        private System.Windows.Forms.TextBox iva_pedido;
-        private System.Windows.Forms.TextBox iva_pedido_seg_item;
-        private System.Windows.Forms.TextBox custo_pedido;
-        private System.Windows.Forms.TextBox custo_pedido_seg_item;
-        private System.Windows.Forms.TextBox base_calculo_pedido;
-        private System.Windows.Forms.TextBox valor_icms_pedido;
-        private System.Windows.Forms.TextBox texto_pedido;
-        private System.Windows.Forms.TextBox base_calculo_pedido_seg_item;
-        private System.Windows.Forms.TextBox icms_pedido_seg_item;
-        private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.Button btnPedido;
-        private System.Windows.Forms.Button btnPedidoPh;
         private System.Windows.Forms.Button btnMigo;
         private System.Windows.Forms.Button btnFilterMigo;
         private System.Windows.Forms.Button btnPedidoNormal;
@@ -1062,5 +978,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtHost;
         private System.Windows.Forms.Button btnVoltar;
+        private System.Windows.Forms.DataGridView dtGridView2;
+        private System.Windows.Forms.ProgressBar ProgBar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker datePickerEmissao;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DateTimePicker datePickerVencimento;
+        private System.Windows.Forms.MaskedTextBox Nfe;
+        private System.Windows.Forms.TextBox MesRef;
     }
 }

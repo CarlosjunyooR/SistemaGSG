@@ -48,7 +48,7 @@ namespace SistemaGSG
         }
         private void ConsultDuplicidate()
         {
-            if (string.IsNullOrWhiteSpace(nfe.Text))
+            if (string.IsNullOrWhiteSpace(nfe.Text.Replace("-","")))
             {
                 MessageBox.Show("Para prosseguir, insira o nº da Nf.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -97,11 +97,18 @@ namespace SistemaGSG
             MySqlDataReader dr = com.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(dr);
+            //Contagem de Linhas
             CountTXT.Text = dt.Rows.Count.ToString();
             int Contagem = Convert.ToInt32(CountTXT.Text);
+            //Adiciona mais um Item
             Contagem++;
             CountTXT.Text = Contagem.ToString();
             cn.Close();
+            if(Contagem > 10)
+            {
+                var CriarPedido = new FormPedido(txthost.Text);
+                CriarPedido.Show();
+            }
         }
         private void ConsultNFE()
         {
@@ -326,7 +333,6 @@ namespace SistemaGSG
                     MessageBox.Show(err.Message);
                 }
             }
-
             if (string.IsNullOrWhiteSpace(vl_multa.Text))
             {
 
@@ -336,7 +342,7 @@ namespace SistemaGSG
                 cmd = new MySqlCommand("INSERT INTO contas_multa (cod,mes,valor,empresa) VALUES ('" + cod_unico.Text + "','" + mesMulta.Text + "','" + vl_multa.Text.Replace("R$ ", "") + "','" + EMPRESA + "')", CONEX);
                 cmd.ExecuteNonQuery();
             }
-
+            
             //Fechar Conexão
             CONEX.Close();
 
@@ -461,6 +467,7 @@ namespace SistemaGSG
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+            txthost.Text = "usga-servidor-m";
         }
         private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -530,6 +537,7 @@ namespace SistemaGSG
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
+            txthost.Text = "localhost";
         }
         private void txtPedido_DoubleClick(object sender, EventArgs e)
         {
@@ -543,6 +551,12 @@ namespace SistemaGSG
         {
             MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
+
+        private void txTexte_Click(object sender, EventArgs e)
+        {
+            ItensPedido();
+        }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             EMPRESA = "CEAL";
