@@ -36,11 +36,22 @@
             this.novaContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.porCódÚnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.criarPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notasFiscaisFabianaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fornecedorDeCanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.almoxarifadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baixaEmRequisiçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arquivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFParaTXTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFSepararToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.faturamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.posiçãoDaSemanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fiscalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baixarXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarNotasEmitidasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relaçãoDeNotasFiscaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -58,6 +69,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.criarAcessoBalançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -82,7 +94,8 @@
             // 
             this.financeiroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contasCEALToolStripMenuItem,
-            this.notasFiscaisFabianaToolStripMenuItem});
+            this.notasFiscaisFabianaToolStripMenuItem,
+            this.fornecedorDeCanaToolStripMenuItem});
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
             this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
@@ -91,7 +104,8 @@
             // 
             this.contasCEALToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novaContaToolStripMenuItem,
-            this.relatórioToolStripMenuItem});
+            this.relatórioToolStripMenuItem,
+            this.criarPedidoToolStripMenuItem});
             this.contasCEALToolStripMenuItem.Name = "contasCEALToolStripMenuItem";
             this.contasCEALToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.contasCEALToolStripMenuItem.Text = "Contas CEAL";
@@ -99,7 +113,7 @@
             // novaContaToolStripMenuItem
             // 
             this.novaContaToolStripMenuItem.Name = "novaContaToolStripMenuItem";
-            this.novaContaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.novaContaToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.novaContaToolStripMenuItem.Text = "Nova Conta";
             this.novaContaToolStripMenuItem.Click += new System.EventHandler(this.novaContaToolStripMenuItem_Click);
             // 
@@ -108,7 +122,7 @@
             this.relatórioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.porCódÚnicoToolStripMenuItem});
             this.relatórioToolStripMenuItem.Name = "relatórioToolStripMenuItem";
-            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.relatórioToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.relatórioToolStripMenuItem.Text = "Relatório";
             // 
             // porCódÚnicoToolStripMenuItem
@@ -118,6 +132,13 @@
             this.porCódÚnicoToolStripMenuItem.Text = "Cód. Único";
             this.porCódÚnicoToolStripMenuItem.Click += new System.EventHandler(this.porCódÚnicoToolStripMenuItem_Click);
             // 
+            // criarPedidoToolStripMenuItem
+            // 
+            this.criarPedidoToolStripMenuItem.Name = "criarPedidoToolStripMenuItem";
+            this.criarPedidoToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.criarPedidoToolStripMenuItem.Text = "Criar Pedido";
+            this.criarPedidoToolStripMenuItem.Click += new System.EventHandler(this.criarPedidoToolStripMenuItem_Click);
+            // 
             // notasFiscaisFabianaToolStripMenuItem
             // 
             this.notasFiscaisFabianaToolStripMenuItem.Name = "notasFiscaisFabianaToolStripMenuItem";
@@ -125,18 +146,43 @@
             this.notasFiscaisFabianaToolStripMenuItem.Text = "Notas Fiscais Fabiana";
             this.notasFiscaisFabianaToolStripMenuItem.Click += new System.EventHandler(this.notasFiscaisFabianaToolStripMenuItem_Click);
             // 
+            // fornecedorDeCanaToolStripMenuItem
+            // 
+            this.fornecedorDeCanaToolStripMenuItem.Name = "fornecedorDeCanaToolStripMenuItem";
+            this.fornecedorDeCanaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.fornecedorDeCanaToolStripMenuItem.Text = "Fornecedor de Cana";
+            this.fornecedorDeCanaToolStripMenuItem.Click += new System.EventHandler(this.fornecedorDeCanaToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.almoxarifadoToolStripMenuItem,
             this.arquivosToolStripMenuItem,
+            this.faturamentoToolStripMenuItem,
             this.financeiroToolStripMenuItem,
+            this.fiscalToolStripMenuItem,
             this.testeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(233, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(618, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // almoxarifadoToolStripMenuItem
+            // 
+            this.almoxarifadoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.baixaEmRequisiçõesToolStripMenuItem});
+            this.almoxarifadoToolStripMenuItem.Name = "almoxarifadoToolStripMenuItem";
+            this.almoxarifadoToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.almoxarifadoToolStripMenuItem.Text = "Almoxarifado";
+            // 
+            // baixaEmRequisiçõesToolStripMenuItem
+            // 
+            this.baixaEmRequisiçõesToolStripMenuItem.Name = "baixaEmRequisiçõesToolStripMenuItem";
+            this.baixaEmRequisiçõesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.baixaEmRequisiçõesToolStripMenuItem.Text = "Baixa em Requisições";
+            this.baixaEmRequisiçõesToolStripMenuItem.Click += new System.EventHandler(this.baixaEmRequisiçõesToolStripMenuItem_Click);
             // 
             // arquivosToolStripMenuItem
             // 
@@ -160,6 +206,61 @@
             this.pDFSepararToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.pDFSepararToolStripMenuItem.Text = "PDF Separar";
             this.pDFSepararToolStripMenuItem.Click += new System.EventHandler(this.pDFSepararToolStripMenuItem_Click);
+            // 
+            // faturamentoToolStripMenuItem
+            // 
+            this.faturamentoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.posiçãoDaSemanaToolStripMenuItem,
+            this.criarAcessoBalançaToolStripMenuItem});
+            this.faturamentoToolStripMenuItem.Name = "faturamentoToolStripMenuItem";
+            this.faturamentoToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.faturamentoToolStripMenuItem.Text = "Faturamento";
+            // 
+            // posiçãoDaSemanaToolStripMenuItem
+            // 
+            this.posiçãoDaSemanaToolStripMenuItem.Name = "posiçãoDaSemanaToolStripMenuItem";
+            this.posiçãoDaSemanaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.posiçãoDaSemanaToolStripMenuItem.Text = "Posição da Semana";
+            this.posiçãoDaSemanaToolStripMenuItem.Click += new System.EventHandler(this.posiçãoDaSemanaToolStripMenuItem_Click);
+            // 
+            // fiscalToolStripMenuItem
+            // 
+            this.fiscalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importarXMLToolStripMenuItem,
+            this.baixarXMLToolStripMenuItem,
+            this.consultarNotasEmitidasToolStripMenuItem,
+            this.relaçãoDeNotasFiscaisToolStripMenuItem});
+            this.fiscalToolStripMenuItem.Name = "fiscalToolStripMenuItem";
+            this.fiscalToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.fiscalToolStripMenuItem.Text = "Notas Fiscais";
+            // 
+            // importarXMLToolStripMenuItem
+            // 
+            this.importarXMLToolStripMenuItem.Name = "importarXMLToolStripMenuItem";
+            this.importarXMLToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.importarXMLToolStripMenuItem.Text = "Importar XML - SAP";
+            this.importarXMLToolStripMenuItem.Click += new System.EventHandler(this.importarXMLToolStripMenuItem_Click);
+            // 
+            // baixarXMLToolStripMenuItem
+            // 
+            this.baixarXMLToolStripMenuItem.Name = "baixarXMLToolStripMenuItem";
+            this.baixarXMLToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.baixarXMLToolStripMenuItem.Text = "Baixar XML - Site Fazenda";
+            this.baixarXMLToolStripMenuItem.Click += new System.EventHandler(this.baixarXMLToolStripMenuItem_Click);
+            // 
+            // consultarNotasEmitidasToolStripMenuItem
+            // 
+            this.consultarNotasEmitidasToolStripMenuItem.Name = "consultarNotasEmitidasToolStripMenuItem";
+            this.consultarNotasEmitidasToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.consultarNotasEmitidasToolStripMenuItem.Text = "Notas Fiscais Emitidas Contra o CNPJ";
+            this.consultarNotasEmitidasToolStripMenuItem.Click += new System.EventHandler(this.consultarNotasEmitidasToolStripMenuItem_Click);
+            // 
+            // relaçãoDeNotasFiscaisToolStripMenuItem
+            // 
+            this.relaçãoDeNotasFiscaisToolStripMenuItem.Name = "relaçãoDeNotasFiscaisToolStripMenuItem";
+            this.relaçãoDeNotasFiscaisToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.relaçãoDeNotasFiscaisToolStripMenuItem.Text = "Relação de Notas Fiscais Baixadas";
+            this.relaçãoDeNotasFiscaisToolStripMenuItem.Click += new System.EventHandler(this.relaçãoDeNotasFiscaisToolStripMenuItem_Click);
             // 
             // testeToolStripMenuItem
             // 
@@ -323,6 +424,13 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
+            // criarAcessoBalançaToolStripMenuItem
+            // 
+            this.criarAcessoBalançaToolStripMenuItem.Name = "criarAcessoBalançaToolStripMenuItem";
+            this.criarAcessoBalançaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.criarAcessoBalançaToolStripMenuItem.Text = "Criar Acesso Balança";
+            this.criarAcessoBalançaToolStripMenuItem.Click += new System.EventHandler(this.criarAcessoBalançaToolStripMenuItem_Click);
+            // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,10 +477,7 @@
         private System.Windows.Forms.Button btnSair2;
         private System.Windows.Forms.ToolStripMenuItem financeiroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contasCEALToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem novaContaToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem porCódÚnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testeToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label NomeUser;
@@ -389,5 +494,20 @@
         private System.Windows.Forms.ToolStripMenuItem arquivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFParaTXTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pDFSepararToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem faturamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem posiçãoDaSemanaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem almoxarifadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixaEmRequisiçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novaContaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porCódÚnicoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fornecedorDeCanaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fiscalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importarXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarNotasEmitidasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relaçãoDeNotasFiscaisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem baixarXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem criarPedidoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem criarAcessoBalançaToolStripMenuItem;
     }
 }

@@ -75,7 +75,7 @@ namespace SistemaGSG
                 {
                     frm_Main frm_Main = new frm_Main();
                     frm_Main.Show();
-                    this.Visible = false;
+                    Close();
                 }
         }
     }

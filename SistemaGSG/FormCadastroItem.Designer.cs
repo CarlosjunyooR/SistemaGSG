@@ -30,6 +30,8 @@
         {
             this.txtCodProduto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtIVA = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtDataBase = new System.Windows.Forms.TextBox();
@@ -40,8 +42,6 @@
             this.txtDescProduto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.txtIVA = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,6 +73,23 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro";
+            // 
+            // txtIVA
+            // 
+            this.txtIVA.Location = new System.Drawing.Point(355, 170);
+            this.txtIVA.Name = "txtIVA";
+            this.txtIVA.Size = new System.Drawing.Size(100, 20);
+            this.txtIVA.TabIndex = 11;
+            this.txtIVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(270, 173);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "IVA SAP";
             // 
             // txtPass
             // 
@@ -112,6 +129,7 @@
             this.txtHost.TabIndex = 6;
             this.txtHost.Text = "localhost";
             this.txtHost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtHost.Visible = false;
             // 
             // txtCodSap
             // 
@@ -166,23 +184,6 @@
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // txtIVA
-            // 
-            this.txtIVA.Location = new System.Drawing.Point(355, 170);
-            this.txtIVA.Name = "txtIVA";
-            this.txtIVA.Size = new System.Drawing.Size(100, 20);
-            this.txtIVA.TabIndex = 11;
-            this.txtIVA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(270, 173);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "IVA SAP";
-            // 
             // FormCadastroItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +192,7 @@
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormCadastroItem";
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "FormCadastroItem";
             this.Load += new System.EventHandler(this.FormCadastroItem_Load);
             this.groupBox1.ResumeLayout(false);

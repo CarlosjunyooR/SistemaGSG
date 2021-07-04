@@ -17,18 +17,16 @@ namespace SistemaGSG
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Ceal fmr = new Ceal();
-            fmr.ShowDialog();
+            FormAcesso Sefaz = new FormAcesso();
+            Sefaz.ShowDialog();
 
             //Splash fmr = new Splash();
             //fmr.ShowDialog();
-
             //frmLogin fml = new frmLogin();
             //fml.ShowDialog();
-
             //if (fml.FMP == true)
-            //{
-            //    Application.Run(new frm_Main());
+            //{ 
+            //  Application.Run(new frm_Main());
             //}
         }
     }

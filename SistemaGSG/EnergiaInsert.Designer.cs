@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txthost = new System.Windows.Forms.TextBox();
             this.Info_pedido = new System.Windows.Forms.GroupBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -48,10 +49,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.CountTXT = new System.Windows.Forms.TextBox();
             this.txtUltNFE = new System.Windows.Forms.TextBox();
+            this.vl_boleto = new SistemaGSG.textValor();
             this.dataemissao = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.vl_fecoep = new SistemaGSG.textValor();
             this.label14 = new System.Windows.Forms.Label();
             this.datavencimento = new System.Windows.Forms.DateTimePicker();
             this.cod_unico = new System.Windows.Forms.ComboBox();
@@ -62,16 +65,14 @@
             this.safra_curso = new MetroFramework.Controls.MetroRadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.conec_development = new System.Windows.Forms.RadioButton();
-            this.conec_local = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.mesMulta = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.vl_multa = new SistemaGSG.textMulta();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rdDupl = new MetroFramework.Controls.MetroRadioButton();
@@ -82,30 +83,25 @@
             this.label11 = new System.Windows.Forms.Label();
             this.preencherCBIcms = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.vl_base = new SistemaGSG.textBase();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.Diferença = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.textBase1 = new SistemaGSG.textBase();
+            this.txtValordupl = new SistemaGSG.textBase();
             this.txtMesdupl = new System.Windows.Forms.TextBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txthost = new System.Windows.Forms.TextBox();
-            this.textBase1 = new SistemaGSG.textBase();
-            this.txtValordupl = new SistemaGSG.textBase();
-            this.vl_base = new SistemaGSG.textBase();
-            this.vl_multa = new SistemaGSG.textMulta();
-            this.vl_boleto = new SistemaGSG.textValor();
-            this.vl_fecoep = new SistemaGSG.textValor();
-            this.textValor1 = new SistemaGSG.textValor();
             this.txTexte = new System.Windows.Forms.Button();
+            this.textValor1 = new SistemaGSG.textValor();
             this.groupBox1.SuspendLayout();
             this.Info_pedido.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -158,10 +154,18 @@
             this.groupBox1.Controls.Add(this.groupBox8);
             this.groupBox1.Location = new System.Drawing.Point(84, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 420);
+            this.groupBox1.Size = new System.Drawing.Size(687, 476);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "&Entrada de Contas";
+            // 
+            // txthost
+            // 
+            this.txthost.Location = new System.Drawing.Point(466, 315);
+            this.txthost.Name = "txthost";
+            this.txthost.Size = new System.Drawing.Size(100, 20);
+            this.txthost.TabIndex = 37;
+            this.txthost.Visible = false;
             // 
             // Info_pedido
             // 
@@ -172,7 +176,7 @@
             this.Info_pedido.Controls.Add(this.txtMiro);
             this.Info_pedido.Controls.Add(this.txtMigo);
             this.Info_pedido.Controls.Add(this.txtPedido);
-            this.Info_pedido.Location = new System.Drawing.Point(383, 150);
+            this.Info_pedido.Location = new System.Drawing.Point(383, 206);
             this.Info_pedido.Name = "Info_pedido";
             this.Info_pedido.Size = new System.Drawing.Size(298, 112);
             this.Info_pedido.TabIndex = 34;
@@ -271,6 +275,7 @@
             this.mes_nf.Name = "mes_nf";
             this.mes_nf.Size = new System.Drawing.Size(100, 20);
             this.mes_nf.TabIndex = 4;
+            this.mes_nf.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mes_nf_KeyUp);
             // 
             // nfe
             // 
@@ -279,6 +284,7 @@
             this.nfe.Name = "nfe";
             this.nfe.Size = new System.Drawing.Size(100, 20);
             this.nfe.TabIndex = 3;
+            this.nfe.KeyUp += new System.Windows.Forms.KeyEventHandler(this.nfe_KeyUp);
             // 
             // metroLabel4
             // 
@@ -327,6 +333,16 @@
             this.txtUltNFE.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtUltNFE.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtUltNFE_MouseDoubleClick);
             // 
+            // vl_boleto
+            // 
+            this.vl_boleto.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.vl_boleto.Location = new System.Drawing.Point(161, 243);
+            this.vl_boleto.Name = "vl_boleto";
+            this.vl_boleto.Size = new System.Drawing.Size(100, 20);
+            this.vl_boleto.TabIndex = 8;
+            this.vl_boleto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.vl_boleto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.vl_boleto_KeyUp);
+            // 
             // dataemissao
             // 
             this.dataemissao.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -336,6 +352,7 @@
             this.dataemissao.Name = "dataemissao";
             this.dataemissao.Size = new System.Drawing.Size(101, 20);
             this.dataemissao.TabIndex = 5;
+            this.dataemissao.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataemissao_KeyUp);
             // 
             // label4
             // 
@@ -367,6 +384,16 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Nº Nf-e";
             // 
+            // vl_fecoep
+            // 
+            this.vl_fecoep.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.vl_fecoep.Location = new System.Drawing.Point(161, 217);
+            this.vl_fecoep.Name = "vl_fecoep";
+            this.vl_fecoep.Size = new System.Drawing.Size(100, 20);
+            this.vl_fecoep.TabIndex = 7;
+            this.vl_fecoep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.vl_fecoep.KeyUp += new System.Windows.Forms.KeyEventHandler(this.vl_fecoep_KeyUp);
+            // 
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -386,6 +413,7 @@
             this.datavencimento.Name = "datavencimento";
             this.datavencimento.Size = new System.Drawing.Size(100, 20);
             this.datavencimento.TabIndex = 6;
+            this.datavencimento.KeyUp += new System.Windows.Forms.KeyEventHandler(this.datavencimento_KeyUp);
             // 
             // cod_unico
             // 
@@ -721,6 +749,8 @@
             this.cod_unico.Name = "cod_unico";
             this.cod_unico.Size = new System.Drawing.Size(100, 21);
             this.cod_unico.TabIndex = 1;
+            this.cod_unico.SelectedIndexChanged += new System.EventHandler(this.cod_unico_SelectedIndexChanged);
+            this.cod_unico.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cod_unico_KeyUp);
             // 
             // label5
             // 
@@ -795,6 +825,7 @@
             this.txtFaz.Name = "txtFaz";
             this.txtFaz.Size = new System.Drawing.Size(100, 20);
             this.txtFaz.TabIndex = 2;
+            this.txtFaz.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFaz_KeyUp);
             // 
             // groupBox8
             // 
@@ -852,27 +883,27 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // button1
+            // btnGravar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(615, 662);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "&Gravar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnGravar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGravar.Location = new System.Drawing.Point(615, 662);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(75, 23);
+            this.btnGravar.TabIndex = 24;
+            this.btnGravar.Text = "&Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btnSair
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(696, 662);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "&Sair";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.Location = new System.Drawing.Point(696, 662);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(75, 23);
+            this.btnSair.TabIndex = 26;
+            this.btnSair.Text = "&Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -884,43 +915,6 @@
             this.button3.Text = "&Voltar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.conec_development);
-            this.groupBox3.Controls.Add(this.conec_local);
-            this.groupBox3.Location = new System.Drawing.Point(84, 574);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(874, 61);
-            this.groupBox3.TabIndex = 28;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "&Conexão";
-            // 
-            // conec_development
-            // 
-            this.conec_development.AutoSize = true;
-            this.conec_development.Checked = true;
-            this.conec_development.Location = new System.Drawing.Point(44, 38);
-            this.conec_development.Name = "conec_development";
-            this.conec_development.Size = new System.Drawing.Size(49, 17);
-            this.conec_development.TabIndex = 39;
-            this.conec_development.TabStop = true;
-            this.conec_development.Text = "&Casa";
-            this.conec_development.UseVisualStyleBackColor = true;
-            this.conec_development.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
-            // 
-            // conec_local
-            // 
-            this.conec_local.AutoSize = true;
-            this.conec_local.Location = new System.Drawing.Point(44, 15);
-            this.conec_local.Name = "conec_local";
-            this.conec_local.Size = new System.Drawing.Size(50, 17);
-            this.conec_local.TabIndex = 38;
-            this.conec_local.Text = "&Usga";
-            this.conec_local.UseVisualStyleBackColor = true;
-            this.conec_local.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // label6
             // 
@@ -954,12 +948,20 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.mesMulta);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(84, 489);
+            this.groupBox2.Location = new System.Drawing.Point(84, 545);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(249, 87);
+            this.groupBox2.Size = new System.Drawing.Size(249, 94);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "&Atraso no Pagamento";
+            // 
+            // vl_multa
+            // 
+            this.vl_multa.Location = new System.Drawing.Point(138, 19);
+            this.vl_multa.Name = "vl_multa";
+            this.vl_multa.Size = new System.Drawing.Size(100, 20);
+            this.vl_multa.TabIndex = 17;
+            this.vl_multa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox4
             // 
@@ -1038,9 +1040,9 @@
             this.groupBox6.Controls.Add(this.preencherCBIcms);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.vl_base);
-            this.groupBox6.Location = new System.Drawing.Point(779, 489);
+            this.groupBox6.Location = new System.Drawing.Point(788, 545);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(179, 87);
+            this.groupBox6.Size = new System.Drawing.Size(179, 94);
             this.groupBox6.TabIndex = 31;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "&Base de Calculo";
@@ -1074,6 +1076,15 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Valor da Base";
             // 
+            // vl_base
+            // 
+            this.vl_base.Location = new System.Drawing.Point(90, 59);
+            this.vl_base.Name = "vl_base";
+            this.vl_base.Size = new System.Drawing.Size(74, 20);
+            this.vl_base.TabIndex = 23;
+            this.vl_base.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.vl_base.KeyUp += new System.Windows.Forms.KeyEventHandler(this.vl_base_KeyUp);
+            // 
             // groupBox7
             // 
             this.groupBox7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -1083,7 +1094,7 @@
             this.groupBox7.Controls.Add(this.textBase1);
             this.groupBox7.Controls.Add(this.txtValordupl);
             this.groupBox7.Controls.Add(this.txtMesdupl);
-            this.groupBox7.Location = new System.Drawing.Point(495, 482);
+            this.groupBox7.Location = new System.Drawing.Point(499, 545);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(120, 94);
             this.groupBox7.TabIndex = 30;
@@ -1116,6 +1127,22 @@
             this.label12.Size = new System.Drawing.Size(27, 13);
             this.label12.TabIndex = 2;
             this.label12.Text = "Mês";
+            // 
+            // textBase1
+            // 
+            this.textBase1.Location = new System.Drawing.Point(45, 68);
+            this.textBase1.Name = "textBase1";
+            this.textBase1.Size = new System.Drawing.Size(69, 20);
+            this.textBase1.TabIndex = 21;
+            this.textBase1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtValordupl
+            // 
+            this.txtValordupl.Location = new System.Drawing.Point(45, 43);
+            this.txtValordupl.Name = "txtValordupl";
+            this.txtValordupl.Size = new System.Drawing.Size(69, 20);
+            this.txtValordupl.TabIndex = 20;
+            this.txtValordupl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtMesdupl
             // 
@@ -1179,63 +1206,15 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // txthost
+            // txTexte
             // 
-            this.txthost.Location = new System.Drawing.Point(466, 315);
-            this.txthost.Name = "txthost";
-            this.txthost.Size = new System.Drawing.Size(100, 20);
-            this.txthost.TabIndex = 37;
-            this.txthost.Visible = false;
-            // 
-            // textBase1
-            // 
-            this.textBase1.Location = new System.Drawing.Point(45, 68);
-            this.textBase1.Name = "textBase1";
-            this.textBase1.Size = new System.Drawing.Size(69, 20);
-            this.textBase1.TabIndex = 21;
-            this.textBase1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtValordupl
-            // 
-            this.txtValordupl.Location = new System.Drawing.Point(45, 43);
-            this.txtValordupl.Name = "txtValordupl";
-            this.txtValordupl.Size = new System.Drawing.Size(69, 20);
-            this.txtValordupl.TabIndex = 20;
-            this.txtValordupl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // vl_base
-            // 
-            this.vl_base.Location = new System.Drawing.Point(90, 59);
-            this.vl_base.Name = "vl_base";
-            this.vl_base.Size = new System.Drawing.Size(74, 20);
-            this.vl_base.TabIndex = 23;
-            this.vl_base.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // vl_multa
-            // 
-            this.vl_multa.Location = new System.Drawing.Point(138, 19);
-            this.vl_multa.Name = "vl_multa";
-            this.vl_multa.Size = new System.Drawing.Size(100, 20);
-            this.vl_multa.TabIndex = 17;
-            this.vl_multa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // vl_boleto
-            // 
-            this.vl_boleto.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vl_boleto.Location = new System.Drawing.Point(161, 243);
-            this.vl_boleto.Name = "vl_boleto";
-            this.vl_boleto.Size = new System.Drawing.Size(100, 20);
-            this.vl_boleto.TabIndex = 8;
-            this.vl_boleto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // vl_fecoep
-            // 
-            this.vl_fecoep.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.vl_fecoep.Location = new System.Drawing.Point(161, 217);
-            this.vl_fecoep.Name = "vl_fecoep";
-            this.vl_fecoep.Size = new System.Drawing.Size(100, 20);
-            this.vl_fecoep.TabIndex = 7;
-            this.vl_fecoep.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txTexte.Location = new System.Drawing.Point(454, 662);
+            this.txTexte.Name = "txTexte";
+            this.txTexte.Size = new System.Drawing.Size(75, 23);
+            this.txTexte.TabIndex = 38;
+            this.txTexte.Text = "&Pedido";
+            this.txTexte.UseVisualStyleBackColor = true;
+            this.txTexte.Click += new System.EventHandler(this.txTexte_Click);
             // 
             // textValor1
             // 
@@ -1246,16 +1225,6 @@
             this.textValor1.TabIndex = 7;
             this.textValor1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textValor1.TextChanged += new System.EventHandler(this.textValor1_TextChanged);
-            // 
-            // txTexte
-            // 
-            this.txTexte.Location = new System.Drawing.Point(454, 662);
-            this.txTexte.Name = "txTexte";
-            this.txTexte.Size = new System.Drawing.Size(75, 23);
-            this.txTexte.TabIndex = 38;
-            this.txTexte.Text = "&Teste";
-            this.txTexte.UseVisualStyleBackColor = true;
-            this.txTexte.Click += new System.EventHandler(this.txTexte_Click);
             // 
             // Ceal
             // 
@@ -1269,10 +1238,9 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
@@ -1290,8 +1258,6 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1326,8 +1292,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.ComboBox cod_unico;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtFaz;
@@ -1335,7 +1301,6 @@
         private textValor textValor1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.GroupBox groupBox3;
         private textMulta vl_multa;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox mesMulta;
@@ -1352,8 +1317,6 @@
         private System.Windows.Forms.ComboBox preencherCBIcms;
         private System.Windows.Forms.Label label10;
         private textBase vl_base;
-        private System.Windows.Forms.RadioButton conec_development;
-        private System.Windows.Forms.RadioButton conec_local;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;

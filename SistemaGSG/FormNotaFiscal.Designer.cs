@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNotaFiscal));
             this.Cenexao = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtProd2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtProdutos = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtIva = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtSAPGUI = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.lblBanco = new System.Windows.Forms.Label();
@@ -327,6 +335,14 @@
             // 
             // Cenexao
             // 
+            this.Cenexao.Controls.Add(this.label15);
+            this.Cenexao.Controls.Add(this.txtProd2);
+            this.Cenexao.Controls.Add(this.label14);
+            this.Cenexao.Controls.Add(this.txtProdutos);
+            this.Cenexao.Controls.Add(this.label13);
+            this.Cenexao.Controls.Add(this.txtIva);
+            this.Cenexao.Controls.Add(this.label12);
+            this.Cenexao.Controls.Add(this.txtSAPGUI);
             this.Cenexao.Controls.Add(this.lblPass);
             this.Cenexao.Controls.Add(this.lblUser);
             this.Cenexao.Controls.Add(this.lblBanco);
@@ -343,6 +359,86 @@
             this.Cenexao.Text = "Conexão";
             this.Cenexao.UseVisualStyleBackColor = true;
             this.Cenexao.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(15, 218);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(64, 13);
+            this.label15.TabIndex = 15;
+            this.label15.Text = "SapGuiProd";
+            this.label15.Visible = false;
+            // 
+            // txtProd2
+            // 
+            this.txtProd2.Location = new System.Drawing.Point(79, 215);
+            this.txtProd2.Name = "txtProd2";
+            this.txtProd2.Size = new System.Drawing.Size(100, 20);
+            this.txtProd2.TabIndex = 14;
+            this.txtProd2.Text = "0016";
+            this.txtProd2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProd2.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(15, 192);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(64, 13);
+            this.label14.TabIndex = 13;
+            this.label14.Text = "SapGuiProd";
+            this.label14.Visible = false;
+            // 
+            // txtProdutos
+            // 
+            this.txtProdutos.Location = new System.Drawing.Point(79, 189);
+            this.txtProdutos.Name = "txtProdutos";
+            this.txtProdutos.Size = new System.Drawing.Size(100, 20);
+            this.txtProdutos.TabIndex = 12;
+            this.txtProdutos.Text = "0013";
+            this.txtProdutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtProdutos.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(15, 166);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "SapGuiIVA";
+            this.label13.Visible = false;
+            // 
+            // txtIva
+            // 
+            this.txtIva.Location = new System.Drawing.Point(79, 163);
+            this.txtIva.Name = "txtIva";
+            this.txtIva.Size = new System.Drawing.Size(100, 20);
+            this.txtIva.TabIndex = 10;
+            this.txtIva.Text = "0015";
+            this.txtIva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtIva.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 140);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "SapGuiME";
+            this.label12.Visible = false;
+            // 
+            // txtSAPGUI
+            // 
+            this.txtSAPGUI.Location = new System.Drawing.Point(79, 137);
+            this.txtSAPGUI.Name = "txtSAPGUI";
+            this.txtSAPGUI.Size = new System.Drawing.Size(100, 20);
+            this.txtSAPGUI.TabIndex = 8;
+            this.txtSAPGUI.Text = "0019";
+            this.txtSAPGUI.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSAPGUI.Visible = false;
             // 
             // lblPass
             // 
@@ -373,7 +469,7 @@
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(60, 111);
+            this.txtPass.Location = new System.Drawing.Point(79, 111);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(100, 20);
             this.txtPass.TabIndex = 4;
@@ -382,7 +478,7 @@
             // 
             // txtDataBase
             // 
-            this.txtDataBase.Location = new System.Drawing.Point(60, 59);
+            this.txtDataBase.Location = new System.Drawing.Point(79, 59);
             this.txtDataBase.Name = "txtDataBase";
             this.txtDataBase.Size = new System.Drawing.Size(100, 20);
             this.txtDataBase.TabIndex = 3;
@@ -391,7 +487,7 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(60, 85);
+            this.txtUser.Location = new System.Drawing.Point(79, 85);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(100, 20);
             this.txtUser.TabIndex = 2;
@@ -401,7 +497,7 @@
             // 
             // txtHost
             // 
-            this.txtHost.Location = new System.Drawing.Point(60, 33);
+            this.txtHost.Location = new System.Drawing.Point(79, 33);
             this.txtHost.Name = "txtHost";
             this.txtHost.Size = new System.Drawing.Size(100, 20);
             this.txtHost.TabIndex = 0;
@@ -505,6 +601,7 @@
             this.ProgBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProgBar.Location = new System.Drawing.Point(15, 86);
+            this.ProgBar.Maximum = 1000000;
             this.ProgBar.Name = "ProgBar";
             this.ProgBar.Size = new System.Drawing.Size(944, 29);
             this.ProgBar.TabIndex = 9;
@@ -3317,8 +3414,10 @@
             this.MaximumSize = new System.Drawing.Size(1000, 700);
             this.MinimumSize = new System.Drawing.Size(1000, 700);
             this.Name = "FormNotaFiscal";
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Entrada de Notas Fiscais SAP";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
+            this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.Load += new System.EventHandler(this.FormNotaFiscal_Load);
             this.Cenexao.ResumeLayout(false);
             this.Cenexao.PerformLayout();
@@ -3625,5 +3724,13 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnAuto;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtSAPGUI;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtIva;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtProdutos;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtProd2;
     }
 }

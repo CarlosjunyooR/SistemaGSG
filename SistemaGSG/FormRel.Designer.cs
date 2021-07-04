@@ -30,43 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRel));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_unico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materiall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.centro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.base_calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vl_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vl_dupl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_miro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vl_icms = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.material_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desc_item_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.centro_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cod_imp_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iva_dif = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nfe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.err = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.err_col = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_miro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_venc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mes_ref = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.migo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MIRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fecoep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mes_dupl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.now_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tBBOLETOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -126,9 +90,6 @@
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -151,15 +112,49 @@
             this.button14 = new System.Windows.Forms.Button();
             this.txtTotal2 = new System.Windows.Forms.TextBox();
             this.dataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.btnExport = new System.Windows.Forms.Button();
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.lbStatus = new System.Windows.Forms.Label();
-            this.txtHost = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column37 = new System.Windows.Forms.DataGridViewLinkColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.tBBOLETOBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -170,336 +165,12 @@
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // tBBOLETOBindingSource
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idd,
-            this.cod_unico,
-            this.materiall,
-            this.desc_item,
-            this.qtd,
-            this.centro,
-            this.custo,
-            this.cod_imp,
-            this.base_calculo,
-            this.vl_dif,
-            this.vl_dupl,
-            this.valor_miro,
-            this.vl_icms,
-            this.txt_pedido,
-            this.material_dif,
-            this.desc_item_dif,
-            this.qtd_dif,
-            this.centro_dif,
-            this.custo_dif,
-            this.cod_imp_dif,
-            this.iva_dif,
-            this.emissao,
-            this.nfe,
-            this.err,
-            this.err_col,
-            this.txt_miro,
-            this.data_venc,
-            this.Mes_ref,
-            this.pedido,
-            this.migo,
-            this.MIRO,
-            this.fecoep,
-            this.status,
-            this.empresa,
-            this.mes_dupl,
-            this.now_date});
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dataGridView1.Location = new System.Drawing.Point(84, 205);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1120, 395);
-            this.dataGridView1.TabIndex = 40;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
-            this.dataGridView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDoubleClick);
-            // 
-            // idd
-            // 
-            this.idd.DataPropertyName = "id";
-            this.idd.HeaderText = "ID";
-            this.idd.Name = "idd";
-            this.idd.ReadOnly = true;
-            // 
-            // cod_unico
-            // 
-            this.cod_unico.DataPropertyName = "cod_unico";
-            this.cod_unico.HeaderText = "CÓDIGO ÚNICO";
-            this.cod_unico.Name = "cod_unico";
-            this.cod_unico.ReadOnly = true;
-            // 
-            // materiall
-            // 
-            this.materiall.DataPropertyName = "material";
-            this.materiall.HeaderText = "MATERIAL";
-            this.materiall.Name = "materiall";
-            this.materiall.ReadOnly = true;
-            this.materiall.Visible = false;
-            // 
-            // desc_item
-            // 
-            this.desc_item.DataPropertyName = "desc_item";
-            this.desc_item.HeaderText = "FAZENDA";
-            this.desc_item.Name = "desc_item";
-            this.desc_item.ReadOnly = true;
-            this.desc_item.Width = 250;
-            // 
-            // qtd
-            // 
-            this.qtd.DataPropertyName = "qtd";
-            this.qtd.HeaderText = "QTD";
-            this.qtd.Name = "qtd";
-            this.qtd.ReadOnly = true;
-            this.qtd.Visible = false;
-            // 
-            // centro
-            // 
-            this.centro.DataPropertyName = "centro";
-            this.centro.HeaderText = "CENTRO";
-            this.centro.Name = "centro";
-            this.centro.ReadOnly = true;
-            this.centro.Visible = false;
-            // 
-            // custo
-            // 
-            this.custo.DataPropertyName = "custo";
-            this.custo.HeaderText = "CUSTO";
-            this.custo.Name = "custo";
-            this.custo.ReadOnly = true;
-            this.custo.Visible = false;
-            // 
-            // cod_imp
-            // 
-            this.cod_imp.DataPropertyName = "cod_imp";
-            this.cod_imp.HeaderText = "IMPOSTO";
-            this.cod_imp.Name = "cod_imp";
-            this.cod_imp.ReadOnly = true;
-            this.cod_imp.Visible = false;
-            // 
-            // base_calculo
-            // 
-            this.base_calculo.DataPropertyName = "base_calculo";
-            this.base_calculo.HeaderText = "BASE DE CALCULO";
-            this.base_calculo.Name = "base_calculo";
-            this.base_calculo.ReadOnly = true;
-            // 
-            // vl_dif
-            // 
-            this.vl_dif.DataPropertyName = "vl_dif";
-            this.vl_dif.HeaderText = "VALOR DIF";
-            this.vl_dif.Name = "vl_dif";
-            this.vl_dif.ReadOnly = true;
-            // 
-            // vl_dupl
-            // 
-            this.vl_dupl.DataPropertyName = "vl_dupl";
-            this.vl_dupl.HeaderText = "DEVOLUÇÃO";
-            this.vl_dupl.Name = "vl_dupl";
-            this.vl_dupl.ReadOnly = true;
-            // 
-            // valor_miro
-            // 
-            this.valor_miro.DataPropertyName = "valor_miro";
-            this.valor_miro.HeaderText = "VALOR MIRO";
-            this.valor_miro.Name = "valor_miro";
-            this.valor_miro.ReadOnly = true;
-            // 
-            // vl_icms
-            // 
-            this.vl_icms.DataPropertyName = "vl_icms";
-            this.vl_icms.HeaderText = "ICMS";
-            this.vl_icms.Name = "vl_icms";
-            this.vl_icms.ReadOnly = true;
-            this.vl_icms.Visible = false;
-            // 
-            // txt_pedido
-            // 
-            this.txt_pedido.DataPropertyName = "txt_pedido";
-            this.txt_pedido.FillWeight = 1000F;
-            this.txt_pedido.HeaderText = "TEXTO DO PEDIDO";
-            this.txt_pedido.Name = "txt_pedido";
-            this.txt_pedido.ReadOnly = true;
-            this.txt_pedido.Width = 300;
-            // 
-            // material_dif
-            // 
-            this.material_dif.DataPropertyName = "material_dif";
-            this.material_dif.HeaderText = "MATERIAL_DIF";
-            this.material_dif.Name = "material_dif";
-            this.material_dif.ReadOnly = true;
-            this.material_dif.Visible = false;
-            // 
-            // desc_item_dif
-            // 
-            this.desc_item_dif.DataPropertyName = "desc_item_dif";
-            this.desc_item_dif.HeaderText = "DESC ITEM DIF";
-            this.desc_item_dif.Name = "desc_item_dif";
-            this.desc_item_dif.ReadOnly = true;
-            this.desc_item_dif.Visible = false;
-            // 
-            // qtd_dif
-            // 
-            this.qtd_dif.DataPropertyName = "qtd_dif";
-            this.qtd_dif.HeaderText = "QTD DIF";
-            this.qtd_dif.Name = "qtd_dif";
-            this.qtd_dif.ReadOnly = true;
-            this.qtd_dif.Visible = false;
-            // 
-            // centro_dif
-            // 
-            this.centro_dif.DataPropertyName = "centro_dif";
-            this.centro_dif.HeaderText = "CENTRO DIF";
-            this.centro_dif.Name = "centro_dif";
-            this.centro_dif.ReadOnly = true;
-            this.centro_dif.Visible = false;
-            // 
-            // custo_dif
-            // 
-            this.custo_dif.DataPropertyName = "custo_dif";
-            this.custo_dif.HeaderText = "CUSTO DIF";
-            this.custo_dif.Name = "custo_dif";
-            this.custo_dif.ReadOnly = true;
-            this.custo_dif.Visible = false;
-            // 
-            // cod_imp_dif
-            // 
-            this.cod_imp_dif.DataPropertyName = "cod_imp_dif";
-            this.cod_imp_dif.HeaderText = "COD IMP DIF";
-            this.cod_imp_dif.Name = "cod_imp_dif";
-            this.cod_imp_dif.ReadOnly = true;
-            this.cod_imp_dif.Visible = false;
-            // 
-            // iva_dif
-            // 
-            this.iva_dif.DataPropertyName = "iva_dif";
-            this.iva_dif.HeaderText = "IVA DIF";
-            this.iva_dif.Name = "iva_dif";
-            this.iva_dif.ReadOnly = true;
-            this.iva_dif.Visible = false;
-            // 
-            // emissao
-            // 
-            this.emissao.DataPropertyName = "emissao";
-            this.emissao.HeaderText = "EMISSAO";
-            this.emissao.Name = "emissao";
-            this.emissao.ReadOnly = true;
-            // 
-            // nfe
-            // 
-            this.nfe.DataPropertyName = "nfe";
-            this.nfe.HeaderText = "NÚMERO DA NOTA FISCAL";
-            this.nfe.Name = "nfe";
-            this.nfe.ReadOnly = true;
-            // 
-            // err
-            // 
-            this.err.DataPropertyName = "err";
-            this.err.HeaderText = "ERR";
-            this.err.Name = "err";
-            this.err.ReadOnly = true;
-            this.err.Visible = false;
-            // 
-            // err_col
-            // 
-            this.err_col.DataPropertyName = "err_col";
-            this.err_col.HeaderText = "ERR_COL";
-            this.err_col.Name = "err_col";
-            this.err_col.ReadOnly = true;
-            this.err_col.Visible = false;
-            // 
-            // txt_miro
-            // 
-            this.txt_miro.DataPropertyName = "txt_miro";
-            this.txt_miro.HeaderText = "TEXTO DA MIRO";
-            this.txt_miro.Name = "txt_miro";
-            this.txt_miro.ReadOnly = true;
-            this.txt_miro.Visible = false;
-            // 
-            // data_venc
-            // 
-            this.data_venc.DataPropertyName = "data_venc";
-            this.data_venc.HeaderText = "DATA DE VENCIMENTO";
-            this.data_venc.Name = "data_venc";
-            this.data_venc.ReadOnly = true;
-            // 
-            // Mes_ref
-            // 
-            this.Mes_ref.DataPropertyName = "Mes_ref";
-            this.Mes_ref.HeaderText = "MÊS";
-            this.Mes_ref.Name = "Mes_ref";
-            this.Mes_ref.ReadOnly = true;
-            // 
-            // pedido
-            // 
-            this.pedido.DataPropertyName = "pedido";
-            this.pedido.HeaderText = "PEDIDO";
-            this.pedido.Name = "pedido";
-            this.pedido.ReadOnly = true;
-            // 
-            // migo
-            // 
-            this.migo.DataPropertyName = "migo";
-            this.migo.HeaderText = "MIGO";
-            this.migo.Name = "migo";
-            this.migo.ReadOnly = true;
-            // 
-            // MIRO
-            // 
-            this.MIRO.DataPropertyName = "miro";
-            this.MIRO.HeaderText = "MIRO";
-            this.MIRO.Name = "MIRO";
-            this.MIRO.ReadOnly = true;
-            // 
-            // fecoep
-            // 
-            this.fecoep.DataPropertyName = "fecoep";
-            this.fecoep.HeaderText = "FECOEP";
-            this.fecoep.Name = "fecoep";
-            this.fecoep.ReadOnly = true;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "STATUS";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            // 
-            // empresa
-            // 
-            this.empresa.DataPropertyName = "empresa";
-            this.empresa.HeaderText = "EMPRESA";
-            this.empresa.Name = "empresa";
-            this.empresa.ReadOnly = true;
-            this.empresa.Visible = false;
-            // 
-            // mes_dupl
-            // 
-            this.mes_dupl.DataPropertyName = "mes_dupl";
-            this.mes_dupl.HeaderText = "MES DUPLICADO";
-            this.mes_dupl.Name = "mes_dupl";
-            this.mes_dupl.ReadOnly = true;
-            // 
-            // now_date
-            // 
-            this.now_date.DataPropertyName = "now_date";
-            this.now_date.HeaderText = "DATA DA INSERÇÃO";
-            this.now_date.Name = "now_date";
-            this.now_date.ReadOnly = true;
+            this.tBBOLETOBindingSource.DataMember = "TB_BOLETO";
             // 
             // button1
             // 
@@ -1441,41 +1112,6 @@
             this.label13.TabIndex = 43;
             this.label13.Text = "Data Futuro";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Location = new System.Drawing.Point(290, 717);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(381, 42);
-            this.groupBox3.TabIndex = 42;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "&Conexão";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(61, 17);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(49, 17);
-            this.radioButton2.TabIndex = 4;
-            this.radioButton2.Text = "&Casa";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 17);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 17);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.Text = "&Usga";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // txtTotal
             // 
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1703,16 +1339,6 @@
             this.txtTotal2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotal2.TextChanged += new System.EventHandler(this.txtTotal2_TextChanged);
             // 
-            // progressBar
-            // 
-            this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(84, 176);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1120, 10);
-            this.progressBar.TabIndex = 59;
-            this.progressBar.Click += new System.EventHandler(this.progressBar1_Click);
-            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1732,22 +1358,344 @@
             this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
             this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
             // 
-            // lbStatus
+            // dataGridView2
             // 
-            this.lbStatus.AutoSize = true;
-            this.lbStatus.Location = new System.Drawing.Point(602, 189);
-            this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(92, 13);
-            this.lbStatus.TabIndex = 61;
-            this.lbStatus.Text = "Processando...0%";
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column26,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column17,
+            this.Column18,
+            this.Column19,
+            this.Column20,
+            this.Column21,
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25,
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30,
+            this.Column31,
+            this.Column32,
+            this.Column33,
+            this.Column34,
+            this.Column35,
+            this.Column36,
+            this.Column37});
+            this.dataGridView2.Location = new System.Drawing.Point(84, 205);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(1120, 395);
+            this.dataGridView2.TabIndex = 61;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick_1);
+            this.dataGridView2.Click += new System.EventHandler(this.dataGridView2_Click);
+            this.dataGridView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseDoubleClick_1);
             // 
-            // txtHost
+            // Column26
             // 
-            this.txtHost.Location = new System.Drawing.Point(677, 731);
-            this.txtHost.Name = "txtHost";
-            this.txtHost.Size = new System.Drawing.Size(100, 20);
-            this.txtHost.TabIndex = 62;
-            this.txtHost.Visible = false;
+            this.Column26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column26.DataPropertyName = "cod_unico";
+            this.Column26.HeaderText = "CÓDIGO ÚNICO";
+            this.Column26.Name = "Column26";
+            this.Column26.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column26.Width = 102;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "material";
+            this.Column2.HeaderText = "Column2";
+            this.Column2.Name = "Column2";
+            this.Column2.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column3.DataPropertyName = "desc_item";
+            this.Column3.HeaderText = "FAZENDA";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 82;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "qtd";
+            this.Column4.HeaderText = "Column4";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "centro";
+            this.Column5.HeaderText = "Column5";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "custo";
+            this.Column6.HeaderText = "Column6";
+            this.Column6.Name = "Column6";
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "cod_imp";
+            this.Column7.HeaderText = "Column7";
+            this.Column7.Name = "Column7";
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column8.DataPropertyName = "base_calculo";
+            this.Column8.HeaderText = "BASE DE CALCULO";
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 119;
+            // 
+            // Column9
+            // 
+            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column9.DataPropertyName = "vl_icms";
+            this.Column9.HeaderText = "ICMS";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 58;
+            // 
+            // Column10
+            // 
+            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column10.DataPropertyName = "txt_pedido";
+            this.Column10.HeaderText = "TEXTO ITEM";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 89;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "material_dif";
+            this.Column11.HeaderText = "Column11";
+            this.Column11.Name = "Column11";
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "desc_item_dif";
+            this.Column12.HeaderText = "Column12";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "qtd_dif";
+            this.Column13.HeaderText = "Column13";
+            this.Column13.Name = "Column13";
+            this.Column13.Visible = false;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "centro_dif";
+            this.Column14.HeaderText = "Column14";
+            this.Column14.Name = "Column14";
+            this.Column14.Visible = false;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "custo_dif";
+            this.Column15.HeaderText = "Column15";
+            this.Column15.Name = "Column15";
+            this.Column15.Visible = false;
+            // 
+            // Column16
+            // 
+            this.Column16.DataPropertyName = "cod_imp_dif";
+            this.Column16.HeaderText = "Column16";
+            this.Column16.Name = "Column16";
+            this.Column16.Visible = false;
+            // 
+            // Column17
+            // 
+            this.Column17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column17.DataPropertyName = "vl_dif";
+            this.Column17.HeaderText = "VALOR DIF";
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 81;
+            // 
+            // Column18
+            // 
+            this.Column18.DataPropertyName = "iva_dif";
+            this.Column18.HeaderText = "Column18";
+            this.Column18.Name = "Column18";
+            this.Column18.Visible = false;
+            // 
+            // Column19
+            // 
+            this.Column19.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column19.DataPropertyName = "emissao";
+            this.Column19.HeaderText = "DATA EMISSÃO";
+            this.Column19.Name = "Column19";
+            this.Column19.Width = 103;
+            // 
+            // Column20
+            // 
+            this.Column20.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column20.DataPropertyName = "nfe";
+            this.Column20.HeaderText = "Nº NF-e";
+            this.Column20.Name = "Column20";
+            this.Column20.Width = 65;
+            // 
+            // Column21
+            // 
+            this.Column21.DataPropertyName = "err";
+            this.Column21.HeaderText = "Column21";
+            this.Column21.Name = "Column21";
+            this.Column21.Visible = false;
+            // 
+            // Column22
+            // 
+            this.Column22.DataPropertyName = "err_col";
+            this.Column22.HeaderText = "Column22";
+            this.Column22.Name = "Column22";
+            this.Column22.Visible = false;
+            // 
+            // Column23
+            // 
+            this.Column23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column23.DataPropertyName = "txt_miro";
+            this.Column23.HeaderText = "TEXTO MIRO";
+            this.Column23.Name = "Column23";
+            this.Column23.Width = 91;
+            // 
+            // Column24
+            // 
+            this.Column24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column24.DataPropertyName = "data_venc";
+            this.Column24.HeaderText = "DATA DE VENCIMENTO";
+            this.Column24.Name = "Column24";
+            this.Column24.Width = 140;
+            // 
+            // Column25
+            // 
+            this.Column25.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column25.DataPropertyName = "Mes_ref";
+            this.Column25.HeaderText = "MÊS REF.";
+            this.Column25.Name = "Column25";
+            this.Column25.Width = 76;
+            // 
+            // Column27
+            // 
+            this.Column27.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column27.DataPropertyName = "pedido";
+            this.Column27.HeaderText = "PEDIDO";
+            this.Column27.Name = "Column27";
+            this.Column27.Width = 73;
+            // 
+            // Column28
+            // 
+            this.Column28.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column28.DataPropertyName = "migo";
+            this.Column28.HeaderText = "MIGO";
+            this.Column28.Name = "Column28";
+            this.Column28.Width = 60;
+            // 
+            // Column29
+            // 
+            this.Column29.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column29.DataPropertyName = "miro";
+            this.Column29.HeaderText = "MIRO";
+            this.Column29.Name = "Column29";
+            this.Column29.Width = 60;
+            // 
+            // Column30
+            // 
+            this.Column30.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column30.DataPropertyName = "fecoep";
+            this.Column30.HeaderText = "FECOEP";
+            this.Column30.Name = "Column30";
+            this.Column30.Width = 74;
+            // 
+            // Column31
+            // 
+            this.Column31.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column31.DataPropertyName = "valor_miro";
+            this.Column31.HeaderText = "VALOR MIRO";
+            this.Column31.Name = "Column31";
+            this.Column31.Width = 91;
+            // 
+            // Column32
+            // 
+            this.Column32.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column32.DataPropertyName = "status";
+            this.Column32.HeaderText = "STATUS";
+            this.Column32.Name = "Column32";
+            this.Column32.Width = 75;
+            // 
+            // Column33
+            // 
+            this.Column33.DataPropertyName = "empresa";
+            this.Column33.HeaderText = "Column33";
+            this.Column33.Name = "Column33";
+            this.Column33.Visible = false;
+            // 
+            // Column34
+            // 
+            this.Column34.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column34.DataPropertyName = "mes_dupl";
+            this.Column34.HeaderText = "MÊS DUPLICADO";
+            this.Column34.Name = "Column34";
+            this.Column34.Width = 110;
+            // 
+            // Column35
+            // 
+            this.Column35.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column35.DataPropertyName = "vl_dupl";
+            this.Column35.HeaderText = "VALOR DUPLICADO";
+            this.Column35.Name = "Column35";
+            this.Column35.Width = 122;
+            // 
+            // Column36
+            // 
+            this.Column36.DataPropertyName = "now_date";
+            this.Column36.HeaderText = "Column36";
+            this.Column36.Name = "Column36";
+            this.Column36.Visible = false;
+            // 
+            // Column37
+            // 
+            this.Column37.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column37.DataPropertyName = "caminho";
+            this.Column37.HeaderText = "ARQUIVO";
+            this.Column37.Name = "Column37";
+            this.Column37.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column37.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column37.Text = "BAIXAR!";
+            this.Column37.Visible = false;
+            this.Column37.Width = 81;
             // 
             // FormRel
             // 
@@ -1755,10 +1703,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
             this.ClientSize = new System.Drawing.Size(1243, 788);
-            this.Controls.Add(this.txtHost);
-            this.Controls.Add(this.lbStatus);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.txtTotal2);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.lbHora);
@@ -1770,7 +1716,6 @@
             this.Controls.Add(this.btnPrintview);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox2);
@@ -1782,23 +1727,21 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRel";
+            this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Relação";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormRel_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBBOLETOBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1811,6 +1754,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataSet2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1822,7 +1766,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -1856,7 +1799,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Button definirFiltro;
         private System.Windows.Forms.Label lbMes;
@@ -1881,8 +1823,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbHora;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
@@ -1901,48 +1841,84 @@
         private System.Windows.Forms.TextBox txtVlBase;
         private System.Windows.Forms.TextBox txtURLBOLETO;
         private System.Windows.Forms.BindingSource dataSet2BindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_unico;
-        private System.Windows.Forms.DataGridViewTextBoxColumn materiall;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desc_item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn centro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_imp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn base_calculo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vl_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vl_dupl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor_miro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vl_icms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txt_pedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn material_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desc_item_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtd_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn centro_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custo_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cod_imp_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iva_dif;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nfe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn err;
-        private System.Windows.Forms.DataGridViewTextBoxColumn err_col;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txt_miro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_venc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mes_ref;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn migo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MIRO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fecoep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mes_dupl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn now_date;
-        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button btnExport;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txt_dif_boleto;
-        private System.Windows.Forms.TextBox txtHost;
+        private System.Windows.Forms.BindingSource tBBOLETOBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descitemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codimpDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn basecalculoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vlicmsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtpedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn materialdifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descitemdifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtddifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn centrodifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custodifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codimpdifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vldifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ivadifDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emissaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nfeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn errDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn errcolDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtmiroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datavencDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mesrefDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codunicoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn migoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn miroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecoepDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valormiroDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn empresaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mesduplDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vlduplDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nowdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column36;
+        private System.Windows.Forms.DataGridViewLinkColumn Column37;
     }
 }

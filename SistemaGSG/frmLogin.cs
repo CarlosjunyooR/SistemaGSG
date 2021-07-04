@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data.OleDb;
-using System.Data.Odbc;
-using MySql.Data.MySqlClient;
-using MySql.Data;
 using MetroFramework;
+using MySql.Data.MySqlClient;
+
 
 namespace SistemaGSG
 {
@@ -24,41 +17,51 @@ namespace SistemaGSG
             InitializeComponent();
             label3.Text = version;
         }
-        [assembly: AssemblyVersion("1.*")]
         string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public bool FMP = false;
+        
         public void logar()
         {
             try
             {
-                string tb_user = "SELECT * FROM tb_gsg WHERE nome = @usuario";
+                string tb_user = "SELECT * FROM tb_user WHERE nome = @usuario";
                 MySqlCommand cmd;
                 MySqlDataReader dr;
-                cmd = new MySqlCommand(tb_user, CONEX);
+                cmd = new MySqlCommand(tb_user, ConexaoDados.GetConnectionEquatorial());
 
                 //Verificar Usuário//
                 cmd.Parameters.Add(new MySqlParameter("@usuario", txtUser.Text));
-                CONEX.Open();
+                
                 dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 while (dr.Read())
                 {
                     dados.usuario = Convert.ToString(dr["nome"]);
                     dados.senha = Convert.ToString(dr["senha"]);
-                    dados.nivel = Convert.ToInt32(dr["status"]);
+                    dados.nivel = Convert.ToInt32(dr["nivel"]);
                 }
-                CONEX.Close();
+                ConexaoDados.GetConnectionEquatorial().Close();
                 if (dados.senha == txtSenha.Text)
                 {
-                    FMP = true;
-                    this.Dispose();
+                    if (dados.nivel == 3)
+                    {
+                        FormRelacao AbrirForm = new FormRelacao();
+                        AbrirForm.Show();
+                    }
+                    if(dados.nivel==1)
+                    {
+                        FMP = true;
+                        this.Dispose();
+                    }
                 }
                 else
                 {
+                    int cont = 3;
+                    int Menos = cont - attempt;
+                    attempt++;
                     label5.Visible = true;
-                    label5.Text = "Erro você ainda tem " + attempt++ + " de 3";
+                    label5.Text = "Erro você ainda tem " + Menos + " chances.";
                     label5.ForeColor = Color.Red;
-                    //MessageBox.Show("Usuário ou Senha, Incorretos!");
                     FMP = false;
                     txtUser.Text = "";
                     txtSenha.Text = "";
@@ -66,7 +69,7 @@ namespace SistemaGSG
                 if(attempt == 4)
                 {
                     label6.Visible = true;
-                    label6.Text = "Você teve " + attempt++ + " de 3 tentativas, Feche o programa e tente novamente.";
+                    label6.Text = "Você teve 3 de 3 tentativas, Feche o programa e tente novamente.";
                     label6.ForeColor = Color.Blue;
 
                     txtUser.Visible = false;
@@ -77,14 +80,25 @@ namespace SistemaGSG
                     lblSenha.Visible = false;
                 }
             }
-            catch (NullReferenceException)
+            catch (MySqlException ErrO)
             {
-                MetroMessageBox.Show(this,"Olá Srº(a), " + txtUser.Text + " selecione uma conexão abaixo, para iniciar a\naplicação!.");
-                gpBoxConexao.Focus();
+                MessageBox.Show("Erro no Banco de Dados! - \n Não Foi Possivel Conectar!");
+                if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    if (MessageBox.Show("Deseja entrar no modo offline?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FMP = true;
+                        this.Dispose();
+                    }
+                }
             }
-            catch (MySqlException)
+            catch (Exception Err)
             {
-                MetroMessageBox.Show(this,"Olá Srº(a), " + txtUser.Text + " esta conexão encontra-se fechada para esta\naplicação! tente outra.");
+                MessageBox.Show(Err.Message);
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -100,25 +114,37 @@ namespace SistemaGSG
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
                 Application.Exit();
-            }
-        }
-        MySqlConnection CONEX;
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-                CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                txtConexao.Text = "usga-servidor-m";
-        }
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-                CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                txtConexao.Text = "localhost";
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            //dateTimePicker1.Value = dateTimePicker1.Value.AddDays(30);
+            try
+            {
+                if (ConexaoDados.GetConnectionEquatorial().State == ConnectionState.Open)
+                {
+                    label1.ForeColor = Color.Lime;
+                    label1.Text = "Conectado...";
+                }
+                else
+                {
+                    label1.ForeColor = Color.Red;
+                    label1.Text = "Não Conectado...";
+                }
+                ConexaoDados.GetConnectionEquatorial().Close();
+            }
+            catch(MySqlException MysqlErr)
+            {
+                MessageBox.Show("Erro no Banco de Dados! -\nNão Foi Possivel Conectar!");
+                if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+                label1.Text = "Não Conectado...";
+            }
+            catch (Exception Err)
+            {
+                MessageBox.Show(Err.Message);
+            }
         }
     }
 }

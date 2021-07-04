@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data.OleDb;
-using MySql.Data.MySqlClient;
-using System.Diagnostics;
 using System.Threading;
+using MySql.Data.MySqlClient;
 using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
 using Application = System.Windows.Forms.Application;
 using Rectangle = System.Drawing.Rectangle;
+using System.Diagnostics;
 
 namespace SistemaGSG
 {
@@ -25,99 +21,51 @@ namespace SistemaGSG
         {
             InitializeComponent();
         }
-
         struct DataParameter
         {
-            public List<DataGrid> ProductList;
             public string Filename { get; private set; }
+            public List<DataGrid> ProductList { get; internal set; }
         }
-        DataParameter _inputParameter;
         public string Filename { get; private set; }
         private void FormRel_Load(object sender, EventArgs e)
         {
-            try
+            
+            if (ConexaoDados.GetConnectionEquatorial().State == ConnectionState.Open)
             {
-                MySqlConnection cn = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
-
                 MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT mes FROM tb_mes";
+                com.Connection = ConexaoDados.GetConnectionEquatorial();
+                com.CommandText = "SELECT Id FROM tb_mes ORDER BY `tb_mes`.`ano` ASC";
                 MySqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
-                preencherCBmes.DisplayMember = "mes";
+                preencherCBmes.DisplayMember = "Id";
                 preencherCBmes.DataSource = dt;
-            }
-            catch
-            {
-                MySqlConnection cn = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
 
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT mes FROM tb_mes";
-                MySqlDataReader dr = com.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                preencherCBmes.DisplayMember = "mes";
-                preencherCBmes.DataSource = dt;
-            }
-
-            try
-            {
-                MySqlConnection cn = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
-
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT ano FROM tb_mes";
-                MySqlDataReader dr = com.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
+                MySqlCommand ComAno = new MySqlCommand();
+                ComAno.Connection = ConexaoDados.GetConnectionEquatorial();
+                ComAno.CommandText = "SELECT ano FROM tb_mes ORDER BY `tb_mes`.`ano` ASC";
+                MySqlDataReader DatAno = ComAno.ExecuteReader();
+                DataTable dataTableAno = new DataTable();
+                dataTableAno.Load(DatAno);
                 preencherCBano.DisplayMember = "ano";
-                preencherCBano.DataSource = dt;
-            }
-            catch
-            {
-                MySqlConnection cn = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
+                preencherCBano.DataSource = dataTableAno;
 
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT ano FROM tb_mes";
-                MySqlDataReader dr = com.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                preencherCBano.DisplayMember = "ano";
-                preencherCBano.DataSource = dt;
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto`",ConexaoDados.GetConnectionEquatorial());
+                DataTable SS = new DataTable();
+                ADAP.Fill(SS);
+                dataGridView2.DataSource = SS;
+
             }
-            try
+            else
             {
-                DataTable oTable = new DataTable();
-                using (MySqlConnection cn = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;"))
-                {
-                    string Mysql = "SELECT * FROM tb_boleto";
-                    cn.Open();
-                    MySqlCommand cmd = new MySqlCommand(Mysql, cn);
-                    cmd.CommandText = Mysql;
-                    cmd.CommandType = CommandType.Text;
-                    MySqlDataReader oDataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    oTable.Load(oDataReader);
-                    dataGridView1.DataSource = oTable;
-                    formataGridView();
-                }
-            }catch(Exception Err)
-            {
-                MessageBox.Show(Err.ToString());
+                MessageBox.Show("Erro na Conexão!.");
             }
+            ConexaoDados.GetConnectionEquatorial().Close();
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            //new FormPedido().Show();
-            var PedidoSAP = new FormPedido(txtHost.Text);
+            var PedidoSAP = new FormPedido();
             PedidoSAP.Show();
-
         }
         string CEAL;
         string CELPE;
@@ -134,7 +82,7 @@ namespace SistemaGSG
             {
                 frm_Main frm_Main = new frm_Main();
                 frm_Main.Show();
-                this.Visible = false;
+                Close();
             }
         }
         private void button3_Click(object sender, EventArgs e)
@@ -143,17 +91,18 @@ namespace SistemaGSG
             {
                 Ceal ceal = new Ceal();
                 ceal.Show();
-                this.Visible = false;
+                Close();
             }
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE cod_unico='" + textBox1.Text + "' ORDER BY Mes_ref DESC", CONEX);
+                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE cod_unico='" + textBox1.Text + "' ORDER BY Mes_ref DESC", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachSS = new DataTable();
                 seach.Fill(seachSS);
-                dataGridView1.DataSource = seachSS;
+                dataGridView2.DataSource = seachSS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -172,10 +121,10 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("UPDATE tb_boleto SET cod_unico='" + txtCod.Text + "', vl_dif='" + txt_dif_boleto.Text.Replace(".","") + "' ,desc_item='" + txtFaz.Text + "', Mes_ref='" + txtMess.Text + "', data_venc='" + this.dtVencimento.Text + "', valor_miro='" + txtvalor.Text.Replace(".","") + "', status='" + txtstatus.Text + "', pedido='" + txtPedido.Text + "', migo='" + txtmigo.Text + "', miro='" + txtMiro.Text + "', nfe='"+txtNf.Text+"', vl_icms='"+txtICMS.Text+ "', base_calculo='" + txtVlBase.Text.Replace(".","") + "' WHERE id='" + textBox10.Text + "'", CONEX);
+                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("UPDATE tb_boleto SET cod_unico='" + txtCod.Text + "', vl_dif='" + txt_dif_boleto.Text.Replace(".","") + "' ,desc_item='" + txtFaz.Text + "', Mes_ref='" + txtMess.Text + "', data_venc='" + this.dtVencimento.Text + "', valor_miro='" + txtvalor.Text.Replace(".","") + "', status='" + txtstatus.Text + "', pedido='" + txtPedido.Text + "', migo='" + txtmigo.Text + "', miro='" + txtMiro.Text + "', nfe='"+txtNf.Text+"', vl_icms='"+txtICMS.Text+ "', base_calculo='" + txtVlBase.Text.Replace(".","") + "' WHERE Id='" + textBox10.Text + "'", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachUpdate = new DataTable();
                 updateCEAL.Fill(seachUpdate);
-                dataGridView1.DataSource = seachUpdate;
+                dataGridView2.DataSource = seachUpdate;
 
                 txtCod.Text = "";
                 txtFaz.Text = "";
@@ -199,32 +148,18 @@ namespace SistemaGSG
                 MessageBox.Show(ex.Message);
             }
         }
-        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void dataGridView2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            textBox10.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            txtCod.Text = dataGridView1.SelectedRows[0].Cells[25].Value.ToString();
-            txtMess.Text = dataGridView1.SelectedRows[0].Cells[24].Value.ToString();
-            txtvalor.Text = dataGridView1.SelectedRows[0].Cells[30].Value.ToString();
-            txtFaz.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            this.dtVencimento.Text = dataGridView1.SelectedRows[0].Cells[23].Value.ToString();
-            txtstatus.Text = dataGridView1.SelectedRows[0].Cells[31].Value.ToString();
-            txtPedido.Text = dataGridView1.SelectedRows[0].Cells[26].Value.ToString();
-            txtMiro.Text = dataGridView1.SelectedRows[0].Cells[28].Value.ToString();
-            txtmigo.Text = dataGridView1.SelectedRows[0].Cells[27].Value.ToString();
-            txtICMS.Text = dataGridView1.SelectedRows[0].Cells[8].Value.ToString();
-            txtNf.Text = dataGridView1.SelectedRows[0].Cells[19].Value.ToString();
-            txtVlBase.Text = dataGridView1.SelectedRows[0].Cells[7].Value.ToString();
-            txt_dif_boleto.Text = dataGridView1.SelectedRows[0].Cells[16].Value.ToString();
 
         }
         private void button4_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("DELETE FROM tb_boleto WHERE id='" + textBox10.Text + "'", CONEX);
+                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("DELETE FROM tb_boleto WHERE Id='" + textBox10.Text + "'", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachUpdate = new DataTable();
                 updateCEAL.Fill(seachUpdate);
-                dataGridView1.DataSource = seachUpdate;
+                dataGridView2.DataSource = seachUpdate;
 
                 txtCod.Text = "";
                 txtFaz.Text = "";
@@ -253,17 +188,18 @@ namespace SistemaGSG
             printer.HeaderCellAlignment = StringAlignment.Near;
             printer.Footer = "Usina Serra Grande S/A - SistemaGSG";
             printer.FooterSpacing = 15;
-            printer.PrintDataGridView(dataGridView1);
+            printer.PrintDataGridView(dataGridView2);
         }
         string SELECAO;
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE empresa='CEAL' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE empresa='CEAL' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -276,10 +212,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE empresa='CELPE' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE empresa='CELPE' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -292,10 +229,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE data_venc between '" + this.dateTimePicker2.Text.Replace("/", "-").ToString() + "' AND '" + this.dateTimePicker3.Text.Replace("/", "-").ToString() + "' AND empresa='" + SELECAO + "' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE data_venc between '" + this.dateTimePicker2.Text.Replace("/", "-").ToString() + "' AND '" + this.dateTimePicker3.Text.Replace("/", "-").ToString() + "' AND empresa='" + SELECAO + "' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachSS = new DataTable();
                 seach.Fill(seachSS);
-                dataGridView1.DataSource = seachSS;
+                dataGridView2.DataSource = seachSS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -310,7 +248,7 @@ namespace SistemaGSG
         {
 
         }
-        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dataGridView2_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
 
         }
@@ -318,15 +256,15 @@ namespace SistemaGSG
         {
 
         }
-        MySqlConnection CONEX;
         private void definirFiltro_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE now_date between '" + this.dateTimePicker4.Text + "' AND '" + this.dateTimePicker5.Text + "' AND empresa='" + SELECAO + "' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE now_date between '" + this.dateTimePicker4.Text + "' AND '" + this.dateTimePicker5.Text + "' AND empresa='" + SELECAO + "' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachSS = new DataTable();
                 seach.Fill(seachSS);
-                dataGridView1.DataSource = seachSS;
+                dataGridView2.DataSource = seachSS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -349,10 +287,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='PAGO' ORDER BY Mes_ref ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='PAGO' ORDER BY Mes_ref ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -363,10 +302,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='VENCIDA' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='VENCIDA' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -377,10 +317,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='A VENCER' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE status='A VENCER' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -391,117 +332,34 @@ namespace SistemaGSG
         {
             frmProtocolo protColo = new frmProtocolo();
             protColo.Show();
-            this.Visible = false; 
+            Close(); 
         }
         Bitmap bmp;
 
         private void formataGridView()
         {
-            var grade = dataGridView1;
-            grade.AutoGenerateColumns = false;
-            grade.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
-            grade.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            //Alterar a Cor das Linhas alternadas no Grid
-            grade.RowsDefaultCellStyle.BackColor = Color.White;
-            grade.AlternatingRowsDefaultCellStyle.BackColor = Color.Gray;
-            //Formata as colunas valor, vencimento e pagamento
-            grade.Columns[7].DefaultCellStyle.Format = "C";
-            grade.Columns[8].DefaultCellStyle.Format = "C";
-            //Seleciona a linha inteira
-            grade.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            //Não permite multiplas seleções
-            grade.MultiSelect = false;
-            // exibe nulos formatados
-            //grade.DefaultCellStyle.NullValue = " - ";
-            //permite que o texto maior que célula não seja truncado
-            grade.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            //define o alinhamento à direita
-            grade.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            grade.Columns[30].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
         private void btnPrintview_Click(object sender, EventArgs e)
         {
-            int height = dataGridView1.Height;
-            dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height * 2;
-            bmp = new Bitmap(dataGridView1.Width, dataGridView1.Height);
-            dataGridView1.DrawToBitmap(bmp, new Rectangle(0, 0, dataGridView1.Width, dataGridView1.Height));
-            dataGridView1.Height = height;
+            int height = dataGridView2.Height;
+            dataGridView2.Height = dataGridView2.RowCount * dataGridView2.RowTemplate.Height * 2;
+            bmp = new Bitmap(dataGridView2.Width, dataGridView2.Height);
+            dataGridView2.DrawToBitmap(bmp, new Rectangle(0, 0, dataGridView2.Width, dataGridView2.Height));
+            dataGridView2.Height = height;
             printPreviewDialog1.ShowDialog();
         }
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, 0, 0);
         }
-        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView2_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                decimal valorTotal = 0;
-                string valor = "";
-                if (dataGridView1.CurrentRow.Cells[7].Value != null)
-                {
-                    valor = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-                    if (!valor.Equals(""))
-                    {
-                        for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
-                        {
-                            if (dataGridView1.Rows[i].Cells[7].Value != null)
-                                valorTotal += Convert.ToDecimal(dataGridView1.Rows[i].Cells[7].Value);
-                        }
-                        if (valorTotal == 0)
-                        {
-                            MessageBox.Show("Nenhum registro encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        txtTotal.Text = valorTotal.ToString("C");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Calcular, Verifique os Valores Texto_1\n'" + ex.Message + "'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-
-            try
-            {
-                decimal valorTotal2 = 0;
-                string valor = "";
-                if (dataGridView1.CurrentRow.Cells[30].Value != null)
-                {
-                    valor = dataGridView1.CurrentRow.Cells[30].Value.ToString();
-                    if (!valor.Equals(""))
-                    {
-                        for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
-                        {
-                            if (dataGridView1.Rows[i].Cells[30].Value != null)
-                                valorTotal2 += Convert.ToDecimal(dataGridView1.Rows[i].Cells[30].Value);
-                        }
-                        if (valorTotal2 == 0)
-                        {
-                            MessageBox.Show("Nenhum registro encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        txtTotal2.Text = valorTotal2.ToString("C");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao Calcular, Verifique os Valores Texto_2\n'" + ex.Message + "'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             //7200000000
             lbHora.Text = (DateTime.Now.ToString("dd/MM/yy HH:mm:ss"));
-        }
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-            txtHost.Text = "localhost";
-        }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-            txtHost.Text = "usga-servidor-m";
         }
         private void preencherCBmes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -515,10 +373,11 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE Mes_ref='" + preencherCBmes.Text + "/" + preencherCBano.Text + "' ORDER BY id ASC", CONEX);
+                MySqlDataAdapter seach = new MySqlDataAdapter("SELECT * FROM tb_boleto WHERE Mes_ref='" + preencherCBmes.Text + "/" + preencherCBano.Text + "' ORDER BY id ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachSS = new DataTable();
                 seach.Fill(seachSS);
-                dataGridView1.DataSource = seachSS;
+                dataGridView2.DataSource = seachSS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -541,7 +400,7 @@ namespace SistemaGSG
                 form1.ShowDialog();
             }
         }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -560,23 +419,23 @@ namespace SistemaGSG
             Worksheet ws = (Worksheet)excel.ActiveSheet;
             excel.Visible = false;
             int index = 1;
-            int process = dataGridView1.Columns.Count;
+            int process = dataGridView2.Columns.Count;
             foreach(DataGrid p in list)
             {
                 if (!backgroundWorker.CancellationPending)
                 {
                     backgroundWorker.ReportProgress(index++ * 100 / process);
 
-                    for (int i = 1; i < dataGridView1.Columns.Count + 1; i++)
+                    for (int i = 1; i < dataGridView2.Columns.Count + 1; i++)
                     {
-                        ws.Cells[1, i] = dataGridView1.Columns[i - 1].HeaderText;
+                        ws.Cells[1, i] = dataGridView2.Columns[i - 1].HeaderText;
                     }
                     // storing Each row and column value to excel sheet  
-                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                    for (int i = 0; i < dataGridView2.Rows.Count - 1; i++)
                     {
-                        for (int j = 0; j < dataGridView1.Columns.Count; j++)
+                        for (int j = 0; j < dataGridView2.Columns.Count; j++)
                         {
-                            ws.Cells[i + 2, j + 1] = dataGridView1.Rows[i].Cells[j].Value.ToString();
+                            ws.Cells[i + 2, j + 1] = dataGridView2.Rows[i].Cells[j].Value.ToString();
                         }
                     }
                 }
@@ -587,9 +446,9 @@ namespace SistemaGSG
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            progressBar.Value = e.ProgressPercentage;
-            lbStatus.Text = string.Format("Processando...{0}", e.ProgressPercentage);
-            progressBar.Update();
+            //progressBar.Value = e.ProgressPercentage;
+            //lbStatus.Text = string.Format("Processando...{0}", e.ProgressPercentage);
+            //progressBar.Update();
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -597,7 +456,7 @@ namespace SistemaGSG
             if(e.Error == null)
             {
                 Thread.Sleep(100);
-                lbStatus.Text = "Excel exportado com sucesso!";
+                //lbStatus.Text = "Excel exportado com sucesso!";
             }
         }
         
@@ -613,17 +472,121 @@ namespace SistemaGSG
 
         private void txtTotal2_TextChanged(object sender, EventArgs e)
         {
+            
+        }
 
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            textBox10.Text = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+            txtCod.Text = dataGridView2.SelectedRows[0].Cells[25].Value.ToString();
+            txtMess.Text = dataGridView2.SelectedRows[0].Cells[24].Value.ToString();
+            txtvalor.Text = dataGridView2.SelectedRows[0].Cells[30].Value.ToString();
+            txtFaz.Text = dataGridView2.SelectedRows[0].Cells[2].Value.ToString();
+            this.dtVencimento.Text = dataGridView2.SelectedRows[0].Cells[23].Value.ToString();
+            txtstatus.Text = dataGridView2.SelectedRows[0].Cells[31].Value.ToString();
+            txtPedido.Text = dataGridView2.SelectedRows[0].Cells[26].Value.ToString();
+            txtMiro.Text = dataGridView2.SelectedRows[0].Cells[28].Value.ToString();
+            txtmigo.Text = dataGridView2.SelectedRows[0].Cells[27].Value.ToString();
+            txtICMS.Text = dataGridView2.SelectedRows[0].Cells[8].Value.ToString();
+            txtNf.Text = dataGridView2.SelectedRows[0].Cells[19].Value.ToString();
+            txtVlBase.Text = dataGridView2.SelectedRows[0].Cells[7].Value.ToString();
+            txt_dif_boleto.Text = dataGridView2.SelectedRows[0].Cells[16].Value.ToString();
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            var url = dataGridView2.SelectedRows[0].Cells["Column37"].Value;
+            if (string.IsNullOrEmpty(url.ToString()))
+            {
+
+            }
+            else
+            {
+                try
+                {
+                    Process.Start("chrome.exe", url.ToString());
+                }
+                catch 
+                {
+                    Process.Start("msedge.exe", url.ToString());
+                }
+            }
+
+            try
+            {
+                decimal valorTotal = 0;
+                string valor = "";
+                if (dataGridView2.CurrentRow.Cells["Column8"].Value != null)
+                {
+                    valor = dataGridView2.CurrentRow.Cells["Column8"].Value.ToString();
+                    if (!valor.Equals(""))
+                    {
+                        for (int i = 0; i <= dataGridView2.RowCount - 1; i++)
+                        {
+                            if (dataGridView2.Rows[i].Cells["Column8"].Value != null)
+                                valorTotal += Convert.ToDecimal(dataGridView2.Rows[i].Cells["Column8"].Value);
+                        }
+                        if (valorTotal == 0)
+                        {
+                            MessageBox.Show("Nenhum registro encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        txtTotal.Text = valorTotal.ToString("C");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Calcular, Verifique os Valores Texto_1\n'" + ex.Message + "'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            try
+            {
+                decimal valorTotal2 = 0;
+                string valor = "";
+                if (dataGridView2.CurrentRow.Cells["Column31"].Value != null)
+                {
+                    valor = dataGridView2.CurrentRow.Cells["Column31"].Value.ToString();
+                    if (!valor.Equals(""))
+                    {
+                        for (int i = 0; i <= dataGridView2.RowCount - 1; i++)
+                        {
+                            if (dataGridView2.Rows[i].Cells["Column31"].Value != null)
+                                valorTotal2 += Convert.ToDecimal(dataGridView2.Rows[i].Cells["Column31"].Value);
+                        }
+                        if (valorTotal2 == 0)
+                        {
+                            MessageBox.Show("Nenhum registro encontrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        txtTotal2.Text = valorTotal2.ToString("C");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao Calcular, Verifique os Valores Texto_2\n'" + ex.Message + "'", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void dataGridView2_Click(object sender, EventArgs e)
+        {
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto ORDER BY Mes_ref ASC", CONEX);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_boleto ORDER BY Mes_ref ASC", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
-                dataGridView1.DataSource = SS;
+                dataGridView2.DataSource = SS;
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception ex)
             {
@@ -632,13 +595,13 @@ namespace SistemaGSG
         }
         private void button8_Click_1(object sender, EventArgs e)
         {
+            
             try
             {
-                CONEX.Close();
-                CONEX.Open();
                 //Atualização de Status
-                MySqlCommand update_3 = new MySqlCommand("UPDATE tb_boleto SET status='VENCIDA' WHERE data_venc < CURDATE() AND status ='A VENCER'", CONEX);
+                MySqlCommand update_3 = new MySqlCommand("UPDATE tb_boleto SET status='VENCIDA' WHERE data_venc < GETDATE() AND status ='A VENCER'", ConexaoDados.GetConnectionEquatorial());
                 update_3.ExecuteNonQuery();
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch(Exception err)
             {
@@ -647,9 +610,8 @@ namespace SistemaGSG
 
             try
             {
-                CONEX.Close();
-                CONEX.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", CONEX);
+                
+                MySqlCommand cmd = new MySqlCommand("SELECT GETDATE()", ConexaoDados.GetConnectionEquatorial());
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
                 string novadata = DataServidor.AddDays(+10).ToShortDateString();
 
@@ -661,7 +623,7 @@ namespace SistemaGSG
                 segundos = dataHora.Second;
                 milisegundos = dataHora.Millisecond;
 
-                MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM tb_boleto WHERE data_venc BETWEEN @DataServidor AND @dataFuturo AND status !='PAGO'", CONEX);
+                MySqlCommand command = new MySqlCommand("SELECT COUNT(*) FROM tb_boleto WHERE data_venc BETWEEN @DataServidor AND @dataFuturo AND status !='PAGO'", ConexaoDados.GetConnectionEquatorial());
 
                 command.Parameters.AddWithValue("@dataFuturo", novadata);
                 command.Parameters.AddWithValue("@DataServidor", dataHora);
@@ -682,6 +644,7 @@ namespace SistemaGSG
             {
                     MessageBox.Show(ex.Message);
             }
+            ConexaoDados.GetConnectionEquatorial().Close();
         }
     }
 }

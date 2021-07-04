@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using iTextSharp.text.pdf;
 using MetroFramework;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
+using SistemaGSG;
 
 namespace SistemaGSG
 {
@@ -20,15 +15,7 @@ namespace SistemaGSG
         string STATUS;
         string EMPRESA;
         string CUSTO;
-        MySqlCommand cmd, prompt_cmd, prompt_notif;
-        MySqlConnection CONEX, cn;
-        string usuarioLogado = System.Environment.UserName;
-        private void boxLocal_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-        private void boxTeste_CheckedChanged(object sender, EventArgs e)
-        {
-        }
+        string usuarioLogado = dados.usuario;
         private void LimparTexts()
         {
             //Limpar Campos apos a inserção no banco de dados.
@@ -56,11 +43,11 @@ namespace SistemaGSG
             {
                 try
                 {
-                    CONEX.Open();//Abrir Conexão.
-                    MySqlCommand prompt = new MySqlCommand("SELECT COUNT(*) FROM tb_boleto WHERE nfe ='" + nfe.Text + "' ", CONEX);//Seleção da tabela no Banco de Dados.
+                    //Abrir Conexão.
+                    MySqlCommand prompt = new MySqlCommand("SELECT COUNT(*) FROM tb_boleto WHERE nfe ='" + nfe.Text + "' ", ConexaoDados.GetConnectionEquatorial());//Seleção da tabela no Banco de Dados.
                     prompt.ExecuteNonQuery();//Executa o comando.
                     int consultDB = Convert.ToInt32(prompt.ExecuteScalar());//Converte o resultado para números inteiros.
-                    CONEX.Close();
+                    ConexaoDados.GetConnectionEquatorial().Close();
                     if (consultDB > 0)//Verifica se o resultado for maior que zero(0), a execução inicia a Menssagem de que já existe contas, caso contrario faz a inserção no Banco.
                     {
                         LimparTexts();
@@ -90,9 +77,9 @@ namespace SistemaGSG
         }
         private void ItensPedido()
         {
-            cn.Open();
+            
             MySqlCommand com = new MySqlCommand();
-            com.Connection = cn;
+            com.Connection = ConexaoDados.GetConnectionEquatorial();
             com.CommandText = "SELECT * FROM tb_boleto WHERE err > 0";
             MySqlDataReader dr = com.ExecuteReader();
             DataTable dt = new DataTable();
@@ -103,18 +90,18 @@ namespace SistemaGSG
             //Adiciona mais um Item
             Contagem++;
             CountTXT.Text = Contagem.ToString();
-            cn.Close();
-            if(Contagem > 10)
-            {
-                var CriarPedido = new FormPedido(txthost.Text);
-                CriarPedido.Show();
-            }
+            ConexaoDados.GetConnectionEquatorial().Close();
+            //if(Contagem > 10)
+            //{
+             //   var CriarPedido = new FormPedido(txthost.Text);
+               // CriarPedido.Show();
+            //}
         }
         private void ConsultNFE()
         {
-            cn.Open();
+            
             MySqlCommand MyCommand = new MySqlCommand();
-            MyCommand.Connection = cn;
+            MyCommand.Connection = ConexaoDados.GetConnectionEquatorial();
             MyCommand.CommandText = "SELECT * FROM tb_boleto ORDER BY id DESC";
             MySqlDataReader dreader = MyCommand.ExecuteReader();
             while (dreader.Read())
@@ -122,7 +109,7 @@ namespace SistemaGSG
                 txtUltNFE.Text = dreader[19].ToString();
                 break;
             }
-            cn.Close();
+            ConexaoDados.GetConnectionEquatorial().Close();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -145,7 +132,7 @@ namespace SistemaGSG
             /************************Converter para valor INT*************************************/
             int ValorIcms = Convert.ToInt32(preencherCBIcms.Text.Replace(" %", ""));
             /*************************************************************************************/
-            CONEX.Open();
+            
             //Verifica se o campo Valor do Boleto esta Preenchido
             if (string.IsNullOrEmpty(textBase1.Text))
             {
@@ -155,53 +142,28 @@ namespace SistemaGSG
                     {
                         if (ValorIcms == 17)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "', '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL , NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                            MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto (material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "', '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL , NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 18)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto (material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 25)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 27)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 0)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_boleto.Text.Replace("R$ ", "") + "',  '0', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', NULL, NULL, NULL, NULL, NULL, NULL, '0', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '1', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                     }
                     catch (Exception err)
@@ -216,54 +178,28 @@ namespace SistemaGSG
                         double vlDifTotal = Convert.ToDouble(vl_boleto.Text.Replace("R$ ", "")) - Convert.ToDouble(vl_base.Text.Replace("R$ ", ""));
                         if (ValorIcms == 17)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "', '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "', '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 18)
                         {
-
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 272920, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 272920, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 25)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271199, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271199, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 27)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271229, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                           MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271229, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                         if (ValorIcms == 0)
                         {
-                            prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', NULL, '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                            prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                            prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                            prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                            MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES ('270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', NULL, '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  '2', '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, 'Fecoep.: " + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                             prompt_cmd.ExecuteNonQuery();
-                            prompt_notif.ExecuteNonQuery();
                         }
                     }
                     catch (Exception err)
@@ -279,53 +215,28 @@ namespace SistemaGSG
                     double vlDifTotal = Convert.ToDouble(vl_boleto.Text.Replace("R$ ", "")) - Convert.ToDouble(vl_base.Text.Replace("R$ ", ""));
                     if (ValorIcms == 17)
                     {
-                        prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "', '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', 0, '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL , '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                        prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                        prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                        prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                        MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES (NULL, '270743', '" + txtFaz.Text + "', '1', 'USGA', '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "', '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', 0, '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL , '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                         prompt_cmd.ExecuteNonQuery();
-                        prompt_notif.ExecuteNonQuery();
                     }
                     if (ValorIcms == 18)
                     {
-                        prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 272920, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                        prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                        prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                        prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                        MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES (NULL, '272920',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 272920, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                         prompt_cmd.ExecuteNonQuery();
-                        prompt_notif.ExecuteNonQuery();
                     }
                     if (ValorIcms == 25)
                     {
-                        prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271199, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                        prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                        prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                        prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                        MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES (NULL, '271199',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271199, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                         prompt_cmd.ExecuteNonQuery();
-                        prompt_notif.ExecuteNonQuery();
                     }
                     if (ValorIcms == 27)
                     {
-                        prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271229, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                        prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                        prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                        prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                        MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES (NULL, '271229',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','P1', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 271229, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', 'PH', '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "',  NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                         prompt_cmd.ExecuteNonQuery();
-                        prompt_notif.ExecuteNonQuery();
                     }
                     if (ValorIcms == 0)
                     {
-                        prompt_cmd = new MySqlCommand("INSERT INTO `tb_boleto` (`id`, `material`, `desc_item`, `qtd`, `centro`, `custo`, `cod_imp`, `base_calculo`, `vl_icms`, `txt_pedido`, `material_dif`, `desc_item_dif`, `qtd_dif`, `centro_dif`, `custo_dif`, `cod_imp_dif`, `vl_dif`, `iva_dif`, `emissao`, `nfe`, `err`, `err_col`, `txt_miro`, `data_venc`, `Mes_ref`, `cod_unico`, `pedido`, `migo`, `miro`, `fecoep`, `valor_miro`, `status`, `empresa`, `mes_dupl`, `vl_dupl`, `now_date`) VALUES (NULL, '270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', NULL, '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", CONEX);
-
-                        prompt_notif = new MySqlCommand("INSERT INTO notifica_vencimento (cod,data,status) VALUES ('" + cod_unico.Text + "',?date,NULL)", CONEX);
-                        prompt_notif.Parameters.AddWithValue("?date", dataemissao.Value.AddDays(30));
-                        prompt_cmd.Parameters.AddWithValue("?icms", preencherCBIcms.Text.Replace(" %", ""));
+                        MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_boleto(material, desc_item, qtd, centro, custo, cod_imp, base_calculo, vl_icms, txt_pedido, material_dif, desc_item_dif, qtd_dif, centro_dif, custo_dif, cod_imp_dif, vl_dif, iva_dif, emissao, nfe, err, err_col, txt_miro, data_venc, Mes_ref, cod_unico, pedido, migo, miro, fecoep, valor_miro, status, empresa, mes_dupl, vl_dupl, now_date) VALUES (NULL, '270743',  '" + txtFaz.Text + "', '1', 'USGA',  '" + CUSTO + "','PH', '" + vl_base.Text.Replace("R$ ", "") + "',  '" + ValorIcms + "', 'Ref. Nota Fiscal Nº:" + nfe.Text + " de " + this.dataemissao.Text + "', 270743, '" + txtFaz.Text + " - Dif. ICMS', '1', 'USGA', '" + CUSTO + "', NULL, '" + vlDifTotal + "', '0', '" + this.dataemissao.Text + "', '" + nfe.Text + "', '" + CountTXT.Text + "', NULL, '" + txtFaz.Text + "', '" + this.datavencimento.Text + "', '" + mes_nf.Text + "', '" + cod_unico.Text + "', NULL, NULL, NULL, '" + vl_fecoep.Text + "', '" + vl_boleto.Text.Replace("R$ ", "") + "', '" + STATUS + "', '" + EMPRESA + "', '" + txtMesdupl.Text + "', '" + txtValordupl.Text.Replace("R$ ", "") + "', NOW())", ConexaoDados.GetConnectionEquatorial());
                         prompt_cmd.ExecuteNonQuery();
-                        prompt_notif.ExecuteNonQuery();
                     }
                 }
                 catch (Exception err)
@@ -339,12 +250,12 @@ namespace SistemaGSG
             }
             else
             {
-                cmd = new MySqlCommand("INSERT INTO contas_multa (cod,mes,valor,empresa) VALUES ('" + cod_unico.Text + "','" + mesMulta.Text + "','" + vl_multa.Text.Replace("R$ ", "") + "','" + EMPRESA + "')", CONEX);
+               MySqlCommand cmd = new MySqlCommand("INSERT INTO TB_MULTA (cod,mes,valor,empresa) VALUES ('" + cod_unico.Text + "','" + mesMulta.Text + "','" + vl_multa.Text.Replace("R$ ", "") + "','" + EMPRESA + "')", ConexaoDados.GetConnectionEquatorial());
                 cmd.ExecuteNonQuery();
             }
             
             //Fechar Conexão
-            CONEX.Close();
+            ConexaoDados.GetConnectionEquatorial().Close();
 
             //Limpar Campos apos a inserção no banco de dados.
             LimparTexts();
@@ -365,10 +276,9 @@ namespace SistemaGSG
             txtUltNFE.Enabled = false;
             try
             {
-                cn = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
+                
                 MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
+                com.Connection = ConexaoDados.GetConnectionEquatorial();
                 com.CommandText = "SELECT * FROM tb_boleto WHERE err > 0";
                 MySqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
@@ -377,7 +287,7 @@ namespace SistemaGSG
                 int Contagem = Convert.ToInt32(CountTXT.Text);
                 Contagem++;
                 CountTXT.Text = Contagem.ToString();
-                cn.Close();
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
             catch (Exception Err)
             {
@@ -386,33 +296,21 @@ namespace SistemaGSG
 
             try
             {
-                cn = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
+                
 
                 MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT porcentagem FROM icms";
+                com.Connection = ConexaoDados.GetConnectionEquatorial();
+                com.CommandText = "SELECT porcentagem FROM TB_ICMS";
                 MySqlDataReader dr = com.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
                 preencherCBIcms.DisplayMember = "porcentagem";
                 preencherCBIcms.DataSource = dt;
-                cn.Close();
+                ConexaoDados.GetConnectionEquatorial().Close();
             }
-            catch
+            catch(Exception Err)
             {
-                cn = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                cn.Open();
-
-                MySqlCommand com = new MySqlCommand();
-                com.Connection = cn;
-                com.CommandText = "SELECT porcentagem FROM icms";
-                MySqlDataReader dr = com.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                preencherCBIcms.DisplayMember = "porcentagem";
-                preencherCBIcms.DataSource = dt;
-                cn.Close();
+                MessageBox.Show(Err.Message);
             }
             vl_boleto.Enabled = true;
             vl_multa.Enabled = true;
@@ -461,13 +359,8 @@ namespace SistemaGSG
             {
                 frm_Main back = new frm_Main();
                 back.Show();
-                this.Visible = false;
+                Close();
             }
-        }
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-            txthost.Text = "usga-servidor-m";
         }
         private void metroRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
@@ -504,8 +397,7 @@ namespace SistemaGSG
         }
         private void btnView_Click(object sender, EventArgs e)
         {
-            var PDFReader = new ReadPDF();
-            PDFReader.Show();
+            
         }
         private void rdDupl_CheckedChanged(object sender, EventArgs e)
         {
@@ -534,11 +426,6 @@ namespace SistemaGSG
                 txtValordupl.Enabled = false;
             }
         }
-        private void radioButton4_CheckedChanged(object sender, EventArgs e)
-        {
-            CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-            txthost.Text = "localhost";
-        }
         private void txtPedido_DoubleClick(object sender, EventArgs e)
         {
             MetroMessageBox.Show(this, "Your message here.", "Title Here", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -557,6 +444,95 @@ namespace SistemaGSG
             ItensPedido();
         }
 
+        private void cod_unico_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    
+                    //Consulta Itens no Banco de Dados
+                    MySqlCommand MyCommand = new MySqlCommand();
+                    MyCommand.Connection = ConexaoDados.GetConnectionEquatorial();
+                    MyCommand.CommandText = "SELECT * FROM tb_boleto WHERE cod_unico='" + cod_unico.Text + "'";
+                    MySqlDataReader dreader = MyCommand.ExecuteReader();
+                    while (dreader.Read())
+                    {
+                        txtFaz.Text = dreader[2].ToString();
+                    }
+                    ConexaoDados.GetConnectionEquatorial().Close();
+                }
+                catch (Exception Err)
+                {
+                    txtFaz.Focus();
+                }
+            }
+        }
+
+        private void txtFaz_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                nfe.Focus();
+            }
+        }
+
+        private void nfe_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                mes_nf.Focus();
+            }
+        }
+
+        private void mes_nf_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                dataemissao.Focus();
+            }
+        }
+
+        private void dataemissao_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                datavencimento.Focus();
+            }
+        }
+
+        private void datavencimento_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                vl_fecoep.Focus();
+            }
+        }
+
+        private void vl_fecoep_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                vl_boleto.Focus();
+            }
+        }
+
+        private void vl_boleto_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                vl_base.Focus();
+            }
+        }
+
+        private void vl_base_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                btnGravar.Focus();
+            }
+        }
+
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             EMPRESA = "CEAL";
@@ -566,6 +542,11 @@ namespace SistemaGSG
             EMPRESA = "CELPE";
         }
         private void textValor1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cod_unico_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

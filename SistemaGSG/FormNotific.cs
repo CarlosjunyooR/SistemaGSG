@@ -69,14 +69,12 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=usga-servidor-m;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                CONEX.Open();
-                MySqlCommand cmdaa = new MySqlCommand("SELECT CURDATE()", CONEX);
+                MySqlCommand cmdaa = new MySqlCommand("SELECT CURDATE()", ConexaoDados.GetConnectionEquatorial());
                 DateTime DataServ = Convert.ToDateTime(cmdaa.ExecuteScalar());
                 string novadata22 = DataServ.AddDays(+5).ToShortDateString();
                 DateTime dataHora42 = DateTime.Now;
 
-                MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", CONEX);
+                MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", ConexaoDados.GetConnectionEquatorial());
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
                 string novadata = DataServidor.AddDays(+5).ToString("yyyy-MM-dd");
 
@@ -85,7 +83,7 @@ namespace SistemaGSG
                 segundos = dataHora42.Second;
                 milisegundos = dataHora42.Millisecond;
 
-                MySqlCommand command1 = new MySqlCommand("SELECT COUNT(*) FROM notifica_vencimento WHERE data BETWEEN @DataServidor AND @dataFuturo", CONEX);
+                MySqlCommand command1 = new MySqlCommand("SELECT COUNT(*) FROM notifica_vencimento WHERE data BETWEEN @DataServidor AND @dataFuturo", ConexaoDados.GetConnectionEquatorial());
 
                 command1.Parameters.AddWithValue("@DataServidor", dataHora2.ToString("yyyy-MM-dd"));
                 command1.Parameters.AddWithValue("@dataFuturo", novadata);
@@ -93,7 +91,7 @@ namespace SistemaGSG
 
                 int qtdVencer = Convert.ToInt32(command1.ExecuteScalar());
 
-                CONEX.Close();
+                ConexaoDados.GetConnectionEquatorial().Close();
 
                 //verifica se tem boletos a vencer
                 if (qtdVencer > 0)
@@ -122,60 +120,9 @@ namespace SistemaGSG
                     notifyIcon2.BalloonTipText = "Não há boletos pra vencer!";
                 }
             }
-            catch
+            catch(Exception Err)
             {
-                MySqlConnection CONEX = new MySqlConnection(@"server=localhost;database=sistemagsg_ceal;Uid=energia;Pwd=02984646#Lua;SslMode=none;");
-                CONEX.Open();
-                MySqlCommand cmdaa = new MySqlCommand("SELECT CURDATE()", CONEX);
-                DateTime DataServ = Convert.ToDateTime(cmdaa.ExecuteScalar());
-                string novadata22 = DataServ.AddDays(+15).ToShortDateString();
-                DateTime dataHora42 = DateTime.Now;
-
-                MySqlCommand cmd = new MySqlCommand("SELECT CURDATE()", CONEX);
-                DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
-                string novadata = DataServidor.AddDays(+15).ToString("yyyy-MM-dd");
-
-                dataHora42 = DataServidor;
-                minutos = dataHora42.Minute;
-                segundos = dataHora42.Second;
-                milisegundos = dataHora42.Millisecond;
-
-                MySqlCommand command1 = new MySqlCommand("SELECT COUNT(*) FROM notifica_vencimento WHERE data BETWEEN @DataServidor AND @dataFuturo", CONEX);
-
-                command1.Parameters.AddWithValue("@DataServidor", dataHora2.ToString("yyyy-MM-dd"));
-                command1.Parameters.AddWithValue("@dataFuturo", novadata);
-                command1.ExecuteNonQuery();
-
-                int qtdVencer = Convert.ToInt32(command1.ExecuteScalar());
-
-                CONEX.Close();
-
-                //verifica se tem boletos a vencer
-                if (qtdVencer > 0)
-                {
-                    int i = 0;
-                    i++;
-                    if (i > 0 && i <= 9)
-                    {
-                        notifyIcon2.Visible = true;
-                        notifyIcon2.Text = "ATENCAO!";
-                        notifyIcon2.BalloonTipTitle = "BOLETOS CEAL & CELPE";
-
-                        if (qtdVencer > 1)
-                        {
-                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
-                        }
-                        else
-                        {
-                            notifyIcon2.BalloonTipText = "Você Possui " + qtdVencer.ToString() + " boletos para vencer no prazo de cinco dias!";
-                        }
-                        notifyIcon2.ShowBalloonTip(1000);
-                    }
-                }
-                else
-                {
-                    notifyIcon2.BalloonTipText = "Não há boletos pra vencer!";
-                }
+                MessageBox.Show(Err.Message);
             }
         }
 
