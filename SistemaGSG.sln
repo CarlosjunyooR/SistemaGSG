@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30128.74
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaGSG", "SistemaGSG\SistemaGSG.csproj", "{C250A6E3-BF11-4E53-96D5-46A8C2588528}"
 EndProject
@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaVendas", "..\..\SistemaVendas\SistemaVendas\SistemaVendas.csproj", "{EC1B768D-66BE-4FB0-8130-B56250FD0348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,26 @@ Global
 		{C250A6E3-BF11-4E53-96D5-46A8C2588528}.Release|x64.Build.0 = Debug|Any CPU
 		{C250A6E3-BF11-4E53-96D5-46A8C2588528}.Release|x86.ActiveCfg = Debug|Any CPU
 		{C250A6E3-BF11-4E53-96D5-46A8C2588528}.Release|x86.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|ARM.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Debug|x86.Build.0 = Debug|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|ARM.ActiveCfg = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|ARM.Build.0 = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|ARM64.Build.0 = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|x64.Build.0 = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC1B768D-66BE-4FB0-8130-B56250FD0348}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

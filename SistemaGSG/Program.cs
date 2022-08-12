@@ -14,17 +14,17 @@ namespace SistemaGSG
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //FormAcesso frm_Main = new FormAcesso();
-            //frm_Main.ShowDialog();
+            ConfigConexao frm_Main = new ConfigConexao();
+            frm_Main.ShowDialog();
 
-            Splash fmr = new Splash();
-            fmr.ShowDialog();
-            frmLogin fml = new frmLogin();
-            fml.ShowDialog();
-            if (fml.FMP == true)
-            {
-              Application.Run(new frm_Main());
-            }
+            //Splash fmr = new Splash();
+            //fmr.ShowDialog();
+            //frmLogin fml = new frmLogin();
+            //fml.ShowDialog();
+            //if (fml.FMP == true)
+            //{
+            //  Application.Run(new frm_Main());
+            //}
         }
     }
 }

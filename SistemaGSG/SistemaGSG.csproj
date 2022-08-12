@@ -32,7 +32,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -283,8 +283,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSetting.cs" />
     <Compile Include="AxAcroPDFLib\AxAcroPDF.cs" />
+    <Compile Include="ConexaoBancoDeDadosOffline.cs" />
     <Compile Include="ConexaoDados.cs" />
+    <Compile Include="ConfigConexao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigConexao.Designer.cs">
+      <DependentUpon>ConfigConexao.cs</DependentUpon>
+    </Compile>
     <Compile Include="dados.cs" />
     <Compile Include="DBSGSGAcesso.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -476,6 +484,9 @@
     <Compile Include="textValor.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="ConfigConexao.resx">
+      <DependentUpon>ConfigConexao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FichaCadastroCliente.resx">
       <DependentUpon>FichaCadastroCliente.cs</DependentUpon>
     </EmbeddedResource>
