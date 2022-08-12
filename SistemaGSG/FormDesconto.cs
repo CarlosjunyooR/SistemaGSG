@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using SistemaGSG;
 
 namespace SistemaGSG
 {
@@ -35,7 +28,7 @@ namespace SistemaGSG
                 {
                     ButaoRadio = "2021/2022";
                 }
-                MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_debitos (col_Fornecedor, col_Data, col_Desconto, col_Quantidade, col_Unidade, col_ValorDiv, col_dataImport, safra) VALUES ('" + txtCodFornecedor.Text + "', '" + this.dataDesconto.Text + "', '" + cmbDesc.Text + "', '" + txtQuant.Text + "', '" + txtUnidade.Text + "', '" + txtDivida.Text+ "', NOW(), '" + ButaoRadio + "')", ConexaoDados.GetConnectionFornecedor());
+                MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_debitos (col_Fornecedor, col_Data, col_Desconto, col_Quantidade, col_Unidade, col_ValorDiv, col_dataImport, safra) VALUES ('" + txtCodFornecedor.Text + "', '" + this.dataDesconto.Text + "', '" + cmbDesc.Text + "', '" + txtQuant.Text + "', '" + txtUnidade.Text + "', '" + txtDivida.Text + "', NOW(), '" + ButaoRadio + "')", ConexaoDados.GetConnectionFornecedor());
                 prompt_cmd.ExecuteNonQuery();
                 ConexaoDados.GetConnectionFornecedor().Close();
                 gridViewLoad();
@@ -79,7 +72,7 @@ namespace SistemaGSG
                 }
                 if (rdSafra2021.Checked)
                 {
-                    MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT DebT.*,TBFUN.col_Nome,TIPODESC.col_Descricao FROM `tb_debitos` AS DebT LEFT JOIN tb_fornecedor AS TBFUN ON DebT.col_Fornecedor=TBFUN.id_CodFornecedor LEFT JOIN tb_tipodesconto AS TIPODESC ON DebT.col_Desconto=TIPODESC.id_desc WHERE safra='"+ButaoRadio+"'", ConexaoDados.GetConnectionFornecedor());
+                    MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT DebT.*,TBFUN.col_Nome,TIPODESC.col_Descricao FROM `tb_debitos` AS DebT LEFT JOIN tb_fornecedor AS TBFUN ON DebT.col_Fornecedor=TBFUN.id_CodFornecedor LEFT JOIN tb_tipodesconto AS TIPODESC ON DebT.col_Desconto=TIPODESC.id_desc WHERE safra='" + ButaoRadio + "'", ConexaoDados.GetConnectionFornecedor());
                     DataTable SS = new DataTable();
                     ADAP.Fill(SS);
                     dtDebitos.DataSource = SS;
@@ -96,7 +89,7 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_detalhamentodebitos WHERE col_Fornec='"+ textBoxCodigo.Text+ "' AND col_TipoDesc='"+ textBoxDesc.Text+ "' AND id_Debito='"+txtID.Text+"' ", ConexaoDados.GetConnectionFornecedor());
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM tb_detalhamentodebitos WHERE col_Fornec='" + textBoxCodigo.Text + "' AND col_TipoDesc='" + textBoxDesc.Text + "' AND id_Debito='" + txtID.Text + "' ", ConexaoDados.GetConnectionFornecedor());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
                 dtDetalhe.DataSource = SS;
@@ -114,7 +107,7 @@ namespace SistemaGSG
             textBoxDesc.Text = dtDebitos.SelectedRows[0].Cells[3].Value.ToString();
             txtSafraOu.Text = dtDebitos.SelectedRows[0].Cells[8].Value.ToString();
             txtValorDTdesconto.Text = dtDebitos.SelectedRows[0].Cells["VALORDIV"].Value.ToString();
-            
+
             Detalhamento();
         }
 
@@ -130,7 +123,7 @@ namespace SistemaGSG
 
         private void dtDetalhe_DoubleClick(object sender, EventArgs e)
         {
-            var conexaoform = new FormDetalhe(textBoxCodigo.Text,textBoxDesc.Text,txtSafraOu.Text,txtID.Text);
+            var conexaoform = new FormDetalhe(textBoxCodigo.Text, textBoxDesc.Text, txtSafraOu.Text, txtID.Text);
             conexaoform.Show();
         }
 
@@ -193,9 +186,9 @@ namespace SistemaGSG
         private void DescontoForm_Load(object sender, EventArgs e)
         {
             gridViewLoad();
-            
+
         }
-        
+
         private void rdSafra2020_Click(object sender, EventArgs e)
         {
             MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT DebT.*,TBFUN.col_Nome,TIPODESC.col_Descricao FROM `tb_debitos` AS DebT LEFT JOIN tb_fornecedor AS TBFUN ON DebT.col_Fornecedor=TBFUN.id_CodFornecedor LEFT JOIN tb_tipodesconto AS TIPODESC ON DebT.col_Desconto=TIPODESC.id_desc WHERE safra='2020/2021'", ConexaoDados.GetConnectionFornecedor());
@@ -215,7 +208,7 @@ namespace SistemaGSG
         {
             try
             {
-                if(MessageBox.Show("Deseja Excluir?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+                if (MessageBox.Show("Deseja Excluir?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                 {
                     MySqlCommand prompt_cmd = new MySqlCommand("DELETE FROM `tb_debitos` WHERE id='" + txtID.Text + "'", ConexaoDados.GetConnectionFornecedor());
                     prompt_cmd.ExecuteNonQuery();

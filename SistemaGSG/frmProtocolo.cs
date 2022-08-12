@@ -1,13 +1,11 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using Microsoft.Win32;
 using MySql.Data.MySqlClient;
-using System.IO;
-using Microsoft.Win32;
 using SAPFEWSELib;
 using SapROTWr;
-using System.Diagnostics;
+using System;
+using System.Data;
+using System.IO;
+using System.Windows.Forms;
 
 
 namespace SistemaGSG
@@ -15,7 +13,7 @@ namespace SistemaGSG
     public partial class frmProtocolo : MetroFramework.Forms.MetroForm
     {
         private const string Texto = "Duplicidade!, Esta Chave já existe no Banco de Dados.";
-        string usuarioLogado = dados.usuario;
+        string usuarioLogado = dados.Usuario;
 
         public frmProtocolo()
         {
@@ -169,7 +167,7 @@ namespace SistemaGSG
                 //Verifica se o resultado for maior que zero(0), a execução inicia a Menssagem de que já existe contas, caso contrario faz a inserção no Banco.
                 if (consultDB > 0)
                 {
-                    lblChaveDuplicidade.Text = txtChave.Text+".xml";
+                    lblChaveDuplicidade.Text = txtChave.Text + ".xml";
                     LimparTexts();
                 }
                 else
@@ -186,7 +184,7 @@ namespace SistemaGSG
             }
             catch (Exception Err)
             {
-                MessageBox.Show("Erro: "+Err.Message);
+                MessageBox.Show("Erro: " + Err.Message);
             }
         }
         private void InserirChave()
@@ -199,8 +197,9 @@ namespace SistemaGSG
             }
             catch (MySqlException ErroR)
             {
-                MessageBox.Show("Erro ao Inserir Chave. "+ErroR.Message);
-            }catch(Exception err)
+                MessageBox.Show("Erro ao Inserir Chave. " + ErroR.Message);
+            }
+            catch (Exception err)
             {
                 MessageBox.Show("Erro: " + err.Message);
             }
@@ -252,7 +251,7 @@ namespace SistemaGSG
         private void dataGridViewSefaz_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-         }
+        }
         private void carregarDataXML()
         {
             int countg = dataGridViewSefaz.RowCount;
@@ -261,51 +260,51 @@ namespace SistemaGSG
             int XMLContResult = 1;
             double TotaldeLinhas = countg;
             while (XMLCont <= countg)
+            {
+                ProgBar.Value = XMLCont;
+                txtURLxml.Text = dataGridViewSefaz.Rows[XMLCont].Cells["Column2"].Value.ToString();
+                using (DataSet ds = new DataSet())
                 {
-                    ProgBar.Value = XMLCont;
-                    txtURLxml.Text = dataGridViewSefaz.Rows[XMLCont].Cells["Column2"].Value.ToString();
-                    using (DataSet ds = new DataSet())
+                    try
                     {
+                        string xmlFilePath = txtUrl.Text + txtURLxml.Text + ".xml";
+                        ds.ReadXml(xmlFilePath);
                         try
                         {
-                            string xmlFilePath = txtUrl.Text + txtURLxml.Text+".xml";
-                            ds.ReadXml(xmlFilePath);
-                            try
-                            {
-                                dtXML.DataSource = ds.Tables["emit"];
-                                txtCNPJ.Text = dtXML.Rows[0].Cells["CNPJ"].Value.ToString().Trim();
-                                txtEmpresa.Text = dtXML.Rows[0].Cells["xNome"].Value.ToString().Trim();
-                            }
-                            catch (Exception ErroEmissor)
-                            {
-                                MessageBox.Show("Emit: " + ErroEmissor.Message);
+                            dtXML.DataSource = ds.Tables["emit"];
+                            txtCNPJ.Text = dtXML.Rows[0].Cells["CNPJ"].Value.ToString().Trim();
+                            txtEmpresa.Text = dtXML.Rows[0].Cells["xNome"].Value.ToString().Trim();
+                        }
+                        catch (Exception ErroEmissor)
+                        {
+                            MessageBox.Show("Emit: " + ErroEmissor.Message);
                         }
                         try
-                            {
-                                NFEGRID.DataSource = ds.Tables["ide"];
-                                txtNFE.Text = NFEGRID.Rows[0].Cells["nNF"].Value.ToString().Trim();
-                                txtserie.Text = NFEGRID.Rows[0].Cells["serie"].Value.ToString().Trim();
-                                txtdate.Text = NFEGRID.Rows[0].Cells["dhEmi"].Value.ToString().Trim().Substring(0, 10);
-                                tpNF.Text = NFEGRID.Rows[0].Cells["tpNF"].Value.ToString().Trim();
-                                dateTimePicker1.Text = txtdate.Text;
-                            }
-                            catch (Exception ErroIdent)
-                            {
-                                MessageBox.Show("Ide: " + ErroIdent.Message);
+                        {
+                            NFEGRID.DataSource = ds.Tables["ide"];
+                            txtNFE.Text = NFEGRID.Rows[0].Cells["nNF"].Value.ToString().Trim();
+                            txtserie.Text = NFEGRID.Rows[0].Cells["serie"].Value.ToString().Trim();
+                            txtdate.Text = NFEGRID.Rows[0].Cells["dhEmi"].Value.ToString().Trim().Substring(0, 10);
+                            tpNF.Text = NFEGRID.Rows[0].Cells["tpNF"].Value.ToString().Trim();
+                            dateTimePicker1.Text = txtdate.Text;
+                        }
+                        catch (Exception ErroIdent)
+                        {
+                            MessageBox.Show("Ide: " + ErroIdent.Message);
                         }
                         try
-                            {
-                                DADOSGRID.DataSource = ds.Tables["infAdic"];
-                                txtDados.Text = DADOSGRID.Rows[0].Cells["infCpl"].Value.ToString().Trim();
-                            }
-                            catch (Exception ErroInfAdc)
-                            {
-                                //MessageBox.Show("InfAdic: " + ErroInfAdc.Message);
+                        {
+                            DADOSGRID.DataSource = ds.Tables["infAdic"];
+                            txtDados.Text = DADOSGRID.Rows[0].Cells["infCpl"].Value.ToString().Trim();
+                        }
+                        catch (Exception)
+                        {
+                            //MessageBox.Show("InfAdic: " + ErroInfAdc.Message);
                         }
                         try
                         {
                             dataGridViewProdutos.DataSource = ds.Tables["ICMSTot"];
-                            vNF.Text = dataGridViewProdutos.Rows[0].Cells["vNF"].Value.ToString().Replace(".",",");
+                            vNF.Text = dataGridViewProdutos.Rows[0].Cells["vNF"].Value.ToString().Replace(".", ",");
                             vNF.Focus();
                             textValor1.Focus();
                         }
@@ -315,51 +314,51 @@ namespace SistemaGSG
                         }
                         try
                         {
-                                CHAVEGRID.DataSource = ds.Tables["infProt"];
-                                txtChavedeAcesso.Text = CHAVEGRID.Rows[0].Cells["chNFe"].Value.ToString().Trim();
-                                txtProtocolo.Text = CHAVEGRID.Rows[0].Cells["nProt"].Value.ToString().Trim();
-                            }
-                            catch (Exception ErroInfProt)
-                            {
-                                MessageBox.Show("InfProt: " + ErroInfProt.Message);
-                                txtCNPJ.Text = "";
-                                txtEmpresa.Text = "";
-                                txtNFE.Text = "";
-                                txtserie.Text = "";
-                                txtdate.Text = "";
-                                txtDados.Text = "";
-                                txtChavedeAcesso.Text = "";
-                                txtProtocolo.Text = "";
-                                vNF.Text = "";
-                                tpNF.Text = "";
+                            CHAVEGRID.DataSource = ds.Tables["infProt"];
+                            txtChavedeAcesso.Text = CHAVEGRID.Rows[0].Cells["chNFe"].Value.ToString().Trim();
+                            txtProtocolo.Text = CHAVEGRID.Rows[0].Cells["nProt"].Value.ToString().Trim();
+                        }
+                        catch (Exception ErroInfProt)
+                        {
+                            MessageBox.Show("InfProt: " + ErroInfProt.Message);
+                            txtCNPJ.Text = "";
+                            txtEmpresa.Text = "";
+                            txtNFE.Text = "";
+                            txtserie.Text = "";
+                            txtdate.Text = "";
+                            txtDados.Text = "";
+                            txtChavedeAcesso.Text = "";
+                            txtProtocolo.Text = "";
+                            vNF.Text = "";
+                            tpNF.Text = "";
                         }
                         try
                         {
-                                MySqlCommand prompt_cmd = new MySqlCommand("UPDATE `tb_chave` SET empresa='" + txtEmpresa.Text.Trim() + "' ,n_nfe='" + txtNFE.Text.Trim() + "',emisao='" + txtdate.Text.Trim() + "', tpNF='" + tpNF.Text.Trim() + "', vNF='" + vNF.Text.Trim() + "' WHERE col_chave='" + txtURLxml.Text.Replace(".xml","") + "'", ConexaoDados.GetConnectionXML());
-                                prompt_cmd.ExecuteNonQuery();
-                                ConexaoDados.GetConnectionXML().Close();
-                            }
-                            catch (MySqlException)
-                            {
-                                //MessageBox.Show("Não Inserido, no Banco de Dados!");
-                            }
-                            catch (Exception Err)
-                            {
-                                MessageBox.Show("Geral: " + Err.Message);
-                            }
+                            MySqlCommand prompt_cmd = new MySqlCommand("UPDATE `tb_chave` SET empresa='" + txtEmpresa.Text.Trim() + "' ,n_nfe='" + txtNFE.Text.Trim() + "',emisao='" + txtdate.Text.Trim() + "', tpNF='" + tpNF.Text.Trim() + "', vNF='" + vNF.Text.Trim() + "' WHERE col_chave='" + txtURLxml.Text.Replace(".xml", "") + "'", ConexaoDados.GetConnectionXML());
+                            prompt_cmd.ExecuteNonQuery();
+                            ConexaoDados.GetConnectionXML().Close();
                         }
-                        catch (FileNotFoundException Error)
+                        catch (MySqlException)
                         {
-                            //MessageBox.Show(Error.Message + " " + XMLCont.ToString());
+                            //MessageBox.Show("Não Inserido, no Banco de Dados!");
                         }
-                        catch (Exception ErMXL)
+                        catch (Exception Err)
                         {
-                            MessageBox.Show("Geral 2: " + ErMXL.Message);
+                            MessageBox.Show("Geral: " + Err.Message);
                         }
                     }
-                    File.Delete(@"C:\ArquivosSAP\XML\"+txtURLxml.Text+".xml");
-                    XMLCont++;
-                    XMLContResult++;
+                    catch (FileNotFoundException)
+                    {
+                        //MessageBox.Show(Error.Message + " " + XMLCont.ToString());
+                    }
+                    catch (Exception ErMXL)
+                    {
+                        MessageBox.Show("Geral 2: " + ErMXL.Message);
+                    }
+                }
+                File.Delete(@"C:\ArquivosSAP\XML\" + txtURLxml.Text + ".xml");
+                XMLCont++;
+                XMLContResult++;
                 try
                 {
                     double percentual = XMLCont / TotaldeLinhas * 100.0;
@@ -381,23 +380,23 @@ namespace SistemaGSG
                 {
                     carregarDataXML();
                 }
-                catch (ArgumentOutOfRangeException Err)
+                catch
                 {
                     //MessageBox.Show("Geral 3: " + Err.Message);
                 }
                 LoadDataGrid();
             }
         }
-            //richTextBox1.AppendText(el.GetAttribute("type").Equals("span") + Environment.NewLine);
+        //richTextBox1.AppendText(el.GetAttribute("type").Equals("span") + Environment.NewLine);
         private void button3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    frm_Main frm_Main = new frm_Main();
-                    frm_Main.Show();
-                    this.Visible = false;
-                }
+                frm_Main frm_Main = new frm_Main();
+                frm_Main.Show();
+                this.Visible = false;
             }
+        }
         private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox.Checked)
@@ -411,7 +410,7 @@ namespace SistemaGSG
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Deseja Iniciar a consulta no SAP? \nO SistemaGSG ficará indisponivel por alguns minutos","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja Iniciar a consulta no SAP? \nO SistemaGSG ficará indisponivel por alguns minutos", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Pega a tela de execução do Windows
                 CSapROTWrapper sapROTWrapper = new CSapROTWrapper();
@@ -475,7 +474,7 @@ namespace SistemaGSG
                             ((GuiTab)Session.FindById("wnd[0]/usr/tabsTABSTRIP1/tabpTAB7")).Select();
                             User = ((GuiTextField)Session.FindById("wnd[0]/usr/tabsTABSTRIP1/tabpTAB7/ssubHEADER_TAB:SAPLJ1BB2:2700/txtJ_1BDYDOC-CRENAM")).Text;
                             ((GuiTab)Session.FindById("wnd[0]/usr/tabsTABSTRIP1/tabpTAB2")).Select();
-                             ValorNFe = ((GuiTextField)Session.FindById("wnd[0]/usr/tabsTABSTRIP1/tabpTAB2/ssubHEADER_TAB:SAPLJ1BB2:2200/txtJ_1BDYDOC-NFTOT")).Text;
+                            ValorNFe = ((GuiTextField)Session.FindById("wnd[0]/usr/tabsTABSTRIP1/tabpTAB2/ssubHEADER_TAB:SAPLJ1BB2:2200/txtJ_1BDYDOC-NFTOT")).Text;
                             ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[3]")).Press();
                             ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[3]")).Press();
                             if (AcaoEtapa == "C")
@@ -503,7 +502,7 @@ namespace SistemaGSG
                             dateTimePicker2.CustomFormat = "yyyy-MM-dd";
                             try
                             {
-                                MySqlCommand prompt_cmd = new MySqlCommand("UPDATE `tb_chave` SET empresa='" + EMPRESA + "' , n_nfe='" + NOTAFISCAL + "', lancamento_sap='" + this.dateTimePicker2.Text + "', protocolo='" + Protocolo + "',  user_sap='" + User + "', status='LANÇADA', vNF='R$: "+ ValorNFe + "', col_Downl='2' ,  ACTION_REQU='" + AcaoEtapa +"' WHERE col_chave='" + dataGridViewSefaz.Rows[Chave].Cells["Column2"].Value.ToString() + "'", ConexaoDados.GetConnectionXML());
+                                MySqlCommand prompt_cmd = new MySqlCommand("UPDATE `tb_chave` SET empresa='" + EMPRESA + "' , n_nfe='" + NOTAFISCAL + "', lancamento_sap='" + this.dateTimePicker2.Text + "', protocolo='" + Protocolo + "',  user_sap='" + User + "', status='LANÇADA', vNF='R$: " + ValorNFe + "', col_Downl='2' ,  ACTION_REQU='" + AcaoEtapa + "' WHERE col_chave='" + dataGridViewSefaz.Rows[Chave].Cells["Column2"].Value.ToString() + "'", ConexaoDados.GetConnectionXML());
                                 prompt_cmd.ExecuteNonQuery();
                                 ConexaoDados.GetConnectionXML().Close();
                             }
@@ -543,7 +542,7 @@ namespace SistemaGSG
                         double percent = 100.0 - percentual;
                         lblPorcentagem.Text = percentual.ToString().Substring(0, 3) + " %";
                     }
-                    catch (Exception Error)
+                    catch
                     {
                         // MessageBox.Show("Erro com a porcentagem!" +Error.Message);
                     }
@@ -607,7 +606,7 @@ namespace SistemaGSG
                 int countg = dataGridViewSefaz.RowCount;
                 label6.Text = countg.ToString();
             }
-            if(string.IsNullOrEmpty(maskFiltro.Text))
+            if (string.IsNullOrEmpty(maskFiltro.Text))
             {
                 LoadDataGrid();
             }

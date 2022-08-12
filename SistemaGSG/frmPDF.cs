@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using org.apache.pdfbox.pdmodel;
+﻿using org.apache.pdfbox.pdmodel;
 using org.apache.pdfbox.util;
+using System;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -49,12 +42,12 @@ namespace SistemaGSG
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-                if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    frm_Main frm_Main = new frm_Main();
-                    frm_Main.Show();
-                    this.Visible = false;
-                }
+            if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                frm_Main frm_Main = new frm_Main();
+                frm_Main.Show();
+                this.Visible = false;
+            }
         }
     }
 }

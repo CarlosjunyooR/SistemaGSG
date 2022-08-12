@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaGSG
@@ -17,17 +14,17 @@ namespace SistemaGSG
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            FormAcesso Sefaz = new FormAcesso();
-            Sefaz.ShowDialog();
+            //FormAcesso frm_Main = new FormAcesso();
+            //frm_Main.ShowDialog();
 
-            //Splash fmr = new Splash();
-            //fmr.ShowDialog();
-            //frmLogin fml = new frmLogin();
-            //fml.ShowDialog();
-            //if (fml.FMP == true)
-            //{ 
-            //  Application.Run(new frm_Main());
-            //}
+            Splash fmr = new Splash();
+            fmr.ShowDialog();
+            frmLogin fml = new frmLogin();
+            fml.ShowDialog();
+            if (fml.FMP == true)
+            {
+              Application.Run(new frm_Main());
+            }
         }
     }
 }

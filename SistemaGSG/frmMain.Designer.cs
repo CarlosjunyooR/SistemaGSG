@@ -47,6 +47,7 @@
             this.pDFSepararToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posiçãoDaSemanaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.criarAcessoBalançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fiscalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importarXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baixarXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.criarAcessoBalançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -223,13 +224,21 @@
             this.posiçãoDaSemanaToolStripMenuItem.Text = "Posição da Semana";
             this.posiçãoDaSemanaToolStripMenuItem.Click += new System.EventHandler(this.posiçãoDaSemanaToolStripMenuItem_Click);
             // 
+            // criarAcessoBalançaToolStripMenuItem
+            // 
+            this.criarAcessoBalançaToolStripMenuItem.Name = "criarAcessoBalançaToolStripMenuItem";
+            this.criarAcessoBalançaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.criarAcessoBalançaToolStripMenuItem.Text = "Criar Acesso Balança";
+            this.criarAcessoBalançaToolStripMenuItem.Click += new System.EventHandler(this.criarAcessoBalançaToolStripMenuItem_Click);
+            // 
             // fiscalToolStripMenuItem
             // 
             this.fiscalToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importarXMLToolStripMenuItem,
             this.baixarXMLToolStripMenuItem,
             this.consultarNotasEmitidasToolStripMenuItem,
-            this.relaçãoDeNotasFiscaisToolStripMenuItem});
+            this.relaçãoDeNotasFiscaisToolStripMenuItem,
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem});
             this.fiscalToolStripMenuItem.Name = "fiscalToolStripMenuItem";
             this.fiscalToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.fiscalToolStripMenuItem.Text = "Notas Fiscais";
@@ -424,12 +433,12 @@
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // criarAcessoBalançaToolStripMenuItem
+            // notasFiscaisConfirmaçãoSefazToolStripMenuItem
             // 
-            this.criarAcessoBalançaToolStripMenuItem.Name = "criarAcessoBalançaToolStripMenuItem";
-            this.criarAcessoBalançaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.criarAcessoBalançaToolStripMenuItem.Text = "Criar Acesso Balança";
-            this.criarAcessoBalançaToolStripMenuItem.Click += new System.EventHandler(this.criarAcessoBalançaToolStripMenuItem_Click);
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem.Name = "notasFiscaisConfirmaçãoSefazToolStripMenuItem";
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem.Text = "Notas Fiscais Confirmação Sefaz";
+            this.notasFiscaisConfirmaçãoSefazToolStripMenuItem.Click += new System.EventHandler(this.notasFiscaisConfirmaçãoSefazToolStripMenuItem_Click);
             // 
             // frm_Main
             // 
@@ -509,5 +518,6 @@
         private System.Windows.Forms.ToolStripMenuItem baixarXMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem criarPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem criarAcessoBalançaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem notasFiscaisConfirmaçãoSefazToolStripMenuItem;
     }
 }

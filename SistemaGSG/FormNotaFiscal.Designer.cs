@@ -163,159 +163,120 @@
             this.DescItem40 = new System.Windows.Forms.TextBox();
             this.Item40 = new System.Windows.Forms.TextBox();
             this.lblItem40 = new System.Windows.Forms.Label();
-            this.checkItem39 = new System.Windows.Forms.CheckBox();
             this.DescItem39 = new System.Windows.Forms.TextBox();
             this.Item39 = new System.Windows.Forms.TextBox();
             this.lblItem39 = new System.Windows.Forms.Label();
-            this.checkItem38 = new System.Windows.Forms.CheckBox();
             this.DescItem38 = new System.Windows.Forms.TextBox();
             this.Item38 = new System.Windows.Forms.TextBox();
             this.lblItem38 = new System.Windows.Forms.Label();
-            this.checkItem37 = new System.Windows.Forms.CheckBox();
             this.DescItem37 = new System.Windows.Forms.TextBox();
             this.Item37 = new System.Windows.Forms.TextBox();
             this.lblItem37 = new System.Windows.Forms.Label();
-            this.checkItem36 = new System.Windows.Forms.CheckBox();
             this.DescItem36 = new System.Windows.Forms.TextBox();
             this.Item36 = new System.Windows.Forms.TextBox();
             this.lblItem36 = new System.Windows.Forms.Label();
-            this.checkItem35 = new System.Windows.Forms.CheckBox();
             this.DescItem35 = new System.Windows.Forms.TextBox();
             this.Item35 = new System.Windows.Forms.TextBox();
             this.lblItem35 = new System.Windows.Forms.Label();
-            this.checkItem34 = new System.Windows.Forms.CheckBox();
             this.DescItem34 = new System.Windows.Forms.TextBox();
             this.Item34 = new System.Windows.Forms.TextBox();
             this.lblItem34 = new System.Windows.Forms.Label();
-            this.checkItem33 = new System.Windows.Forms.CheckBox();
             this.DescItem33 = new System.Windows.Forms.TextBox();
             this.Item33 = new System.Windows.Forms.TextBox();
             this.lblItem33 = new System.Windows.Forms.Label();
-            this.checkItem32 = new System.Windows.Forms.CheckBox();
             this.DescItem32 = new System.Windows.Forms.TextBox();
             this.Item32 = new System.Windows.Forms.TextBox();
             this.lblItem32 = new System.Windows.Forms.Label();
-            this.checkItem31 = new System.Windows.Forms.CheckBox();
             this.DescItem31 = new System.Windows.Forms.TextBox();
             this.Item31 = new System.Windows.Forms.TextBox();
             this.lblItem31 = new System.Windows.Forms.Label();
-            this.checkItem30 = new System.Windows.Forms.CheckBox();
             this.DescItem30 = new System.Windows.Forms.TextBox();
             this.Item30 = new System.Windows.Forms.TextBox();
             this.lblItem30 = new System.Windows.Forms.Label();
-            this.checkItem29 = new System.Windows.Forms.CheckBox();
             this.DescItem29 = new System.Windows.Forms.TextBox();
             this.Item29 = new System.Windows.Forms.TextBox();
             this.lblItem29 = new System.Windows.Forms.Label();
-            this.checkItem28 = new System.Windows.Forms.CheckBox();
             this.DescItem28 = new System.Windows.Forms.TextBox();
             this.Item28 = new System.Windows.Forms.TextBox();
             this.lblItem28 = new System.Windows.Forms.Label();
-            this.checkItem27 = new System.Windows.Forms.CheckBox();
             this.DescItem27 = new System.Windows.Forms.TextBox();
             this.Item27 = new System.Windows.Forms.TextBox();
             this.lblItem27 = new System.Windows.Forms.Label();
-            this.checkItem26 = new System.Windows.Forms.CheckBox();
             this.DescItem26 = new System.Windows.Forms.TextBox();
             this.Item26 = new System.Windows.Forms.TextBox();
             this.lblItem26 = new System.Windows.Forms.Label();
-            this.checkItem25 = new System.Windows.Forms.CheckBox();
             this.DescItem25 = new System.Windows.Forms.TextBox();
             this.Item25 = new System.Windows.Forms.TextBox();
             this.lblItem25 = new System.Windows.Forms.Label();
-            this.checkItem24 = new System.Windows.Forms.CheckBox();
             this.DescItem24 = new System.Windows.Forms.TextBox();
             this.Item24 = new System.Windows.Forms.TextBox();
             this.lblItem24 = new System.Windows.Forms.Label();
-            this.checkItem23 = new System.Windows.Forms.CheckBox();
             this.DescItem23 = new System.Windows.Forms.TextBox();
             this.Item23 = new System.Windows.Forms.TextBox();
             this.lblItem23 = new System.Windows.Forms.Label();
-            this.checkItem22 = new System.Windows.Forms.CheckBox();
             this.DescItem22 = new System.Windows.Forms.TextBox();
             this.Item22 = new System.Windows.Forms.TextBox();
             this.lblItem22 = new System.Windows.Forms.Label();
-            this.checkItem21 = new System.Windows.Forms.CheckBox();
             this.DescItem21 = new System.Windows.Forms.TextBox();
             this.Item21 = new System.Windows.Forms.TextBox();
             this.lblItem21 = new System.Windows.Forms.Label();
-            this.checkItem20 = new System.Windows.Forms.CheckBox();
             this.DescItem20 = new System.Windows.Forms.TextBox();
             this.Item20 = new System.Windows.Forms.TextBox();
             this.lblItem20 = new System.Windows.Forms.Label();
-            this.checkItem19 = new System.Windows.Forms.CheckBox();
             this.DescItem19 = new System.Windows.Forms.TextBox();
             this.Item19 = new System.Windows.Forms.TextBox();
             this.lblItem19 = new System.Windows.Forms.Label();
-            this.checkItem18 = new System.Windows.Forms.CheckBox();
             this.DescItem18 = new System.Windows.Forms.TextBox();
             this.Item18 = new System.Windows.Forms.TextBox();
             this.lblItem18 = new System.Windows.Forms.Label();
-            this.checkItem17 = new System.Windows.Forms.CheckBox();
             this.DescItem17 = new System.Windows.Forms.TextBox();
             this.Item17 = new System.Windows.Forms.TextBox();
             this.lblItem17 = new System.Windows.Forms.Label();
-            this.checkItem16 = new System.Windows.Forms.CheckBox();
             this.DescItem16 = new System.Windows.Forms.TextBox();
             this.Item16 = new System.Windows.Forms.TextBox();
             this.lblItem16 = new System.Windows.Forms.Label();
-            this.checkItem15 = new System.Windows.Forms.CheckBox();
             this.DescItem15 = new System.Windows.Forms.TextBox();
             this.Item15 = new System.Windows.Forms.TextBox();
             this.lblItem15 = new System.Windows.Forms.Label();
-            this.checkItem14 = new System.Windows.Forms.CheckBox();
             this.DescItem14 = new System.Windows.Forms.TextBox();
             this.Item14 = new System.Windows.Forms.TextBox();
             this.lblItem14 = new System.Windows.Forms.Label();
-            this.checkItem13 = new System.Windows.Forms.CheckBox();
             this.DescItem13 = new System.Windows.Forms.TextBox();
             this.Item13 = new System.Windows.Forms.TextBox();
             this.lblItem13 = new System.Windows.Forms.Label();
-            this.checkItem12 = new System.Windows.Forms.CheckBox();
             this.DescItem12 = new System.Windows.Forms.TextBox();
             this.Item12 = new System.Windows.Forms.TextBox();
             this.lblItem12 = new System.Windows.Forms.Label();
-            this.checkItem11 = new System.Windows.Forms.CheckBox();
             this.DescItem11 = new System.Windows.Forms.TextBox();
             this.Item11 = new System.Windows.Forms.TextBox();
             this.lblItem11 = new System.Windows.Forms.Label();
-            this.checkItem10 = new System.Windows.Forms.CheckBox();
             this.DescItem10 = new System.Windows.Forms.TextBox();
             this.Item10 = new System.Windows.Forms.TextBox();
             this.lblItem10 = new System.Windows.Forms.Label();
-            this.checkItem9 = new System.Windows.Forms.CheckBox();
             this.DescItem9 = new System.Windows.Forms.TextBox();
             this.Item9 = new System.Windows.Forms.TextBox();
             this.lblItem9 = new System.Windows.Forms.Label();
-            this.checkItem8 = new System.Windows.Forms.CheckBox();
             this.DescItem8 = new System.Windows.Forms.TextBox();
             this.Item8 = new System.Windows.Forms.TextBox();
             this.lblItem8 = new System.Windows.Forms.Label();
-            this.checkItem7 = new System.Windows.Forms.CheckBox();
             this.DescItem7 = new System.Windows.Forms.TextBox();
             this.Item7 = new System.Windows.Forms.TextBox();
             this.lblItem7 = new System.Windows.Forms.Label();
-            this.checkItem6 = new System.Windows.Forms.CheckBox();
             this.DescItem6 = new System.Windows.Forms.TextBox();
             this.Item6 = new System.Windows.Forms.TextBox();
             this.lblItem6 = new System.Windows.Forms.Label();
-            this.checkItem5 = new System.Windows.Forms.CheckBox();
             this.DescItem5 = new System.Windows.Forms.TextBox();
             this.Item5 = new System.Windows.Forms.TextBox();
             this.lblItem5 = new System.Windows.Forms.Label();
-            this.checkItem4 = new System.Windows.Forms.CheckBox();
             this.DescItem4 = new System.Windows.Forms.TextBox();
             this.Item4 = new System.Windows.Forms.TextBox();
             this.lblItem4 = new System.Windows.Forms.Label();
-            this.checkItem3 = new System.Windows.Forms.CheckBox();
             this.DescItem3 = new System.Windows.Forms.TextBox();
             this.Item3 = new System.Windows.Forms.TextBox();
             this.lblItem3 = new System.Windows.Forms.Label();
-            this.checkItem2 = new System.Windows.Forms.CheckBox();
             this.DescItem2 = new System.Windows.Forms.TextBox();
             this.Item2 = new System.Windows.Forms.TextBox();
             this.lblItem2 = new System.Windows.Forms.Label();
-            this.checkItem1 = new System.Windows.Forms.CheckBox();
             this.DescItem1 = new System.Windows.Forms.TextBox();
             this.Item1 = new System.Windows.Forms.TextBox();
             this.lblItem1 = new System.Windows.Forms.Label();
@@ -933,159 +894,120 @@
             this.panel1.Controls.Add(this.DescItem40);
             this.panel1.Controls.Add(this.Item40);
             this.panel1.Controls.Add(this.lblItem40);
-            this.panel1.Controls.Add(this.checkItem39);
             this.panel1.Controls.Add(this.DescItem39);
             this.panel1.Controls.Add(this.Item39);
             this.panel1.Controls.Add(this.lblItem39);
-            this.panel1.Controls.Add(this.checkItem38);
             this.panel1.Controls.Add(this.DescItem38);
             this.panel1.Controls.Add(this.Item38);
             this.panel1.Controls.Add(this.lblItem38);
-            this.panel1.Controls.Add(this.checkItem37);
             this.panel1.Controls.Add(this.DescItem37);
             this.panel1.Controls.Add(this.Item37);
             this.panel1.Controls.Add(this.lblItem37);
-            this.panel1.Controls.Add(this.checkItem36);
             this.panel1.Controls.Add(this.DescItem36);
             this.panel1.Controls.Add(this.Item36);
             this.panel1.Controls.Add(this.lblItem36);
-            this.panel1.Controls.Add(this.checkItem35);
             this.panel1.Controls.Add(this.DescItem35);
             this.panel1.Controls.Add(this.Item35);
             this.panel1.Controls.Add(this.lblItem35);
-            this.panel1.Controls.Add(this.checkItem34);
             this.panel1.Controls.Add(this.DescItem34);
             this.panel1.Controls.Add(this.Item34);
             this.panel1.Controls.Add(this.lblItem34);
-            this.panel1.Controls.Add(this.checkItem33);
             this.panel1.Controls.Add(this.DescItem33);
             this.panel1.Controls.Add(this.Item33);
             this.panel1.Controls.Add(this.lblItem33);
-            this.panel1.Controls.Add(this.checkItem32);
             this.panel1.Controls.Add(this.DescItem32);
             this.panel1.Controls.Add(this.Item32);
             this.panel1.Controls.Add(this.lblItem32);
-            this.panel1.Controls.Add(this.checkItem31);
             this.panel1.Controls.Add(this.DescItem31);
             this.panel1.Controls.Add(this.Item31);
             this.panel1.Controls.Add(this.lblItem31);
-            this.panel1.Controls.Add(this.checkItem30);
             this.panel1.Controls.Add(this.DescItem30);
             this.panel1.Controls.Add(this.Item30);
             this.panel1.Controls.Add(this.lblItem30);
-            this.panel1.Controls.Add(this.checkItem29);
             this.panel1.Controls.Add(this.DescItem29);
             this.panel1.Controls.Add(this.Item29);
             this.panel1.Controls.Add(this.lblItem29);
-            this.panel1.Controls.Add(this.checkItem28);
             this.panel1.Controls.Add(this.DescItem28);
             this.panel1.Controls.Add(this.Item28);
             this.panel1.Controls.Add(this.lblItem28);
-            this.panel1.Controls.Add(this.checkItem27);
             this.panel1.Controls.Add(this.DescItem27);
             this.panel1.Controls.Add(this.Item27);
             this.panel1.Controls.Add(this.lblItem27);
-            this.panel1.Controls.Add(this.checkItem26);
             this.panel1.Controls.Add(this.DescItem26);
             this.panel1.Controls.Add(this.Item26);
             this.panel1.Controls.Add(this.lblItem26);
-            this.panel1.Controls.Add(this.checkItem25);
             this.panel1.Controls.Add(this.DescItem25);
             this.panel1.Controls.Add(this.Item25);
             this.panel1.Controls.Add(this.lblItem25);
-            this.panel1.Controls.Add(this.checkItem24);
             this.panel1.Controls.Add(this.DescItem24);
             this.panel1.Controls.Add(this.Item24);
             this.panel1.Controls.Add(this.lblItem24);
-            this.panel1.Controls.Add(this.checkItem23);
             this.panel1.Controls.Add(this.DescItem23);
             this.panel1.Controls.Add(this.Item23);
             this.panel1.Controls.Add(this.lblItem23);
-            this.panel1.Controls.Add(this.checkItem22);
             this.panel1.Controls.Add(this.DescItem22);
             this.panel1.Controls.Add(this.Item22);
             this.panel1.Controls.Add(this.lblItem22);
-            this.panel1.Controls.Add(this.checkItem21);
             this.panel1.Controls.Add(this.DescItem21);
             this.panel1.Controls.Add(this.Item21);
             this.panel1.Controls.Add(this.lblItem21);
-            this.panel1.Controls.Add(this.checkItem20);
             this.panel1.Controls.Add(this.DescItem20);
             this.panel1.Controls.Add(this.Item20);
             this.panel1.Controls.Add(this.lblItem20);
-            this.panel1.Controls.Add(this.checkItem19);
             this.panel1.Controls.Add(this.DescItem19);
             this.panel1.Controls.Add(this.Item19);
             this.panel1.Controls.Add(this.lblItem19);
-            this.panel1.Controls.Add(this.checkItem18);
             this.panel1.Controls.Add(this.DescItem18);
             this.panel1.Controls.Add(this.Item18);
             this.panel1.Controls.Add(this.lblItem18);
-            this.panel1.Controls.Add(this.checkItem17);
             this.panel1.Controls.Add(this.DescItem17);
             this.panel1.Controls.Add(this.Item17);
             this.panel1.Controls.Add(this.lblItem17);
-            this.panel1.Controls.Add(this.checkItem16);
             this.panel1.Controls.Add(this.DescItem16);
             this.panel1.Controls.Add(this.Item16);
             this.panel1.Controls.Add(this.lblItem16);
-            this.panel1.Controls.Add(this.checkItem15);
             this.panel1.Controls.Add(this.DescItem15);
             this.panel1.Controls.Add(this.Item15);
             this.panel1.Controls.Add(this.lblItem15);
-            this.panel1.Controls.Add(this.checkItem14);
             this.panel1.Controls.Add(this.DescItem14);
             this.panel1.Controls.Add(this.Item14);
             this.panel1.Controls.Add(this.lblItem14);
-            this.panel1.Controls.Add(this.checkItem13);
             this.panel1.Controls.Add(this.DescItem13);
             this.panel1.Controls.Add(this.Item13);
             this.panel1.Controls.Add(this.lblItem13);
-            this.panel1.Controls.Add(this.checkItem12);
             this.panel1.Controls.Add(this.DescItem12);
             this.panel1.Controls.Add(this.Item12);
             this.panel1.Controls.Add(this.lblItem12);
-            this.panel1.Controls.Add(this.checkItem11);
             this.panel1.Controls.Add(this.DescItem11);
             this.panel1.Controls.Add(this.Item11);
             this.panel1.Controls.Add(this.lblItem11);
-            this.panel1.Controls.Add(this.checkItem10);
             this.panel1.Controls.Add(this.DescItem10);
             this.panel1.Controls.Add(this.Item10);
             this.panel1.Controls.Add(this.lblItem10);
-            this.panel1.Controls.Add(this.checkItem9);
             this.panel1.Controls.Add(this.DescItem9);
             this.panel1.Controls.Add(this.Item9);
             this.panel1.Controls.Add(this.lblItem9);
-            this.panel1.Controls.Add(this.checkItem8);
             this.panel1.Controls.Add(this.DescItem8);
             this.panel1.Controls.Add(this.Item8);
             this.panel1.Controls.Add(this.lblItem8);
-            this.panel1.Controls.Add(this.checkItem7);
             this.panel1.Controls.Add(this.DescItem7);
             this.panel1.Controls.Add(this.Item7);
             this.panel1.Controls.Add(this.lblItem7);
-            this.panel1.Controls.Add(this.checkItem6);
             this.panel1.Controls.Add(this.DescItem6);
             this.panel1.Controls.Add(this.Item6);
             this.panel1.Controls.Add(this.lblItem6);
-            this.panel1.Controls.Add(this.checkItem5);
             this.panel1.Controls.Add(this.DescItem5);
             this.panel1.Controls.Add(this.Item5);
             this.panel1.Controls.Add(this.lblItem5);
-            this.panel1.Controls.Add(this.checkItem4);
             this.panel1.Controls.Add(this.DescItem4);
             this.panel1.Controls.Add(this.Item4);
             this.panel1.Controls.Add(this.lblItem4);
-            this.panel1.Controls.Add(this.checkItem3);
             this.panel1.Controls.Add(this.DescItem3);
             this.panel1.Controls.Add(this.Item3);
             this.panel1.Controls.Add(this.lblItem3);
-            this.panel1.Controls.Add(this.checkItem2);
             this.panel1.Controls.Add(this.DescItem2);
             this.panel1.Controls.Add(this.Item2);
             this.panel1.Controls.Add(this.lblItem2);
-            this.panel1.Controls.Add(this.checkItem1);
             this.panel1.Controls.Add(this.DescItem1);
             this.panel1.Controls.Add(this.Item1);
             this.panel1.Controls.Add(this.lblItem1);
@@ -1859,16 +1781,6 @@
             this.lblItem40.Text = "Produto 40:";
             this.lblItem40.Visible = false;
             // 
-            // checkItem39
-            // 
-            this.checkItem39.AutoSize = true;
-            this.checkItem39.Location = new System.Drawing.Point(604, 1007);
-            this.checkItem39.Name = "checkItem39";
-            this.checkItem39.Size = new System.Drawing.Size(15, 14);
-            this.checkItem39.TabIndex = 244;
-            this.checkItem39.UseVisualStyleBackColor = true;
-            this.checkItem39.Visible = false;
-            // 
             // DescItem39
             // 
             this.DescItem39.Enabled = false;
@@ -1896,16 +1808,6 @@
             this.lblItem39.TabIndex = 239;
             this.lblItem39.Text = "Produto 39:";
             this.lblItem39.Visible = false;
-            // 
-            // checkItem38
-            // 
-            this.checkItem38.AutoSize = true;
-            this.checkItem38.Location = new System.Drawing.Point(604, 981);
-            this.checkItem38.Name = "checkItem38";
-            this.checkItem38.Size = new System.Drawing.Size(15, 14);
-            this.checkItem38.TabIndex = 238;
-            this.checkItem38.UseVisualStyleBackColor = true;
-            this.checkItem38.Visible = false;
             // 
             // DescItem38
             // 
@@ -1935,16 +1837,6 @@
             this.lblItem38.Text = "Produto 38:";
             this.lblItem38.Visible = false;
             // 
-            // checkItem37
-            // 
-            this.checkItem37.AutoSize = true;
-            this.checkItem37.Location = new System.Drawing.Point(604, 955);
-            this.checkItem37.Name = "checkItem37";
-            this.checkItem37.Size = new System.Drawing.Size(15, 14);
-            this.checkItem37.TabIndex = 232;
-            this.checkItem37.UseVisualStyleBackColor = true;
-            this.checkItem37.Visible = false;
-            // 
             // DescItem37
             // 
             this.DescItem37.Enabled = false;
@@ -1972,16 +1864,6 @@
             this.lblItem37.TabIndex = 227;
             this.lblItem37.Text = "Produto 37:";
             this.lblItem37.Visible = false;
-            // 
-            // checkItem36
-            // 
-            this.checkItem36.AutoSize = true;
-            this.checkItem36.Location = new System.Drawing.Point(604, 929);
-            this.checkItem36.Name = "checkItem36";
-            this.checkItem36.Size = new System.Drawing.Size(15, 14);
-            this.checkItem36.TabIndex = 226;
-            this.checkItem36.UseVisualStyleBackColor = true;
-            this.checkItem36.Visible = false;
             // 
             // DescItem36
             // 
@@ -2011,16 +1893,6 @@
             this.lblItem36.Text = "Produto 36:";
             this.lblItem36.Visible = false;
             // 
-            // checkItem35
-            // 
-            this.checkItem35.AutoSize = true;
-            this.checkItem35.Location = new System.Drawing.Point(604, 903);
-            this.checkItem35.Name = "checkItem35";
-            this.checkItem35.Size = new System.Drawing.Size(15, 14);
-            this.checkItem35.TabIndex = 220;
-            this.checkItem35.UseVisualStyleBackColor = true;
-            this.checkItem35.Visible = false;
-            // 
             // DescItem35
             // 
             this.DescItem35.Enabled = false;
@@ -2049,16 +1921,6 @@
             this.lblItem35.Text = "Produto 35:";
             this.lblItem35.Visible = false;
             // 
-            // checkItem34
-            // 
-            this.checkItem34.AutoSize = true;
-            this.checkItem34.Location = new System.Drawing.Point(604, 877);
-            this.checkItem34.Name = "checkItem34";
-            this.checkItem34.Size = new System.Drawing.Size(15, 14);
-            this.checkItem34.TabIndex = 214;
-            this.checkItem34.UseVisualStyleBackColor = true;
-            this.checkItem34.Visible = false;
-            // 
             // DescItem34
             // 
             this.DescItem34.Enabled = false;
@@ -2086,16 +1948,6 @@
             this.lblItem34.TabIndex = 209;
             this.lblItem34.Text = "Produto 34:";
             this.lblItem34.Visible = false;
-            // 
-            // checkItem33
-            // 
-            this.checkItem33.AutoSize = true;
-            this.checkItem33.Location = new System.Drawing.Point(604, 851);
-            this.checkItem33.Name = "checkItem33";
-            this.checkItem33.Size = new System.Drawing.Size(15, 14);
-            this.checkItem33.TabIndex = 208;
-            this.checkItem33.UseVisualStyleBackColor = true;
-            this.checkItem33.Visible = false;
             // 
             // DescItem33
             // 
@@ -2126,16 +1978,6 @@
             this.lblItem33.Text = "Produto 33:";
             this.lblItem33.Visible = false;
             // 
-            // checkItem32
-            // 
-            this.checkItem32.AutoSize = true;
-            this.checkItem32.Location = new System.Drawing.Point(604, 825);
-            this.checkItem32.Name = "checkItem32";
-            this.checkItem32.Size = new System.Drawing.Size(15, 14);
-            this.checkItem32.TabIndex = 202;
-            this.checkItem32.UseVisualStyleBackColor = true;
-            this.checkItem32.Visible = false;
-            // 
             // DescItem32
             // 
             this.DescItem32.Enabled = false;
@@ -2163,16 +2005,6 @@
             this.lblItem32.TabIndex = 197;
             this.lblItem32.Text = "Produto 32:";
             this.lblItem32.Visible = false;
-            // 
-            // checkItem31
-            // 
-            this.checkItem31.AutoSize = true;
-            this.checkItem31.Location = new System.Drawing.Point(604, 799);
-            this.checkItem31.Name = "checkItem31";
-            this.checkItem31.Size = new System.Drawing.Size(15, 14);
-            this.checkItem31.TabIndex = 196;
-            this.checkItem31.UseVisualStyleBackColor = true;
-            this.checkItem31.Visible = false;
             // 
             // DescItem31
             // 
@@ -2202,16 +2034,6 @@
             this.lblItem31.Text = "Produto 31:";
             this.lblItem31.Visible = false;
             // 
-            // checkItem30
-            // 
-            this.checkItem30.AutoSize = true;
-            this.checkItem30.Location = new System.Drawing.Point(604, 773);
-            this.checkItem30.Name = "checkItem30";
-            this.checkItem30.Size = new System.Drawing.Size(15, 14);
-            this.checkItem30.TabIndex = 190;
-            this.checkItem30.UseVisualStyleBackColor = true;
-            this.checkItem30.Visible = false;
-            // 
             // DescItem30
             // 
             this.DescItem30.Enabled = false;
@@ -2239,16 +2061,6 @@
             this.lblItem30.TabIndex = 185;
             this.lblItem30.Text = "Produto 30:";
             this.lblItem30.Visible = false;
-            // 
-            // checkItem29
-            // 
-            this.checkItem29.AutoSize = true;
-            this.checkItem29.Location = new System.Drawing.Point(604, 747);
-            this.checkItem29.Name = "checkItem29";
-            this.checkItem29.Size = new System.Drawing.Size(15, 14);
-            this.checkItem29.TabIndex = 184;
-            this.checkItem29.UseVisualStyleBackColor = true;
-            this.checkItem29.Visible = false;
             // 
             // DescItem29
             // 
@@ -2278,16 +2090,6 @@
             this.lblItem29.Text = "Produto 29:";
             this.lblItem29.Visible = false;
             // 
-            // checkItem28
-            // 
-            this.checkItem28.AutoSize = true;
-            this.checkItem28.Location = new System.Drawing.Point(604, 721);
-            this.checkItem28.Name = "checkItem28";
-            this.checkItem28.Size = new System.Drawing.Size(15, 14);
-            this.checkItem28.TabIndex = 178;
-            this.checkItem28.UseVisualStyleBackColor = true;
-            this.checkItem28.Visible = false;
-            // 
             // DescItem28
             // 
             this.DescItem28.Enabled = false;
@@ -2315,16 +2117,6 @@
             this.lblItem28.TabIndex = 173;
             this.lblItem28.Text = "Produto 28:";
             this.lblItem28.Visible = false;
-            // 
-            // checkItem27
-            // 
-            this.checkItem27.AutoSize = true;
-            this.checkItem27.Location = new System.Drawing.Point(604, 695);
-            this.checkItem27.Name = "checkItem27";
-            this.checkItem27.Size = new System.Drawing.Size(15, 14);
-            this.checkItem27.TabIndex = 172;
-            this.checkItem27.UseVisualStyleBackColor = true;
-            this.checkItem27.Visible = false;
             // 
             // DescItem27
             // 
@@ -2354,16 +2146,6 @@
             this.lblItem27.Text = "Produto 27:";
             this.lblItem27.Visible = false;
             // 
-            // checkItem26
-            // 
-            this.checkItem26.AutoSize = true;
-            this.checkItem26.Location = new System.Drawing.Point(604, 672);
-            this.checkItem26.Name = "checkItem26";
-            this.checkItem26.Size = new System.Drawing.Size(15, 14);
-            this.checkItem26.TabIndex = 166;
-            this.checkItem26.UseVisualStyleBackColor = true;
-            this.checkItem26.Visible = false;
-            // 
             // DescItem26
             // 
             this.DescItem26.Enabled = false;
@@ -2391,16 +2173,6 @@
             this.lblItem26.TabIndex = 161;
             this.lblItem26.Text = "Produto 26:";
             this.lblItem26.Visible = false;
-            // 
-            // checkItem25
-            // 
-            this.checkItem25.AutoSize = true;
-            this.checkItem25.Location = new System.Drawing.Point(604, 646);
-            this.checkItem25.Name = "checkItem25";
-            this.checkItem25.Size = new System.Drawing.Size(15, 14);
-            this.checkItem25.TabIndex = 160;
-            this.checkItem25.UseVisualStyleBackColor = true;
-            this.checkItem25.Visible = false;
             // 
             // DescItem25
             // 
@@ -2430,16 +2202,6 @@
             this.lblItem25.Text = "Produto 25:";
             this.lblItem25.Visible = false;
             // 
-            // checkItem24
-            // 
-            this.checkItem24.AutoSize = true;
-            this.checkItem24.Location = new System.Drawing.Point(604, 620);
-            this.checkItem24.Name = "checkItem24";
-            this.checkItem24.Size = new System.Drawing.Size(15, 14);
-            this.checkItem24.TabIndex = 154;
-            this.checkItem24.UseVisualStyleBackColor = true;
-            this.checkItem24.Visible = false;
-            // 
             // DescItem24
             // 
             this.DescItem24.Enabled = false;
@@ -2467,16 +2229,6 @@
             this.lblItem24.TabIndex = 149;
             this.lblItem24.Text = "Produto 24:";
             this.lblItem24.Visible = false;
-            // 
-            // checkItem23
-            // 
-            this.checkItem23.AutoSize = true;
-            this.checkItem23.Location = new System.Drawing.Point(604, 594);
-            this.checkItem23.Name = "checkItem23";
-            this.checkItem23.Size = new System.Drawing.Size(15, 14);
-            this.checkItem23.TabIndex = 148;
-            this.checkItem23.UseVisualStyleBackColor = true;
-            this.checkItem23.Visible = false;
             // 
             // DescItem23
             // 
@@ -2506,16 +2258,6 @@
             this.lblItem23.Text = "Produto 23:";
             this.lblItem23.Visible = false;
             // 
-            // checkItem22
-            // 
-            this.checkItem22.AutoSize = true;
-            this.checkItem22.Location = new System.Drawing.Point(604, 568);
-            this.checkItem22.Name = "checkItem22";
-            this.checkItem22.Size = new System.Drawing.Size(15, 14);
-            this.checkItem22.TabIndex = 142;
-            this.checkItem22.UseVisualStyleBackColor = true;
-            this.checkItem22.Visible = false;
-            // 
             // DescItem22
             // 
             this.DescItem22.Enabled = false;
@@ -2543,16 +2285,6 @@
             this.lblItem22.TabIndex = 137;
             this.lblItem22.Text = "Produto 22:";
             this.lblItem22.Visible = false;
-            // 
-            // checkItem21
-            // 
-            this.checkItem21.AutoSize = true;
-            this.checkItem21.Location = new System.Drawing.Point(604, 542);
-            this.checkItem21.Name = "checkItem21";
-            this.checkItem21.Size = new System.Drawing.Size(15, 14);
-            this.checkItem21.TabIndex = 136;
-            this.checkItem21.UseVisualStyleBackColor = true;
-            this.checkItem21.Visible = false;
             // 
             // DescItem21
             // 
@@ -2582,16 +2314,6 @@
             this.lblItem21.Text = "Produto 21:";
             this.lblItem21.Visible = false;
             // 
-            // checkItem20
-            // 
-            this.checkItem20.AutoSize = true;
-            this.checkItem20.Location = new System.Drawing.Point(604, 516);
-            this.checkItem20.Name = "checkItem20";
-            this.checkItem20.Size = new System.Drawing.Size(15, 14);
-            this.checkItem20.TabIndex = 130;
-            this.checkItem20.UseVisualStyleBackColor = true;
-            this.checkItem20.Visible = false;
-            // 
             // DescItem20
             // 
             this.DescItem20.Enabled = false;
@@ -2619,16 +2341,6 @@
             this.lblItem20.TabIndex = 126;
             this.lblItem20.Text = "Produto 20:";
             this.lblItem20.Visible = false;
-            // 
-            // checkItem19
-            // 
-            this.checkItem19.AutoSize = true;
-            this.checkItem19.Location = new System.Drawing.Point(604, 490);
-            this.checkItem19.Name = "checkItem19";
-            this.checkItem19.Size = new System.Drawing.Size(15, 14);
-            this.checkItem19.TabIndex = 125;
-            this.checkItem19.UseVisualStyleBackColor = true;
-            this.checkItem19.Visible = false;
             // 
             // DescItem19
             // 
@@ -2658,16 +2370,6 @@
             this.lblItem19.Text = "Produto 19:";
             this.lblItem19.Visible = false;
             // 
-            // checkItem18
-            // 
-            this.checkItem18.AutoSize = true;
-            this.checkItem18.Location = new System.Drawing.Point(604, 464);
-            this.checkItem18.Name = "checkItem18";
-            this.checkItem18.Size = new System.Drawing.Size(15, 14);
-            this.checkItem18.TabIndex = 119;
-            this.checkItem18.UseVisualStyleBackColor = true;
-            this.checkItem18.Visible = false;
-            // 
             // DescItem18
             // 
             this.DescItem18.Enabled = false;
@@ -2695,16 +2397,6 @@
             this.lblItem18.TabIndex = 114;
             this.lblItem18.Text = "Produto 18:";
             this.lblItem18.Visible = false;
-            // 
-            // checkItem17
-            // 
-            this.checkItem17.AutoSize = true;
-            this.checkItem17.Location = new System.Drawing.Point(604, 438);
-            this.checkItem17.Name = "checkItem17";
-            this.checkItem17.Size = new System.Drawing.Size(15, 14);
-            this.checkItem17.TabIndex = 113;
-            this.checkItem17.UseVisualStyleBackColor = true;
-            this.checkItem17.Visible = false;
             // 
             // DescItem17
             // 
@@ -2734,16 +2426,6 @@
             this.lblItem17.Text = "Produto 17:";
             this.lblItem17.Visible = false;
             // 
-            // checkItem16
-            // 
-            this.checkItem16.AutoSize = true;
-            this.checkItem16.Location = new System.Drawing.Point(604, 412);
-            this.checkItem16.Name = "checkItem16";
-            this.checkItem16.Size = new System.Drawing.Size(15, 14);
-            this.checkItem16.TabIndex = 107;
-            this.checkItem16.UseVisualStyleBackColor = true;
-            this.checkItem16.Visible = false;
-            // 
             // DescItem16
             // 
             this.DescItem16.Enabled = false;
@@ -2771,16 +2453,6 @@
             this.lblItem16.TabIndex = 102;
             this.lblItem16.Text = "Produto 16:";
             this.lblItem16.Visible = false;
-            // 
-            // checkItem15
-            // 
-            this.checkItem15.AutoSize = true;
-            this.checkItem15.Location = new System.Drawing.Point(604, 386);
-            this.checkItem15.Name = "checkItem15";
-            this.checkItem15.Size = new System.Drawing.Size(15, 14);
-            this.checkItem15.TabIndex = 101;
-            this.checkItem15.UseVisualStyleBackColor = true;
-            this.checkItem15.Visible = false;
             // 
             // DescItem15
             // 
@@ -2810,16 +2482,6 @@
             this.lblItem15.Text = "Produto 15:";
             this.lblItem15.Visible = false;
             // 
-            // checkItem14
-            // 
-            this.checkItem14.AutoSize = true;
-            this.checkItem14.Location = new System.Drawing.Point(604, 360);
-            this.checkItem14.Name = "checkItem14";
-            this.checkItem14.Size = new System.Drawing.Size(15, 14);
-            this.checkItem14.TabIndex = 95;
-            this.checkItem14.UseVisualStyleBackColor = true;
-            this.checkItem14.Visible = false;
-            // 
             // DescItem14
             // 
             this.DescItem14.Enabled = false;
@@ -2847,16 +2509,6 @@
             this.lblItem14.TabIndex = 90;
             this.lblItem14.Text = "Produto 14:";
             this.lblItem14.Visible = false;
-            // 
-            // checkItem13
-            // 
-            this.checkItem13.AutoSize = true;
-            this.checkItem13.Location = new System.Drawing.Point(604, 334);
-            this.checkItem13.Name = "checkItem13";
-            this.checkItem13.Size = new System.Drawing.Size(15, 14);
-            this.checkItem13.TabIndex = 89;
-            this.checkItem13.UseVisualStyleBackColor = true;
-            this.checkItem13.Visible = false;
             // 
             // DescItem13
             // 
@@ -2886,17 +2538,6 @@
             this.lblItem13.Text = "Produto 13:";
             this.lblItem13.Visible = false;
             // 
-            // checkItem12
-            // 
-            this.checkItem12.AutoSize = true;
-            this.checkItem12.Location = new System.Drawing.Point(604, 308);
-            this.checkItem12.Name = "checkItem12";
-            this.checkItem12.Size = new System.Drawing.Size(15, 14);
-            this.checkItem12.TabIndex = 83;
-            this.checkItem12.UseVisualStyleBackColor = true;
-            this.checkItem12.Visible = false;
-            this.checkItem12.CheckedChanged += new System.EventHandler(this.checkItem12_CheckedChanged);
-            // 
             // DescItem12
             // 
             this.DescItem12.Enabled = false;
@@ -2924,17 +2565,6 @@
             this.lblItem12.TabIndex = 78;
             this.lblItem12.Text = "Produto 12:";
             this.lblItem12.Visible = false;
-            // 
-            // checkItem11
-            // 
-            this.checkItem11.AutoSize = true;
-            this.checkItem11.Location = new System.Drawing.Point(604, 282);
-            this.checkItem11.Name = "checkItem11";
-            this.checkItem11.Size = new System.Drawing.Size(15, 14);
-            this.checkItem11.TabIndex = 77;
-            this.checkItem11.UseVisualStyleBackColor = true;
-            this.checkItem11.Visible = false;
-            this.checkItem11.CheckedChanged += new System.EventHandler(this.checkItem11_CheckedChanged);
             // 
             // DescItem11
             // 
@@ -2964,17 +2594,6 @@
             this.lblItem11.Text = "Produto 11:";
             this.lblItem11.Visible = false;
             // 
-            // checkItem10
-            // 
-            this.checkItem10.AutoSize = true;
-            this.checkItem10.Location = new System.Drawing.Point(604, 256);
-            this.checkItem10.Name = "checkItem10";
-            this.checkItem10.Size = new System.Drawing.Size(15, 14);
-            this.checkItem10.TabIndex = 71;
-            this.checkItem10.UseVisualStyleBackColor = true;
-            this.checkItem10.Visible = false;
-            this.checkItem10.CheckedChanged += new System.EventHandler(this.checkItem10_CheckedChanged);
-            // 
             // DescItem10
             // 
             this.DescItem10.Enabled = false;
@@ -3002,17 +2621,6 @@
             this.lblItem10.TabIndex = 66;
             this.lblItem10.Text = "Produto 10:";
             this.lblItem10.Visible = false;
-            // 
-            // checkItem9
-            // 
-            this.checkItem9.AutoSize = true;
-            this.checkItem9.Location = new System.Drawing.Point(604, 230);
-            this.checkItem9.Name = "checkItem9";
-            this.checkItem9.Size = new System.Drawing.Size(15, 14);
-            this.checkItem9.TabIndex = 65;
-            this.checkItem9.UseVisualStyleBackColor = true;
-            this.checkItem9.Visible = false;
-            this.checkItem9.CheckedChanged += new System.EventHandler(this.checkItem9_CheckedChanged);
             // 
             // DescItem9
             // 
@@ -3042,17 +2650,6 @@
             this.lblItem9.Text = "Produto 9:";
             this.lblItem9.Visible = false;
             // 
-            // checkItem8
-            // 
-            this.checkItem8.AutoSize = true;
-            this.checkItem8.Location = new System.Drawing.Point(604, 204);
-            this.checkItem8.Name = "checkItem8";
-            this.checkItem8.Size = new System.Drawing.Size(15, 14);
-            this.checkItem8.TabIndex = 59;
-            this.checkItem8.UseVisualStyleBackColor = true;
-            this.checkItem8.Visible = false;
-            this.checkItem8.CheckedChanged += new System.EventHandler(this.checkItem8_CheckedChanged);
-            // 
             // DescItem8
             // 
             this.DescItem8.Enabled = false;
@@ -3080,17 +2677,6 @@
             this.lblItem8.TabIndex = 54;
             this.lblItem8.Text = "Produto 8:";
             this.lblItem8.Visible = false;
-            // 
-            // checkItem7
-            // 
-            this.checkItem7.AutoSize = true;
-            this.checkItem7.Location = new System.Drawing.Point(604, 178);
-            this.checkItem7.Name = "checkItem7";
-            this.checkItem7.Size = new System.Drawing.Size(15, 14);
-            this.checkItem7.TabIndex = 53;
-            this.checkItem7.UseVisualStyleBackColor = true;
-            this.checkItem7.Visible = false;
-            this.checkItem7.CheckedChanged += new System.EventHandler(this.checkItem7_CheckedChanged);
             // 
             // DescItem7
             // 
@@ -3120,17 +2706,6 @@
             this.lblItem7.Text = "Produto 7:";
             this.lblItem7.Visible = false;
             // 
-            // checkItem6
-            // 
-            this.checkItem6.AutoSize = true;
-            this.checkItem6.Location = new System.Drawing.Point(604, 152);
-            this.checkItem6.Name = "checkItem6";
-            this.checkItem6.Size = new System.Drawing.Size(15, 14);
-            this.checkItem6.TabIndex = 47;
-            this.checkItem6.UseVisualStyleBackColor = true;
-            this.checkItem6.Visible = false;
-            this.checkItem6.CheckedChanged += new System.EventHandler(this.checkItem6_CheckedChanged);
-            // 
             // DescItem6
             // 
             this.DescItem6.Enabled = false;
@@ -3158,17 +2733,6 @@
             this.lblItem6.TabIndex = 42;
             this.lblItem6.Text = "Produto 6:";
             this.lblItem6.Visible = false;
-            // 
-            // checkItem5
-            // 
-            this.checkItem5.AutoSize = true;
-            this.checkItem5.Location = new System.Drawing.Point(604, 126);
-            this.checkItem5.Name = "checkItem5";
-            this.checkItem5.Size = new System.Drawing.Size(15, 14);
-            this.checkItem5.TabIndex = 41;
-            this.checkItem5.UseVisualStyleBackColor = true;
-            this.checkItem5.Visible = false;
-            this.checkItem5.CheckedChanged += new System.EventHandler(this.checkItem5_CheckedChanged);
             // 
             // DescItem5
             // 
@@ -3198,17 +2762,6 @@
             this.lblItem5.Text = "Produto 5:";
             this.lblItem5.Visible = false;
             // 
-            // checkItem4
-            // 
-            this.checkItem4.AutoSize = true;
-            this.checkItem4.Location = new System.Drawing.Point(604, 100);
-            this.checkItem4.Name = "checkItem4";
-            this.checkItem4.Size = new System.Drawing.Size(15, 14);
-            this.checkItem4.TabIndex = 35;
-            this.checkItem4.UseVisualStyleBackColor = true;
-            this.checkItem4.Visible = false;
-            this.checkItem4.CheckedChanged += new System.EventHandler(this.checkItem4_CheckedChanged);
-            // 
             // DescItem4
             // 
             this.DescItem4.Enabled = false;
@@ -3236,17 +2789,6 @@
             this.lblItem4.TabIndex = 30;
             this.lblItem4.Text = "Produto 4:";
             this.lblItem4.Visible = false;
-            // 
-            // checkItem3
-            // 
-            this.checkItem3.AutoSize = true;
-            this.checkItem3.Location = new System.Drawing.Point(604, 74);
-            this.checkItem3.Name = "checkItem3";
-            this.checkItem3.Size = new System.Drawing.Size(15, 14);
-            this.checkItem3.TabIndex = 29;
-            this.checkItem3.UseVisualStyleBackColor = true;
-            this.checkItem3.Visible = false;
-            this.checkItem3.CheckedChanged += new System.EventHandler(this.checkItem3_CheckedChanged);
             // 
             // DescItem3
             // 
@@ -3276,17 +2818,6 @@
             this.lblItem3.Text = "Produto 3:";
             this.lblItem3.Visible = false;
             // 
-            // checkItem2
-            // 
-            this.checkItem2.AutoSize = true;
-            this.checkItem2.Location = new System.Drawing.Point(604, 48);
-            this.checkItem2.Name = "checkItem2";
-            this.checkItem2.Size = new System.Drawing.Size(15, 14);
-            this.checkItem2.TabIndex = 23;
-            this.checkItem2.UseVisualStyleBackColor = true;
-            this.checkItem2.Visible = false;
-            this.checkItem2.CheckedChanged += new System.EventHandler(this.checkItem2_CheckedChanged);
-            // 
             // DescItem2
             // 
             this.DescItem2.Enabled = false;
@@ -3315,17 +2846,6 @@
             this.lblItem2.Text = "Produto 2:";
             this.lblItem2.Visible = false;
             this.lblItem2.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // checkItem1
-            // 
-            this.checkItem1.AutoSize = true;
-            this.checkItem1.Location = new System.Drawing.Point(604, 22);
-            this.checkItem1.Name = "checkItem1";
-            this.checkItem1.Size = new System.Drawing.Size(15, 14);
-            this.checkItem1.TabIndex = 17;
-            this.checkItem1.UseVisualStyleBackColor = true;
-            this.checkItem1.Visible = false;
-            this.checkItem1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // DescItem1
             // 
@@ -3555,159 +3075,120 @@
         private System.Windows.Forms.TextBox DescItem40;
         private System.Windows.Forms.TextBox Item40;
         private System.Windows.Forms.Label lblItem40;
-        private System.Windows.Forms.CheckBox checkItem39;
         private System.Windows.Forms.TextBox DescItem39;
         private System.Windows.Forms.TextBox Item39;
         private System.Windows.Forms.Label lblItem39;
-        private System.Windows.Forms.CheckBox checkItem38;
         private System.Windows.Forms.TextBox DescItem38;
         private System.Windows.Forms.TextBox Item38;
         private System.Windows.Forms.Label lblItem38;
-        private System.Windows.Forms.CheckBox checkItem37;
         private System.Windows.Forms.TextBox DescItem37;
         private System.Windows.Forms.TextBox Item37;
         private System.Windows.Forms.Label lblItem37;
-        private System.Windows.Forms.CheckBox checkItem36;
         private System.Windows.Forms.TextBox DescItem36;
         private System.Windows.Forms.TextBox Item36;
         private System.Windows.Forms.Label lblItem36;
-        private System.Windows.Forms.CheckBox checkItem35;
         private System.Windows.Forms.TextBox DescItem35;
         private System.Windows.Forms.TextBox Item35;
         private System.Windows.Forms.Label lblItem35;
-        private System.Windows.Forms.CheckBox checkItem34;
         private System.Windows.Forms.TextBox DescItem34;
         private System.Windows.Forms.TextBox Item34;
         private System.Windows.Forms.Label lblItem34;
-        private System.Windows.Forms.CheckBox checkItem33;
         private System.Windows.Forms.TextBox DescItem33;
         private System.Windows.Forms.TextBox Item33;
         private System.Windows.Forms.Label lblItem33;
-        private System.Windows.Forms.CheckBox checkItem32;
         private System.Windows.Forms.TextBox DescItem32;
         private System.Windows.Forms.TextBox Item32;
         private System.Windows.Forms.Label lblItem32;
-        private System.Windows.Forms.CheckBox checkItem31;
         private System.Windows.Forms.TextBox DescItem31;
         private System.Windows.Forms.TextBox Item31;
         private System.Windows.Forms.Label lblItem31;
-        private System.Windows.Forms.CheckBox checkItem30;
         private System.Windows.Forms.TextBox DescItem30;
         private System.Windows.Forms.TextBox Item30;
         private System.Windows.Forms.Label lblItem30;
-        private System.Windows.Forms.CheckBox checkItem29;
         private System.Windows.Forms.TextBox DescItem29;
         private System.Windows.Forms.TextBox Item29;
         private System.Windows.Forms.Label lblItem29;
-        private System.Windows.Forms.CheckBox checkItem28;
         private System.Windows.Forms.TextBox DescItem28;
         private System.Windows.Forms.TextBox Item28;
         private System.Windows.Forms.Label lblItem28;
-        private System.Windows.Forms.CheckBox checkItem27;
         private System.Windows.Forms.TextBox DescItem27;
         private System.Windows.Forms.TextBox Item27;
         private System.Windows.Forms.Label lblItem27;
-        private System.Windows.Forms.CheckBox checkItem26;
         private System.Windows.Forms.TextBox DescItem26;
         private System.Windows.Forms.TextBox Item26;
         private System.Windows.Forms.Label lblItem26;
-        private System.Windows.Forms.CheckBox checkItem25;
         private System.Windows.Forms.TextBox DescItem25;
         private System.Windows.Forms.TextBox Item25;
         private System.Windows.Forms.Label lblItem25;
-        private System.Windows.Forms.CheckBox checkItem24;
         private System.Windows.Forms.TextBox DescItem24;
         private System.Windows.Forms.TextBox Item24;
         private System.Windows.Forms.Label lblItem24;
-        private System.Windows.Forms.CheckBox checkItem23;
         private System.Windows.Forms.TextBox DescItem23;
         private System.Windows.Forms.TextBox Item23;
         private System.Windows.Forms.Label lblItem23;
-        private System.Windows.Forms.CheckBox checkItem22;
         private System.Windows.Forms.TextBox DescItem22;
         private System.Windows.Forms.TextBox Item22;
         private System.Windows.Forms.Label lblItem22;
-        private System.Windows.Forms.CheckBox checkItem21;
         private System.Windows.Forms.TextBox DescItem21;
         private System.Windows.Forms.TextBox Item21;
         private System.Windows.Forms.Label lblItem21;
-        private System.Windows.Forms.CheckBox checkItem20;
         private System.Windows.Forms.TextBox DescItem20;
         private System.Windows.Forms.TextBox Item20;
         private System.Windows.Forms.Label lblItem20;
-        private System.Windows.Forms.CheckBox checkItem19;
         private System.Windows.Forms.TextBox DescItem19;
         private System.Windows.Forms.TextBox Item19;
         private System.Windows.Forms.Label lblItem19;
-        private System.Windows.Forms.CheckBox checkItem18;
         private System.Windows.Forms.TextBox DescItem18;
         private System.Windows.Forms.TextBox Item18;
         private System.Windows.Forms.Label lblItem18;
-        private System.Windows.Forms.CheckBox checkItem17;
         private System.Windows.Forms.TextBox DescItem17;
         private System.Windows.Forms.TextBox Item17;
         private System.Windows.Forms.Label lblItem17;
-        private System.Windows.Forms.CheckBox checkItem16;
         private System.Windows.Forms.TextBox DescItem16;
         private System.Windows.Forms.TextBox Item16;
         private System.Windows.Forms.Label lblItem16;
-        private System.Windows.Forms.CheckBox checkItem15;
         private System.Windows.Forms.TextBox DescItem15;
         private System.Windows.Forms.TextBox Item15;
         private System.Windows.Forms.Label lblItem15;
-        private System.Windows.Forms.CheckBox checkItem14;
         private System.Windows.Forms.TextBox DescItem14;
         private System.Windows.Forms.TextBox Item14;
         private System.Windows.Forms.Label lblItem14;
-        private System.Windows.Forms.CheckBox checkItem13;
         private System.Windows.Forms.TextBox DescItem13;
         private System.Windows.Forms.TextBox Item13;
         private System.Windows.Forms.Label lblItem13;
-        private System.Windows.Forms.CheckBox checkItem12;
         private System.Windows.Forms.TextBox DescItem12;
         private System.Windows.Forms.TextBox Item12;
         private System.Windows.Forms.Label lblItem12;
-        private System.Windows.Forms.CheckBox checkItem11;
         private System.Windows.Forms.TextBox DescItem11;
         private System.Windows.Forms.TextBox Item11;
         private System.Windows.Forms.Label lblItem11;
-        private System.Windows.Forms.CheckBox checkItem10;
         private System.Windows.Forms.TextBox DescItem10;
         private System.Windows.Forms.TextBox Item10;
         private System.Windows.Forms.Label lblItem10;
-        private System.Windows.Forms.CheckBox checkItem9;
         private System.Windows.Forms.TextBox DescItem9;
         private System.Windows.Forms.TextBox Item9;
         private System.Windows.Forms.Label lblItem9;
-        private System.Windows.Forms.CheckBox checkItem8;
         private System.Windows.Forms.TextBox DescItem8;
         private System.Windows.Forms.TextBox Item8;
         private System.Windows.Forms.Label lblItem8;
-        private System.Windows.Forms.CheckBox checkItem7;
         private System.Windows.Forms.TextBox DescItem7;
         private System.Windows.Forms.TextBox Item7;
         private System.Windows.Forms.Label lblItem7;
-        private System.Windows.Forms.CheckBox checkItem6;
         private System.Windows.Forms.TextBox DescItem6;
         private System.Windows.Forms.TextBox Item6;
         private System.Windows.Forms.Label lblItem6;
-        private System.Windows.Forms.CheckBox checkItem5;
         private System.Windows.Forms.TextBox DescItem5;
         private System.Windows.Forms.TextBox Item5;
         private System.Windows.Forms.Label lblItem5;
-        private System.Windows.Forms.CheckBox checkItem4;
         private System.Windows.Forms.TextBox DescItem4;
         private System.Windows.Forms.TextBox Item4;
         private System.Windows.Forms.Label lblItem4;
-        private System.Windows.Forms.CheckBox checkItem3;
         private System.Windows.Forms.TextBox DescItem3;
         private System.Windows.Forms.TextBox Item3;
         private System.Windows.Forms.Label lblItem3;
-        private System.Windows.Forms.CheckBox checkItem2;
         private System.Windows.Forms.TextBox DescItem2;
         private System.Windows.Forms.TextBox Item2;
         private System.Windows.Forms.Label lblItem2;
-        private System.Windows.Forms.CheckBox checkItem1;
         private System.Windows.Forms.TextBox DescItem1;
         private System.Windows.Forms.TextBox Item1;
         private System.Windows.Forms.Label lblItem1;

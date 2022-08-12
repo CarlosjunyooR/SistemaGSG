@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using org.apache.pdfbox.pdmodel;
-using org.apache.pdfbox.util;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.text;
-using java.io;
-using System.IO;
 using MetroFramework;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -50,33 +40,33 @@ namespace SistemaGSG
             //PDDocument doc = PDDocument.load(txtUrl.Text);
             //PDFTextStripper stripper = new PDFTextStripper();
             //richTextBox1.Text = (stripper.getText(doc));
-            ExtracaoPDFMetodo(new int[] { 3,7,22,53 }) ;
-            MetroMessageBox.Show(this,"Finalizado com sucesso.","Aviso!");
+            ExtracaoPDFMetodo(new int[] { 3, 7, 22, 53 });
+            MetroMessageBox.Show(this, "Finalizado com sucesso.", "Aviso!");
         }
         static void ExtracaoPDFMetodo(int[] paginas)
         {
             PdfReader pdfReader = new PdfReader(@"C:\Users\junio\Desktop\1479067_725_06_2020_TODAS.PDF");
             Document document = new Document();
 
-            if(pdfReader.NumberOfPages > 0)
+            if (pdfReader.NumberOfPages > 0)
             {
                 foreach (var item in paginas)
                 {
-                    PdfCopy pdfCopy = new PdfCopy(document, new FileStream(Path.Combine(@"C:\Users\junio\Desktop\Extraidos\", string.Format("pagina_{0}.pdf",item)), FileMode.Create));
+                    PdfCopy pdfCopy = new PdfCopy(document, new FileStream(Path.Combine(@"C:\Users\junio\Desktop\Extraidos\", string.Format("pagina_{0}.pdf", item)), FileMode.Create));
                     document.Open();
-                    pdfCopy.AddPage(pdfCopy.GetImportedPage(pdfReader,item));
+                    pdfCopy.AddPage(pdfCopy.GetImportedPage(pdfReader, item));
                 }
                 document.Close();
             }
         }
         private void metroButton1_Click(object sender, EventArgs e)
         {
-                if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    frm_Main frm_Main = new frm_Main();
-                    frm_Main.Show();
-                    Close();
-                }
+            if (MessageBox.Show("Deseja Voltar?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                frm_Main frm_Main = new frm_Main();
+                frm_Main.Show();
+                Close();
+            }
         }
     }
 }

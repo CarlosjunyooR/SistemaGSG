@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Diagnostics;
 
 namespace SistemaGSG
 {
@@ -51,7 +44,7 @@ namespace SistemaGSG
                     var AbrirNavegador = new Navegador(url.ToString());
                     AbrirNavegador.Show();
                 }
-                catch(Exception Err)
+                catch (Exception Err)
                 {
                     MessageBox.Show(Err.Message);
                 }
@@ -93,7 +86,7 @@ namespace SistemaGSG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -101,7 +94,7 @@ namespace SistemaGSG
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Deseja voltar ao Menu Inicial?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Deseja voltar ao Menu Inicial?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 frm_Main AbrirForm = new frm_Main();
                 AbrirForm.Show();

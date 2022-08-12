@@ -176,7 +176,7 @@
             this.Info_pedido.Controls.Add(this.txtMiro);
             this.Info_pedido.Controls.Add(this.txtMigo);
             this.Info_pedido.Controls.Add(this.txtPedido);
-            this.Info_pedido.Location = new System.Drawing.Point(383, 206);
+            this.Info_pedido.Location = new System.Drawing.Point(383, 358);
             this.Info_pedido.Name = "Info_pedido";
             this.Info_pedido.Size = new System.Drawing.Size(298, 112);
             this.Info_pedido.TabIndex = 34;
@@ -239,7 +239,6 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox9.Controls.Add(this.mes_nf);
             this.groupBox9.Controls.Add(this.nfe);
             this.groupBox9.Controls.Add(this.metroLabel4);
@@ -875,10 +874,12 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(70, 33);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(72, 17);
             this.radioButton1.TabIndex = 11;
+            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Equatorial";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
@@ -968,7 +969,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.radioButton1);
             this.groupBox4.Controls.Add(this.radioButton2);
-            this.groupBox4.Location = new System.Drawing.Point(777, 63);
+            this.groupBox4.Location = new System.Drawing.Point(786, 63);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(181, 100);
             this.groupBox4.TabIndex = 37;
@@ -977,12 +978,12 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.rdDupl);
             this.groupBox5.Controls.Add(this.rdAven);
             this.groupBox5.Controls.Add(this.rdVenc);
             this.groupBox5.Controls.Add(this.rdPag);
-            this.groupBox5.Location = new System.Drawing.Point(777, 270);
+            this.groupBox5.Location = new System.Drawing.Point(786, 427);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(181, 112);
             this.groupBox5.TabIndex = 32;
@@ -1040,9 +1041,9 @@
             this.groupBox6.Controls.Add(this.preencherCBIcms);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.vl_base);
-            this.groupBox6.Location = new System.Drawing.Point(788, 545);
+            this.groupBox6.Location = new System.Drawing.Point(786, 545);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(179, 94);
+            this.groupBox6.Size = new System.Drawing.Size(181, 94);
             this.groupBox6.TabIndex = 31;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "&Base de Calculo";

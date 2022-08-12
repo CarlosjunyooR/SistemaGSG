@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using MySql.Data.MySqlClient;
 using SAPFEWSELib;
 using SapROTWr;
-using MySql.Data.MySqlClient;
+using System;
+using System.Data;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
 
 
 namespace SistemaGSG
@@ -54,7 +49,7 @@ namespace SistemaGSG
                 ((GuiTextField)Session.FindById("wnd[0]/usr/ctxtP_PERIO")).Text = "36";
                 ((GuiButton)Session.FindById("wnd[0]/tbar[1]/btn[8]")).Press();
                 ((GuiButton)Session.FindById("wnd[0]/tbar[1]/btn[33]")).Press();
-                ((GuiGridView)Session.FindById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell")).SetCurrentCell(6,"TEXT");
+                ((GuiGridView)Session.FindById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell")).SetCurrentCell(6, "TEXT");
                 ((GuiGridView)Session.FindById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell")).SelectedRows = "6";
                 ((GuiGridView)Session.FindById("wnd[1]/usr/ssubD0500_SUBSCREEN:SAPLSLVC_DIALOG:0501/cntlG51_CONTAINER/shellcont/shell")).ClickCurrentCell();
                 ((GuiButton)Session.FindById("wnd[0]/tbar[1]/btn[45]")).Press();
@@ -150,10 +145,10 @@ namespace SistemaGSG
                 dataDesconto.Format = DateTimePickerFormat.Custom;
                 dataDesconto.CustomFormat = "yyyy-MM-dd";
 
-                if (ricTexto.Text== "Digite aqui, Informações referente ao desconto...")
+                if (ricTexto.Text == "Digite aqui, Informações referente ao desconto...")
                 {
                     MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_detalhamentodebitos (col_Fornec, col_Contrato, col_TipoDesc, col_Data, col_ValorFixo, col_TextoDesconto, col_dataImport, col_Safra,id_Debito) VALUES " +
-                        "('" + txtCodigoFornecedor.Text + "', '" + txtContratoFornecedor.Text + "', '" + txtDesconto.Text + "', '" + this.dataDesconto.Text + "', '" + txtValorDesconto.Text.Replace("R$ ", "") + "', NULL, NOW(), '" + txtSafra.Text + "','"+ txtIDdetalhe.Text +"')", ConexaoDados.GetConnectionFornecedor());
+                        "('" + txtCodigoFornecedor.Text + "', '" + txtContratoFornecedor.Text + "', '" + txtDesconto.Text + "', '" + this.dataDesconto.Text + "', '" + txtValorDesconto.Text.Replace("R$ ", "") + "', NULL, NOW(), '" + txtSafra.Text + "','" + txtIDdetalhe.Text + "')", ConexaoDados.GetConnectionFornecedor());
                     prompt_cmd.ExecuteNonQuery();
                     txtContratoFornecedor.Text = "";
                     txtValorDesconto.Text = "";
@@ -161,7 +156,7 @@ namespace SistemaGSG
                 else
                 {
                     MySqlCommand prompt_cmd = new MySqlCommand("INSERT INTO tb_detalhamentodebitos (col_Fornec, col_Contrato, col_TipoDesc, col_Data, col_ValorFixo, col_TextoDesconto, col_dataImport, col_Safra,id_Debito) VALUES " +
-                        "('" + txtCodigoFornecedor.Text + "', '" + txtContratoFornecedor.Text + "', '" + txtDesconto.Text + "', '" + this.dataDesconto.Text + "', '" + txtValorDesconto.Text.Replace("R$ ", "") + "', '"+ricTexto.Text+"', NOW(), '" + txtSafra.Text + "','" + txtIDdetalhe.Text + "')", ConexaoDados.GetConnectionFornecedor());
+                        "('" + txtCodigoFornecedor.Text + "', '" + txtContratoFornecedor.Text + "', '" + txtDesconto.Text + "', '" + this.dataDesconto.Text + "', '" + txtValorDesconto.Text.Replace("R$ ", "") + "', '" + ricTexto.Text + "', NOW(), '" + txtSafra.Text + "','" + txtIDdetalhe.Text + "')", ConexaoDados.GetConnectionFornecedor());
                     prompt_cmd.ExecuteNonQuery();
                     txtContratoFornecedor.Text = "";
                     txtValorDesconto.Text = "";

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 
 namespace SistemaGSG
@@ -34,12 +27,12 @@ namespace SistemaGSG
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //para abrir o formulário form1 mesmo, no seu caso, para você seria a tela de login ou o principal, ou outra tela mesmo
-                new frm_Main().Show();
+            new frm_Main().Show();
         }
 
         private void contextMenuStrip1_Opening(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -120,7 +113,7 @@ namespace SistemaGSG
                     notifyIcon2.BalloonTipText = "Não há boletos pra vencer!";
                 }
             }
-            catch(Exception Err)
+            catch (Exception Err)
             {
                 MessageBox.Show(Err.Message);
             }

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SAPFEWSELib;
 using SapROTWr;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -26,10 +19,10 @@ namespace SistemaGSG
         private void frmXML_Load(object sender, EventArgs e)
         {
         }
-        
+
         private void btnImport_Click(object sender, EventArgs e)
         {
-            if (MySQL==0)
+            if (MySQL == 0)
             {
                 int countg = PRODUTOGRID.RowCount;
                 int p = 0;
@@ -57,7 +50,6 @@ namespace SistemaGSG
                     Session.SendCommand("/NJ1B1N");
                     //Inicia a Barra de Progresso em 25%
                     LblStatus.Text = "Conexão bem sucedida.......";
-                    ProgBar.Maximum = countg;
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ctxtJ_1BDYDOC-NFTYPE")).Text = "I7";
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ctxtJ_1BDYDOC-BUKRS")).Text = "usga";
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ctxtJ_1BDYDOC-BRANCH")).Text = "0001";
@@ -182,7 +174,7 @@ namespace SistemaGSG
                         i++;
                         LblStatus.Text = "Inserindo Itens.....";
                         Barra++;
-                        
+
                         if (p == 10)
                         {
                             ((GuiFrameWindow)Session.FindById("wnd[0]")).SendVKey(0);
@@ -201,7 +193,7 @@ namespace SistemaGSG
                             Position += 9;
                         }
                     }
-                    
+
                     LblStatus.Text = "Itens Inseridos com Sucesso.....";
                     if (i == countg)
                     {
@@ -229,31 +221,31 @@ namespace SistemaGSG
                             textValor1.Text = ValorTotal.ToString();
 
                             int ContGridImposto = ICMS00GRID.RowCount;
-                            decimal ImpostoValor = 0;
-                            decimal ImpostoBaseValor = 0;
-                            decimal ImpostoValorICMS = 0;
 
-                            ImpostoValor = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["pICMS"].Value.ToString().Replace('.', ',').Trim().Substring(0, 4));
-                            txtImposto.Text = ImpostoValor.ToString();
-                            ImpostoBaseValor = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["vBC"].Value.ToString().Replace('.', ',').TrimEnd('0'));
-                            txtBaseCalc.Text = ImpostoBaseValor.ToString();
-                            ImpostoValorICMS = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["vICMS"].Value.ToString().Replace('.', ',').TrimEnd('0'));
-                            txtValorICMS.Text = ImpostoValorICMS.ToString();
-
-                            if (txtImposto.Text == "0")
+                            if (ContGridImposto.ToString() == "0")
                             {
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,0]")).Text = "ICM0";
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,1]")).Text = "IPI0";
+                                ((GuiCTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,0]")).Text = "ICM0";
+                                ((GuiCTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,1]")).Text = "IPI0";
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-EXCBAS[6,0]")).Text = textValor1.Text;
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-EXCBAS[6,1]")).Text = textValor1.Text;
                             }
                             else
                             {
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,0]")).Text = "ICM2";
+                                decimal ImpostoValor = 0;
+                                decimal ImpostoBaseValor = 0;
+                                decimal ImpostoValorICMS = 0;
+                                ImpostoValor = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["pICMS"].Value.ToString().Replace('.', ',').Trim().Substring(0, 4));
+                                txtImposto.Text = ImpostoValor.ToString();
+                                ImpostoBaseValor = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["vBC"].Value.ToString().Replace('.', ',').TrimEnd('0'));
+                                txtBaseCalc.Text = ImpostoBaseValor.ToString();
+                                ImpostoValorICMS = Convert.ToDecimal(ICMS00GRID.Rows[CountImposto].Cells["vICMS"].Value.ToString().Replace('.', ',').TrimEnd('0'));
+                                txtValorICMS.Text = ImpostoValorICMS.ToString();
+
+                                ((GuiCTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,0]")).Text = "ICM2";
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-RATE[4,0]")).Text = txtImposto.Text;
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-TAXVAL[5,0]")).Text = txtValorICMS.Text;
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-OTHBAS[7,0]")).Text = txtBaseCalc.Text;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,1]")).Text = "IPI0";
+                                ((GuiCTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/ctxtJ_1BDYSTX-TAXTYP[0,1]")).Text = "IPI0";
                                 ((GuiTextField)Session.FindById("wnd[0]/usr/tabsITEM_TAB/tabpTAX/ssubITEM_TABS:SAPLJ1BB2:3200/tblSAPLJ1BB2TAX_CONTROL/txtJ_1BDYSTX-EXCBAS[6,1]")).Text = textValor1.Text;
                             }
                             CountImposto++;
@@ -285,7 +277,7 @@ namespace SistemaGSG
                         if (MessageBox.Show("Valores Corretos?!", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
                             //Pressiona o Botão Gravar
-                            //((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[11]")).Press();
+                            ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[11]")).Press();
                             //Pega a Barra de Status do SAP
                             GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
                             //Me retorna apenas o número do pedido no tratamento da importação no Banco de Dados ele retira o º e os espaços.
@@ -310,7 +302,7 @@ namespace SistemaGSG
                                 Barra = 100;
                             }
                             ProgBar.Value = Barra;
-                            LblStatus.Text = "Comcuído com Sucesso..... " + resultado.Trim() + " ";
+                            LblStatus.Text = "Concluído com Sucesso..... " + resultado.Trim() + " ";
                             Clear();
                         }
                         else
@@ -341,7 +333,7 @@ namespace SistemaGSG
                                     Barra = 100;
                                 }
                                 ProgBar.Value = Barra;
-                                LblStatus.Text = "Comcuído com Sucesso..... " + resultado.Trim() + " ";
+                                LblStatus.Text = "Concluído com Sucesso..... " + resultado.Trim() + " ";
                                 Clear();
                             }
                         }
@@ -365,10 +357,10 @@ namespace SistemaGSG
                     dateTimePicker1.CustomFormat = "dd.MM.yyyy";
                     MessageBox.Show("Sucesso!");
                 }
-                catch(MySqlException ErrMy)
+                catch (MySqlException ErrMy)
                 {
-                    MessageBox.Show("Erro no Banco de Dados! - /n"+ErrMy.Message);
-                } 
+                    MessageBox.Show("Erro no Banco de Dados! - /n" + ErrMy.Message);
+                }
                 catch (Exception Err)
                 {
                     MessageBox.Show(Err.Message);
@@ -390,7 +382,7 @@ namespace SistemaGSG
         private void btnAbrirXML_Click_1(object sender, EventArgs e)
         {
             MySQL = 0;
-            string VALORIMPOSTO = "12";
+            string VALORIMPOSTO = "0";
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Arquivos XML(*.xml)|*.xml";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -421,7 +413,7 @@ namespace SistemaGSG
                         txtUltDig.Text = txtCHAVE.Text.Substring(43, 1);
                         //----------------
                         PRODUTOGRID.DataSource = ds.Tables["prod"];
-                        foreach(DataGridViewRow MyDgr in PRODUTOGRID.Rows)
+                        foreach (DataGridViewRow MyDgr in PRODUTOGRID.Rows)
                         {
                             MyDgr.Cells["IMPOSTO"].Value = VALORIMPOSTO;
                         }
@@ -467,7 +459,7 @@ namespace SistemaGSG
         int MySQL = 0;
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 

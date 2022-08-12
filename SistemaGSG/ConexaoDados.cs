@@ -1,36 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
+using System;
 
 namespace SistemaGSG
 {
     public class ConexaoDados
     {
-        String Server = "localhost";
         public static MySqlConnection GetConnectionXML()
         {
-
             MySqlConnection CONEX = new MySqlConnection();
-            CONEX.ConnectionString = @"server = 'localhost'; database='sistemagsgxml';Uid='energia';Pwd='02984646#Lua';SslMode=none;";
+            CONEX.ConnectionString = @"server = '10.2.1.4'; database='sistemagsgxml';Uid='xml';Pwd='02984646#Lua';SslMode=none;";
             CONEX.Open();
 
             return CONEX;
         }
+        public static string ACESSO()
+        {
+            String ACESSO = "http://10.2.1.4/sistemagsgv2.0/template/dashboard/pages/relatorios/faturamento/acesso/RelatorioAcesso.php";
+
+            return ACESSO;
+        }
+        public static string CHECKLIST()
+        {
+            String CHECKLIST = "http://10.2.1.4/sistemagsgv2.0/template/dashboard/pages/relatorios/faturamento/acesso/RelatorioCheckList.php";
+
+            return CHECKLIST;
+        }
+
         public static MySqlConnection GetConnectionFaturameto()
         {
             MySqlConnection CONEX = new MySqlConnection();
-            CONEX.ConnectionString = @"server = 'localhost'; database='sistemagsgfaturamento';Uid='energia';Pwd='02984646#Lua';SslMode=none;";
+            CONEX.ConnectionString = @"server = '10.2.1.4'; database='sistemagsgfaturamento';Uid='faturamento';Pwd='02984646#Lua';SslMode=none;";
             CONEX.Open();
 
             return CONEX;
         }
+
         public static MySqlConnection GetConnectionFornecedor()
         {
             MySqlConnection CONEX = new MySqlConnection();
-            CONEX.ConnectionString = @"server = 'localhost'; database='sistemagsgfornecedor';Uid='energia';Pwd='02984646#Lua';SslMode=none;";
+            CONEX.ConnectionString = @"server = '10.2.1.4'; database='sistemagsgfornecedor';Uid='fornecedor';Pwd='02984646#Lua';SslMode=none;";
             CONEX.Open();
 
             return CONEX;
@@ -38,10 +46,17 @@ namespace SistemaGSG
         public static MySqlConnection GetConnectionEquatorial()
         {
             MySqlConnection CONEX = new MySqlConnection();
-            CONEX.ConnectionString = @"server = 'localhost'; database='sistemagsgequatorial';Uid='energia';Pwd='02984646#Lua';SslMode=none;";
+            CONEX.ConnectionString = @"server = '10.2.1.4'; database='sistemagsgequatorial';Uid='energia';Pwd='02984646#Lua';SslMode=none;";
             CONEX.Open();
 
-            
+            return CONEX;
+        }
+        public static MySqlConnection GetConnectionPosto()
+        {
+            MySqlConnection CONEX = new MySqlConnection();
+            CONEX.ConnectionString = @"server = '10.2.1.4'; database='sistemagsgposto';Uid='posto';Pwd='02984646#Lua';SslMode=none;";
+            CONEX.Open();
+
             return CONEX;
         }
     }

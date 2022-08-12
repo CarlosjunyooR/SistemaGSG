@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Threading;
-using MySql.Data.MySqlClient;
-using Microsoft.Office.Interop.Excel;
-using DataTable = System.Data.DataTable;
-using Application = System.Windows.Forms.Application;
-using Rectangle = System.Drawing.Rectangle;
 using System.Diagnostics;
+using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
+using DataTable = System.Data.DataTable;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace SistemaGSG
 {
@@ -29,7 +28,7 @@ namespace SistemaGSG
         public string Filename { get; private set; }
         private void FormRel_Load(object sender, EventArgs e)
         {
-            
+
             if (ConexaoDados.GetConnectionEquatorial().State == ConnectionState.Open)
             {
                 MySqlCommand com = new MySqlCommand();
@@ -50,7 +49,7 @@ namespace SistemaGSG
                 preencherCBano.DisplayMember = "ano";
                 preencherCBano.DataSource = dataTableAno;
 
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto`",ConexaoDados.GetConnectionEquatorial());
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto`", ConexaoDados.GetConnectionEquatorial());
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
                 dataGridView2.DataSource = SS;
@@ -115,13 +114,13 @@ namespace SistemaGSG
         }
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void button5_Click(object sender, EventArgs e)
         {
             try
             {
-                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("UPDATE tb_boleto SET cod_unico='" + txtCod.Text + "', vl_dif='" + txt_dif_boleto.Text.Replace(".","") + "' ,desc_item='" + txtFaz.Text + "', Mes_ref='" + txtMess.Text + "', data_venc='" + this.dtVencimento.Text + "', valor_miro='" + txtvalor.Text.Replace(".","") + "', status='" + txtstatus.Text + "', pedido='" + txtPedido.Text + "', migo='" + txtmigo.Text + "', miro='" + txtMiro.Text + "', nfe='"+txtNf.Text+"', vl_icms='"+txtICMS.Text+ "', base_calculo='" + txtVlBase.Text.Replace(".","") + "' WHERE Id='" + textBox10.Text + "'", ConexaoDados.GetConnectionEquatorial());
+                MySqlDataAdapter updateCEAL = new MySqlDataAdapter("UPDATE tb_boleto SET cod_unico='" + txtCod.Text + "', vl_dif='" + txt_dif_boleto.Text.Replace(".", "") + "' ,desc_item='" + txtFaz.Text + "', Mes_ref='" + txtMess.Text + "', data_venc='" + this.dtVencimento.Text + "', valor_miro='" + txtvalor.Text.Replace(".", "") + "', status='" + txtstatus.Text + "', pedido='" + txtPedido.Text + "', migo='" + txtmigo.Text + "', miro='" + txtMiro.Text + "', nfe='" + txtNf.Text + "', vl_icms='" + txtICMS.Text + "', base_calculo='" + txtVlBase.Text.Replace(".", "") + "' WHERE Id='" + textBox10.Text + "'", ConexaoDados.GetConnectionEquatorial());
                 DataTable seachUpdate = new DataTable();
                 updateCEAL.Fill(seachUpdate);
                 dataGridView2.DataSource = seachUpdate;
@@ -281,7 +280,7 @@ namespace SistemaGSG
 
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void button10_Click(object sender, EventArgs e)
         {
@@ -332,7 +331,7 @@ namespace SistemaGSG
         {
             frmProtocolo protColo = new frmProtocolo();
             protColo.Show();
-            Close(); 
+            Close();
         }
         Bitmap bmp;
 
@@ -354,7 +353,7 @@ namespace SistemaGSG
         }
         private void dataGridView2_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -367,7 +366,7 @@ namespace SistemaGSG
         }
         private void preencherCBano_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void button15_Click(object sender, EventArgs e)
         {
@@ -420,7 +419,7 @@ namespace SistemaGSG
             excel.Visible = false;
             int index = 1;
             int process = dataGridView2.Columns.Count;
-            foreach(DataGrid p in list)
+            foreach (DataGrid p in list)
             {
                 if (!backgroundWorker.CancellationPending)
                 {
@@ -453,13 +452,13 @@ namespace SistemaGSG
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if(e.Error == null)
+            if (e.Error == null)
             {
                 Thread.Sleep(100);
                 //lbStatus.Text = "Excel exportado com sucesso!";
             }
         }
-        
+
         private void btnExport_Click(object sender, EventArgs e)
         {
 
@@ -472,7 +471,7 @@ namespace SistemaGSG
 
         private void txtTotal2_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -513,7 +512,7 @@ namespace SistemaGSG
                 {
                     Process.Start("chrome.exe", url.ToString());
                 }
-                catch 
+                catch
                 {
                     Process.Start("msedge.exe", url.ToString());
                 }
@@ -595,7 +594,7 @@ namespace SistemaGSG
         }
         private void button8_Click_1(object sender, EventArgs e)
         {
-            
+
             try
             {
                 //Atualização de Status
@@ -603,14 +602,14 @@ namespace SistemaGSG
                 update_3.ExecuteNonQuery();
                 ConexaoDados.GetConnectionEquatorial().Close();
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 MessageBox.Show(err.Message);
             }
 
             try
             {
-                
+
                 MySqlCommand cmd = new MySqlCommand("SELECT GETDATE()", ConexaoDados.GetConnectionEquatorial());
                 DateTime DataServidor = Convert.ToDateTime(cmd.ExecuteScalar());
                 string novadata = DataServidor.AddDays(+10).ToShortDateString();
@@ -642,7 +641,7 @@ namespace SistemaGSG
             }
             catch (Exception ex)
             {
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
             ConexaoDados.GetConnectionEquatorial().Close();
         }

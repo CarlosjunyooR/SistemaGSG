@@ -142,9 +142,16 @@ namespace SistemaGSG
             this.dataGridViewTextBoxColumn110 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtClienteTijolo = new System.Windows.Forms.TextBox();
+            this.lblClienteTijolo = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chkTij = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ckOxig = new System.Windows.Forms.CheckBox();
             this.txtIEST = new System.Windows.Forms.TextBox();
             this.txtPlaca4 = new System.Windows.Forms.TextBox();
             this.txtPlaca3 = new System.Windows.Forms.TextBox();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.txtPlaca2 = new System.Windows.Forms.TextBox();
             this.txtPlaca1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -152,12 +159,25 @@ namespace SistemaGSG
             this.txtTransportadora = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.nameMot = new System.Windows.Forms.Label();
+            this.ckbag = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtCPF = new System.Windows.Forms.TextBox();
             this.lblCPF = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnCriarAcesso = new System.Windows.Forms.Button();
+            this.lblCliente = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtCilin = new System.Windows.Forms.TextBox();
+            this.txtOxig = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtItem = new System.Windows.Forms.TextBox();
+            this.txtPedido = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.richObs = new System.Windows.Forms.RichTextBox();
             this.maskSafra = new System.Windows.Forms.MaskedTextBox();
@@ -166,8 +186,6 @@ namespace SistemaGSG
             this.lblBagQuant = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.lblUnd = new System.Windows.Forms.Label();
-            this.ckbag = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblOv = new System.Windows.Forms.Label();
             this.lblSacaria = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -175,15 +193,16 @@ namespace SistemaGSG
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.txtSacariaFim = new System.Windows.Forms.TextBox();
             this.txtSacariaInic = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnVoltar = new System.Windows.Forms.Button();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.UserTXT = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ultAcesso = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.label9 = new System.Windows.Forms.Label();
+            this.ckbAcessoBag = new System.Windows.Forms.CheckBox();
+            this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.StatusBar.SuspendLayout();
@@ -864,6 +883,12 @@ namespace SistemaGSG
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.txtClienteTijolo);
+            this.groupBox1.Controls.Add(this.lblClienteTijolo);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.chkTij);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.ckOxig);
             this.groupBox1.Controls.Add(this.txtIEST);
             this.groupBox1.Controls.Add(this.txtPlaca4);
             this.groupBox1.Controls.Add(this.txtPlaca3);
@@ -875,6 +900,8 @@ namespace SistemaGSG
             this.groupBox1.Controls.Add(this.txtTransportadora);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.nameMot);
+            this.groupBox1.Controls.Add(this.ckbag);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtCPF);
             this.groupBox1.Controls.Add(this.lblCPF);
             this.groupBox1.Location = new System.Drawing.Point(20, 57);
@@ -884,12 +911,69 @@ namespace SistemaGSG
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados Motorist/Transp.";
             // 
+            // txtClienteTijolo
+            // 
+            this.txtClienteTijolo.Location = new System.Drawing.Point(55, 94);
+            this.txtClienteTijolo.Name = "txtClienteTijolo";
+            this.txtClienteTijolo.Size = new System.Drawing.Size(206, 20);
+            this.txtClienteTijolo.TabIndex = 28;
+            this.txtClienteTijolo.Visible = false;
+            // 
+            // lblClienteTijolo
+            // 
+            this.lblClienteTijolo.AutoSize = true;
+            this.lblClienteTijolo.Location = new System.Drawing.Point(6, 97);
+            this.lblClienteTijolo.Name = "lblClienteTijolo";
+            this.lblClienteTijolo.Size = new System.Drawing.Size(39, 13);
+            this.lblClienteTijolo.TabIndex = 27;
+            this.lblClienteTijolo.Text = "Cliente";
+            this.lblClienteTijolo.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(196, 252);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "TIJOLO";
+            // 
+            // chkTij
+            // 
+            this.chkTij.AutoSize = true;
+            this.chkTij.Location = new System.Drawing.Point(246, 252);
+            this.chkTij.Name = "chkTij";
+            this.chkTij.Size = new System.Drawing.Size(15, 14);
+            this.chkTij.TabIndex = 25;
+            this.chkTij.UseVisualStyleBackColor = true;
+            this.chkTij.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(181, 232);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.TabIndex = 24;
+            this.label11.Text = "OXIGÊNIO";
+            // 
+            // ckOxig
+            // 
+            this.ckOxig.AutoSize = true;
+            this.ckOxig.Location = new System.Drawing.Point(246, 232);
+            this.ckOxig.Name = "ckOxig";
+            this.ckOxig.Size = new System.Drawing.Size(15, 14);
+            this.ckOxig.TabIndex = 23;
+            this.ckOxig.UseVisualStyleBackColor = true;
+            this.ckOxig.CheckedChanged += new System.EventHandler(this.ckOxig_CheckedChanged);
+            // 
             // txtIEST
             // 
             this.txtIEST.Location = new System.Drawing.Point(55, 175);
             this.txtIEST.Name = "txtIEST";
             this.txtIEST.Size = new System.Drawing.Size(206, 20);
             this.txtIEST.TabIndex = 22;
+            this.txtIEST.Visible = false;
             // 
             // txtPlaca4
             // 
@@ -904,7 +988,17 @@ namespace SistemaGSG
             this.txtPlaca3.Name = "txtPlaca3";
             this.txtPlaca3.Size = new System.Drawing.Size(100, 20);
             this.txtPlaca3.TabIndex = 11;
-            this.txtPlaca3.Text = "MGF3641";
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVoltar.Location = new System.Drawing.Point(9, 287);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(75, 23);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtPlaca2
             // 
@@ -912,7 +1006,6 @@ namespace SistemaGSG
             this.txtPlaca2.Name = "txtPlaca2";
             this.txtPlaca2.Size = new System.Drawing.Size(100, 20);
             this.txtPlaca2.TabIndex = 10;
-            this.txtPlaca2.Text = "MGF3731";
             // 
             // txtPlaca1
             // 
@@ -920,7 +1013,7 @@ namespace SistemaGSG
             this.txtPlaca1.Name = "txtPlaca1";
             this.txtPlaca1.Size = new System.Drawing.Size(100, 20);
             this.txtPlaca1.TabIndex = 9;
-            this.txtPlaca1.Text = "PEP9120";
+            this.txtPlaca1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPlaca1_KeyUp);
             // 
             // label1
             // 
@@ -965,13 +1058,31 @@ namespace SistemaGSG
             this.nameMot.Size = new System.Drawing.Size(0, 13);
             this.nameMot.TabIndex = 4;
             // 
+            // ckbag
+            // 
+            this.ckbag.AutoSize = true;
+            this.ckbag.Location = new System.Drawing.Point(246, 212);
+            this.ckbag.Name = "ckbag";
+            this.ckbag.Size = new System.Drawing.Size(15, 14);
+            this.ckbag.TabIndex = 13;
+            this.ckbag.UseVisualStyleBackColor = true;
+            this.ckbag.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(211, 212);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(29, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "BAG";
+            // 
             // txtCPF
             // 
             this.txtCPF.Location = new System.Drawing.Point(55, 42);
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(105, 20);
             this.txtCPF.TabIndex = 4;
-            this.txtCPF.Text = "19600160406";
             this.txtCPF.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCPF_KeyUp);
             // 
             // lblCPF
@@ -983,25 +1094,26 @@ namespace SistemaGSG
             this.lblCPF.TabIndex = 5;
             this.lblCPF.Text = "CPF";
             // 
-            // button2
+            // btnCriarAcesso
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(208, 287);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "&Criar Acesso";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnCriarAcesso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCriarAcesso.Location = new System.Drawing.Point(208, 287);
+            this.btnCriarAcesso.Name = "btnCriarAcesso";
+            this.btnCriarAcesso.Size = new System.Drawing.Size(75, 23);
+            this.btnCriarAcesso.TabIndex = 7;
+            this.btnCriarAcesso.Text = "&Criar Acesso";
+            this.btnCriarAcesso.UseVisualStyleBackColor = true;
+            this.btnCriarAcesso.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label2
+            // lblCliente
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Cliente";
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(9, 18);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(39, 13);
+            this.lblCliente.TabIndex = 4;
+            this.lblCliente.Text = "Cliente";
+            this.lblCliente.Click += new System.EventHandler(this.lblCliente_Click);
             // 
             // txtCliente
             // 
@@ -1009,12 +1121,21 @@ namespace SistemaGSG
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(223, 20);
             this.txtCliente.TabIndex = 4;
-            this.txtCliente.Text = "26515888000199";
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.cmbCliente);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtCilin);
+            this.groupBox2.Controls.Add(this.txtOxig);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.txtItem);
+            this.groupBox2.Controls.Add(this.txtPedido);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtPeso);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
@@ -1026,24 +1147,127 @@ namespace SistemaGSG
             this.groupBox2.Controls.Add(this.lblBagQuant);
             this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.lblUnd);
-            this.groupBox2.Controls.Add(this.ckbag);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.lblOv);
             this.groupBox2.Controls.Add(this.lblSacaria);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnCriarAcesso);
             this.groupBox2.Controls.Add(this.txtOv);
             this.groupBox2.Controls.Add(this.txtQuantidade);
             this.groupBox2.Controls.Add(this.txtSacariaFim);
             this.groupBox2.Controls.Add(this.txtSacariaInic);
             this.groupBox2.Controls.Add(this.txtCliente);
-            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.lblCliente);
             this.groupBox2.Location = new System.Drawing.Point(318, 57);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(287, 316);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cliente/Ov";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 97);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 97;
+            this.label15.Text = "Material";
+            this.label15.Visible = false;
+            // 
+            // txtCilin
+            // 
+            this.txtCilin.Location = new System.Drawing.Point(227, 68);
+            this.txtCilin.Name = "txtCilin";
+            this.txtCilin.Size = new System.Drawing.Size(50, 20);
+            this.txtCilin.TabIndex = 96;
+            this.txtCilin.Text = "50";
+            this.txtCilin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCilin.Visible = false;
+            // 
+            // txtOxig
+            // 
+            this.txtOxig.Location = new System.Drawing.Point(177, 68);
+            this.txtOxig.Name = "txtOxig";
+            this.txtOxig.Size = new System.Drawing.Size(50, 20);
+            this.txtOxig.TabIndex = 95;
+            this.txtOxig.Text = "5";
+            this.txtOxig.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtOxig.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(9, 175);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Item:";
+            this.label13.Visible = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 149);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(43, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Pedido:";
+            this.label12.Visible = false;
+            // 
+            // txtItem
+            // 
+            this.txtItem.Location = new System.Drawing.Point(54, 172);
+            this.txtItem.Name = "txtItem";
+            this.txtItem.Size = new System.Drawing.Size(223, 20);
+            this.txtItem.TabIndex = 27;
+            this.txtItem.Text = "OXIGENIO INDUSTRIAL 10M³";
+            this.txtItem.Visible = false;
+            // 
+            // txtPedido
+            // 
+            this.txtPedido.Location = new System.Drawing.Point(54, 146);
+            this.txtPedido.Name = "txtPedido";
+            this.txtPedido.Size = new System.Drawing.Size(223, 20);
+            this.txtPedido.TabIndex = 26;
+            this.txtPedido.Text = "VENDA OXIGENIO MÊS 2022";
+            this.txtPedido.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(161, 71);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(10, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "-";
+            this.label10.Visible = false;
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Location = new System.Drawing.Point(177, 68);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(100, 20);
+            this.txtPeso.TabIndex = 24;
+            this.txtPeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPeso.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(160, 123);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(10, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "-";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(161, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 22;
+            this.label6.Text = "-";
             // 
             // label5
             // 
@@ -1056,11 +1280,11 @@ namespace SistemaGSG
             // 
             // richObs
             // 
-            this.richObs.Location = new System.Drawing.Point(54, 150);
+            this.richObs.Location = new System.Drawing.Point(54, 149);
             this.richObs.Name = "richObs";
-            this.richObs.Size = new System.Drawing.Size(223, 131);
+            this.richObs.Size = new System.Drawing.Size(223, 132);
             this.richObs.TabIndex = 20;
-            this.richObs.Text = resources.GetString("richObs.Text");
+            this.richObs.Text = "";
             // 
             // maskSafra
             // 
@@ -1069,7 +1293,7 @@ namespace SistemaGSG
             this.maskSafra.Name = "maskSafra";
             this.maskSafra.Size = new System.Drawing.Size(100, 20);
             this.maskSafra.TabIndex = 19;
-            this.maskSafra.Text = "20202021";
+            this.maskSafra.Text = "20212022";
             this.maskSafra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // maskCliente
@@ -1118,25 +1342,6 @@ namespace SistemaGSG
             this.lblUnd.TabIndex = 14;
             this.lblUnd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ckbag
-            // 
-            this.ckbag.AutoSize = true;
-            this.ckbag.Location = new System.Drawing.Point(262, 19);
-            this.ckbag.Name = "ckbag";
-            this.ckbag.Size = new System.Drawing.Size(15, 14);
-            this.ckbag.TabIndex = 13;
-            this.ckbag.UseVisualStyleBackColor = true;
-            this.ckbag.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(221, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "BAG?";
-            // 
             // lblOv
             // 
             this.lblOv.AutoSize = true;
@@ -1154,6 +1359,7 @@ namespace SistemaGSG
             this.lblSacaria.Size = new System.Drawing.Size(43, 13);
             this.lblSacaria.TabIndex = 10;
             this.lblSacaria.Text = "Sacaria";
+            this.lblSacaria.Click += new System.EventHandler(this.lblSacaria_Click);
             // 
             // label4
             // 
@@ -1170,7 +1376,6 @@ namespace SistemaGSG
             this.txtOv.Name = "txtOv";
             this.txtOv.Size = new System.Drawing.Size(100, 20);
             this.txtOv.TabIndex = 8;
-            this.txtOv.Text = "23633";
             this.txtOv.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtQuantidade
@@ -1179,8 +1384,8 @@ namespace SistemaGSG
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(100, 20);
             this.txtQuantidade.TabIndex = 7;
-            this.txtQuantidade.Text = "750";
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtQuantidade.DoubleClick += new System.EventHandler(this.txtQuantidade_DoubleClick);
             this.txtQuantidade.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox3_KeyUp);
             // 
             // txtSacariaFim
@@ -1200,45 +1405,23 @@ namespace SistemaGSG
             this.txtSacariaInic.Size = new System.Drawing.Size(100, 20);
             this.txtSacariaInic.TabIndex = 5;
             this.txtSacariaInic.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(161, 97);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(10, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "-";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(160, 123);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(10, 13);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "-";
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnVoltar.Location = new System.Drawing.Point(9, 287);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(75, 23);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "&Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.button4_Click);
+            this.txtSacariaInic.Click += new System.EventHandler(this.txtSacariaInic_Click);
+            this.txtSacariaInic.DoubleClick += new System.EventHandler(this.txtSacariaInic_DoubleClick);
             // 
             // StatusBar
             // 
+            this.StatusBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatusBar.Dock = System.Windows.Forms.DockStyle.None;
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
-            this.UserTXT});
+            this.UserTXT,
+            this.toolStripStatusLabel3,
+            this.ultAcesso});
             this.StatusBar.Location = new System.Drawing.Point(20, 395);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(585, 22);
+            this.StatusBar.Size = new System.Drawing.Size(320, 22);
             this.StatusBar.TabIndex = 7;
             this.StatusBar.Text = "statusStrip1";
             // 
@@ -1260,12 +1443,27 @@ namespace SistemaGSG
             this.UserTXT.Size = new System.Drawing.Size(16, 17);
             this.UserTXT.Text = "...";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(124, 17);
+            this.toolStripStatusLabel3.Text = "Último Acesso Criado:";
+            // 
+            // ultAcesso
+            // 
+            this.ultAcesso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultAcesso.ForeColor = System.Drawing.Color.Crimson;
+            this.ultAcesso.Name = "ultAcesso";
+            this.ultAcesso.Size = new System.Drawing.Size(43, 17);
+            this.ultAcesso.Text = "acesso";
+            // 
             // ProgressBar
             // 
             this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ProgressBar.Location = new System.Drawing.Point(20, 379);
+            this.ProgressBar.MarqueeAnimationSpeed = 1000;
             this.ProgressBar.Name = "ProgressBar";
             this.ProgressBar.Size = new System.Drawing.Size(585, 13);
             this.ProgressBar.TabIndex = 92;
@@ -1277,13 +1475,34 @@ namespace SistemaGSG
             this.label9.ForeColor = System.Drawing.Color.Navy;
             this.label9.Location = new System.Drawing.Point(195, 22);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(226, 32);
+            this.label9.Size = new System.Drawing.Size(225, 32);
             this.label9.TabIndex = 93;
             this.label9.Text = "Acesso Balança";
+            // 
+            // ckbAcessoBag
+            // 
+            this.ckbAcessoBag.AutoSize = true;
+            this.ckbAcessoBag.Location = new System.Drawing.Point(495, 34);
+            this.ckbAcessoBag.Name = "ckbAcessoBag";
+            this.ckbAcessoBag.Size = new System.Drawing.Size(110, 17);
+            this.ckbAcessoBag.TabIndex = 94;
+            this.ckbAcessoBag.Text = "Criar Acesso BAG";
+            this.ckbAcessoBag.UseVisualStyleBackColor = true;
+            this.ckbAcessoBag.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            // 
+            // cmbCliente
+            // 
+            this.cmbCliente.FormattingEnabled = true;
+            this.cmbCliente.Location = new System.Drawing.Point(54, 15);
+            this.cmbCliente.Name = "cmbCliente";
+            this.cmbCliente.Size = new System.Drawing.Size(223, 21);
+            this.cmbCliente.TabIndex = 98;
+            this.cmbCliente.SelectedValueChanged += new System.EventHandler(this.cmbCliente_SelectedValueChanged);
             // 
             // FormAcesso
             // 
             this.ClientSize = new System.Drawing.Size(625, 437);
+            this.Controls.Add(this.ckbAcessoBag);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ProgressBar);
             this.Controls.Add(this.StatusBar);
@@ -1424,14 +1643,14 @@ namespace SistemaGSG
         private System.Windows.Forms.TextBox txtTransportadora;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCPFCompleto;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCriarAcesso;
         private System.Windows.Forms.TextBox txtPlaca4;
         private System.Windows.Forms.TextBox txtPlaca3;
         private System.Windows.Forms.TextBox txtPlaca2;
         private System.Windows.Forms.TextBox txtPlaca1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCliente;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtSacariaInic;
         private System.Windows.Forms.TextBox txtQuantidade;
@@ -1449,7 +1668,6 @@ namespace SistemaGSG
         private System.Windows.Forms.MaskedTextBox maskCliente;
         private System.Windows.Forms.MaskedTextBox maskSafra;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox richObs;
         private System.Windows.Forms.TextBox txtIEST;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
@@ -1460,5 +1678,25 @@ namespace SistemaGSG
         private System.Windows.Forms.ToolStripStatusLabel UserTXT;
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel ultAcesso;
+        private System.Windows.Forms.TextBox txtPeso;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox ckOxig;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtItem;
+        private System.Windows.Forms.TextBox txtPedido;
+        private System.Windows.Forms.CheckBox ckbAcessoBag;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.CheckBox chkTij;
+        private System.Windows.Forms.RichTextBox richObs;
+        private System.Windows.Forms.TextBox txtCilin;
+        private System.Windows.Forms.TextBox txtOxig;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtClienteTijolo;
+        private System.Windows.Forms.Label lblClienteTijolo;
+        private System.Windows.Forms.ComboBox cmbCliente;
     }
 }

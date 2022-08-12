@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SAPFEWSELib;
 using SapROTWr;
+using System;
+using System.Data;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -58,7 +52,7 @@ namespace SistemaGSG
         private void ComboBox()
         {
             StatusProgressBar.Value = 100;
-            
+
 
             MySqlCommand com = new MySqlCommand();
             com.Connection = ConexaoDados.GetConnectionFaturameto();
@@ -74,7 +68,7 @@ namespace SistemaGSG
         {
             try
             {
-                
+
                 if (ConexaoDados.GetConnectionFaturameto().State == ConnectionState.Open)
                 {
                     StatusOnline.Visible = true;
@@ -110,7 +104,7 @@ namespace SistemaGSG
                 //Abre Transação
                 StatusProgressBar.Value = 0;
                 Session.SendCommand("/NZBL023");
-                guiWindow.SendVKey(0);                
+                guiWindow.SendVKey(0);
                 StatusProgressBar.Value = 15;
                 ((GuiRadioButton)Session.FindById("wnd[0]/usr/radRB_USGA")).Select();
                 ((GuiRadioButton)Session.FindById("wnd[0]/usr/radRB_ACESSO")).Select();
@@ -125,7 +119,7 @@ namespace SistemaGSG
                 Session.SendCommand("/N");
                 StatusProgressBar.Value = 30;
             }
-            catch 
+            catch
             {
                 StatusSAP.Visible = true;
                 checkBox1.Checked = false;
@@ -173,7 +167,7 @@ namespace SistemaGSG
         {
             try
             {
-                
+
                 if (string.IsNullOrEmpty(NomeMotorista.Text))
                 {
 
@@ -206,7 +200,7 @@ namespace SistemaGSG
         }
         private void btnConsult_Click(object sender, EventArgs e)
         {
-            
+
             MySqlCommand comandDell = new MySqlCommand("TRUNCATE tb_ordem_motorista", ConexaoDados.GetConnectionFaturameto());
             comandDell.ExecuteNonQuery();
             ConexaoDados.GetConnectionFaturameto().Close();

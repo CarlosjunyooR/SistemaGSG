@@ -1,11 +1,10 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
+﻿using MetroFramework;
+using MySql.Data.MySqlClient;
 using SAPFEWSELib;
 using SapROTWr;
-using MetroFramework;
-using java.sql;
-using MySql.Data.MySqlClient;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -18,12 +17,9 @@ namespace SistemaGSG
         public FormPedido()
         {
             InitializeComponent();
-            System.Diagnostics.Debugger.Break();
         }
-        public FormPedido(string conexao)
-        {
-            InitializeComponent();
-        }
+        string MesSelecionado;
+
         private void groupBox7_Enter(object sender, EventArgs e)
         {
         }
@@ -55,11 +51,11 @@ namespace SistemaGSG
         {
             Filtrar();
             dtDoc.Enabled = false;
-                dtLanc.Enabled = false;
-                txtNf.Enabled = false;
-                txtPedido.Enabled = false;
-                dtMiroFatura.Enabled = false;
-                dateTimePicker2.Enabled = false;
+            dtLanc.Enabled = false;
+            txtNf.Enabled = false;
+            txtPedido.Enabled = false;
+            dtMiroFatura.Enabled = false;
+            dateTimePicker2.Enabled = false;
 
             if (chboxMiro.Checked)
             {
@@ -109,9 +105,10 @@ namespace SistemaGSG
         }
         private void criar_pedido()
         {
+
             if (string.IsNullOrEmpty(MesRef.Text))
             {
-                MetroMessageBox.Show(this,"Preencha o mês de referencia.","Informação!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MetroMessageBox.Show(this, "Preencha o mês de referencia.", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -122,7 +119,7 @@ namespace SistemaGSG
                     {
                         //Pega a tela de execução do Windows
                         CSapROTWrapper sapROTWrapper = new CSapROTWrapper();
-                        //Pega a entrada ROT para o SAP Gui para conectar-se ao COM
+                        //Pega a entrada ROT para o SAP Gui para conectar-se ao COM|SAPGUI
                         object SapGuilRot = sapROTWrapper.GetROTEntry("SAPGUI");
                         //Pega a referência de Scripting Engine do SAP
                         object engine = SapGuilRot.GetType().InvokeMember("GetScriptingEngine", System.Reflection.BindingFlags.InvokeMethod, null, SapGuilRot, null);
@@ -141,8 +138,57 @@ namespace SistemaGSG
                         //Inicia a Barra de Progresso em 25%
                         ProgBar.Value = 25;
                         //Tecla Enter
+                        string Result = MesRef.Text.Substring(0, 2);
+                        label2.Text = NumLinhas.ToString();
                         guiWindow.SendVKey(0);
-
+                        if (Result == "01")
+                        {
+                            MesSelecionado = "Janeiro";
+                        }
+                        if (Result == "02")
+                        {
+                            MesSelecionado = "Fevereiro";
+                        }
+                        if (Result == "03")
+                        {
+                            MesSelecionado = "Março";
+                        }
+                        if (Result == "04")
+                        {
+                            MesSelecionado = "Abril";
+                        }
+                        if (Result == "05")
+                        {
+                            MesSelecionado = "Maio";
+                        }
+                        if (Result == "06")
+                        {
+                            MesSelecionado = "Junho";
+                        }
+                        if (Result == "07")
+                        {
+                            MesSelecionado = "Julho";
+                        }
+                        if (Result == "08")
+                        {
+                            MesSelecionado = "Agosto";
+                        }
+                        if (Result == "09")
+                        {
+                            MesSelecionado = "Setembro";
+                        }
+                        if (Result == "10")
+                        {
+                            MesSelecionado = "Outubro";
+                        }
+                        if (Result == "11")
+                        {
+                            MesSelecionado = "Novembro";
+                        }
+                        if (Result == "12")
+                        {
+                            MesSelecionado = "Dezembro";
+                        }
                         int Container = 1;
                         while (Container < 99)
                         {
@@ -158,7 +204,7 @@ namespace SistemaGSG
                             }
                         }
                         //Cód. Fornecedor//
-                        ((GuiComboBox)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ Container + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART")).Key = "NB";
+                        ((GuiComboBox)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Container + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART")).Key = "NB";
                         //Tecla Enter
                         guiWindow.SendVKey(0);
                         // Modifica o tipo de formato na data referênte ao Banco de Dados Ex.: 2020/06/27 para 27/06/2020.
@@ -185,7 +231,7 @@ namespace SistemaGSG
                         }
                         //Seleciona a aba texto e adiciona a nota fiscal e data
                         int TextPedido = 1;
-                        while(TextPedido < 99)
+                        while (TextPedido < 99)
                         {
                             try
                             {
@@ -204,7 +250,7 @@ namespace SistemaGSG
                             try
                             {
                                 TextPedido2++;
-                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextPedido2 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1230/subTEXTS:SAPLMMTE:0100/subEDITOR:SAPLMMTE:0101/cntlTEXT_EDITOR_0101/shellcont/shell")).Text = "REF. NOTAS FISCAIS AGRUPADAS DO MÊS DE " + MesRef.Text + "." + vbCr + "";
+                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextPedido2 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1230/subTEXTS:SAPLMMTE:0100/subEDITOR:SAPLMMTE:0101/cntlTEXT_EDITOR_0101/shellcont/shell")).Text = "REF. NOTAS FISCAIS AGRUPADAS DO MÊS DE " + MesSelecionado.ToUpper() + "." + vbCr + "";
                                 break;
                             }
                             catch
@@ -225,7 +271,7 @@ namespace SistemaGSG
                                 //Tecla Enter
                                 guiWindow.SendVKey(0);
                                 int ItensPedidoCont = 1;
-                                while(ItensPedidoCont < 99)
+                                while (ItensPedidoCont < 99)
                                 {
                                     try
                                     {
@@ -269,7 +315,7 @@ namespace SistemaGSG
                                     {
                                         ContainerRImp++;
                                         ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRImp + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT7/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1317/ctxtMEPO1317-MWSKZ")).Text = dataGridView1.Rows[0].Cells[6].Value.ToString();
-                                         break;
+                                        break;
                                     }
                                     catch
                                     {
@@ -308,6 +354,36 @@ namespace SistemaGSG
                                     }
                                 }
                                 guiWindow.SendVKey(0);
+                                int SelecTextoItem = 1;
+                                while (SelecTextoItem < 99)
+                                {
+                                    try
+                                    {
+                                        SelecTextoItem++;
+                                        ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SelecTextoItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
+                                        break;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
+                                int ItemdoPedidoTexto = 1;
+                                dtDoc.Text = dataGridView1.Rows[0].Cells["emissao"].Value.ToString();
+                                while (ItemdoPedidoTexto < 99)
+                                {
+                                    try
+                                    {
+                                        ItemdoPedidoTexto++;
+                                        ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTexto + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
+                                        ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTexto + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "CÓDIGO ÚNICO: " + dataGridView1.Rows[0].Cells["cod_unico"].Value.ToString() + " & NOTA FISCAL Nº:" + dataGridView1.Rows[0].Cells["nfe"].Value.ToString() + " DE " + this.dtDoc.Text + " REFERENTE AO MÊS DE " + MesSelecionado.ToUpper() + "/2021.";
+                                        break;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
                                 //Segundo
                                 int numero = 1;
                                 int item = 1;
@@ -350,7 +426,7 @@ namespace SistemaGSG
                                         }
 
                                         int ContSItens = 1;
-                                        while(ContSItens < 99)
+                                        while (ContSItens < 99)
                                         {
                                             ContSItens++;
                                             ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-KNTTP[2,1]")).Text = "K";
@@ -407,7 +483,36 @@ namespace SistemaGSG
 
                                             }
                                         }
+                                        int SelecTextoItemN = 1;
+                                        while (SelecTextoItemN < 99)
+                                        {
+                                            try
+                                            {
+                                                SelecTextoItemN++;
+                                                ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SelecTextoItemN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
+                                                break;
+                                            }
+                                            catch
+                                            {
 
+                                            }
+                                        }
+                                        int ItemdoPedidoTextoN = 1;
+                                        dtDoc.Text = dataGridView1.Rows[item].Cells["emissao"].Value.ToString();
+                                        while (ItemdoPedidoTextoN < 99)
+                                        {
+                                            try
+                                            {
+                                                ItemdoPedidoTextoN++;
+                                                ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
+                                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "CÓDIGO ÚNICO: " + dataGridView1.Rows[item].Cells["cod_unico"].Value.ToString() + " & NOTA FISCAL Nº:" + dataGridView1.Rows[item].Cells["nfe"].Value.ToString() + " DE " + this.dtDoc.Text + " REFERENTE AO MÊS DE " + MesSelecionado.ToUpper() + "/2021.";
+                                                break;
+                                            }
+                                            catch
+                                            {
+
+                                            }
+                                        }
                                         guiWindow.SendVKey(0);
                                         item++;
                                         numero++;
@@ -450,19 +555,17 @@ namespace SistemaGSG
                         }
                         //Finaliza com 100% a Barra de Progresso
                         ProgBar.Value = 1000;
-                        //Exibe uma menssagem de conclusão
-                        MessageBox.Show("Pedido Concluido!");
                     }
                 }
                 else
                 {
                     int NumLinhasDt2 = dataGridView2.RowCount;
-
-                    if (MetroMessageBox.Show(this, "Pedido com " + NumLinhasDt2*2 + " itens, deseja continuar?.", "Informação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MetroMessageBox.Show(this, "Pedido com " + NumLinhasDt2 * 2 + " itens, deseja continuar?.", "Informação!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+
                         //Pega a tela de execução do Windows
                         CSapROTWrapper sapROTWrapper = new CSapROTWrapper();
-                        //Pega a entrada ROT para o SAP Gui para conectar-se
+                        //Pega a entrada ROT para o SAP Gui para conectar-se ao COM|SAPGUI
                         object SapGuilRot = sapROTWrapper.GetROTEntry("SAPGUI");
                         //Pega a referência de Scripting Engine do SAP
                         object engine = SapGuilRot.GetType().InvokeMember("GetScriptingEngine", System.Reflection.BindingFlags.InvokeMethod, null, SapGuilRot, null);
@@ -478,21 +581,100 @@ namespace SistemaGSG
                         guiWindow.Maximize();
                         //Abre Transação
                         Session.SendCommand("/NME21N");
-                        //Difinir valor máximo da barra de progresso
-                        int ValorMaxBarr = dataGridView2.RowCount * 2;
-                        label2.Text = ValorMaxBarr.ToString();
-                        ProgBar.Maximum = ValorMaxBarr+10;
-                        ProgBar.Value = 0;
+                        //Inicia a Barra de Progresso em 25%
+                        ProgBar.Value = 25;
+                        //Tecla Enter
+                        string Result = MesRef.Text.Substring(0, 2);
+                        label2.Text = NumLinhasDt2.ToString();
+                        guiWindow.SendVKey(0);
+                        if (string.IsNullOrWhiteSpace(MesRef.Text))
+                        {
+
+                        }
+                        else
+                        {
+                            if (Result == "01")
+                            {
+                                MesSelecionado = "Janeiro";
+                            }
+                            if (Result == "02")
+                            {
+                                MesSelecionado = "Fevereiro";
+                            }
+                            if (Result == "03")
+                            {
+                                MesSelecionado = "Março";
+                            }
+                            if (Result == "04")
+                            {
+                                MesSelecionado = "Abril";
+                            }
+                            if (Result == "05")
+                            {
+                                MesSelecionado = "Maio";
+                            }
+                            if (Result == "06")
+                            {
+                                MesSelecionado = "Junho";
+                            }
+                            if (Result == "07")
+                            {
+                                MesSelecionado = "Julho";
+                            }
+                            if (Result == "08")
+                            {
+                                MesSelecionado = "Agosto";
+                            }
+                            if (Result == "09")
+                            {
+                                MesSelecionado = "Setembro";
+                            }
+                            if (Result == "10")
+                            {
+                                MesSelecionado = "Outubro";
+                            }
+                            if (Result == "11")
+                            {
+                                MesSelecionado = "Novembro";
+                            }
+                            if (Result == "12")
+                            {
+                                MesSelecionado = "Dezembro";
+                            }
+                        }
+                        int Container = 1;
+                        while (Container < 99)
+                        {
+                            try
+                            {
+                                Container++;
+                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Container + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).Text = "2000000246";
+                                break;
+                            }
+                            catch
+                            {
+
+                            }
+                        }
+                        //Cód. Fornecedor//
+                        ((GuiComboBox)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Container + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART")).Key = "NB";
                         //Tecla Enter
                         guiWindow.SendVKey(0);
-                        int Cabecalho = 1;
-                        int RowTableSAP = 0;
-                        while (Cabecalho < 99)
+                        // Modifica o tipo de formato na data referênte ao Banco de Dados Ex.: 2020/06/27 para 27/06/2020.
+                        dtDoc.Text = dataGridView2.Rows[0].Cells["emissao"].Value.ToString();
+                        dtDoc.Format = DateTimePickerFormat.Custom;
+                        dtDoc.CustomFormat = "dd/MM/yyyy";
+
+                        //Dados Organizacionais
+                        int OrgCont = 1;
+                        while (OrgCont < 99)
                         {
                             try
                             {
-                                Cabecalho++;
-                                ((GuiComboBox)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ Cabecalho + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/cmbMEPO_TOPLINE-BSART")).Key = "NB";
+                                OrgCont++;
+                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + OrgCont + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKORG")).Text = "1000";
+                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + OrgCont + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKGRP")).Text = "400";
+                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + OrgCont + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-BUKRS")).Text = "USGA";
                                 break;
                             }
                             catch
@@ -500,14 +682,14 @@ namespace SistemaGSG
 
                             }
                         }
-                        ProgBar.Value = 5;
-                        int Cabecalho2 = 1;
-                        while (Cabecalho2 < 99)
+                        //Seleciona a aba texto e adiciona a nota fiscal e data
+                        int TextPedido = 1;
+                        while (TextPedido < 99)
                         {
                             try
                             {
-                                Cabecalho2++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho2 + "/subSUB0:SAPLMEGUI:0030/subSUB1:SAPLMEGUI:1105/ctxtMEPO_TOPLINE-SUPERFIELD")).Text = "2000000246";
+                                TextPedido++;
+                                ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextPedido + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3")).Select();
                                 break;
                             }
                             catch
@@ -515,184 +697,514 @@ namespace SistemaGSG
 
                             }
                         }
-                        int Cabecalho3 = 1;
-                        while (Cabecalho3 < 99)
+                        int TextPedido2 = 1;
+                        while (TextPedido < 99)
                         {
                             try
                             {
-                                Cabecalho3++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho3 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKORG")).Text = "1000";
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho3 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-EKGRP")).Text = "400";
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho3 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT9/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1221/ctxtMEPO1222-BUKRS")).Text = "USGA";
+                                TextPedido2++;
+                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextPedido2 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1230/subTEXTS:SAPLMMTE:0100/subEDITOR:SAPLMMTE:0101/cntlTEXT_EDITOR_0101/shellcont/shell")).Text = "REF. NOTAS FISCAIS AGRUPADAS DO MÊS DE " + MesSelecionado.ToUpper() + "/" + MesRef.Text.Substring(3, 4) + "." + vbCr + "";
+                                break;
+                            }
+                            catch
+                            {
+
+                            }
+                        }
+
+                        //Conta quantas linhas(itens) tem na nota fiscal referida
+                        int countg = dataGridView2.RowCount;
+                        //Condição para criar o pedido com 1 item e por diante
+                        if (countg > 0)
+                        {
+                            try
+                            {
+                                //Barra de Progresso
+                                ProgBar.Value = 35;
+                                //Tecla Enter
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
+                                int ItensPedidoCont = 1;
+                                while (ItensPedidoCont < 99)
+                                {
+                                    try
+                                    {
+                                        ItensPedidoCont++;
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-KNTTP[2,0]")).Text = "K";
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-EMATN[4,0]")).Text = dataGridView2.Rows[0].Cells[1].Value.ToString();
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-TXZ01[5,0]")).Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-MENGE[6,0]")).Text = "1";
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15,0]")).Text = "UNIDADE INDUSTRIAL S. GRANDE";
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15,0]")).SetFocus();
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItensPedidoCont + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15,0]")).CaretPosition = 28;
+                                        break;
+                                    }
+                                    catch
+                                    {
 
-                            }
-                        }
-                        ProgBar.Value = 7;
-                        int Cabecalho4 = 1;
-                        while (Cabecalho4 < 99)
-                        {
-                            try
-                            {
-                                Cabecalho4++;
-                                ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho4 + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3")).Select();
-                                break;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        int TextoPedido = 1;
-                        while (TextoPedido < 99)
-                        {
-                            try
-                            {
-                                TextoPedido++;
-                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextoPedido + "/subSUB1:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1102/tabsHEADER_DETAIL/tabpTABHDT3/ssubTABSTRIPCONTROL2SUB:SAPLMEGUI:1230/subTEXTS:SAPLMMTE:0100/subEDITOR:SAPLMMTE:0101/cntlTEXT_EDITOR_0101/shellcont/shell")).Text = "REF. NOTAS FISCAIS AGRUPADAS DO MÊS DE " + MesRef.Text + "." + vbCr + "";
-                                break;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        ProgBar.Value = 8;
-                        int Cabecalho6 = 1;
-                        while (Cabecalho6 < 99)
-                        {
-                            try
-                            {
-                                Cabecalho6++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho6 + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-KNTTP[2," + RowTableSAP + "]")).Text = "K";
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho6 + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-EMATN[4," + RowTableSAP + "]")).Text = dataGridView2.Rows[0].Cells["material"].Value.ToString();
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho6 + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-TXZ01[5," + RowTableSAP + "]")).Text = dataGridView2.Rows[0].Cells["desc_item"].Value.ToString();
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho6 + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-MENGE[6," + RowTableSAP + "]")).Text = "1";
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Cabecalho6 + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15," + RowTableSAP + "]")).Text = "UNIDADE INDUSTRIAL S. GRANDE";
+                                    }
+                                }
                                 guiWindow.SendVKey(0);
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
+                                int ContainerR = 1;
+                                while (ContainerR < 99)
+                                {
+                                    try
+                                    {
+                                        ContainerR++;
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerR + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT13/ssubTABSTRIPCONTROL1SUB:SAPLMEVIEWS:1101/subSUB2:SAPLMEACCTVI:0100/subSUB1:SAPLMEACCTVI:1100/subKONTBLOCK:SAPLKACB:1101/ctxtCOBL-KOSTL")).Text = dataGridView2.Rows[0].Cells[5].Value.ToString();
+                                        break;
+                                    }
+                                    catch
+                                    {
 
-                            }
-                        }
-                        int Custo = 1;
-                        while (Custo < 99)
-                        {
-                            try
-                            {
-                                Custo++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ Custo + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT13/ssubTABSTRIPCONTROL1SUB:SAPLMEVIEWS:1101/subSUB2:SAPLMEACCTVI:0100/subSUB1:SAPLMEACCTVI:1100/subKONTBLOCK:SAPLKACB:1101/ctxtCOBL-KOSTL")).Text = dataGridView2.Rows[0].Cells["custo"].Value.ToString();
+                                    }
+                                }
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
-
-                            }
-                        }
-                        int Iva = 1;
-                        while (Iva < 99)
-                        {
-                            try
-                            {
-                                Iva++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + Iva + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT7/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1317/ctxtMEPO1317-MWSKZ")).Text = dataGridView2.Rows[0].Cells["cod_imp"].Value.ToString();
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
+                                int ContainerRImp = 1;
+                                while (ContainerRImp < 99)
+                                {
+                                    try
+                                    {
+                                        ContainerRImp++;
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRImp + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT7/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1317/ctxtMEPO1317-MWSKZ")).Text = dataGridView2.Rows[0].Cells[6].Value.ToString();
+                                        break;
+                                    }
+                                    catch
+                                    {
 
-                            }
-                        }
-                        int TextoItem = 1;
-                        while (TextoItem < 99)
-                        {
-                            try
-                            {
-                                TextoItem++;
-                                ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ TextoItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
-                                ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + TextoItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
-                                ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ TextoItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "Item "+dataGridView2.Rows[0].Cells["txt_pedido"].Value.ToString() +" " + vbCr + "";
+                                    }
+                                }
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
-
-                            }//
-                        }
-                        int Select = 1;
-                        while (Select < 99)
-                        {
-                            try
-                            {
-                                Select++;
-                                ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00"+ Select + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8")).Select();
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
+                                int ContainerRTab = 1;
+                                while (ContainerRTab < 99)
+                                {
+                                    try
+                                    {
+                                        ContainerRTab++;
+                                        ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRTab + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8")).Select();
 
-                            }
-                        }
-                        int ValorItem = 1;
-                        while (ValorItem < 99)
-                        {
-                            try
-                            {
-                                ValorItem++;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ValorItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,0]")).Text = dataGridView2.Rows[0].Cells["base_calculo"].Value.ToString();
+                                        break;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
+                                int ContainerRCond = 1;
+                                while (ContainerRCond < 99)
+                                {
+                                    try
+                                    {
+                                        ContainerRCond++;
+                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,0]")).Text = dataGridView2.Rows[0].Cells[7].Value.ToString();
+                                        ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 9;
+                                        string TipoIva = ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,3]")).Text;
+                                        if (TipoIva.Trim() == "ZCOI")
+                                        {
+                                            ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,5]")).Text = "ZICC";
+                                            ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,5]")).Text = dataGridView2.Rows[0].Cells["vl_icms"].Value.ToString();
+                                        }
+                                        else
+                                        {
+                                            ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,3]")).Text = dataGridView2.Rows[0].Cells["vl_icms"].Value.ToString();
+                                        }
+                                        ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRCond + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 0;
+
+                                        break;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
                                 guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
+                                int SelecTextoItem = 1;
+                                while (SelecTextoItem < 99)
+                                {
+                                    try
+                                    {
+                                        SelecTextoItem++;
+                                        ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SelecTextoItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
+                                        break;
+                                    }
+                                    catch
+                                    {
 
+                                    }
+                                }
+                                int ItemdoPedidoTexto = 1;
+                                dtDoc.Text = dataGridView2.Rows[0].Cells["emissao"].Value.ToString();
+                                while (ItemdoPedidoTexto < 99)
+                                {
+                                    try
+                                    {
+                                        ItemdoPedidoTexto++;
+                                        ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTexto + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
+                                        ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTexto + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "CÓDIGO ÚNICO: " + dataGridView2.Rows[0].Cells["cod_unico"].Value.ToString() + " & NOTA FISCAL Nº:" + dataGridView2.Rows[0].Cells["nfe"].Value.ToString() + " DE " + this.dtDoc.Text + " REFERENTE AO MÊS DE " + MesSelecionado.ToUpper() + "/2021.";
+                                        break;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                }
+                                //Segundo Item
+                                int numero = 1;
+                                int item = 0;
+                                int BarraProgresso = 45;
+                                int ItemSequ = 2;
+                                int ItemSelecionado = 2;
+                                int VerticalScrollbar = 1;
+                                while (numero < countg)
+                                {
+                                    if (ItemSelecionado == 1)
+                                    {
+                                        try
+                                        {
+                                            ProgBar.Value = BarraProgresso;
+
+                                            int ContainerRPressButton = 1;
+                                            while (ContainerRPressButton < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRPressButton++;
+                                                    ((GuiButton)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRPressButton + "/subSUB3:SAPLMEVIEWS:1100/subSUB1:SAPLMEVIEWS:4002/btnDYN_4000-BUTTON")).Press();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            label9.Text = ItemSequ.ToString();
+                                            int ContainerRSegItnes = 1;
+                                            while (ContainerRSegItnes < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegItnes++;
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211")).VerticalScrollbar.Position = VerticalScrollbar;
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+
+                                            int ContSItens = 1;
+                                            while (ContSItens < 99)
+                                            {
+                                                ContSItens++;
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-KNTTP[2,1]")).Text = "K";
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-EMATN[4,1]")).Text = dataGridView2.Rows[item].Cells[1].Value.ToString();
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-TXZ01[5,1]")).Text = dataGridView2.Rows[item].Cells[2].Value.ToString();
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-MENGE[6,1]")).Text = "1";
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15,1]")).Text = "UNIDADE INDUSTRIAL S. GRANDE";
+                                                break;
+                                            }
+                                            guiWindow.SendVKey(0);
+                                            guiWindow.SendVKey(0);
+                                            int ContainerRSegD = 1;
+                                            while (ContainerRSegD < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegD++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegD + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT13/ssubTABSTRIPCONTROL1SUB:SAPLMEVIEWS:1101/subSUB2:SAPLMEACCTVI:0100/subSUB1:SAPLMEACCTVI:1100/subKONTBLOCK:SAPLKACB:1101/ctxtCOBL-KOSTL")).Text = dataGridView2.Rows[item].Cells[5].Value.ToString();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            guiWindow.SendVKey(0);
+
+                                            int ContainerRSegDi = 1;
+                                            while (ContainerRSegDi < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegDi++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDi + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT7/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1317/ctxtMEPO1317-MWSKZ")).Text = dataGridView2.Rows[item].Cells[6].Value.ToString();
+                                                    ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDi + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8")).Select();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int ContainerRSegDii = 1;
+                                            while (ContainerRSegDii < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegDii++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,0]")).Text = dataGridView2.Rows[item].Cells["base_calculo"].Value.ToString();
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 9;
+                                                    string TipoIva = ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,3]")).Text;
+                                                    if (TipoIva.Trim() == "ZCOI")
+                                                    {
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,5]")).Text = "ZICC";
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,5]")).Text = dataGridView2.Rows[item].Cells["vl_icms"].Value.ToString();
+                                                    }
+                                                    else
+                                                    {
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,3]")).Text = dataGridView2.Rows[item].Cells["vl_icms"].Value.ToString();
+                                                    }
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 0;
+
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int SelecTextoItemN = 1;
+                                            while (SelecTextoItemN < 99)
+                                            {
+                                                try
+                                                {
+                                                    SelecTextoItemN++;
+                                                    ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SelecTextoItemN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int ItemdoPedidoTextoN = 1;
+                                            dtDoc.Text = dataGridView2.Rows[item].Cells["emissao"].Value.ToString();
+                                            while (ItemdoPedidoTextoN < 99)
+                                            {
+                                                try
+                                                {
+                                                    ItemdoPedidoTextoN++;
+                                                    ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
+                                                    ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "CÓDIGO ÚNICO: " + dataGridView2.Rows[item].Cells["cod_unico"].Value.ToString() + " & NOTA FISCAL Nº:" + dataGridView2.Rows[item].Cells["nfe"].Value.ToString() + " DE " + this.dtDoc.Text + " REFERENTE AO MÊS DE " + MesSelecionado.ToUpper() + "/" + MesRef.Text.Substring(3, 4) + ".";
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            break;
+                                        }
+                                        /**********************************FIM*********************************************************/
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        ItemSelecionado = 2;///////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /***********************************************************************************************/
+                                        VerticalScrollbar++;
+                                    }
+                                    if (ItemSelecionado == 2)
+                                    {
+                                        try
+                                        {
+                                            ProgBar.Value = BarraProgresso;
+
+                                            int ContainerRPressButton = 1;
+                                            while (ContainerRPressButton < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRPressButton++;
+                                                    ((GuiButton)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRPressButton + "/subSUB3:SAPLMEVIEWS:1100/subSUB1:SAPLMEVIEWS:4002/btnDYN_4000-BUTTON")).Press();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            label9.Text = ItemSequ.ToString();
+                                            int ContainerRSegItnes = 1;
+                                            while (ContainerRSegItnes < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegItnes++;
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211")).VerticalScrollbar.Position = VerticalScrollbar;
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+
+                                            int ContSItens = 1;
+                                            while (ContSItens < 99)
+                                            {
+                                                ContSItens++;
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-KNTTP[2,1]")).Text = "K";
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-EMATN[4,1]")).Text = dataGridView2.Rows[item].Cells["material_dif"].Value.ToString();
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-TXZ01[5,1]")).Text = dataGridView2.Rows[item].Cells["desc_item_dif"].Value.ToString();
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/txtMEPO1211-MENGE[6,1]")).Text = "1";
+                                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegItnes + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211/ctxtMEPO1211-NAME1[15,1]")).Text = "UNIDADE INDUSTRIAL S. GRANDE";
+                                                break;
+                                            }
+                                            guiWindow.SendVKey(0);
+                                            guiWindow.SendVKey(0);
+                                            int ContainerRSegD = 1;
+                                            while (ContainerRSegD < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegD++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegD + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT13/ssubTABSTRIPCONTROL1SUB:SAPLMEVIEWS:1101/subSUB2:SAPLMEACCTVI:0100/subSUB1:SAPLMEACCTVI:1100/subKONTBLOCK:SAPLKACB:1101/ctxtCOBL-KOSTL")).Text = dataGridView2.Rows[item].Cells["custo_dif"].Value.ToString();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            guiWindow.SendVKey(0);
+
+                                            int ContainerRSegDi = 1;
+                                            while (ContainerRSegDi < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegDi++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDi + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT7/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1317/ctxtMEPO1317-MWSKZ")).Text = dataGridView2.Rows[item].Cells["cod_imp_dif"].Value.ToString();
+                                                    ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDi + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8")).Select();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int ContainerRSegDii = 1;
+                                            while (ContainerRSegDii < 99)
+                                            {
+                                                try
+                                                {
+                                                    ContainerRSegDii++;
+                                                    ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,0]")).Text = dataGridView2.Rows[item].Cells["vl_dif"].Value.ToString();
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 9;
+                                                    string TipoIva = ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,3]")).Text;
+                                                    if (TipoIva.Trim() == "ZCOI")
+                                                    {
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/ctxtKOMV-KSCHL[1,5]")).Text = "ZICC";
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,5]")).Text = dataGridView2.Rows[item].Cells["iva_dif"].Value.ToString();
+                                                    }
+                                                    else
+                                                    {
+                                                        ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,3]")).Text = dataGridView2.Rows[item].Cells["iva_dif"].Value.ToString();
+                                                    }
+                                                    ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ContainerRSegDii + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 0;
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int SelecTextoItemN = 1;
+                                            while (SelecTextoItemN < 99)
+                                            {
+                                                try
+                                                {
+                                                    SelecTextoItemN++;
+                                                    ((GuiTab)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SelecTextoItemN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15")).Select();
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            int ItemdoPedidoTextoN = 1;
+                                            dtDoc.Text = dataGridView2.Rows[item].Cells["emissao"].Value.ToString();
+                                            while (ItemdoPedidoTextoN < 99)
+                                            {
+                                                try
+                                                {
+                                                    ItemdoPedidoTextoN++;
+                                                    ((GuiTree)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/cntlTEXT_TYPES_0200/shell")).SelectedNode = "F01";
+                                                    ((GuiShell)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ItemdoPedidoTextoN + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT15/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1329/subTEXTS:SAPLMMTE:0200/subEDITOR:SAPLMMTE:0201/cntlTEXT_EDITOR_0201/shellcont/shell")).Text = "CÓDIGO ÚNICO: " + dataGridView2.Rows[item].Cells["cod_unico"].Value.ToString() + " & NOTA FISCAL Nº:" + dataGridView2.Rows[item].Cells["nfe"].Value.ToString() + " DE " + this.dtDoc.Text + " REFERENTE AO MÊS DE " + MesSelecionado.ToUpper() + "/" + MesRef.Text.Substring(3, 4) + ".";
+                                                    break;
+                                                }
+                                                catch
+                                                {
+
+                                                }
+                                            }
+                                            guiWindow.SendVKey(0);
+                                            VerticalScrollbar++;
+                                            item++;
+                                            numero++;
+                                            BarraProgresso++;
+                                            ItemSequ++;
+                                        }
+                                        catch
+                                        {
+                                            break;
+                                        }
+                                        /**********************************FIM*********************************************************/
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        ItemSelecionado = 1;///////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /////////////////////////////////////////////////////////////////////////////////////
+                                        /***********************************************************************************************/
+                                    }
+                                }
+                                //Barra de Progresso
+                                ProgBar.Value = 929;
+                                if (MessageBox.Show("Valores Corretos?!", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                {
+                                    ///Pressiona o Botão Gravar
+                                    ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[11]")).Press();
+
+                                    //Pega a Barra de Status do SAP
+                                    GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
+                                    //Me retorna apenas o número do pedido no tratamento da importação no Banco de Dados ele retira o º e os espaços.
+                                    string resultado = statusbar.Text.Substring(6, statusbar.Text.IndexOf('2'));
+                                    try
+                                    {
+
+                                        MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET pedido='" + resultado.Split('º')[1].Replace(" ", "") + "' WHERE Mes_ref='" + MesRef.Text + "' AND err_col ='1'", ConexaoDados.GetConnectionEquatorial());
+                                        cmd.ExecuteNonQuery();
+                                        ConexaoDados.GetConnectionEquatorial().Close();
+                                    }
+                                    catch (MySqlException ErroMysql)
+                                    {
+                                        MessageBox.Show(ErroMysql.Message);
+                                    }
+                                }
                             }
-                        }//Primeiro Item
-                        int ScrolBarr = 1;
-                        while (ScrolBarr < 99)
-                        {
-                            try
+                            catch (Exception Erro)
                             {
-                                ScrolBarr++;
-                                ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ScrolBarr + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 9;
-                                ((GuiTextField)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ScrolBarr + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN/txtKOMV-KBETR[3,3]")).Text = dataGridView2.Rows[0].Cells["vl_icms"].Value.ToString();
-                                ((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + ScrolBarr + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).VerticalScrollbar.Position = 0;
-                                guiWindow.SendVKey(0);
-                                break;
-                            }
-                            catch
-                            {
-                                //session.findById("wnd[0]/usr/subSUB0:SAPLMEGUI:0019/subSUB3:SAPLMEVIEWS:1100/subSUB1:SAPLMEVIEWS:4002/btnDYN_4000-BUTTON").press
-                                //session.findById("wnd[0]/usr/subSUB0:SAPLMEGUI:0016/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211").verticalScrollbar.position = 1
+                                MessageBox.Show(Erro.Message);
                             }
                         }
-                        //Segundo Item
-                        int SegItem = 1;
-                        while (SegItem < 99)
-                        {
-                            try
-                            {
-                                SegItem++;
-                                ((GuiButton)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SegItem + "/subSUB3:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1301/subSUB2:SAPLMEGUI:1303/tabsITEM_DETAIL/tabpTABIDT8/ssubTABSTRIPCONTROL1SUB:SAPLMEGUI:1333/ssubSUB0:SAPLV69A:6201/tblSAPLV69ATCTRL_KONDITIONEN")).Press();
-                                //((GuiTableControl)Session.FindById("wnd[0]/usr/subSUB0:SAPLMEGUI:00" + SegItem + "/subSUB2:SAPLMEVIEWS:1100/subSUB2:SAPLMEVIEWS:1200/subSUB1:SAPLMEGUI:1211/tblSAPLMEGUITC_1211")).VerticalScrollbar.Position = 1;
-                                break;
-                            }
-                            catch 
-                            {
-
-                            }
-                        }
+                        //Finaliza com 100% a Barra de Progresso
+                        ProgBar.Value = 1000;
                     }
                 }
             }
@@ -730,7 +1242,7 @@ namespace SistemaGSG
                     this.dtDoc.Text = dataGridView1.Rows[numero].Cells[18].Value.ToString();
                     txtNf.Text = dataGridView1.Rows[numero].Cells[19].Value.ToString();
 
-                    ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_FIRSTLINE:SAPLMIGO:0010/subSUB_FIRSTLINE_REFDOC:SAPLMIGO:2000/ctxtGODYNPRO-PO_NUMBER")).Text = txtPedido.Text.Replace(" ","");
+                    ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_FIRSTLINE:SAPLMIGO:0010/subSUB_FIRSTLINE_REFDOC:SAPLMIGO:2000/ctxtGODYNPRO-PO_NUMBER")).Text = txtPedido.Text.Replace(" ", "");
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/ctxtGOHEAD-BLDAT")).Text = this.dtDoc.Text;
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/ctxtGOHEAD-BUDAT")).Text = this.dtLanc.Text;
                     ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).Text = txtNf.Text;
@@ -745,7 +1257,7 @@ namespace SistemaGSG
                     GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
 
                     string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
-                    
+
                     MySqlCommand cmd = new MySqlCommand("UPDATE `tb_boleto` SET migo='" + resultado.Split('r')[0] + "' WHERE Mes_ref='" + MesRef.Text + "' AND err_col ='1'", ConexaoDados.GetConnectionEquatorial());
                     cmd.ExecuteNonQuery();
                     MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto` WHERE pedido IS NOT NULL AND migo=''", ConexaoDados.GetConnectionEquatorial());
@@ -776,7 +1288,7 @@ namespace SistemaGSG
                 MessageBox.Show("Fim!");
             }
         }
-        
+
         private void btnFilterMigo_Click(object sender, EventArgs e)
         {
             try
@@ -873,12 +1385,12 @@ namespace SistemaGSG
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/subITEMS:SAPLMR1M:6010/tabsITEMTAB/tabpITEMS_PO/ssubTABS:SAPLMR1M:6020/subREFERENZBELEG:SAPLMR1M:6211/ctxtRM08M-EBELN")).SetFocus();
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/subITEMS:SAPLMR1M:6010/tabsITEMTAB/tabpITEMS_PO/ssubTABS:SAPLMR1M:6020/subREFERENZBELEG:SAPLMR1M:6211/ctxtRM08M-EBELN")).CaretPosition = 10;
                         guiWindow.SendVKey(0);
-                       //((GuiTab)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY")).Select();
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZFBDT")).Text = this.dtVencimentoMiro.Text;
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZLSCH")).Text = formPag.Text;
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HBKID")).Text = bancoEmpresa.Text;
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).Text = bancoEmpresa.Text;
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).Text = txtRefPagmto.Text;
+                        //((GuiTab)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY")).Select();
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZFBDT")).Text = this.dtVencimentoMiro.Text;
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZLSCH")).Text = formPag.Text;
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HBKID")).Text = bancoEmpresa.Text;
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).Text = bancoEmpresa.Text;
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).Text = txtRefPagmto.Text;
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).SetFocus();
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).CaretPosition = 8;
                         ((GuiTab)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI")).Select();
@@ -902,7 +1414,7 @@ namespace SistemaGSG
 
                         string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
                         //MessageBox.Show(resultado.Replace(" ", "").Replace("f", "").Replace("o", ""));
-                        
+
                         //MySqlCommand cmd = new MySqlCommand("UPDATE ``tb_boleto`` SET `miro`='"+ resultado.Replace(" fo","") +"' WHERE nfe='" + txtNfeMiro.Text + "'", ConexaoDados.GetConnectionEquatorial());
                         //cmd.ExecuteNonQuery();
                         MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto` WHERE pedido IS NOT NULL AND miro=''", ConexaoDados.GetConnectionEquatorial());
@@ -920,7 +1432,7 @@ namespace SistemaGSG
                         //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZLSCH")).Text = formPag.Text;
                         //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HBKID")).Text = bancoEmpresa.Text;
                         //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).Text = bancoEmpresa.Text;
-                       //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).Text = txtRefPagmto.Text;
+                        //((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).Text = txtRefPagmto.Text;
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).SetFocus();
                         ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/txtINVFO-KIDNO")).CaretPosition = 8;
                         guiWindow.SendVKey(0);
@@ -946,7 +1458,7 @@ namespace SistemaGSG
 
                         string resultado = statusbar.Text.Substring(13, statusbar.Text.IndexOf('5'));
                         //MessageBox.Show(resultado.Replace(" ", "").Replace("f", "").Replace("o", ""));
-                        
+
                         //MySqlCommand cmd = new MySqlCommand("UPDATE ``tb_boleto`` SET `miro`='"+ resultado.Replace(" ","").Replace("f","").Replace("o","") +"' WHERE nfe='" + txtNfeMiro.Text + "'", ConexaoDados.GetConnectionEquatorial());
                         //cmd.ExecuteNonQuery();
                         MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT * FROM `tb_boleto` WHERE pedido IS NOT NULL AND miro=''", ConexaoDados.GetConnectionEquatorial());
@@ -989,7 +1501,7 @@ namespace SistemaGSG
             }
             catch
             {
-                MetroMessageBox.Show(this,"Não Existe Itens para Criar Pedido!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MetroMessageBox.Show(this, "Não Existe Itens para Criar Pedido!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -1049,7 +1561,7 @@ namespace SistemaGSG
             ProgBar.Value = 25;
 
             int Container = 1;
-            while ( Container < 99)
+            while (Container < 99)
             {
                 try
                 {
@@ -1060,7 +1572,7 @@ namespace SistemaGSG
                 catch
                 {
 
-                }                
+                }
             }
             MessageBox.Show(Container.ToString());
         }

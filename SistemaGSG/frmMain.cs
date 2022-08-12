@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SistemaGSG
@@ -20,11 +13,10 @@ namespace SistemaGSG
             label9.Text = version;
             NomePC.Text = nomeMaquina;
             NomeDominio.Text = dominio;
-            NomeUser.Text = dados.usuario;
+            NomeUser.Text = dados.Usuario;
             dados.tema = Style.ToString();
         }
 
-        [assembly: AssemblyVersion("1.*")]
         string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         private void novaContaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -37,7 +29,7 @@ namespace SistemaGSG
             }
             else
             {
-                MessageBox.Show("Sem Autorização!","Informação",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Sem Autorização!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -79,7 +71,7 @@ namespace SistemaGSG
         }
         private void notasFiscaisFabianaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dados.nivel==1)
+            if (dados.nivel == 1)
             {
                 FormNotaFiscal AbrirForm = new FormNotaFiscal();
                 AbrirForm.Show();
@@ -93,7 +85,7 @@ namespace SistemaGSG
 
         private void pDFParaTXTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dados.nivel == 1 || dados.nivel==3 || dados.nivel==4)
+            if (dados.nivel == 1 || dados.nivel == 3 || dados.nivel == 4)
             {
                 frmPDF AbrirForm = new frmPDF();
                 AbrirForm.Show();
@@ -241,6 +233,20 @@ namespace SistemaGSG
             if (dados.nivel == 1 || dados.nivel == 3 || dados.nivel == 4)
             {
                 FormAcesso AbrirForm = new FormAcesso();
+                AbrirForm.Show();
+                this.Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("Sem Autorização!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void notasFiscaisConfirmaçãoSefazToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dados.nivel == 1 || dados.nivel == 3 || dados.nivel == 4)
+            {
+                frmEventosNfe AbrirForm = new frmEventosNfe();
                 AbrirForm.Show();
                 this.Visible = false;
             }

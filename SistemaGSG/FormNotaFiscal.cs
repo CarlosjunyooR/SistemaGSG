@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using SAPFEWSELib;
 using SapROTWr;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace SistemaGSG
 {
@@ -34,450 +28,10 @@ namespace SistemaGSG
         {
 
         }
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem1.Checked)
-            {
-                //Ativa o Proximo Item
-                lblItem2.Visible = true;
-                Item2.Visible = true;
-                DescItem2.Visible = true;
-                checkItem2.Visible = true;
-
-                //Ativa o Foco para o proximo item
-                Item2.Focus();
-
-                //Verifica Cadastro do Item
-                if (Item1.Text == "334")
-                {
-                    DescItem1.Text = "ARROZ TIO VIERA PARBORIZADO 1KG";
-                }
-                else
-                {
-                    DescItem1.Text = "Item Não Cadastrado No Sistema!";
-                }
-            }
-            else
-            {
-                //Desativa o Item Anterior
-                lblItem2.Visible = false;
-                Item2.Visible = false;
-                DescItem2.Visible = false;
-                checkItem2.Visible = false;
-
-                //Limpa os Campos
-                DescItem1.Text = "";
-                Item1.Text = "";
-            }
-        }
-        private void checkItem2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem2.Checked)
-            {
-                //Bloqueia para alteração
-                Item1.Enabled = false;
-                checkItem1.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item3.Focus();
-
-                //Ativa o Proximo Item
-                lblItem3.Visible = true;
-                Item3.Visible = true;
-                DescItem3.Visible = true;
-                checkItem3.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item2.Text == "68")
-                {
-                    DescItem2.Text = "MACARRAO ESPAGUETE MAURICEA 500G";
-                }
-                else
-                {
-                    DescItem2.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item1.Enabled = true;
-                checkItem1.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem3.Visible = false;
-                Item3.Visible = false;
-                DescItem3.Visible = false;
-                checkItem3.Visible = false;
-
-                //Limpa os Campos
-                DescItem2.Text = "";
-                Item2.Text = "";
-            }
-        }
-        private void checkItem3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem3.Checked)
-            {
-                //Bloqueia para alteração
-                Item2.Enabled = false;
-                checkItem2.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item4.Focus();
-
-                //Ativa o Proximo Item
-                lblItem4.Visible = true;
-                Item4.Visible = true;
-                DescItem4.Visible = true;
-                checkItem4.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item3.Text == "260")
-                {
-                    DescItem3.Text = "SOJA";
-                }
-                else
-                {
-                    DescItem3.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item2.Enabled = true;
-                checkItem2.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem4.Visible = false;
-                Item4.Visible = false;
-                DescItem4.Visible = false;
-                checkItem4.Visible = false;
-
-                //Limpa os Campos
-                DescItem3.Text = "";
-                Item3.Text = "";
-            }
-        }
-        private void checkItem4_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem4.Checked)
-            {
-                //Bloqueia para alteração
-                Item3.Enabled = false;
-                checkItem3.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item5.Focus();
-
-                //Ativa o Proximo Item
-                lblItem5.Visible = true;
-                Item5.Visible = true;
-                DescItem5.Visible = true;
-                checkItem5.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item4.Text == "261")
-                {
-                    DescItem4.Text = "CHARQUE PA BANDEIRANTE";
-                }
-                else
-                {
-                    DescItem4.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item3.Enabled = true;
-                checkItem3.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem5.Visible = false;
-                Item5.Visible = false;
-                DescItem5.Visible = false;
-                checkItem5.Visible = false;
-
-                //Limpa os Campos
-                DescItem4.Text = "";
-                Item4.Text = "";
-            }
-        }
-        private void checkItem5_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem5.Checked)
-            {
-                //Bloqueia para alteração
-                Item4.Enabled = false;
-                checkItem4.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item6.Focus();
-
-                //Ativa o Proximo Item
-                lblItem6.Visible = true;
-                Item6.Visible = true;
-                DescItem6.Visible = true;
-                checkItem6.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item5.Text == "264")
-                {
-                    DescItem5.Text = "FARINHA MANDIOCA";
-                }
-                else
-                {
-                    DescItem5.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item4.Enabled = true;
-                checkItem4.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem6.Visible = false;
-                Item6.Visible = false;
-                DescItem6.Visible = false;
-                checkItem6.Visible = false;
-
-                //Limpa os Campos
-                DescItem5.Text = "";
-                Item5.Text = "";
-            }
-        }
-        private void checkItem6_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem6.Checked)
-            {
-                //Bloqueia para alteração
-                Item5.Enabled = false;
-                checkItem5.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item7.Focus();
-
-                //Ativa o Proximo Item
-                lblItem7.Visible = true;
-                Item7.Visible = true;
-                DescItem7.Visible = true;
-                checkItem7.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item6.Text == "266")
-                {
-                    DescItem6.Text = "MARGARINA 500G";
-                }
-                else
-                {
-                    DescItem6.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item5.Enabled = true;
-                checkItem5.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem7.Visible = false;
-                Item7.Visible = false;
-                DescItem7.Visible = false;
-                checkItem7.Visible = false;
-
-                //Limpa os Campos
-                DescItem6.Text = "";
-                Item6.Text = "";
-            }
-        }
+        
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
-        private void checkItem7_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem7.Checked)
-            {
-                //Bloqueia para alteração
-                Item6.Enabled = false;
-                checkItem6.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item8.Focus();
-
-                //Ativa o Proximo Item
-                lblItem8.Visible = true;
-                Item8.Visible = true;
-                DescItem8.Visible = true;
-                checkItem8.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item7.Text == "66")
-                {
-                    DescItem7.Text = "OLEO SOYA";
-                }
-                else
-                {
-                    DescItem7.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item6.Enabled = true;
-                checkItem6.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem8.Visible = false;
-                Item8.Visible = false;
-                DescItem8.Visible = false;
-                checkItem8.Visible = false;
-
-                //Limpa os Campos
-                DescItem7.Text = "";
-                Item7.Text = "";
-            }
-        }
-        private void checkItem8_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem8.Checked)
-            {
-                //Bloqueia para alteração
-                Item7.Enabled = false;
-                checkItem7.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item9.Focus();
-
-                //Ativa o Proximo Item
-                lblItem9.Visible = true;
-                Item9.Visible = true;
-                DescItem9.Visible = true;
-                checkItem9.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item8.Text == "271")
-                {
-                    DescItem8.Text = "OVOS";
-                }
-                else
-                {
-                    DescItem8.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item7.Enabled = true;
-                checkItem7.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem9.Visible = false;
-                Item9.Visible = false;
-                DescItem9.Visible = false;
-                checkItem9.Visible = false;
-
-                //Limpa os Campos
-                DescItem8.Text = "";
-                Item8.Text = "";
-            }
-        }
-        private void checkItem9_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem9.Checked)
-            {
-                //Bloqueia para alteração
-                Item8.Enabled = false;
-                checkItem8.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item10.Focus();
-
-                //Ativa o Proximo Item
-                lblItem10.Visible = true;
-                Item10.Visible = true;
-                DescItem10.Visible = true;
-                checkItem10.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item9.Text == "258")
-                {
-                    DescItem9.Text = "TOMATE";
-                }
-                else
-                {
-                    DescItem9.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item8.Enabled = true;
-                checkItem8.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem10.Visible = false;
-                Item10.Visible = false;
-                DescItem10.Visible = false;
-                checkItem10.Visible = false;
-
-                //Limpa os Campos
-                DescItem9.Text = "";
-                Item9.Text = "";
-            }
-        }
-        private void checkItem10_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem10.Checked)
-            {
-                //Bloqueia para alteração
-                Item9.Enabled = false;
-                checkItem9.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item11.Focus();
-
-                //Ativa o Proximo Item
-                lblItem11.Visible = true;
-                Item11.Visible = true;
-                DescItem11.Visible = true;
-                checkItem11.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item10.Text == "259")
-                {
-                    DescItem10.Text = "CEBOLA";
-                }
-                else
-                {
-                    DescItem10.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item9.Enabled = true;
-                checkItem9.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem11.Visible = false;
-                Item11.Visible = false;
-                DescItem11.Visible = false;
-                checkItem11.Visible = false;
-
-                //Limpa os Campos
-                DescItem10.Text = "";
-                Item10.Text = "";
-            }
         }
         private void btnConsult_Click(object sender, EventArgs e)
         {
@@ -614,7 +168,7 @@ namespace SistemaGSG
                     DescItem7.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close(); 
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item8.Text))
             {
@@ -861,7 +415,7 @@ namespace SistemaGSG
                     DescItem20.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close(); 
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item21.Text))
             {
@@ -918,7 +472,7 @@ namespace SistemaGSG
                     DescItem23.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close(); 
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item24.Text))
             {
@@ -1089,7 +643,7 @@ namespace SistemaGSG
                     DescItem32.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close();  
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item33.Text))
             {
@@ -1108,7 +662,7 @@ namespace SistemaGSG
                     DescItem33.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close(); 
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item34.Text))
             {
@@ -1127,7 +681,7 @@ namespace SistemaGSG
                     DescItem34.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close(); 
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item35.Text))
             {
@@ -1146,7 +700,7 @@ namespace SistemaGSG
                     DescItem35.Text = dreader[1].ToString();
                     break;
                 }
-                cn.Close();  
+                cn.Close();
             }
             if (string.IsNullOrEmpty(Item36.Text))
             {
@@ -1242,96 +796,6 @@ namespace SistemaGSG
                     break;
                 }
                 cn.Close();
-            }
-        }
-        private void checkItem11_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem11.Checked)
-            {
-                //Bloqueia para alteração
-                Item10.Enabled = false;
-                checkItem10.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item12.Focus();
-
-                //Ativa o Proximo Item
-                lblItem12.Visible = true;
-                Item12.Visible = true;
-                DescItem12.Visible = true;
-                checkItem12.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item11.Text == "262")
-                {
-                    DescItem11.Text = "ALHO KG";
-                }
-                else
-                {
-                    DescItem11.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item10.Enabled = true;
-                checkItem10.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem12.Visible = false;
-                Item12.Visible = false;
-                DescItem12.Visible = false;
-                checkItem12.Visible = false;
-
-                //Limpa os Campos
-                DescItem11.Text = "";
-                Item11.Text = "";
-            }
-        }
-        private void checkItem12_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkItem12.Checked)
-            {
-                //Bloqueia para alteração
-                Item11.Enabled = false;
-                checkItem11.Enabled = false;
-
-                //Ativa o Foco para o proximo item
-                Item11.Focus();
-
-                //Ativa o Proximo Item
-                lblItem13.Visible = true;
-                Item13.Visible = true;
-                DescItem13.Visible = true;
-                checkItem13.Visible = true;
-
-                //Verifica Cadastro do Item
-                if (Item12.Text == "694")
-                {
-                    DescItem12.Text = "FARINHA DE TRIGO C/ FERMENTO ROSA BRANCA 1KG";
-                }
-                else
-                {
-                    DescItem12.Text = "Item Não Cadastrado No Sistema!";
-                }
-
-            }
-            else
-            {
-                //Ativa para alteração
-                Item11.Enabled = true;
-                checkItem11.Enabled = true;
-
-                //Desativa o Item Anterior
-                lblItem13.Visible = false;
-                Item13.Visible = false;
-                DescItem13.Visible = false;
-                checkItem13.Visible = false;
-
-                //Limpa os Campos
-                DescItem12.Text = "";
-                Item12.Text = "";
             }
         }
         private void btnAddItem_Click_1(object sender, EventArgs e)
@@ -6201,7 +5665,8 @@ namespace SistemaGSG
             try
             {
                 CriarMIRO();
-            }catch(Exception Error)
+            }
+            catch (Exception Error)
             {
                 MessageBox.Show(Error.Message);
             }
@@ -6237,18 +5702,18 @@ namespace SistemaGSG
 
 
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_TOTAL/ssubHEADER_SCREEN:SAPLFDCB:0010/ctxtINVFO-BLDAT")).Text = this.dateTimePicker1.Text;
-            
+
             //Tecla Enter
             guiWindow.SendVKey(0);
             guiWindow.SendVKey(0);
 
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_TOTAL/ssubHEADER_SCREEN:SAPLFDCB:0010/txtINVFO-XBLNR")).Text = dtGridView.Rows[0].Cells[1].Value.ToString();
-            
+
             //Tecla Enter
             guiWindow.SendVKey(0);
 
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_TOTAL/ssubHEADER_SCREEN:SAPLFDCB:0010/txtINVFO-WRBTR")).Text = txtTotalPedido.Text.Replace("R$ ", "");
-            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_TOTAL/ssubHEADER_SCREEN:SAPLFDCB:0010/ctxtINVFO-SGTXT")).Text = "REF. NOTA FISCAL Nº:"+txtChamarNotaFiscal.Text+"";
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_TOTAL/ssubHEADER_SCREEN:SAPLFDCB:0010/ctxtINVFO-SGTXT")).Text = "REF. NOTA FISCAL Nº:" + txtChamarNotaFiscal.Text + "";
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/subITEMS:SAPLMR1M:6010/tabsITEMTAB/tabpITEMS_PO/ssubTABS:SAPLMR1M:6020/subREFERENZBELEG:SAPLMR1M:6211/ctxtRM08M-EBELN")).Text = dtGridView.Rows[0].Cells[8].Value.ToString();
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/subITEMS:SAPLMR1M:6010/tabsITEMTAB/tabpITEMS_PO/ssubTABS:SAPLMR1M:6020/subITEM:SAPLMR1M:6310/txtRM08M-SEARCH_STRING")).Text = "";
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/subITEMS:SAPLMR1M:6010/tabsITEMTAB/tabpITEMS_PO/ssubTABS:SAPLMR1M:6020/subREFERENZBELEG:SAPLMR1M:6211/ctxtRM08M-EBELN")).SetFocus();
@@ -6258,18 +5723,18 @@ namespace SistemaGSG
             //Tecla Enter
             guiWindow.SendVKey(0);
 
-           ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZLSCH")).Text = "A";
-           ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HBKID")).Text = "BBR06";
-           ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).Text = "BBR06";
-           ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).SetFocus();
-           ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).CaretPosition = 5;
-           ((GuiTab)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI")).Select();
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-ZLSCH")).Text = "A";
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HBKID")).Text = "BBR06";
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).Text = "BBR06";
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).SetFocus();
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_PAY/ssubHEADER_SCREEN:SAPLFDCB:0020/ctxtINVFO-HKTID")).CaretPosition = 5;
+            ((GuiTab)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI")).Select();
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/ctxtINVFO-GSBER")).Text = "USGA";
-            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/txtINVFO-ZUONR")).Text = "NF - "+dtGridView.Rows[0].Cells[1].Value.ToString()+"";
+            ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/txtINVFO-ZUONR")).Text = "NF - " + dtGridView.Rows[0].Cells[1].Value.ToString() + "";
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/ctxtINVFO-J_1BNFTYPE")).Text = "I7";
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/txtINVFO-ZUONR")).SetFocus();
             ((GuiTextField)Session.FindById("wnd[0]/usr/subHEADER_AND_ITEMS:SAPLMR1M:6005/tabsHEADER/tabpHEADER_FI/ssubHEADER_SCREEN:SAPLFDCB:0150/txtINVFO-ZUONR")).CaretPosition = 12;
-            
+
             //Tecla Enter
             guiWindow.SendVKey(0);
             ProgBar.Value = 55;
@@ -6334,7 +5799,7 @@ namespace SistemaGSG
             dateTimePicker1.CustomFormat = "dd.MM.yyyy";
 
             ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_FIRSTLINE:SAPLMIGO:0010/subSUB_FIRSTLINE_REFDOC:SAPLMIGO:2000/ctxtGODYNPRO-PO_NUMBER")).Text = dtGridView.Rows[0].Cells[8].Value.ToString();
-            ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/ctxtGOHEAD-BLDAT")).Text =this.dateTimePicker1.Text;
+            ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/ctxtGOHEAD-BLDAT")).Text = this.dateTimePicker1.Text;
             ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).Text = dtGridView.Rows[0].Cells[1].Value.ToString();
             ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).SetFocus();
             ((GuiTextField)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_HEADER:SAPLMIGO:0101/subSUB_HEADER:SAPLMIGO:0100/tabsTS_GOHEAD/tabpOK_GOHEAD_GENERAL/ssubSUB_TS_GOHEAD_GENERAL:SAPLMIGO:0110/txtGOHEAD-LFSNR")).CaretPosition = 4;
@@ -6348,7 +5813,7 @@ namespace SistemaGSG
 
             while (numero < countg)
             {
-                try 
+                try
                 {
                     ProgBar.Value = BarraProgresso;
                     ((GuiCheckBox)Session.FindById("wnd[0]/usr/ssubSUB_MAIN_CARRIER:SAPLMIGO:0002/subSUB_ITEMLIST:SAPLMIGO:0200/tblSAPLMIGOTV_GOITEM/chkGOITEM-TAKE_IT[2,0]")).Selected = true;
@@ -6372,7 +5837,7 @@ namespace SistemaGSG
                 MySqlCommand cmd = new MySqlCommand("UPDATE `tb_nota` SET `MIGO`='" + resultado.Split('r')[0] + "' WHERE DANFE='" + txtChamarNotaFiscal.Text + "-001'", CONEX);
                 cmd.ExecuteNonQuery();
             }
-            catch(MySqlException MySqlErro)
+            catch (MySqlException MySqlErro)
             {
                 MessageBox.Show(MySqlErro.Message);
             }
@@ -6712,35 +6177,35 @@ namespace SistemaGSG
                                     }
                                 }
                                 guiWindow.SendVKey(0);
-                                item++;
-                                numero++;
-                                BarraProgresso++;
                             }
                             catch
                             {
                                 break;
                             }
+                            item++;
+                            numero++;
+                            BarraProgresso++;
                         }
-                        //Barra de Progresso
-                        //ProgBar.Value = 92;
+                       //Barra de Progresso
+                       //ProgBar.Value = 92;
                        /////Pressiona o Botão Gravar
                        ((GuiButton)Session.FindById("wnd[0]/tbar[0]/btn[11]")).Press();
-                       //Pega a Barra de Status do SAP
-                       GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
-                       //Me retorna apenas o número do pedido no tratamento da importação no Banco de Dados ele retira o º e os espaços.
-                       string resultado = statusbar.Text.Substring(6, statusbar.Text.IndexOf('2'));
-                       try
-                       {
-                           MySqlConnection CONEX = new MySqlConnection(@"server='" + txtHost.Text + "';database='" + txtDataBase.Text + "';Uid='" + txtUser.Text + "';Pwd='" + txtPass.Text + "';SslMode=none;");
-                           CONEX.Open();
-                           MySqlCommand cmd = new MySqlCommand("UPDATE `tb_nota` SET `PEDIDO`='" + resultado.Split('º')[1].Replace(" ", "") + "' WHERE DANFE='" + txtChamarNotaFiscal.Text + "-001'", CONEX);
-                           cmd.ExecuteNonQuery();
-                           CONEX.Close();
-                       }
-                       catch (MySqlException ErroMysql)
-                       {
-                           MessageBox.Show(ErroMysql.Message);
-                       }
+                        //Pega a Barra de Status do SAP
+                        GuiStatusbar statusbar = (GuiStatusbar)Session.FindById("wnd[0]/sbar");
+                        //Me retorna apenas o número do pedido no tratamento da importação no Banco de Dados ele retira o º e os espaços.
+                        string resultado = statusbar.Text.Substring(6, statusbar.Text.IndexOf('2'));
+                        try
+                        {
+                            MySqlConnection CONEX = new MySqlConnection(@"server='" + txtHost.Text + "';database='" + txtDataBase.Text + "';Uid='" + txtUser.Text + "';Pwd='" + txtPass.Text + "';SslMode=none;");
+                            CONEX.Open();
+                            MySqlCommand cmd = new MySqlCommand("UPDATE `tb_nota` SET `PEDIDO`='" + resultado.Split('º')[1].Replace(" ", "") + "' WHERE DANFE='" + txtChamarNotaFiscal.Text + "-001'", CONEX);
+                            cmd.ExecuteNonQuery();
+                            CONEX.Close();
+                        }
+                        catch (MySqlException ErroMysql)
+                        {
+                            MessageBox.Show(ErroMysql.Message);
+                        }
                     }
                     catch (Exception Erro)
                     {
@@ -6764,7 +6229,7 @@ namespace SistemaGSG
             try
             {
                 CONEXAOBD = new MySqlConnection(@"server='" + txtHost.Text + "';database='" + txtDataBase.Text + "';Uid='" + txtUser.Text + "';Pwd='" + txtPass.Text + "';SslMode=none;");
-                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT N.*,P.DESC_PRODUTO,P.CD_SAP,P.COD_IVA FROM tb_nota N JOIN tb_produtos P ON N.COD_PRODUTO=P.CD_PRODUTO WHERE N.DANFE='"+txtChamarNotaFiscal.Text+"-001' ORDER BY N.ID_TB ASC", CONEXAOBD);
+                MySqlDataAdapter ADAP = new MySqlDataAdapter("SELECT N.*,P.DESC_PRODUTO,P.CD_SAP,P.COD_IVA FROM tb_nota N JOIN tb_produtos P ON N.COD_PRODUTO=P.CD_PRODUTO WHERE N.DANFE='" + txtChamarNotaFiscal.Text + "-001' ORDER BY N.ID_TB ASC", CONEXAOBD);
                 DataTable SS = new DataTable();
                 ADAP.Fill(SS);
                 dtGridView.DataSource = SS;
@@ -7247,7 +6712,7 @@ namespace SistemaGSG
             {
                 try
                 {
-                    CONEXAOBD = new MySqlConnection(@"server='"+txtHost.Text+"';database='"+txtDataBase.Text+"';Uid='"+txtUser.Text+"';Pwd='"+txtPass.Text+"';SslMode=none;");
+                    CONEXAOBD = new MySqlConnection(@"server='" + txtHost.Text + "';database='" + txtDataBase.Text + "';Uid='" + txtUser.Text + "';Pwd='" + txtPass.Text + "';SslMode=none;");
                     CONEXAOBD.Open();
 
                     if (string.IsNullOrEmpty(Item1.Text))
@@ -7287,7 +6752,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem4 = Convert.ToDouble(qdt4.Text) * Convert.ToDouble(preco4.Text);
-                        
+
                         cmd_item4 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item4.Text + "', '" + qdt4.Text + "', '" + preco4.Text + "', '" + vlTotalItem4 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item4.ExecuteNonQuery();
                     }
@@ -7298,7 +6763,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem5 = Convert.ToDouble(qdt5.Text) * Convert.ToDouble(preco5.Text);
-                        
+
                         cmd_item5 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item5.Text + "', '" + qdt5.Text + "', '" + preco5.Text + "', '" + vlTotalItem5 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item5.ExecuteNonQuery();
                     }
@@ -7309,7 +6774,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem6 = Convert.ToDouble(qdt6.Text) * Convert.ToDouble(preco6.Text);
-                        
+
 
                         cmd_item6 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item6.Text + "', '" + qdt6.Text + "', '" + preco6.Text + "', '" + vlTotalItem6 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item6.ExecuteNonQuery();
@@ -7321,7 +6786,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem7 = Convert.ToDouble(qdt7.Text) * Convert.ToDouble(preco7.Text);
-                        
+
                         cmd_item7 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item7.Text + "', '" + qdt7.Text + "', '" + preco7.Text + "', '" + vlTotalItem7 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item7.ExecuteNonQuery();
                     }
@@ -7332,7 +6797,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem8 = Convert.ToDouble(qdt8.Text) * Convert.ToDouble(preco8.Text);
-                        
+
                         cmd_item8 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item8.Text + "', '" + qdt8.Text + "', '" + preco8.Text + "', '" + vlTotalItem8 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item8.ExecuteNonQuery();
                     }
@@ -7343,7 +6808,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem9 = Convert.ToDouble(qdt9.Text) * Convert.ToDouble(preco9.Text);
-                        
+
                         cmd_item9 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item9.Text + "', '" + qdt9.Text + "', '" + preco9.Text + "', '" + vlTotalItem9 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item9.ExecuteNonQuery();
                     }
@@ -7354,7 +6819,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem10 = Convert.ToDouble(qdt10.Text) * Convert.ToDouble(preco10.Text);
-                        
+
                         cmd_item10 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item10.Text + "', '" + qdt10.Text + "', '" + preco10.Text + "', '" + vlTotalItem10 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item10.ExecuteNonQuery();
                     }
@@ -7365,7 +6830,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem11 = Convert.ToDouble(qdt11.Text) * Convert.ToDouble(preco11.Text);
-                        
+
                         cmd_item11 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item11.Text + "', '" + qdt11.Text + "', '" + preco11.Text + "', '" + vlTotalItem11 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item11.ExecuteNonQuery();
                     }
@@ -7376,7 +6841,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem12 = Convert.ToDouble(qdt12.Text) * Convert.ToDouble(preco12.Text);
-                        
+
                         cmd_item12 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item12.Text + "', '" + qdt12.Text + "', '" + preco12.Text + "', '" + vlTotalItem12 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item12.ExecuteNonQuery();
                     }
@@ -7387,7 +6852,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem13 = Convert.ToDouble(qdt13.Text) * Convert.ToDouble(preco13.Text);
-                        
+
                         cmd_item13 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item13.Text + "', '" + qdt13.Text + "', '" + preco13.Text + "', '" + vlTotalItem13 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item13.ExecuteNonQuery();
                     }
@@ -7398,7 +6863,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem14 = Convert.ToDouble(qdt14.Text) * Convert.ToDouble(preco14.Text);
-                        
+
                         cmd_item14 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item14.Text + "', '" + qdt14.Text + "', '" + preco14.Text + "', '" + vlTotalItem14 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item14.ExecuteNonQuery();
                     }
@@ -7409,7 +6874,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem15 = Convert.ToDouble(qdt15.Text) * Convert.ToDouble(preco15.Text);
-                        
+
                         cmd_item15 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item15.Text + "', '" + qdt15.Text + "', '" + preco15.Text + "', '" + vlTotalItem15 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item15.ExecuteNonQuery();
                     }
@@ -7420,7 +6885,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem16 = Convert.ToDouble(qdt16.Text) * Convert.ToDouble(preco16.Text);
-                        
+
                         cmd_item16 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item16.Text + "', '" + qdt16.Text + "', '" + preco16.Text + "', '" + vlTotalItem16 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item16.ExecuteNonQuery();
                     }
@@ -7431,7 +6896,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem17 = Convert.ToDouble(qdt17.Text) * Convert.ToDouble(preco17.Text);
-                        
+
                         cmd_item17 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item17.Text + "', '" + qdt17.Text + "', '" + preco17.Text + "', '" + vlTotalItem17 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item17.ExecuteNonQuery();
                     }
@@ -7442,7 +6907,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem18 = Convert.ToDouble(qdt18.Text) * Convert.ToDouble(preco18.Text);
-                        
+
                         cmd_item18 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item18.Text + "', '" + qdt18.Text + "', '" + preco18.Text + "', '" + vlTotalItem18 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item18.ExecuteNonQuery();
                     }
@@ -7453,7 +6918,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem19 = Convert.ToDouble(qdt19.Text) * Convert.ToDouble(preco19.Text);
-                        
+
                         cmd_item19 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item19.Text + "', '" + qdt19.Text + "', '" + preco19.Text + "', '" + vlTotalItem19 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item19.ExecuteNonQuery();
                     }
@@ -7475,7 +6940,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem21 = Convert.ToDouble(qdt21.Text) * Convert.ToDouble(preco21.Text);
-                        
+
                         cmd_item21 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item21.Text + "', '" + qdt21.Text + "', '" + preco21.Text + "', '" + vlTotalItem21 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item21.ExecuteNonQuery();
                     }
@@ -7486,7 +6951,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem22 = Convert.ToDouble(qdt22.Text) * Convert.ToDouble(preco22.Text);
-                        
+
 
                         cmd_item22 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item22.Text + "', '" + qdt22.Text + "', '" + preco22.Text + "', '" + vlTotalItem22 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item22.ExecuteNonQuery();
@@ -7499,7 +6964,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem23 = Convert.ToDouble(qdt23.Text) * Convert.ToDouble(preco23.Text);
-                        
+
                         cmd_item23 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item23.Text + "', '" + qdt23.Text + "', '" + preco23.Text + "', '" + vlTotalItem23 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item23.ExecuteNonQuery();
                     }
@@ -7510,7 +6975,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem24 = Convert.ToDouble(qdt24.Text) * Convert.ToDouble(preco24.Text);
-                        
+
                         cmd_item24 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item24.Text + "', '" + qdt24.Text + "', '" + preco24.Text + "', '" + vlTotalItem24 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item24.ExecuteNonQuery();
                     }
@@ -7521,7 +6986,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem25 = Convert.ToDouble(qdt25.Text) * Convert.ToDouble(preco25.Text);
-                        
+
 
                         cmd_item25 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item25.Text + "', '" + qdt25.Text + "', '" + preco25.Text + "', '" + vlTotalItem25 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item25.ExecuteNonQuery();
@@ -7534,7 +6999,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem26 = Convert.ToDouble(qdt26.Text) * Convert.ToDouble(preco26.Text);
-                        
+
                         cmd_item26 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item26.Text + "', '" + qdt26.Text + "', '" + preco26.Text + "', '" + vlTotalItem26 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item26.ExecuteNonQuery();
                     }
@@ -7545,7 +7010,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem27 = Convert.ToDouble(qdt27.Text) * Convert.ToDouble(preco27.Text);
-                        
+
                         cmd_item27 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item27.Text + "', '" + qdt27.Text + "', '" + preco27.Text + "', '" + vlTotalItem27 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item27.ExecuteNonQuery();
                     }
@@ -7556,7 +7021,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem28 = Convert.ToDouble(qdt28.Text) * Convert.ToDouble(preco28.Text);
-                        
+
                         cmd_item28 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item28.Text + "', '" + qdt28.Text + "', '" + preco28.Text + "', '" + vlTotalItem28 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item28.ExecuteNonQuery();
                     }
@@ -7567,7 +7032,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem29 = Convert.ToDouble(qdt29.Text) * Convert.ToDouble(preco29.Text);
-                        
+
                         cmd_item29 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item29.Text + "', '" + qdt29.Text + "', '" + preco29.Text + "', '" + vlTotalItem29 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item29.ExecuteNonQuery();
                     }
@@ -7578,7 +7043,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem30 = Convert.ToDouble(qdt30.Text) * Convert.ToDouble(preco30.Text);
-                        
+
                         cmd_item30 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item30.Text + "', '" + qdt30.Text + "', '" + preco30.Text + "', '" + vlTotalItem30 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item30.ExecuteNonQuery();
                     }
@@ -7589,7 +7054,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem31 = Convert.ToDouble(qdt31.Text) * Convert.ToDouble(preco31.Text);
-                        
+
                         cmd_item31 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item31.Text + "', '" + qdt31.Text + "', '" + preco31.Text + "', '" + vlTotalItem31 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item31.ExecuteNonQuery();
                     }
@@ -7600,7 +7065,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem32 = Convert.ToDouble(qdt32.Text) * Convert.ToDouble(preco32.Text);
-                        
+
                         cmd_item32 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item32.Text + "', '" + qdt32.Text + "', '" + preco32.Text + "', '" + vlTotalItem32 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item32.ExecuteNonQuery();
                     }
@@ -7611,7 +7076,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem33 = Convert.ToDouble(qdt33.Text) * Convert.ToDouble(preco33.Text);
-                        
+
                         cmd_item33 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item33.Text + "', '" + qdt33.Text + "', '" + preco33.Text + "', '" + vlTotalItem33 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item33.ExecuteNonQuery();
                     }
@@ -7622,7 +7087,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem34 = Convert.ToDouble(qdt34.Text) * Convert.ToDouble(preco34.Text);
-                        
+
                         cmd_item34 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item34.Text + "', '" + qdt34.Text + "', '" + preco34.Text + "', '" + vlTotalItem34 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item34.ExecuteNonQuery();
                     }
@@ -7633,7 +7098,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem35 = Convert.ToDouble(qdt35.Text) * Convert.ToDouble(preco35.Text);
-                        
+
                         cmd_item35 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item35.Text + "', '" + qdt35.Text + "', '" + preco35.Text + "', '" + vlTotalItem35 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item35.ExecuteNonQuery();
                     }
@@ -7644,7 +7109,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem36 = Convert.ToDouble(qdt36.Text) * Convert.ToDouble(preco36.Text);
-                        
+
                         cmd_item36 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item36.Text + "', '" + qdt36.Text + "', '" + preco36.Text + "', '" + vlTotalItem36 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item36.ExecuteNonQuery();
                     }
@@ -7655,7 +7120,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem37 = Convert.ToDouble(qdt37.Text) * Convert.ToDouble(preco37.Text);
-                        
+
                         cmd_item37 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item37.Text + "', '" + qdt37.Text + "', '" + preco37.Text + "', '" + vlTotalItem37 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item37.ExecuteNonQuery();
                     }
@@ -7666,7 +7131,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem38 = Convert.ToDouble(qdt38.Text) * Convert.ToDouble(preco38.Text);
-                        
+
                         cmd_item38 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item38.Text + "', '" + qdt38.Text + "', '" + preco38.Text + "', '" + vlTotalItem38 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item38.ExecuteNonQuery();
                     }
@@ -7677,7 +7142,7 @@ namespace SistemaGSG
                     else
                     {
                         double vlTotalItem39 = Convert.ToDouble(qdt39.Text) * Convert.ToDouble(preco39.Text);
-                        
+
                         cmd_item39 = new MySqlCommand("INSERT INTO `tb_nota` (`ID_TB`, `DANFE`, `DT_EMISSAO`, `COD_PRODUTO`, `QDT`, `VL_UNITARIO`, `VL_TOTAL`, `CENTRO_CUSTO`, `PEDIDO`, `MIGO`, `MIRO`,  `CHAVE_ACESSO`,  `CHAVE_ACESS8`,  `PROTOCOLO`) VALUES (NULL, '" + txtNfe.Text + "-001', '" + this.dtEmissao.Text + "', '" + Item39.Text + "', '" + qdt39.Text + "', '" + preco39.Text + "', '" + vlTotalItem39 + "', NULL, NULL, NULL, NULL, '" + txtChave.Text + "', '" + txtChaveUltimo.Text + "', '" + txtProtocolo.Text + "')", CONEXAOBD);
                         cmd_item39.ExecuteNonQuery();
                     }
@@ -7698,14 +7163,14 @@ namespace SistemaGSG
 
                     Ocultar();
                     Limpar();
-                   
+
                 }
                 catch (MySqlException Err)
                 {
                     MessageBox.Show(Err.Message);
                 }
             }
-            catch(Exception Erro)
+            catch (Exception Erro)
             {
                 MessageBox.Show(Erro.Message);
             }
