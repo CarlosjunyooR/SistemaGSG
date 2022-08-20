@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 
 namespace SistemaGSG
@@ -22,22 +23,22 @@ namespace SistemaGSG
         {
             try
             {
-                string tb_user = "SELECT * FROM tb_user WHERE nome = @usuario";
-                MySqlCommand cmd;
-                MySqlDataReader dr;
-                cmd = new MySqlCommand(tb_user, ConexaoDados.GetConnectionEquatorial());
+                string tb_user = "SELECT * FROM DBSGSG_Login WHERE col_userLogin = @usuario";
+                OleDbCommand cmd;
+                OleDbDataReader dr;
+                cmd = new OleDbCommand(tb_user, ConexaoBancoDeDadosOffline.DBSGSG_Conex());
                 //cmd.Connection.Open();
                 //Verificar Usuário//
-                cmd.Parameters.Add(new MySqlParameter("@usuario", txtUser.Text));
+                cmd.Parameters.Add(new OleDbParameter("@usuario", txtUser.Text));
 
                 dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
 
                 while (dr.Read())
                 {
-                    dados.Usuario = Convert.ToString(dr["nome"]);
-                    dados.senha = Convert.ToString(dr["senha"]);
-                    dados.nivel = Convert.ToInt32(dr["nivel"]);
-                    dados.IdUser = Convert.ToInt32(dr["Id"]);
+                    dados.Usuario = Convert.ToString(dr["col_nameFull"]);
+                    dados.senha = Convert.ToString(dr["col_passwordUser"]);
+                    dados.nivel = Convert.ToInt32(dr["col_levelUser"]);
+                    dados.IdUser = Convert.ToInt32(dr["col_codigo"]);
                 }
                 if (dados.senha == txtSenha.Text)
                 {
@@ -78,7 +79,7 @@ namespace SistemaGSG
                     lblSenha.Visible = false;
                 }
             }
-            catch (MySqlException ErrO)
+            catch (OleDbException ErrO)
             {
                 MessageBox.Show("Erro no Banco de Dados! - \n Não Foi Possivel Conectar!");
                 if (MessageBox.Show("Deseja encerrar a aplicação ?" + ErrO.HelpLink, "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -120,8 +121,8 @@ namespace SistemaGSG
         {
             try
             {
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = ConexaoDados.GetConnectionEquatorial();
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = ConexaoBancoDeDadosOffline.DBSGSG_Conex();
 
             }
             catch (Exception ERROR)
@@ -132,11 +133,11 @@ namespace SistemaGSG
             {
 
 
-                if (ConexaoDados.GetConnectionEquatorial().State == System.Data.ConnectionState.Open)
+                if (ConexaoBancoDeDadosOffline.DBSGSG_Conex().State == System.Data.ConnectionState.Open)
                 {
                     label1.ForeColor = Color.Lime;
                     label1.Text = "Conectado...";
-                    ConexaoDados.GetConnectionEquatorial().Close();
+                    ConexaoBancoDeDadosOffline.DBSGSG_Conex().Close();
                 }
                 else
                 {
@@ -144,7 +145,7 @@ namespace SistemaGSG
                     label1.Text = "Não Conectado...";
                 }
             }
-            catch (MySqlException MysqlErr)
+            catch (OleDbException MysqlErr)
             {
                 MessageBox.Show("Erro no Banco de Dados! -\nNão Foi Possivel Conectar!");
                 if (MessageBox.Show("Deseja encerrar a aplicação ?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
