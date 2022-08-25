@@ -145,9 +145,9 @@
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
             this.UserTXT});
-            this.StatusBar.Location = new System.Drawing.Point(20, 352);
+            this.StatusBar.Location = new System.Drawing.Point(20, 748);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(414, 22);
+            this.StatusBar.Size = new System.Drawing.Size(1604, 22);
             this.StatusBar.TabIndex = 0;
             this.StatusBar.Text = "statusStrip1";
             // 
@@ -193,9 +193,9 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(6, 252);
+            this.button1.Location = new System.Drawing.Point(6, 354);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(402, 31);
+            this.button1.Size = new System.Drawing.Size(363, 31);
             this.button1.TabIndex = 4;
             this.button1.Text = "&Gerar Posição";
             this.button1.UseVisualStyleBackColor = true;
@@ -791,7 +791,7 @@
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(368, 16);
+            this.linkLabel1.Location = new System.Drawing.Point(329, 16);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(40, 13);
             this.linkLabel1.TabIndex = 87;
@@ -820,7 +820,7 @@
             this.groupBox1.Controls.Add(this.LblStatus);
             this.groupBox1.Location = new System.Drawing.Point(20, 20);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(414, 310);
+            this.groupBox1.Size = new System.Drawing.Size(375, 412);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Posição da Semana";
@@ -836,10 +836,11 @@
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(398, 289);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(6, 312);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(10, 15);
+            this.button2.Size = new System.Drawing.Size(363, 36);
             this.button2.TabIndex = 96;
             this.button2.Text = "Ov Alt. Seman";
             this.button2.UseVisualStyleBackColor = true;
@@ -854,7 +855,7 @@
             this.LblStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LblStatus.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblStatus.ForeColor = System.Drawing.Color.Chartreuse;
-            this.LblStatus.Location = new System.Drawing.Point(6, 286);
+            this.LblStatus.Location = new System.Drawing.Point(6, 388);
             this.LblStatus.Name = "LblStatus";
             this.LblStatus.Size = new System.Drawing.Size(291, 21);
             this.LblStatus.TabIndex = 89;
@@ -864,7 +865,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(462, 60);
+            this.label3.Location = new System.Drawing.Point(410, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 98;
@@ -873,7 +874,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(462, 47);
+            this.label1.Location = new System.Drawing.Point(410, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 97;
@@ -926,7 +927,7 @@
             // 
             this.txtCentro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCentro.Enabled = false;
-            this.txtCentro.Location = new System.Drawing.Point(1032, 14);
+            this.txtCentro.Location = new System.Drawing.Point(1627, 212);
             this.txtCentro.Name = "txtCentro";
             this.txtCentro.Size = new System.Drawing.Size(96, 20);
             this.txtCentro.TabIndex = 93;
@@ -963,18 +964,18 @@
             this.ProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ProgressBar.Location = new System.Drawing.Point(20, 336);
+            this.ProgressBar.Location = new System.Drawing.Point(20, 732);
             this.ProgressBar.MarqueeAnimationSpeed = 1000;
             this.ProgressBar.Maximum = 1000;
             this.ProgressBar.Name = "ProgressBar";
-            this.ProgressBar.Size = new System.Drawing.Size(414, 13);
+            this.ProgressBar.Size = new System.Drawing.Size(1604, 13);
             this.ProgressBar.TabIndex = 91;
             // 
             // frmPosicaoSemana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 394);
+            this.ClientSize = new System.Drawing.Size(1644, 790);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
