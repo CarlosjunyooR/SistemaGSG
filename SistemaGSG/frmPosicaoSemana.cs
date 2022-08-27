@@ -22,16 +22,6 @@ namespace SistemaGSG
         }
         int OvAlter = 0;
         int idAutoIncrement;
-
-
-
-
-
-
-
-
-
-
         DataTable table = new DataTable();
         private void BaixaSAP()
         {

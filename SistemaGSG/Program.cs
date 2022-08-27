@@ -14,8 +14,11 @@ namespace SistemaGSG
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            frmPosicaoSemana frm_Main = new frmPosicaoSemana();
+            //frmPosicaoSemana frm_Main = new frmPosicaoSemana();
+            //frm_Main.ShowDialog();
+            FormRelat frm_Main = new FormRelat();
             frm_Main.ShowDialog();
+
 
             //Splash fmr = new Splash();
             //fmr.ShowDialog();
